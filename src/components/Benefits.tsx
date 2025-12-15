@@ -5,7 +5,7 @@ const benefits = [
     icon: Brain,
     title: "Wspiera funkcje kognitywne",
     description: "Soplówka jeżowata stymuluje produkcję NGF — kluczowego czynnika dla zdrowia neuronów.",
-    color: "text-shroom-moss",
+    color: "text-shroom-green",
     bg: "bg-shroom-sage/30",
   },
   {
@@ -26,22 +26,22 @@ const benefits = [
     icon: Leaf,
     title: "100% Naturalny skład",
     description: "Żadnych sztucznych słodzików, konserwantów czy dodatków. Tylko to, co najlepsze z natury.",
-    color: "text-shroom-forest",
+    color: "text-shroom-green",
     bg: "bg-shroom-sage/20",
   },
   {
     icon: Shield,
     title: "Bez cukru",
     description: "Słodzone naturalnym sokiem owocowym i stewią. Zdrowa alternatywa bez kompromisów.",
-    color: "text-shroom-moss",
-    bg: "bg-secondary",
+    color: "text-shroom-purple",
+    bg: "bg-shroom-blush/40",
   },
   {
     icon: Sparkles,
     title: "Potwierdzone działanie",
     description: "Składniki o udowodnionej naukowo skuteczności. Żadnych pustych obietnic.",
-    color: "text-accent",
-    bg: "bg-shroom-peach/20",
+    color: "text-shroom-magenta",
+    bg: "bg-shroom-pink/20",
   },
 ];
 
