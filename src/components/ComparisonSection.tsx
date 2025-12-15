@@ -1,279 +1,225 @@
 import { useState, useEffect } from "react";
-import { Zap, Coffee, Brain, TrendingUp, Clock, Heart } from "lucide-react";
+import { Zap, Coffee } from "lucide-react";
 import productPower from "@/assets/product-power.png";
 
-type MetricData = {
-  label: string;
-  icon: typeof Brain;
-  shroom: number;
-  competitor: number;
-  unit?: string;
+type CompetitorId = "redbull" | "monster" | "coffee";
+
+type CompetitorData = {
+  id: CompetitorId;
+  name: string;
+  icon: typeof Zap;
+  energia: number;
+  fokus: number;
+  zdrowie: number;
 };
 
-const energyMetrics: MetricData[] = [
-  { label: "Poziom energii", icon: Zap, shroom: 95, competitor: 80, unit: "%" },
-  { label: "Czas działania", icon: Clock, shroom: 6, competitor: 2, unit: "h" },
-  { label: "Fokus & koncentracja", icon: Brain, shroom: 90, competitor: 40, unit: "%" },
-  { label: "Zdrowie", icon: Heart, shroom: 100, competitor: 20, unit: "%" },
-  { label: "Stabilność energii", icon: TrendingUp, shroom: 95, competitor: 30, unit: "%" },
+const competitors: CompetitorData[] = [
+  { id: "redbull", name: "Red Bull", icon: Zap, energia: 70, fokus: 35, zdrowie: 15 },
+  { id: "monster", name: "Monster", icon: Zap, energia: 80, fokus: 30, zdrowie: 10 },
+  { id: "coffee", name: "Kawa", icon: Coffee, energia: 65, fokus: 55, zdrowie: 45 },
 ];
 
-const coffeeMetrics: MetricData[] = [
-  { label: "Poziom energii", icon: Zap, shroom: 95, competitor: 70, unit: "%" },
-  { label: "Czas działania", icon: Clock, shroom: 6, competitor: 3, unit: "h" },
-  { label: "Fokus & koncentracja", icon: Brain, shroom: 90, competitor: 60, unit: "%" },
-  { label: "Zdrowie", icon: Heart, shroom: 100, competitor: 50, unit: "%" },
-  { label: "Stabilność energii", icon: TrendingUp, shroom: 95, competitor: 45, unit: "%" },
-];
+const shroomData = { energia: 92, fokus: 95, zdrowie: 100 };
 
 const AnimatedBar = ({ 
-  value, 
-  maxValue = 100, 
-  color, 
+  height, 
   delay = 0,
-  animate 
+  isShroom = false,
 }: { 
-  value: number; 
-  maxValue?: number; 
-  color: string; 
+  height: number; 
   delay?: number;
-  animate: boolean;
+  isShroom?: boolean;
 }) => {
-  const [width, setWidth] = useState(0);
+  const [animatedHeight, setAnimatedHeight] = useState(0);
   
   useEffect(() => {
-    if (animate) {
-      const timer = setTimeout(() => {
-        setWidth((value / maxValue) * 100);
-      }, delay);
-      return () => clearTimeout(timer);
-    } else {
-      setWidth(0);
-    }
-  }, [value, maxValue, delay, animate]);
+    const timer = setTimeout(() => {
+      setAnimatedHeight(height);
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [height, delay]);
 
   return (
-    <div className="h-3 bg-secondary rounded-full overflow-hidden">
+    <div className="relative h-full flex flex-col justify-end">
       <div
-        className={`h-full rounded-full transition-all duration-1000 ease-out ${color}`}
-        style={{ width: `${width}%` }}
+        className={`w-full rounded-t-lg transition-all duration-1000 ease-out ${
+          isShroom 
+            ? "bg-gradient-to-t from-shroom-gold to-shroom-sage" 
+            : "border border-white/20 bg-white/5"
+        }`}
+        style={{ height: `${animatedHeight}%` }}
       />
+      <span className={`absolute -top-8 left-1/2 -translate-x-1/2 font-display text-lg font-bold ${
+        isShroom ? "text-shroom-gold" : "text-white/60"
+      }`}>
+        {height}%
+      </span>
     </div>
   );
 };
 
 const ComparisonSection = () => {
-  const [activeTab, setActiveTab] = useState<"energy" | "coffee">("energy");
-  const [animate, setAnimate] = useState(true);
+  const [activeCompetitor, setActiveCompetitor] = useState<CompetitorId>("redbull");
+  const [activeMetric, setActiveMetric] = useState<"energia" | "fokus" | "zdrowie">("energia");
 
-  const metrics = activeTab === "energy" ? energyMetrics : coffeeMetrics;
-
-  const handleTabChange = (tab: "energy" | "coffee") => {
-    setAnimate(false);
-    setActiveTab(tab);
-    setTimeout(() => setAnimate(true), 50);
-  };
-
-  const tabs = [
-    { id: "energy" as const, label: "vs Energetyki", icon: Zap },
-    { id: "coffee" as const, label: "vs Kawa", icon: Coffee },
+  const competitor = competitors.find(c => c.id === activeCompetitor)!;
+  
+  const metrics = [
+    { id: "energia" as const, label: "Energia", shroomVal: shroomData.energia, compVal: competitor.energia },
+    { id: "fokus" as const, label: "Fokus", shroomVal: shroomData.fokus, compVal: competitor.fokus },
+    { id: "zdrowie" as const, label: "Zdrowie", shroomVal: shroomData.zdrowie, compVal: competitor.zdrowie },
   ];
 
-  // Calculate average scores
-  const shroomAvg = Math.round(metrics.reduce((acc, m) => acc + m.shroom, 0) / metrics.length);
-  const competitorAvg = Math.round(metrics.reduce((acc, m) => acc + m.competitor, 0) / metrics.length);
+  const currentMetric = metrics.find(m => m.id === activeMetric)!;
+  const advantage = currentMetric.shroomVal - currentMetric.compVal;
 
   return (
-    <section className="section-padding bg-shroom-blush/30">
-      <div className="container mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 bg-shroom-coral/20 px-4 py-2 rounded-full mb-4">
-            <Brain className="w-4 h-4 text-shroom-coral" />
-            <span className="font-body text-sm font-medium text-shroom-coral">
-              Porównanie
-            </span>
-          </span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Shroom Power vs <span className="text-gradient">Tradycyjne napoje</span>
-          </h2>
-        </div>
-
-        {/* Toggle Tabs */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex bg-card rounded-full p-1.5 shadow-soft">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => handleTabChange(tab.id)}
-                className={`flex items-center gap-2 px-8 py-4 rounded-full font-display font-semibold transition-all duration-300 ${
-                  activeTab === tab.id
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <tab.icon className="w-5 h-5" />
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Visual Comparison */}
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-card rounded-3xl shadow-soft p-8 md:p-12">
-            {/* Product Headers */}
-            <div className="flex justify-between items-center mb-10">
-              <div className="flex items-center gap-4">
-                <img
-                  src={productPower}
-                  alt="Shroom Power"
-                  className="h-20 w-auto object-contain"
-                />
-                <div>
-                  <p className="font-display text-xl font-bold text-foreground">Shroom Power</p>
-                  <p className="font-body text-sm text-shroom-green">Adaptogeny + Grzyby</p>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="w-16 h-16 rounded-full bg-shroom-coral/20 flex items-center justify-center mb-2 ml-auto">
-                  {activeTab === "energy" ? (
-                    <Zap className="w-8 h-8 text-shroom-coral" />
-                  ) : (
-                    <Coffee className="w-8 h-8 text-shroom-coral" />
-                  )}
-                </div>
-                <p className="font-display text-xl font-bold text-foreground">
-                  {activeTab === "energy" ? "Energetyki" : "Kawa"}
-                </p>
-              </div>
-            </div>
-
-            {/* Metrics with Bars */}
-            <div className="space-y-8">
-              {metrics.map((metric, index) => (
-                <div key={metric.label} className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <metric.icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <span className="font-display font-semibold text-foreground">
-                        {metric.label}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-6 font-display font-bold text-lg">
-                      <span className="text-shroom-green">
-                        {metric.shroom}{metric.unit}
-                      </span>
-                      <span className="text-shroom-coral">
-                        {metric.competitor}{metric.unit}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  {/* Double Bar */}
-                  <div className="space-y-2">
-                    <AnimatedBar 
-                      value={metric.shroom} 
-                      color="bg-gradient-to-r from-shroom-green to-shroom-sage" 
-                      delay={index * 150}
-                      animate={animate}
-                    />
-                    <AnimatedBar 
-                      value={metric.competitor} 
-                      color="bg-gradient-to-r from-shroom-coral to-shroom-coral/60" 
-                      delay={index * 150 + 75}
-                      animate={animate}
-                    />
-                  </div>
-                </div>
+    <section className="py-20 bg-[#1a1a1a]">
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-[1fr,400px] gap-12 items-start">
+          
+          {/* Left - Chart Area */}
+          <div>
+            {/* Metric Tabs */}
+            <div className="flex gap-2 mb-12">
+              {metrics.map((metric) => (
+                <button
+                  key={metric.id}
+                  onClick={() => setActiveMetric(metric.id)}
+                  className={`px-6 py-3 rounded-full font-display font-semibold text-sm transition-all ${
+                    activeMetric === metric.id
+                      ? "bg-shroom-gold text-[#1a1a1a]"
+                      : "bg-white/10 text-white/60 hover:bg-white/20"
+                  }`}
+                >
+                  {metric.label}
+                </button>
               ))}
             </div>
 
-            {/* Score Summary */}
-            <div className="mt-12 pt-8 border-t border-border">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-                {/* Circular Score Comparison */}
-                <div className="flex items-center gap-8">
-                  {/* Shroom Score */}
-                  <div className="relative">
-                    <svg className="w-28 h-28 -rotate-90">
-                      <circle
-                        cx="56"
-                        cy="56"
-                        r="48"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        fill="none"
-                        className="text-secondary"
-                      />
-                      <circle
-                        cx="56"
-                        cy="56"
-                        r="48"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        fill="none"
-                        strokeDasharray={`${shroomAvg * 3.02} 302`}
-                        className="text-shroom-green transition-all duration-1000"
-                      />
-                    </svg>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="font-display text-2xl font-bold text-shroom-green">{shroomAvg}%</span>
-                      <span className="font-body text-xs text-muted-foreground">Shroom</span>
-                    </div>
-                  </div>
+            {/* Bar Chart */}
+            <div className="relative">
+              {/* Y-axis labels */}
+              <div className="absolute left-0 top-0 h-[300px] flex flex-col justify-between text-white/40 font-mono text-sm">
+                <span>100%</span>
+                <span>50%</span>
+                <span>0%</span>
+              </div>
 
-                  <span className="font-display text-2xl font-bold text-muted-foreground">vs</span>
-
-                  {/* Competitor Score */}
-                  <div className="relative">
-                    <svg className="w-28 h-28 -rotate-90">
-                      <circle
-                        cx="56"
-                        cy="56"
-                        r="48"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        fill="none"
-                        className="text-secondary"
-                      />
-                      <circle
-                        cx="56"
-                        cy="56"
-                        r="48"
-                        stroke="currentColor"
-                        strokeWidth="8"
-                        fill="none"
-                        strokeDasharray={`${competitorAvg * 3.02} 302`}
-                        className="text-shroom-coral transition-all duration-1000"
-                      />
-                    </svg>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className="font-display text-2xl font-bold text-shroom-coral">{competitorAvg}%</span>
-                      <span className="font-body text-xs text-muted-foreground">
-                        {activeTab === "energy" ? "Energy" : "Kawa"}
-                      </span>
-                    </div>
-                  </div>
+              {/* Chart Grid & Bars */}
+              <div className="ml-16 relative">
+                {/* Grid lines */}
+                <div className="absolute inset-0 h-[300px] flex flex-col justify-between pointer-events-none">
+                  <div className="border-t border-white/10 w-full" />
+                  <div className="border-t border-white/10 w-full" />
+                  <div className="border-t border-white/10 w-full" />
                 </div>
 
-                {/* CTA */}
-                <div className="text-center md:text-right">
-                  <p className="font-display text-xl font-bold text-foreground mb-3">
-                    Shroom wygrywa <span className="text-shroom-green">+{shroomAvg - competitorAvg}%</span>
-                  </p>
-                  <a
-                    href="#produkty"
-                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-display font-semibold hover:scale-105 transition-transform shadow-lg"
-                  >
-                    Wypróbuj Power
-                    <Zap className="w-5 h-5" />
-                  </a>
+                {/* Bars container */}
+                <div className="h-[300px] flex items-end gap-8 pt-8">
+                  {/* Shroom Bar */}
+                  <div className="flex-1 h-full flex flex-col">
+                    <div className="flex-1 relative">
+                      <AnimatedBar 
+                        height={currentMetric.shroomVal} 
+                        delay={100}
+                        isShroom={true}
+                      />
+                    </div>
+                    <div className="mt-4 flex flex-col items-center">
+                      <img 
+                        src={productPower} 
+                        alt="Shroom Power" 
+                        className="h-16 w-auto object-contain"
+                      />
+                      <span className="font-display text-white font-semibold mt-2">Shroom</span>
+                    </div>
+                  </div>
+
+                  {/* Competitor Bar */}
+                  <div className="flex-1 h-full flex flex-col">
+                    <div className="flex-1 relative">
+                      <AnimatedBar 
+                        height={currentMetric.compVal} 
+                        delay={300}
+                        isShroom={false}
+                      />
+                    </div>
+                    <div className="mt-4 flex flex-col items-center">
+                      <div className="h-16 w-16 rounded-full bg-white/10 flex items-center justify-center">
+                        <competitor.icon className="w-8 h-8 text-white/60" />
+                      </div>
+                      <span className="font-display text-white/60 font-semibold mt-2">{competitor.name}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Competitor Toggle */}
+            <div className="mt-12">
+              <p className="text-white/40 font-mono text-sm mb-4 text-center">Porównaj z:</p>
+              <div className="flex justify-center gap-3">
+                {competitors.map((comp) => (
+                  <button
+                    key={comp.id}
+                    onClick={() => setActiveCompetitor(comp.id)}
+                    className={`px-6 py-4 rounded-xl border-2 transition-all flex items-center gap-3 ${
+                      activeCompetitor === comp.id
+                        ? "border-shroom-gold bg-shroom-gold/10"
+                        : "border-white/20 bg-white/5 hover:border-white/40"
+                    }`}
+                  >
+                    <comp.icon className={`w-5 h-5 ${
+                      activeCompetitor === comp.id ? "text-shroom-gold" : "text-white/60"
+                    }`} />
+                    <span className={`font-display font-semibold ${
+                      activeCompetitor === comp.id ? "text-white" : "text-white/60"
+                    }`}>
+                      {comp.name}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right - Stats Panel */}
+          <div className="lg:sticky lg:top-24">
+            <p className="text-white/40 font-mono text-sm tracking-wider mb-4">
+              Porównanie napojów energetyzujących
+            </p>
+            
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+              <span className="text-shroom-gold">+{advantage}%</span> więcej {activeMetric === "energia" ? "energii" : activeMetric === "fokus" ? "fokusa" : "dla zdrowia"} niż {competitor.name}.
+            </h2>
+
+            {/* Stats */}
+            <div className="space-y-6">
+              <div className="border-t border-white/20 pt-6">
+                <p className="font-display text-4xl font-bold text-white">{shroomData.energia}%</p>
+                <p className="text-white/60">efektywności energetycznej bez crashu.</p>
+              </div>
+              
+              <div className="border-t border-white/20 pt-6">
+                <p className="font-display text-4xl font-bold text-white">6h+</p>
+                <p className="text-white/60">stabilnej energii bez spadków.</p>
+              </div>
+              
+              <div className="border-t border-white/20 pt-6">
+                <p className="font-display text-4xl font-bold text-white">0g</p>
+                <p className="text-white/60">cukru. 100% naturalne składniki.</p>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <a
+              href="#produkty"
+              className="inline-flex items-center gap-3 bg-shroom-gold text-[#1a1a1a] px-8 py-4 rounded-full font-display font-bold mt-10 hover:scale-105 transition-transform"
+            >
+              Wypróbuj Shroom Power
+              <Zap className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </div>
