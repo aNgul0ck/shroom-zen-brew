@@ -1,14 +1,16 @@
 import { ArrowRight, Sparkles } from "lucide-react";
-import heroDrinks from "@/assets/hero-drinks.png";
+import productPower from "@/assets/product-power.png";
+import productRelax from "@/assets/product-relax.png";
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background decoration */}
+      {/* Background decoration with brand colors */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-shroom-sage/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-shroom-peach/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-shroom-gold/10 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-shroom-sage/40 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-shroom-peach/30 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-shroom-gold/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 left-1/3 w-64 h-64 bg-shroom-pink/20 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-6 lg:px-12 py-12 lg:py-0">
@@ -66,24 +68,36 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Hero Image */}
+          {/* Hero Image - Real Products */}
           <div className="relative flex justify-center lg:justify-end">
-            <div className="relative animate-float">
-              <img
-                src={heroDrinks}
-                alt="Shroom - napoje z adaptogenami"
-                className="w-full max-w-lg drop-shadow-2xl"
-              />
+            <div className="relative flex items-end gap-4">
+              {/* Power Bottle */}
+              <div className="animate-float">
+                <img
+                  src={productPower}
+                  alt="Shroom Power"
+                  className="h-72 md:h-96 w-auto object-contain drop-shadow-2xl"
+                />
+              </div>
+              
+              {/* Relax Bottle */}
+              <div className="animate-float-delayed">
+                <img
+                  src={productRelax}
+                  alt="Shroom Relax"
+                  className="h-72 md:h-96 w-auto object-contain drop-shadow-2xl"
+                />
+              </div>
               
               {/* Floating badges */}
-              <div className="absolute -left-4 top-1/4 bg-card px-4 py-3 rounded-2xl shadow-card animate-float-delayed">
+              <div className="absolute -left-8 top-1/4 bg-card px-4 py-3 rounded-2xl shadow-card animate-float-delayed">
                 <p className="font-display font-bold text-primary text-sm">Lion's Mane</p>
                 <p className="font-body text-xs text-muted-foreground">Soplówka jeżowata</p>
               </div>
               
-              <div className="absolute -right-4 bottom-1/3 bg-accent px-4 py-3 rounded-2xl shadow-card animate-float">
-                <p className="font-display font-bold text-accent-foreground text-sm">Nootropik</p>
-                <p className="font-body text-xs text-accent-foreground/80">Wspiera mózg</p>
+              <div className="absolute -right-4 bottom-1/4 bg-shroom-coral text-white px-4 py-3 rounded-2xl shadow-card animate-float">
+                <p className="font-display font-bold text-sm">Nootropik</p>
+                <p className="font-body text-xs opacity-90">Wspiera mózg</p>
               </div>
             </div>
           </div>
