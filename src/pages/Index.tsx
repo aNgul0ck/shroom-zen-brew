@@ -1,13 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Products from "@/components/Products";
+import Benefits from "@/components/Benefits";
+import About from "@/components/About";
+import Newsletter from "@/components/Newsletter";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <HelmetProvider>
+      <Helmet>
+        <title>Shroom - Napoje z adaptogenami | Soplówka jeżowata</title>
+        <meta
+          name="description"
+          content="Shroom to pierwszy w Polsce napój funkcjonalny z soplówką jeżowatą. Naturalne adaptogeny wspierające mózg i ciało. Bez cukru, bez sztucznych dodatków."
+        />
+        <meta name="keywords" content="shroom, adaptogeny, soplówka jeżowata, lion's mane, napój funkcjonalny, nootropik, wellness, zdrowy napój" />
+        <link rel="canonical" href="https://shroom4you.com" />
+      </Helmet>
+
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main>
+          <Hero />
+          <Products />
+          <Benefits />
+          <About />
+          <Newsletter />
+        </main>
+        <Footer />
       </div>
-    </div>
+    </HelmetProvider>
   );
 };
 
