@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, ShoppingBag } from "lucide-react";
 
 const Header = () => {
@@ -8,6 +9,7 @@ const Header = () => {
     { name: "Napoje", href: "#produkty" },
     { name: "O nas", href: "#o-nas" },
     { name: "Adaptogeny", href: "#adaptogeny" },
+    { name: "Brief", href: "/brief" },
     { name: "Kontakt", href: "#kontakt" },
   ];
 
@@ -23,13 +25,23 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="font-body text-sm font-medium text-foreground/70 hover:text-primary transition-colors duration-200"
-              >
-                {link.name}
-              </a>
+              link.href.startsWith('/') ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="font-body text-sm font-medium text-foreground/70 hover:text-primary transition-colors duration-200"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="font-body text-sm font-medium text-foreground/70 hover:text-primary transition-colors duration-200"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
           </nav>
 
@@ -59,14 +71,25 @@ const Header = () => {
           <nav className="md:hidden py-6 border-t border-border/50 animate-fade-up">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="font-body text-lg font-medium text-foreground/70 hover:text-primary transition-colors duration-200 py-2"
-                >
-                  {link.name}
-                </a>
+                link.href.startsWith('/') ? (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="font-body text-lg font-medium text-foreground/70 hover:text-primary transition-colors duration-200 py-2"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="font-body text-lg font-medium text-foreground/70 hover:text-primary transition-colors duration-200 py-2"
+                  >
+                    {link.name}
+                  </a>
+                )
               ))}
               <a
                 href="#produkty"
