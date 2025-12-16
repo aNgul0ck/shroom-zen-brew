@@ -1,4 +1,24 @@
-/* Typography: Archivo (similar to Afronaut) + Inter (similar to Switzer) per brand guidelines */
+/* Typography: Afronaut (brand font) + Inter (similar to Switzer) per brand guidelines */
+/* Afronaut font - extract Capitalics_Order_915_1.zip to public/fonts/ */
+@font-face {
+  font-family: 'Afronaut';
+  src: url('/fonts/Afronaut-Regular.woff2') format('woff2'),
+       url('/fonts/Afronaut-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Afronaut';
+  src: url('/fonts/Afronaut-Bold.woff2') format('woff2'),
+       url('/fonts/Afronaut-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback fonts from Google */
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -80,7 +100,7 @@
     --shadow-elevated: 0 20px 60px -15px hsl(180 50% 2% / 0.15);
 
     /* Typography */
-    --font-display: 'Archivo', sans-serif;
+    --font-display: 'Afronaut', 'Archivo', sans-serif;
     --font-body: 'Inter', sans-serif;
 
     --sidebar-background: 43 38% 97%;
