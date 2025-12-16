@@ -1,10 +1,305 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Leaf, Sparkles, Heart, Brain, Zap, Moon, Sun, Coffee, Droplets } from "lucide-react";
+import { ArrowLeft, Leaf, Sparkles, Heart, Brain, Zap, Moon, Sun, Coffee, Droplets, RotateCcw } from "lucide-react";
 import productPower from "@/assets/product-power.png";
 import productRelax from "@/assets/product-relax.png";
 import productDiva from "@/assets/product-diva.png";
+
+// Quiz types and data
+type QuizAnswer = {
+  text: string;
+  points: { power: number; relax: number; diva: number };
+};
+
+type QuizQuestion = {
+  question: string;
+  emoji: string;
+  answers: QuizAnswer[];
+};
+
+const quizQuestions: QuizQuestion[] = [
+  {
+    question: "Jak zaczyna się Twój typowy dzień?",
+    emoji: "🌅",
+    answers: [
+      { text: "Kawą i szybkim tempem - mam dużo do zrobienia", points: { power: 3, relax: 0, diva: 1 } },
+      { text: "Spokojnie, potrzebuję chwili na rozruch", points: { power: 0, relax: 3, diva: 1 } },
+      { text: "Zależy od nastroju - lubię spontaniczność", points: { power: 1, relax: 1, diva: 3 } },
+    ]
+  },
+  {
+    question: "Co najbardziej Cię frustruje w ciągu dnia?",
+    emoji: "😤",
+    answers: [
+      { text: "Brak energii gdy mam deadline", points: { power: 3, relax: 1, diva: 0 } },
+      { text: "Trudność w wyciszeniu myśli", points: { power: 0, relax: 3, diva: 1 } },
+      { text: "Sztywność i brak luzu w sytuacjach społecznych", points: { power: 0, relax: 1, diva: 3 } },
+    ]
+  },
+  {
+    question: "Jak najchętniej spędzasz wolny czas?",
+    emoji: "🎯",
+    answers: [
+      { text: "Sport, projekty, nauka nowych rzeczy", points: { power: 3, relax: 0, diva: 1 } },
+      { text: "Książka, spacer, medytacja", points: { power: 0, relax: 3, diva: 1 } },
+      { text: "Spotkania z ludźmi, imprezy, events", points: { power: 1, relax: 0, diva: 3 } },
+    ]
+  },
+  {
+    question: "Czego najbardziej potrzebujesz w tym momencie życia?",
+    emoji: "✨",
+    answers: [
+      { text: "Więcej skupienia i produktywności", points: { power: 3, relax: 0, diva: 0 } },
+      { text: "Balansu i spokoju w głowie", points: { power: 0, relax: 3, diva: 0 } },
+      { text: "Lepszego kontaktu z sobą i innymi", points: { power: 0, relax: 1, diva: 3 } },
+    ]
+  },
+  {
+    question: "Jaki jest Twój stosunek do kofeiny?",
+    emoji: "☕",
+    answers: [
+      { text: "Kocham! Ale szukam czegoś zdrowszego", points: { power: 3, relax: 0, diva: 1 } },
+      { text: "Unikam - zbyt mnie nakręca", points: { power: 0, relax: 3, diva: 1 } },
+      { text: "Czasem tak, czasem nie - zależy od okazji", points: { power: 1, relax: 1, diva: 2 } },
+    ]
+  },
+];
+
+type QuizResult = {
+  product: string;
+  emoji: string;
+  title: string;
+  description: string;
+  adaptogens: string[];
+  color: string;
+  image: string;
+};
+
+const quizResults: Record<string, QuizResult> = {
+  power: {
+    product: "Shroom Power",
+    emoji: "⚡",
+    title: "Energia i koncentracja",
+    description: "Potrzebujesz wsparcia dla aktywnego umysłu i ciała. Maczużnik bojowy i Cordyceps pomogą Ci utrzymać skupienie bez crashu kofeiny.",
+    adaptogens: ["Maczużnik bojowy", "Cordyceps", "Cynk", "Witamina C"],
+    color: "shroom-gold",
+    image: productPower,
+  },
+  relax: {
+    product: "Shroom Relax",
+    emoji: "🧘",
+    title: "Spokój i balans",
+    description: "Szukasz wyciszenia bez senności. L-teanina i Soplówka jeżowata dadzą Ci spokój umysłu przy zachowaniu jasności myślenia.",
+    adaptogens: ["L-teanina", "Soplówka jeżowata", "Inulina", "Cynk"],
+    color: "shroom-lavender",
+    image: productRelax,
+  },
+  diva: {
+    product: "Diva Social Elixir",
+    emoji: "💃",
+    title: "Luz i dobre wibracje",
+    description: "Cenisz autentyczne relacje i chcesz być sobą. Damiana i żeń-szeń syberyjski pomogą Ci poczuć się swobodnie w każdej sytuacji.",
+    adaptogens: ["Ziele damiana", "Żeń-szeń syberyjski", "Cordyceps"],
+    color: "diva-pink",
+    image: productDiva,
+  },
+};
+
+// Quiz Component
+const AdaptogenQuiz = () => {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [scores, setScores] = useState({ power: 0, relax: 0, diva: 0 });
+  const [showResult, setShowResult] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+
+  const handleAnswer = (answer: QuizAnswer, index: number) => {
+    setSelectedAnswer(index);
+    
+    setTimeout(() => {
+      const newScores = {
+        power: scores.power + answer.points.power,
+        relax: scores.relax + answer.points.relax,
+        diva: scores.diva + answer.points.diva,
+      };
+      setScores(newScores);
+
+      if (currentQuestion < quizQuestions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+        setSelectedAnswer(null);
+      } else {
+        setShowResult(true);
+      }
+    }, 400);
+  };
+
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setScores({ power: 0, relax: 0, diva: 0 });
+    setShowResult(false);
+    setSelectedAnswer(null);
+  };
+
+  const getResult = (): QuizResult => {
+    const maxScore = Math.max(scores.power, scores.relax, scores.diva);
+    if (scores.power === maxScore) return quizResults.power;
+    if (scores.relax === maxScore) return quizResults.relax;
+    return quizResults.diva;
+  };
+
+  const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+
+  return (
+    <div className="w-full max-w-2xl mx-auto">
+      <AnimatePresence mode="wait">
+        {!showResult ? (
+          <motion.div
+            key={`question-${currentQuestion}`}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.4 }}
+          >
+            {/* Progress bar */}
+            <div className="mb-8">
+              <div className="flex justify-between text-sm text-foreground/50 mb-2">
+                <span>Pytanie {currentQuestion + 1} z {quizQuestions.length}</span>
+                <span>{Math.round(progress)}%</span>
+              </div>
+              <div className="h-2 bg-secondary/30 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full rounded-full"
+                  style={{ backgroundColor: "hsl(var(--shroom-green))" }}
+                  initial={{ width: 0 }}
+                  animate={{ width: `${progress}%` }}
+                  transition={{ duration: 0.5 }}
+                />
+              </div>
+            </div>
+
+            {/* Question */}
+            <div className="text-center mb-10">
+              <span className="text-6xl mb-6 block">{quizQuestions[currentQuestion].emoji}</span>
+              <h4 className="text-2xl md:text-3xl font-display font-bold">
+                {quizQuestions[currentQuestion].question}
+              </h4>
+            </div>
+
+            {/* Answers */}
+            <div className="space-y-4">
+              {quizQuestions[currentQuestion].answers.map((answer, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => handleAnswer(answer, index)}
+                  disabled={selectedAnswer !== null}
+                  whileHover={{ scale: selectedAnswer === null ? 1.02 : 1 }}
+                  whileTap={{ scale: selectedAnswer === null ? 0.98 : 1 }}
+                  className={`w-full p-5 rounded-2xl text-left transition-all duration-300 border ${
+                    selectedAnswer === index
+                      ? "border-shroom-green bg-shroom-green/10"
+                      : "border-border/50 bg-card hover:border-shroom-sage/50 hover:bg-card/80"
+                  }`}
+                  style={selectedAnswer === index ? { borderColor: "hsl(var(--shroom-green))" } : {}}
+                >
+                  <div className="flex items-center gap-4">
+                    <div 
+                      className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-colors ${
+                        selectedAnswer === index ? "border-shroom-green bg-shroom-green" : "border-foreground/20"
+                      }`}
+                      style={selectedAnswer === index ? { borderColor: "hsl(var(--shroom-green))", backgroundColor: "hsl(var(--shroom-green))" } : {}}
+                    >
+                      {selectedAnswer === index && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="w-3 h-3 bg-white rounded-full"
+                        />
+                      )}
+                    </div>
+                    <span className="font-medium text-lg">{answer.text}</span>
+                  </div>
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="result"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            {(() => {
+              const result = getResult();
+              return (
+                <>
+                  <motion.div
+                    initial={{ y: 20 }}
+                    animate={{ y: 0 }}
+                    className="p-8 rounded-3xl border border-border/50 mb-8 relative overflow-hidden"
+                    style={{ backgroundColor: "hsl(var(--card))" }}
+                  >
+                    <div 
+                      className="absolute inset-0 opacity-10"
+                      style={{ 
+                        background: `radial-gradient(circle at 50% 0%, hsl(var(--${result.color})) 0%, transparent 60%)` 
+                      }}
+                    />
+                    <div className="relative z-10">
+                      <span className="text-7xl mb-4 block">{result.emoji}</span>
+                      <p className="text-sm uppercase tracking-[0.2em] text-foreground/50 mb-2">Twój adaptogen to</p>
+                      <h4 className="text-3xl md:text-4xl font-display font-bold mb-2" style={{ color: `hsl(var(--${result.color}))` }}>
+                        {result.product}
+                      </h4>
+                      <p className="text-lg text-foreground/60 mb-6">{result.title}</p>
+                      
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="h-48 mb-6"
+                      >
+                        <img src={result.image} alt={result.product} className="h-full w-auto mx-auto object-contain" />
+                      </motion.div>
+
+                      <p className="text-foreground/70 mb-6 leading-relaxed">{result.description}</p>
+                      
+                      <div className="flex flex-wrap gap-2 justify-center">
+                        {result.adaptogens.map((adaptogen) => (
+                          <span 
+                            key={adaptogen}
+                            className="px-4 py-2 rounded-full text-sm font-medium"
+                            style={{ 
+                              backgroundColor: `hsl(var(--${result.color}) / 0.2)`,
+                              color: `hsl(var(--${result.color}))`
+                            }}
+                          >
+                            {adaptogen}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.button
+                    onClick={resetQuiz}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border/50 text-foreground/70 hover:text-foreground hover:border-foreground/30 transition-colors"
+                  >
+                    <RotateCcw className="w-4 h-4" />
+                    Rozwiąż quiz ponownie
+                  </motion.button>
+                </>
+              );
+            })()}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 // Animated section that reveals on scroll
 const RevealSection = ({ 
@@ -760,6 +1055,40 @@ const Brief = () => {
               </div>
             </RevealSection>
           </div>
+        </div>
+
+        {/* Interactive Quiz Section */}
+        <div className="py-32 px-6 relative">
+          <div 
+            className="absolute inset-0 opacity-5"
+            style={{ 
+              background: "radial-gradient(ellipse at 50% 50%, hsl(var(--shroom-green)) 0%, transparent 70%)" 
+            }}
+          />
+          <RevealSection className="relative z-10">
+            <div className="text-center mb-16">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                className="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6"
+                style={{ 
+                  background: "linear-gradient(135deg, hsl(var(--shroom-green) / 0.2), hsl(var(--shroom-lavender) / 0.2))",
+                  boxShadow: "0 0 60px hsl(var(--shroom-green) / 0.2)"
+                }}
+              >
+                <span className="text-4xl">🧪</span>
+              </motion.div>
+              <h3 className="text-3xl md:text-5xl font-display font-bold mb-6">
+                Który <span style={{ color: "hsl(var(--shroom-green))" }}>adaptogen</span> jest dla Ciebie?
+              </h3>
+              <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
+                Odpowiedz na 5 pytań i odkryj, który Shroom najlepiej odpowiada Twojemu stylowi życia.
+              </p>
+            </div>
+            
+            <AdaptogenQuiz />
+          </RevealSection>
         </div>
 
         {/* Closing Statement */}
