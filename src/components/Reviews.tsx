@@ -14,7 +14,7 @@ const reviews = [
     id: 2,
     author: "Michał K.",
     avatar: "💼",
-    text: "Po jednej godzinie przewracanie się z boku na bok, po ciężkim i długim poprzednim dniu w pracy, kilku piwkach by zasnąć i budziku o 3.30 czułem się koszmarnie, kac zmieszany z brakiem sensu życia. Pierwszy łyk shrooms zdjął mi z głowy to nieznośne ciśnienie tego kapcia z mózgu, a przed oczami się rozjaśniło. Efekt jakiego nigdy nie doświadczyłem po kawie.",
+    text: "Smakuje świetnie i nie ma w nim cukru. Idealna alternatywa dla energetyków, które zawsze zostawiały mnie z nieznośnym uczuciem. Polecam każdemu, kto szuka czegoś nowego.",
     rating: 5,
     product: "Shroom Power",
     verified: true,
@@ -23,7 +23,7 @@ const reviews = [
     id: 3,
     author: "Anna M.",
     avatar: "🧘",
-    text: "Shroom Relax to mój must-have przed snem. Żadnych sztucznych dodatków, a działa lepiej niż melatonina.",
+    text: "Shroom Relax to mój wieczorny rytuał. Smak bergamotki i chmielu jest naprawdę przyjemny. Żadnych sztucznych dodatków!",
     rating: 5,
     product: "Shroom Relax",
     verified: true,
@@ -32,7 +32,7 @@ const reviews = [
     id: 4,
     author: "Piotr W.",
     avatar: "🚀",
-    text: "Jako programista często pracuję po nocach. Shroom Power daje mi klarowność umysłu bez nerwowości jak po energetykach.",
+    text: "Jako programista często pracuję po godzinach. Shroom Power świetnie smakuje i nie ma w nim kofeiny ani cukru — dokładnie to, czego szukałem.",
     rating: 5,
     product: "Shroom Power",
     verified: true,
@@ -52,7 +52,7 @@ const Reviews = () => {
             Co mówią nasi klienci
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-xl mx-auto">
-            Dołącz do społeczności osób, które odkryły moc adaptogenów
+            Dołącz do społeczności osób, które wybrały naturalne składniki
           </p>
         </div>
 
