@@ -1199,31 +1199,163 @@ const Brief = () => {
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-32 px-6 relative overflow-hidden">
+      {/* Values Section - Redesigned */}
+      <section className="py-32 relative overflow-hidden">
+        {/* Background decorations */}
         <div 
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 opacity-[0.03]"
           style={{ 
-            background: "radial-gradient(circle at 30% 50%, hsl(var(--shroom-green)) 0%, transparent 50%), radial-gradient(circle at 70% 50%, hsl(var(--shroom-coral)) 0%, transparent 50%)" 
+            background: "radial-gradient(circle at 20% 30%, hsl(var(--shroom-green)) 0%, transparent 40%), radial-gradient(circle at 80% 70%, hsl(var(--shroom-coral)) 0%, transparent 40%)" 
           }}
         />
-        <div className="max-w-4xl mx-auto relative">
+        
+        {/* Section Header */}
+        <div className="px-6 mb-24">
+          <RevealSection className="text-center max-w-3xl mx-auto">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-8"
+              style={{ 
+                background: "linear-gradient(135deg, hsl(var(--shroom-sage) / 0.3), hsl(var(--shroom-gold) / 0.2))",
+              }}
+            >
+              <span className="text-4xl">🎯</span>
+            </motion.div>
+            <p className="text-sm uppercase tracking-[0.4em] text-foreground/50 mb-6">Główne założenia</p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+              Jak <span style={{ color: "hsl(var(--shroom-green))" }}>komunikujemy</span> markę
+            </h2>
+            <p className="text-lg text-foreground/60">
+              Cztery filary, które definiują każdy aspekt komunikacji Shrooma.
+            </p>
+          </RevealSection>
+        </div>
+
+        {/* Values Cards - Staggered Layout */}
+        <div className="max-w-6xl mx-auto px-6">
+          {[
+            {
+              number: "01",
+              emoji: "☀️",
+              title: "Część codzienności",
+              text: "Pokazujemy Shrooma jako naturalną część codziennego życia, a nie coś na specjalną okazję.",
+              detail: "Rano przy kawie, w przerwie między spotkaniami, po treningu. Shroom towarzyszy zwykłym momentom.",
+              color: "shroom-gold",
+              align: "left"
+            },
+            {
+              number: "02",
+              emoji: "🚫",
+              title: "Zdrowa alternatywa",
+              text: "Mówimy wprost, że to alternatywa dla słodzonych napojów gazowanych.",
+              detail: "Bez cukru, bez sztucznych dodatków. Wybór dla tych, którzy chcą czegoś lepszego.",
+              color: "shroom-coral",
+              align: "right"
+            },
+            {
+              number: "03",
+              emoji: "🌿",
+              title: "Funkcjonalność w praktyce",
+              text: "Budujemy markę, która jest funkcjonalna, naturalna i realnie wspiera samopoczucie.",
+              detail: "Adaptogeny i grzyby funkcjonalne - składniki, które naprawdę działają, potwierdzone przez naukę.",
+              color: "shroom-green",
+              align: "left"
+            },
+            {
+              number: "04",
+              emoji: "✨",
+              title: "Autentyczność ponad wszystko",
+              text: "Stawiamy na autentyczność. Nie tworzymy historii pod reklamę.",
+              detail: "Prawdziwe momenty, prawdziwi ludzie. Bez inscenizacji, bez przesady.",
+              color: "shroom-lavender",
+              align: "right"
+            },
+          ].map((value, index) => (
+            <RevealSection key={index} className="mb-16 last:mb-0">
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+                className={`flex flex-col ${value.align === 'right' ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center`}
+              >
+                {/* Number & Icon Side */}
+                <div className={`flex-shrink-0 ${value.align === 'right' ? 'lg:text-right' : 'lg:text-left'}`}>
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="relative inline-block"
+                  >
+                    <span 
+                      className="text-8xl md:text-9xl font-display font-bold opacity-10"
+                      style={{ color: `hsl(var(--${value.color}))` }}
+                    >
+                      {value.number}
+                    </span>
+                    <div 
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full flex items-center justify-center"
+                      style={{ 
+                        backgroundColor: `hsl(var(--${value.color}) / 0.15)`,
+                        boxShadow: `0 0 40px hsl(var(--${value.color}) / 0.2)`
+                      }}
+                    >
+                      <span className="text-4xl">{value.emoji}</span>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Content Side */}
+                <div className={`flex-1 ${value.align === 'right' ? 'lg:text-right' : 'lg:text-left'} text-center lg:text-inherit`}>
+                  <motion.div
+                    initial={{ opacity: 0, x: value.align === 'right' ? 30 : -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    <h3 
+                      className="text-xl font-display font-semibold mb-4"
+                      style={{ color: `hsl(var(--${value.color}))` }}
+                    >
+                      {value.title}
+                    </h3>
+                    <p className="text-2xl md:text-3xl font-display font-medium leading-relaxed text-foreground/80 mb-4">
+                      {value.text}
+                    </p>
+                    <p className="text-foreground/50 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                      {value.detail}
+                    </p>
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Separator line */}
+              {index < 3 && (
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="mt-16 h-px bg-gradient-to-r from-transparent via-border to-transparent"
+                />
+              )}
+            </RevealSection>
+          ))}
+        </div>
+
+        {/* Bottom Summary */}
+        <div className="px-6 mt-24">
           <RevealSection className="text-center">
-            <p className="text-sm uppercase tracking-[0.3em] text-foreground/50 mb-8">Główne założenia</p>
-            <div className="space-y-12">
-              {[
-                "Pokazujemy Shrooma jako naturalną część codziennego życia, a nie coś na specjalną okazję.",
-                "Mówimy wprost, że to alternatywa dla słodzonych napojów gazowanych.",
-                "Budujemy markę, która jest funkcjonalna, naturalna i realnie wspiera samopoczucie.",
-                "Stawiamy na autentyczność. Nie tworzymy historii pod reklamę.",
-              ].map((text, index) => (
-                <RevealSection key={index}>
-                  <p className="text-2xl md:text-3xl font-display font-medium leading-relaxed text-foreground/80">
-                    {text}
-                  </p>
-                </RevealSection>
-              ))}
-            </div>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-border/50"
+              style={{ backgroundColor: "hsl(var(--card))" }}
+            >
+              <span className="text-2xl">💡</span>
+              <p className="font-display font-medium text-foreground/70">
+                Prostota, autentyczność i funkcjonalność — to DNA marki Shroom.
+              </p>
+            </motion.div>
           </RevealSection>
         </div>
       </section>
