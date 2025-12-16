@@ -8,6 +8,7 @@ import DivaSection from "@/components/DivaSection";
 import BrainBlissSection from "@/components/BrainBlissSection";
 import Benefits from "@/components/Benefits";
 import About from "@/components/About";
+import FAQ from "@/components/FAQ";
 import Newsletter from "@/components/Newsletter";
 import Disclaimer from "@/components/Disclaimer";
 import Footer from "@/components/Footer";
@@ -36,6 +37,7 @@ const Index = () => {
           <BrainBlissSection />
           <Benefits />
           <About />
+          <FAQ />
           <Disclaimer />
           <Newsletter />
         </main>
