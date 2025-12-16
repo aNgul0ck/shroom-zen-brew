@@ -2,8 +2,10 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Products from "@/components/Products";
+import Reviews from "@/components/Reviews";
 import ComparisonSection from "@/components/ComparisonSection";
 import DivaSection from "@/components/DivaSection";
+import BrainBlissSection from "@/components/BrainBlissSection";
 import Benefits from "@/components/Benefits";
 import About from "@/components/About";
 import Newsletter from "@/components/Newsletter";
@@ -18,7 +20,7 @@ const Index = () => {
           name="description"
           content="Shroom to pierwszy w Polsce napój funkcjonalny z soplówką jeżowatą. Naturalne adaptogeny wspierające mózg i ciało. Bez cukru, bez sztucznych dodatków."
         />
-        <meta name="keywords" content="shroom, adaptogeny, soplówka jeżowata, lion's mane, napój funkcjonalny, nootropik, wellness, zdrowy napój, diva, social elixir" />
+        <meta name="keywords" content="shroom, adaptogeny, soplówka jeżowata, lion's mane, napój funkcjonalny, nootropik, wellness, zdrowy napój, diva, social elixir, brainbliss" />
         <link rel="canonical" href="https://shroom4you.com" />
       </Helmet>
 
@@ -27,8 +29,10 @@ const Index = () => {
         <main>
           <Hero />
           <Products />
+          <Reviews />
           <ComparisonSection />
           <DivaSection />
+          <BrainBlissSection />
           <Benefits />
           <About />
           <Newsletter />

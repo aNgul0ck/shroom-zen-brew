@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Archivo', 'sans-serif'],
+        display: ['Afronaut', 'Archivo', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
       colors: {
