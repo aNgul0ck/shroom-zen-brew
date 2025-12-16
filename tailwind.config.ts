@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Space Grotesk', 'sans-serif'],
-        body: ['DM Sans', 'sans-serif'],
+        display: ['Archivo', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -83,6 +83,7 @@ export default {
           red: "hsl(var(--diva-red))",
           purple: "hsl(var(--diva-purple))",
           dark: "hsl(var(--diva-dark))",
+          foreground: "hsl(var(--diva-foreground))",
         },
       },
       borderRadius: {

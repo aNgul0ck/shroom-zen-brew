@@ -95,9 +95,9 @@ const Hero = () => {
                 <p className="font-body text-xs text-muted-foreground">Soplówka jeżowata</p>
               </div>
               
-              <div className="absolute -right-4 bottom-1/4 bg-shroom-coral text-white px-4 py-3 rounded-2xl shadow-card animate-float">
+              <div className="absolute -right-4 bottom-1/4 bg-shroom-coral text-shroom-cream px-4 py-3 rounded-2xl shadow-card animate-float">
                 <p className="font-display font-bold text-sm">Nootropik</p>
-                <p className="font-body text-xs opacity-90">Wspiera mózg</p>
+                <p className="font-body text-xs text-shroom-cream/90">Wspiera mózg</p>
               </div>
             </div>
           </div>

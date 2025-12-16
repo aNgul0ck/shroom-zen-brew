@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+/* Typography: Archivo (similar to Afronaut) + Inter (similar to Switzer) per brand guidelines */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -66,6 +67,7 @@
     --diva-red: 0 70% 50%; /* Lips red */
     --diva-purple: 240 50% 45%; /* Blue accent */
     --diva-dark: 0 0% 12%; /* Dark bottle */
+    --diva-foreground: 43 38% 97%; /* Light text for dark backgrounds */
 
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(43 38% 97%) 0%, hsl(84 33% 90%) 100%);
@@ -78,8 +80,8 @@
     --shadow-elevated: 0 20px 60px -15px hsl(180 50% 2% / 0.15);
 
     /* Typography */
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
+    --font-display: 'Archivo', sans-serif;
+    --font-body: 'Inter', sans-serif;
 
     --sidebar-background: 43 38% 97%;
     --sidebar-foreground: 180 50% 2%;

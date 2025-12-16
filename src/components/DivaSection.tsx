@@ -39,14 +39,14 @@ const DivaSection = () => {
                 <span className="font-display font-bold text-sm">Est. 2024</span>
               </div>
               
-              <div className="absolute -left-4 bottom-1/3 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full animate-float">
+              <div className="absolute -left-4 bottom-1/3 bg-diva-foreground/10 backdrop-blur-sm text-diva-foreground px-4 py-2 rounded-full animate-float">
                 <span className="font-body text-sm">500ml</span>
               </div>
             </div>
           </div>
 
           {/* Content */}
-          <div className="order-1 lg:order-2 text-white">
+          <div className="order-1 lg:order-2 text-diva-foreground">
             {/* Brand Badge */}
             <div className="inline-flex items-center gap-2 bg-diva-pink/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
               <Sparkles className="w-4 h-4 text-diva-pink" />
@@ -58,10 +58,10 @@ const DivaSection = () => {
             <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 leading-tight">
               <span className="text-diva-pink">diva</span>
               <br />
-              <span className="text-white/90">Celebruj każdą chwilę</span>
+              <span className="text-diva-foreground/90">Celebruj każdą chwilę</span>
             </h2>
 
-            <p className="font-body text-lg text-white/70 mb-6 max-w-md">
+            <p className="font-body text-lg text-diva-foreground/70 mb-6 max-w-md">
               Bezalkoholowe aperitivo z 13 składnikami botanicznymi. Diva łączy przyjemność 
               z troską o zdrowie — spektakularne koktajle bez kompromisów.
             </p>
@@ -71,7 +71,7 @@ const DivaSection = () => {
               {features.map((feature) => (
                 <span
                   key={feature}
-                  className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full font-body text-sm text-white/80 border border-white/10"
+                  className="bg-diva-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full font-body text-sm text-diva-foreground/80 border border-diva-foreground/10"
                 >
                   {feature}
                 </span>
@@ -79,39 +79,39 @@ const DivaSection = () => {
             </div>
 
             {/* Key Ingredients */}
-            <div className="grid grid-cols-3 gap-4 mb-8 p-4 bg-white/5 rounded-2xl backdrop-blur-sm">
+            <div className="grid grid-cols-3 gap-4 mb-8 p-4 bg-diva-foreground/5 rounded-2xl backdrop-blur-sm">
               <div className="text-center">
                 <Wine className="w-6 h-6 mx-auto mb-2 text-diva-pink" />
-                <p className="font-body text-xs text-white/60">Rokitnik</p>
-                <p className="font-display font-bold text-white text-sm">NFC</p>
+                <p className="font-body text-xs text-diva-foreground/60">Rokitnik</p>
+                <p className="font-display font-bold text-diva-foreground text-sm">NFC</p>
               </div>
               <div className="text-center">
                 <Star className="w-6 h-6 mx-auto mb-2 text-diva-pink" />
-                <p className="font-body text-xs text-white/60">Dereń</p>
-                <p className="font-display font-bold text-white text-sm">NFC</p>
+                <p className="font-body text-xs text-diva-foreground/60">Dereń</p>
+                <p className="font-display font-bold text-diva-foreground text-sm">NFC</p>
               </div>
               <div className="text-center">
                 <Sparkles className="w-6 h-6 mx-auto mb-2 text-diva-pink" />
-                <p className="font-body text-xs text-white/60">Aronia</p>
-                <p className="font-display font-bold text-white text-sm">NFC</p>
+                <p className="font-body text-xs text-diva-foreground/60">Aronia</p>
+                <p className="font-display font-bold text-diva-foreground text-sm">NFC</p>
               </div>
             </div>
 
             {/* Price & CTA */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
               <div>
-                <p className="font-display text-4xl font-bold text-white">112 zł</p>
-                <p className="font-body text-sm text-white/60">500ml / 10 porcji</p>
+                <p className="font-display text-4xl font-bold text-diva-foreground">112 zł</p>
+                <p className="font-body text-sm text-diva-foreground/60">500ml / 10 porcji</p>
               </div>
               
-              <button className="inline-flex items-center gap-2 bg-diva-pink text-diva-dark px-8 py-4 rounded-full font-display font-bold text-base hover:scale-105 hover:bg-white transition-all duration-300 shadow-elevated">
+              <button className="inline-flex items-center gap-2 bg-diva-pink text-diva-dark px-8 py-4 rounded-full font-display font-bold text-base hover:scale-105 hover:bg-shroom-cream transition-all duration-300 shadow-elevated">
                 Zamów Divę
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
 
             {/* Trust Note */}
-            <p className="font-body text-xs text-white/40 mt-6">
+            <p className="font-body text-xs text-diva-foreground/40 mt-6">
               Wegańska • Bez alkoholu • Produkowana w Polsce
             </p>
           </div>
