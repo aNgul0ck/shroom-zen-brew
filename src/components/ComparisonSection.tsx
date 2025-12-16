@@ -168,11 +168,11 @@ const ComparisonSection = () => {
 
             {/* Competitor Info Card - Changes with selection */}
             <div className={`bg-gradient-to-r ${competitor.color} p-4 rounded-2xl mb-6 transition-all duration-500`}>
-              <div className="flex items-center gap-3 text-white">
+              <div className="flex items-center gap-3 text-shroom-cream">
                 <competitor.icon className="w-6 h-6" />
                 <div>
                   <p className="font-display font-bold">{competitor.name}</p>
-                  <p className="text-sm opacity-90">{competitor.description}</p>
+                  <p className="text-sm text-shroom-cream/90">{competitor.description}</p>
                 </div>
               </div>
             </div>
@@ -196,7 +196,7 @@ const ComparisonSection = () => {
                     <div className="text-center">
                       <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-display font-semibold transition-all duration-300 ${
                         isHighlighted 
-                          ? "bg-shroom-green text-white" 
+                          ? "bg-shroom-green text-shroom-cream" 
                           : "bg-secondary text-foreground"
                       }`}>
                         <Icon className="w-3.5 h-3.5" />
@@ -225,7 +225,7 @@ const ComparisonSection = () => {
                     <div className="text-center">
                       <span className={`inline-block px-3 py-1 rounded-full font-display font-bold text-sm transition-all duration-500 ${
                         isHighlighted 
-                          ? "bg-shroom-green text-white scale-110" 
+                          ? "bg-shroom-green text-shroom-cream scale-110" 
                           : "bg-shroom-green/10 text-shroom-green"
                       }`}>
                         +{diff}%
