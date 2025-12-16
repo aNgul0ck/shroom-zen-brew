@@ -32,7 +32,7 @@ const Hero = () => {
             </h1>
 
             <p className="font-body text-lg md:text-xl text-muted-foreground mb-8 animate-fade-up delay-200">
-              Shroom to napoje funkcjonalne z soplówką jeżowatą — naturalnym adaptogenem wspierającym Twój mózg i ciało. Bez cukru, bez sztucznych słodzików.
+              Shroom to napoje funkcjonalne z soplówką jeżowatą i naturalną witaminą C. Bez dodanego cukru, bez sztucznych słodzików.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-300">
@@ -96,8 +96,8 @@ const Hero = () => {
               </div>
               
               <div className="absolute -right-4 bottom-1/4 bg-shroom-coral text-shroom-cream px-4 py-3 rounded-2xl shadow-card animate-float">
-                <p className="font-display font-bold text-sm">Nootropik</p>
-                <p className="font-body text-xs text-shroom-cream/90">Wspiera mózg</p>
+                <p className="font-display font-bold text-sm">Źródło cynku</p>
+                <p className="font-body text-xs text-shroom-cream/90">i witaminy C</p>
               </div>
             </div>
           </div>

@@ -3,22 +3,22 @@ import { Brain, Zap, Heart, Leaf } from "lucide-react";
 const benefits = [
   {
     icon: Brain,
-    title: "Funkcje kognitywne",
-    description: "NGF dla zdrowia neuronów",
+    title: "Cynk w składzie",
+    description: "Przyczynia się do funkcji poznawczych*",
     color: "text-shroom-green",
     bg: "bg-shroom-sage/30",
   },
   {
     icon: Zap,
-    title: "Naturalna energia",
-    description: "Bez drżenia i spadków",
+    title: "Bez kofeiny",
+    description: "Naturalne składniki roślinne",
     color: "text-shroom-gold",
     bg: "bg-shroom-gold/20",
   },
   {
     icon: Heart,
-    title: "Redukcja stresu",
-    description: "Adaptogeny w działaniu",
+    title: "Witamina C",
+    description: "Dla układu nerwowego*",
     color: "text-shroom-coral",
     bg: "bg-shroom-coral/20",
   },
@@ -41,7 +41,7 @@ const Benefits = () => {
             Dlaczego <span className="text-gradient">Shroom</span>?
           </h2>
           <p className="font-body text-muted-foreground max-w-lg mx-auto">
-            Adaptogeny + nootropiki = naturalne wsparcie dla mózgu i ciała.
+            Naturalne składniki roślinne + cynk i witamina C w każdej butelce.
           </p>
         </div>
 
@@ -94,11 +94,11 @@ const Benefits = () => {
                 Soplówka jeżowata
               </h3>
               <p className="font-body text-muted-foreground mb-4">
-                <strong className="text-foreground">Lion's Mane</strong> — grzyb medyczny wspierający NGF (Nerve Growth Factor) dla regeneracji neuronów.
+                <strong className="text-foreground">Lion's Mane</strong> — soplówka jeżowata to grzyb stosowany w tradycyjnej medycynie azjatyckiej od setek lat.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-secondary px-3 py-1 rounded-full font-body text-xs">Nootropik</span>
-                <span className="bg-secondary px-3 py-1 rounded-full font-body text-xs">Adaptogen</span>
+                <span className="bg-secondary px-3 py-1 rounded-full font-body text-xs">Grzyb funkcjonalny</span>
+                <span className="bg-secondary px-3 py-1 rounded-full font-body text-xs">Tradycja azjatycka</span>
                 <span className="bg-secondary px-3 py-1 rounded-full font-body text-xs">Naturalny</span>
               </div>
             </div>

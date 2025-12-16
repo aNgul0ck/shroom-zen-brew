@@ -63,7 +63,7 @@ const DivaSection = () => {
 
             <p className="font-body text-lg text-diva-foreground/70 mb-6 max-w-md">
               Bezalkoholowe aperitivo z 13 składnikami botanicznymi. Diva łączy przyjemność 
-              z troską o zdrowie — spektakularne koktajle bez kompromisów.
+              ze świadomym wyborem — spektakularne koktajle bez kompromisów.
             </p>
 
             {/* Unique Selling Points */}

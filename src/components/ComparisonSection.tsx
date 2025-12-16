@@ -24,7 +24,7 @@ const competitors: CompetitorData[] = [
     shortName: "Energetyki",
     icon: Zap, 
     color: "from-red-500 to-orange-400",
-    description: "Szybki boost, ale kosztem zdrowia",
+    description: "Dużo kofeiny i cukru",
     metrics: { energia: 75, fokus: 30, zdrowie: 15 },
     keyFact: { title: "300mg+ kofeiny", desc: "często z dużą ilością cukru" }
   },
@@ -34,9 +34,9 @@ const competitors: CompetitorData[] = [
     shortName: "Kawa",
     icon: Coffee, 
     color: "from-amber-700 to-amber-500",
-    description: "Klasyka, ale brak wsparcia dla mózgu",
+    description: "Klasyka z kofeiną",
     metrics: { energia: 65, fokus: 55, zdrowie: 45 },
-    keyFact: { title: "Tylko kofeina", desc: "bez adaptogenów i nootropików" }
+    keyFact: { title: "Tylko kofeina", desc: "bez dodatkowych składników" }
   },
   { 
     id: "sports", 
@@ -44,18 +44,18 @@ const competitors: CompetitorData[] = [
     shortName: "Izotoniki",
     icon: Droplets, 
     color: "from-blue-500 to-cyan-400",
-    description: "Nawodnienie bez efektu kognitywnego",
+    description: "Głównie nawodnienie",
     metrics: { energia: 40, fokus: 20, zdrowie: 55 },
-    keyFact: { title: "Głównie elektrolity", desc: "brak wsparcia energetycznego" }
+    keyFact: { title: "Głównie elektrolity", desc: "inne przeznaczenie" }
   },
 ];
 
 const shroomMetrics: Record<MetricKey, number> = { energia: 92, fokus: 95, zdrowie: 100 };
 
 const metricConfig: Record<MetricKey, { label: string; icon: typeof Zap; shroomBenefit: string }> = {
-  energia: { label: "Energia", icon: TrendingUp, shroomBenefit: "6h stabilnej energii" },
-  fokus: { label: "Fokus", icon: Brain, shroomBenefit: "Wspiera funkcje poznawcze" },
-  zdrowie: { label: "Zdrowie", icon: Heart, shroomBenefit: "100% naturalne składniki" },
+  energia: { label: "Skład", icon: TrendingUp, shroomBenefit: "Naturalne składniki roślinne" },
+  fokus: { label: "Składniki", icon: Brain, shroomBenefit: "Cynk i witamina C" },
+  zdrowie: { label: "Czystość", icon: Heart, shroomBenefit: "100% naturalne składniki" },
 };
 
 const VerticalBar = ({ 
@@ -289,18 +289,18 @@ const ComparisonSection = () => {
             {/* Key Stats - Dynamic based on competitor */}
             <div className="space-y-4">
               <div className={`bg-card rounded-2xl p-5 shadow-soft border-l-4 border-shroom-green transition-all duration-300`}>
-                <p className="font-display text-3xl font-bold text-foreground">6h+</p>
-                <p className="text-muted-foreground font-body text-sm">stabilnej energii bez crashu</p>
+                <p className="font-display text-3xl font-bold text-foreground">0g</p>
+                <p className="text-muted-foreground font-body text-sm">dodanego cukru</p>
               </div>
               
               <div className="bg-card rounded-2xl p-5 shadow-soft border-l-4 border-shroom-sage">
-                <p className="font-display text-3xl font-bold text-foreground">0g cukru</p>
-                <p className="text-muted-foreground font-body text-sm">w 100% naturalne składniki</p>
+                <p className="font-display text-3xl font-bold text-foreground">Źródło cynku</p>
+                <p className="text-muted-foreground font-body text-sm">przyczynia się do funkcji poznawczych*</p>
               </div>
               
               <div className="bg-card rounded-2xl p-5 shadow-soft border-l-4 border-shroom-gold">
                 <p className="font-display text-3xl font-bold text-foreground">Lion's Mane</p>
-                <p className="text-muted-foreground font-body text-sm">wspiera funkcje poznawcze (NGF)</p>
+                <p className="text-muted-foreground font-body text-sm">soplówka jeżowata w składzie</p>
               </div>
             </div>
 
