@@ -466,6 +466,283 @@ const IngredientPill = ({
   );
 };
 
+// Apple-style Sticky Scroll Section
+const StickyScrollSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const values = [
+    {
+      number: "01",
+      emoji: "☀️",
+      title: "Część codzienności",
+      text: "Pokazujemy Shrooma jako naturalną część codziennego życia, a nie coś na specjalną okazję.",
+      detail: "Rano przy kawie, w przerwie między spotkaniami, po treningu. Shroom towarzyszy zwykłym momentom.",
+      color: "shroom-gold",
+    },
+    {
+      number: "02",
+      emoji: "🚫",
+      title: "Zdrowa alternatywa",
+      text: "Mówimy wprost, że to alternatywa dla słodzonych napojów gazowanych.",
+      detail: "Bez cukru, bez sztucznych dodatków. Wybór dla tych, którzy chcą czegoś lepszego.",
+      color: "shroom-coral",
+    },
+    {
+      number: "03",
+      emoji: "🌿",
+      title: "Funkcjonalność w praktyce",
+      text: "Budujemy markę, która jest funkcjonalna, naturalna i realnie wspiera samopoczucie.",
+      detail: "Adaptogeny i grzyby funkcjonalne - składniki, które naprawdę działają, potwierdzone przez naukę.",
+      color: "shroom-green",
+    },
+    {
+      number: "04",
+      emoji: "✨",
+      title: "Autentyczność ponad wszystko",
+      text: "Stawiamy na autentyczność. Nie tworzymy historii pod reklamę.",
+      detail: "Prawdziwe momenty, prawdziwi ludzie. Bez inscenizacji, bez przesady.",
+      color: "shroom-lavender",
+    },
+  ];
+
+  // Calculate which item should be visible based on scroll progress
+  const itemCount = values.length;
+  
+  return (
+    <section ref={containerRef} className="relative" style={{ height: `${(itemCount + 1) * 100}vh` }}>
+      {/* Background decoration */}
+      <div 
+        className="fixed inset-0 opacity-[0.03] pointer-events-none"
+        style={{ 
+          background: "radial-gradient(circle at 20% 30%, hsl(var(--shroom-green)) 0%, transparent 40%), radial-gradient(circle at 80% 70%, hsl(var(--shroom-coral)) 0%, transparent 40%)" 
+        }}
+      />
+
+      {/* Sticky container */}
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 w-full">
+          {/* Header - visible at the start */}
+          <StickyScrollHeader scrollProgress={scrollYProgress} />
+          
+          {/* Values */}
+          {values.map((value, index) => (
+            <StickyScrollItem
+              key={index}
+              value={value}
+              index={index}
+              totalItems={itemCount}
+              scrollProgress={scrollYProgress}
+            />
+          ))}
+
+          {/* Summary - visible at the end */}
+          <StickyScrollSummary scrollProgress={scrollYProgress} totalItems={itemCount} />
+        </div>
+      </div>
+
+      {/* Scroll progress indicator */}
+      <motion.div
+        className="fixed right-8 top-1/2 -translate-y-1/2 w-1 h-40 rounded-full overflow-hidden hidden lg:block"
+        style={{ backgroundColor: "hsl(var(--border) / 0.3)" }}
+      >
+        <motion.div
+          className="w-full rounded-full"
+          style={{ 
+            backgroundColor: "hsl(var(--shroom-green))",
+            height: useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
+          }}
+        />
+      </motion.div>
+    </section>
+  );
+};
+
+// Header component for sticky scroll
+const StickyScrollHeader = ({ scrollProgress }: { scrollProgress: any }) => {
+  const opacity = useTransform(scrollProgress, [0, 0.1], [1, 0]);
+  const y = useTransform(scrollProgress, [0, 0.1], [0, -50]);
+  const scale = useTransform(scrollProgress, [0, 0.1], [1, 0.95]);
+
+  return (
+    <motion.div
+      className="absolute inset-0 flex flex-col items-center justify-center text-center"
+      style={{ opacity, y, scale }}
+    >
+      <motion.div
+        className="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-8"
+        style={{ 
+          background: "linear-gradient(135deg, hsl(var(--shroom-sage) / 0.3), hsl(var(--shroom-gold) / 0.2))",
+        }}
+      >
+        <span className="text-4xl">🎯</span>
+      </motion.div>
+      <p className="text-sm uppercase tracking-[0.4em] text-foreground/50 mb-6">Główne założenia</p>
+      <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">
+        Jak <span style={{ color: "hsl(var(--shroom-green))" }}>komunikujemy</span> markę
+      </h2>
+      <p className="text-lg text-foreground/60 max-w-xl">
+        Scrolluj, aby odkryć cztery filary komunikacji Shrooma.
+      </p>
+      
+      {/* Scroll hint */}
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+        className="absolute bottom-12"
+      >
+        <div className="w-6 h-10 rounded-full border-2 border-foreground/20 flex items-start justify-center p-2">
+          <motion.div 
+            className="w-1.5 h-3 rounded-full bg-foreground/40"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+// Individual item component for sticky scroll
+const StickyScrollItem = ({ 
+  value, 
+  index, 
+  totalItems, 
+  scrollProgress 
+}: { 
+  value: any; 
+  index: number; 
+  totalItems: number; 
+  scrollProgress: any;
+}) => {
+  // Each item takes up an equal portion of the scroll, with padding for header/footer
+  const itemStart = (index + 1) / (totalItems + 2);
+  const itemPeak = (index + 1.5) / (totalItems + 2);
+  const itemEnd = (index + 2) / (totalItems + 2);
+
+  const opacity = useTransform(
+    scrollProgress,
+    [itemStart - 0.05, itemStart + 0.02, itemPeak, itemEnd - 0.02, itemEnd + 0.02],
+    [0, 1, 1, 1, 0]
+  );
+  
+  const y = useTransform(
+    scrollProgress,
+    [itemStart - 0.05, itemStart + 0.02, itemPeak, itemEnd - 0.02, itemEnd + 0.02],
+    [100, 0, 0, 0, -100]
+  );
+
+  const scale = useTransform(
+    scrollProgress,
+    [itemStart - 0.05, itemStart + 0.02, itemPeak, itemEnd - 0.02, itemEnd + 0.02],
+    [0.9, 1, 1, 1, 0.9]
+  );
+
+  return (
+    <motion.div
+      className="absolute inset-0 flex items-center justify-center"
+      style={{ opacity, y, scale }}
+    >
+      <div className="w-full max-w-4xl mx-auto text-center">
+        {/* Large background number */}
+        <motion.span 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] md:text-[28rem] font-display font-bold opacity-[0.03] pointer-events-none select-none"
+          style={{ color: `hsl(var(--${value.color}))` }}
+        >
+          {value.number}
+        </motion.span>
+
+        {/* Content */}
+        <div className="relative z-10">
+          {/* Icon */}
+          <motion.div 
+            className="w-28 h-28 mx-auto rounded-full flex items-center justify-center mb-8"
+            style={{ 
+              backgroundColor: `hsl(var(--${value.color}) / 0.15)`,
+              boxShadow: `0 0 80px hsl(var(--${value.color}) / 0.3)`
+            }}
+          >
+            <span className="text-6xl">{value.emoji}</span>
+          </motion.div>
+
+          {/* Number badge */}
+          <div 
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6"
+            style={{ 
+              backgroundColor: `hsl(var(--${value.color}) / 0.15)`, 
+              color: `hsl(var(--${value.color}))` 
+            }}
+          >
+            <span className="font-bold">{value.number}</span>
+            <span>/</span>
+            <span>04</span>
+          </div>
+
+          {/* Title */}
+          <h3 
+            className="text-2xl md:text-3xl font-display font-bold mb-6"
+            style={{ color: `hsl(var(--${value.color}))` }}
+          >
+            {value.title}
+          </h3>
+
+          {/* Main text */}
+          <p className="text-2xl md:text-4xl font-display font-medium leading-tight text-foreground/90 mb-8 max-w-3xl mx-auto">
+            {value.text}
+          </p>
+
+          {/* Detail text */}
+          <p className="text-lg text-foreground/50 leading-relaxed max-w-xl mx-auto">
+            {value.detail}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// Summary component for sticky scroll
+const StickyScrollSummary = ({ scrollProgress, totalItems }: { scrollProgress: any; totalItems: number }) => {
+  const startPoint = (totalItems + 1) / (totalItems + 2);
+  const opacity = useTransform(scrollProgress, [startPoint - 0.05, startPoint + 0.02], [0, 1]);
+  const y = useTransform(scrollProgress, [startPoint - 0.05, startPoint + 0.02], [50, 0]);
+  const scale = useTransform(scrollProgress, [startPoint - 0.05, startPoint + 0.02], [0.95, 1]);
+
+  return (
+    <motion.div
+      className="absolute inset-0 flex items-center justify-center"
+      style={{ opacity, y, scale }}
+    >
+      <div className="text-center">
+        <motion.div
+          className="inline-flex items-center gap-4 px-10 py-6 rounded-3xl border border-border/50"
+          style={{ backgroundColor: "hsl(var(--card))" }}
+        >
+          <span className="text-4xl">💡</span>
+          <div className="text-left">
+            <p className="text-sm uppercase tracking-wider text-foreground/50 mb-1">DNA marki</p>
+            <p className="font-display font-semibold text-xl text-foreground/80">
+              Prostota, autentyczność i funkcjonalność
+            </p>
+          </div>
+        </motion.div>
+        
+        {/* Continue scrolling hint */}
+        <motion.p 
+          className="mt-8 text-foreground/40 text-sm"
+          animate={{ opacity: [0.4, 0.8, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          Kontynuuj scrollowanie ↓
+        </motion.p>
+      </div>
+    </motion.div>
+  );
+};
+
 const Brief = () => {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -1199,166 +1476,8 @@ const Brief = () => {
         </div>
       </section>
 
-      {/* Values Section - Redesigned */}
-      <section className="py-32 relative overflow-hidden">
-        {/* Background decorations */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{ 
-            background: "radial-gradient(circle at 20% 30%, hsl(var(--shroom-green)) 0%, transparent 40%), radial-gradient(circle at 80% 70%, hsl(var(--shroom-coral)) 0%, transparent 40%)" 
-          }}
-        />
-        
-        {/* Section Header */}
-        <div className="px-6 mb-24">
-          <RevealSection className="text-center max-w-3xl mx-auto">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-8"
-              style={{ 
-                background: "linear-gradient(135deg, hsl(var(--shroom-sage) / 0.3), hsl(var(--shroom-gold) / 0.2))",
-              }}
-            >
-              <span className="text-4xl">🎯</span>
-            </motion.div>
-            <p className="text-sm uppercase tracking-[0.4em] text-foreground/50 mb-6">Główne założenia</p>
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-              Jak <span style={{ color: "hsl(var(--shroom-green))" }}>komunikujemy</span> markę
-            </h2>
-            <p className="text-lg text-foreground/60">
-              Cztery filary, które definiują każdy aspekt komunikacji Shrooma.
-            </p>
-          </RevealSection>
-        </div>
-
-        {/* Values Cards - Staggered Layout */}
-        <div className="max-w-6xl mx-auto px-6">
-          {[
-            {
-              number: "01",
-              emoji: "☀️",
-              title: "Część codzienności",
-              text: "Pokazujemy Shrooma jako naturalną część codziennego życia, a nie coś na specjalną okazję.",
-              detail: "Rano przy kawie, w przerwie między spotkaniami, po treningu. Shroom towarzyszy zwykłym momentom.",
-              color: "shroom-gold",
-              align: "left"
-            },
-            {
-              number: "02",
-              emoji: "🚫",
-              title: "Zdrowa alternatywa",
-              text: "Mówimy wprost, że to alternatywa dla słodzonych napojów gazowanych.",
-              detail: "Bez cukru, bez sztucznych dodatków. Wybór dla tych, którzy chcą czegoś lepszego.",
-              color: "shroom-coral",
-              align: "right"
-            },
-            {
-              number: "03",
-              emoji: "🌿",
-              title: "Funkcjonalność w praktyce",
-              text: "Budujemy markę, która jest funkcjonalna, naturalna i realnie wspiera samopoczucie.",
-              detail: "Adaptogeny i grzyby funkcjonalne - składniki, które naprawdę działają, potwierdzone przez naukę.",
-              color: "shroom-green",
-              align: "left"
-            },
-            {
-              number: "04",
-              emoji: "✨",
-              title: "Autentyczność ponad wszystko",
-              text: "Stawiamy na autentyczność. Nie tworzymy historii pod reklamę.",
-              detail: "Prawdziwe momenty, prawdziwi ludzie. Bez inscenizacji, bez przesady.",
-              color: "shroom-lavender",
-              align: "right"
-            },
-          ].map((value, index) => (
-            <RevealSection key={index} className="mb-16 last:mb-0">
-              <motion.div
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
-                className={`flex flex-col ${value.align === 'right' ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center`}
-              >
-                {/* Number & Icon Side */}
-                <div className={`flex-shrink-0 ${value.align === 'right' ? 'lg:text-right' : 'lg:text-left'}`}>
-                  <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="relative inline-block"
-                  >
-                    <span 
-                      className="text-8xl md:text-9xl font-display font-bold opacity-10"
-                      style={{ color: `hsl(var(--${value.color}))` }}
-                    >
-                      {value.number}
-                    </span>
-                    <div 
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full flex items-center justify-center"
-                      style={{ 
-                        backgroundColor: `hsl(var(--${value.color}) / 0.15)`,
-                        boxShadow: `0 0 40px hsl(var(--${value.color}) / 0.2)`
-                      }}
-                    >
-                      <span className="text-4xl">{value.emoji}</span>
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* Content Side */}
-                <div className={`flex-1 ${value.align === 'right' ? 'lg:text-right' : 'lg:text-left'} text-center lg:text-inherit`}>
-                  <motion.div
-                    initial={{ opacity: 0, x: value.align === 'right' ? 30 : -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    <h3 
-                      className="text-xl font-display font-semibold mb-4"
-                      style={{ color: `hsl(var(--${value.color}))` }}
-                    >
-                      {value.title}
-                    </h3>
-                    <p className="text-2xl md:text-3xl font-display font-medium leading-relaxed text-foreground/80 mb-4">
-                      {value.text}
-                    </p>
-                    <p className="text-foreground/50 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                      {value.detail}
-                    </p>
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              {/* Separator line */}
-              {index < 3 && (
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="mt-16 h-px bg-gradient-to-r from-transparent via-border to-transparent"
-                />
-              )}
-            </RevealSection>
-          ))}
-        </div>
-
-        {/* Bottom Summary */}
-        <div className="px-6 mt-24">
-          <RevealSection className="text-center">
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-border/50"
-              style={{ backgroundColor: "hsl(var(--card))" }}
-            >
-              <span className="text-2xl">💡</span>
-              <p className="font-display font-medium text-foreground/70">
-                Prostota, autentyczność i funkcjonalność — to DNA marki Shroom.
-              </p>
-            </motion.div>
-          </RevealSection>
-        </div>
-      </section>
+      {/* Values Section - Apple-Style Sticky Scroll */}
+      <StickyScrollSection />
 
       {/* CTA Section */}
       <section className="py-32 px-6">
