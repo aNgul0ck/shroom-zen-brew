@@ -9,18 +9,19 @@ import BrainBlissSection from "@/components/BrainBlissSection";
 import Benefits from "@/components/Benefits";
 import About from "@/components/About";
 import Newsletter from "@/components/Newsletter";
+import Disclaimer from "@/components/Disclaimer";
 import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Shroom - Napoje z adaptogenami | Soplówka jeżowata</title>
+        <title>Shroom - Napoje funkcjonalne z soplówką jeżowatą</title>
         <meta
           name="description"
-          content="Shroom to pierwszy w Polsce napój funkcjonalny z soplówką jeżowatą. Naturalne adaptogeny wspierające mózg i ciało. Bez cukru, bez sztucznych dodatków."
+          content="Shroom to pierwszy w Polsce napój funkcjonalny z soplówką jeżowatą. Źródło cynku i witaminy C. Bez dodanego cukru, bez sztucznych dodatków."
         />
-        <meta name="keywords" content="shroom, adaptogeny, soplówka jeżowata, lion's mane, napój funkcjonalny, nootropik, wellness, zdrowy napój, diva, social elixir, brainbliss" />
+        <meta name="keywords" content="shroom, soplówka jeżowata, lion's mane, napój funkcjonalny, wellness, zdrowy napój, diva, social elixir, brainbliss, cynk, witamina c" />
         <link rel="canonical" href="https://shroom4you.com" />
       </Helmet>
 
@@ -35,6 +36,7 @@ const Index = () => {
           <BrainBlissSection />
           <Benefits />
           <About />
+          <Disclaimer />
           <Newsletter />
         </main>
         <Footer />

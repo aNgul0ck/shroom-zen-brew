@@ -103,6 +103,14 @@ const Benefits = () => {
               </div>
             </div>
           </div>
+          
+          {/* Disclaimer note */}
+          <p className="text-center text-xs text-muted-foreground/60 font-body mt-6">
+            * Zatwierdzone oświadczenia zdrowotne EFSA dla cynku i witaminy C. 
+            <a href="#disclaimer" className="underline hover:text-muted-foreground ml-1">
+              Zobacz szczegóły
+            </a>
+          </p>
         </div>
       </div>
     </section>
