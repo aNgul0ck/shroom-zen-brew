@@ -1,19 +1,9 @@
-/* Typography: Afronaut (brand font) + Inter (similar to Switzer) per brand guidelines */
-/* Afronaut font - extract Capitalics_Order_915_1.zip to public/fonts/ */
+/* Typography: Afronaut (headlines only) + Archivo (subheadings) + Inter (body) per brand guidelines */
 @font-face {
   font-family: 'Afronaut';
   src: url('/fonts/Afronaut-Regular.woff2') format('woff2'),
        url('/fonts/Afronaut-Regular.woff') format('woff');
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Afronaut';
-  src: url('/fonts/Afronaut-Bold.woff2') format('woff2'),
-       url('/fonts/Afronaut-Bold.woff') format('woff');
-  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -163,7 +153,13 @@
     font-family: var(--font-body);
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  /* Afronaut only for main headlines */
+  h1, h2 {
+    font-family: 'Afronaut', 'Archivo', sans-serif;
+  }
+
+  /* Archivo for smaller headings */
+  h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
 }
