@@ -40,7 +40,7 @@ const Products = () => {
           <span className="inline-block font-body text-sm font-semibold text-shroom-coral uppercase tracking-wider mb-4">
             Mushrooms & Botanicals
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-6">
             Napoje Shroom
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">

@@ -34,7 +34,7 @@ const BrainBlissSection = () => {
               </span>
             </div>
 
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
               BrainBliss
               <br />
               <span className="text-shroom-blue">Lion&apos;s Mane</span>

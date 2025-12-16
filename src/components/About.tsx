@@ -10,7 +10,7 @@ const About = () => {
             <span className="inline-block font-body text-sm font-semibold text-shroom-sage uppercase tracking-wider mb-4">
               O marce Shroom
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="font-headline text-4xl md:text-5xl font-bold mb-6">
               Napój, który
               <br />
               ma Cię w głowie

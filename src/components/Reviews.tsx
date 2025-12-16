@@ -48,7 +48,7 @@ const Reviews = () => {
           <span className="inline-block font-body text-sm font-semibold text-shroom-coral uppercase tracking-wider mb-4">
             Opinie
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-4">
             Co mówią nasi klienci
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-xl mx-auto">

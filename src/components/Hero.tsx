@@ -25,7 +25,7 @@ const Hero = () => {
               </span>
             </div>
 
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 animate-fade-up delay-100">
+            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 animate-fade-up delay-100">
               Moc natury
               <br />
               <span className="text-gradient">w każdym łyku</span>
