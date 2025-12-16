@@ -80,8 +80,8 @@ const quizResults: Record<string, QuizResult> = {
   power: {
     product: "Shroom Power",
     emoji: "⚡",
-    title: "Energia i koncentracja",
-    description: "Potrzebujesz wsparcia dla aktywnego umysłu i ciała. Maczużnik bojowy i Cordyceps pomogą Ci utrzymać skupienie bez crashu kofeiny.",
+    title: "Dla aktywnych",
+    description: "Twój styl życia wymaga napoju, który pasuje do intensywnego dnia. Shroom Power to kompozycja maczużnika bojowego, cordycepsa oraz cynku i witaminy C.",
     adaptogens: ["Maczużnik bojowy", "Cordyceps", "Cynk", "Witamina C"],
     color: "shroom-gold",
     image: productPower,
@@ -89,8 +89,8 @@ const quizResults: Record<string, QuizResult> = {
   relax: {
     product: "Shroom Relax",
     emoji: "🧘",
-    title: "Spokój i balans",
-    description: "Szukasz wyciszenia bez senności. L-teanina i Soplówka jeżowata dadzą Ci spokój umysłu przy zachowaniu jasności myślenia.",
+    title: "Dla spokojnych",
+    description: "Preferujesz spokojniejsze tempo. Shroom Relax to kompozycja soplówki jeżowatej i L-teaniny — składników znanych z tradycyjnej herbaciarni.",
     adaptogens: ["L-teanina", "Soplówka jeżowata", "Inulina", "Cynk"],
     color: "shroom-lavender",
     image: productRelax,
@@ -98,8 +98,8 @@ const quizResults: Record<string, QuizResult> = {
   diva: {
     product: "Diva Social Elixir",
     emoji: "💃",
-    title: "Luz i dobre wibracje",
-    description: "Cenisz autentyczne relacje i chcesz być sobą. Damiana i żeń-szeń syberyjski pomogą Ci poczuć się swobodnie w każdej sytuacji.",
+    title: "Dla towarzyskich",
+    description: "Cenisz autentyczne relacje i dobre wibracje. Diva to unikalna kompozycja ziela damiany i żeń-szenia syberyjskiego — składników znanych w tradycji latynoamerykańskiej.",
     adaptogens: ["Ziele damiana", "Żeń-szeń syberyjski", "Cordyceps"],
     color: "diva-pink",
     image: productDiva,
@@ -494,9 +494,9 @@ const StickyScrollSection = () => {
     {
       number: "03",
       emoji: "🌿",
-      title: "Funkcjonalność w praktyce",
-      text: "Budujemy markę, która jest funkcjonalna, naturalna i realnie wspiera samopoczucie.",
-      detail: "Adaptogeny i grzyby funkcjonalne - składniki, które naprawdę działają, potwierdzone przez naukę.",
+      title: "Składniki z tradycją",
+      text: "Budujemy markę opartą na składnikach znanych od tysięcy lat.",
+      detail: "Adaptogeny i grzyby funkcjonalne — składniki stosowane w tradycyjnej medycynie chińskiej i ajurwedzie.",
       color: "shroom-green",
     },
     {
@@ -878,7 +878,7 @@ const Brief = () => {
                 />
               </div>
               <h3 className="font-display font-bold text-2xl mb-2">Shroom Power</h3>
-              <p className="text-foreground/60 mb-6">Dla energii, koncentracji i odporności</p>
+              <p className="text-foreground/60 mb-6">Z maczużnikiem bojowym, cordycepsem, cynkiem i witaminą C</p>
               <div className="flex flex-wrap gap-2 justify-center">
                 {["Maczużnik bojowy", "Cordyceps", "Inulina", "Cynk", "Witamina C"].map((ing) => (
                   <span 
@@ -907,7 +907,7 @@ const Brief = () => {
                 />
               </div>
               <h3 className="font-display font-bold text-2xl mb-2">Shroom Relax</h3>
-              <p className="text-foreground/60 mb-6">Na wyciszenie i balans, bez spowolnienia</p>
+              <p className="text-foreground/60 mb-6">Z soplówką jeżowatą, L-teaniną, cynkiem i witaminą C</p>
               <div className="flex flex-wrap gap-2 justify-center">
                 {["L-teanina", "Soplówka jeżowata", "Inulina", "Cynk", "Witamina C"].map((ing) => (
                   <span 
@@ -936,7 +936,7 @@ const Brief = () => {
                 />
               </div>
               <h3 className="font-display font-bold text-2xl mb-2">Diva Social Elixir</h3>
-              <p className="text-foreground/60 mb-6">Na luz, dobre wibracje i lepszy kontakt z sobą</p>
+              <p className="text-foreground/60 mb-6">Z zielem damiany, żeń-szeniem syberyjskim i cordycepsem</p>
               <div className="flex flex-wrap gap-2 justify-center">
                 {["Ziele damiana", "Żeń-szeń syberyjski", "Cordyceps"].map((ing) => (
                   <span 
@@ -1137,9 +1137,9 @@ const Brief = () => {
               
               <div className="grid md:grid-cols-3 gap-6">
                 {[
-                  { icon: "🧠", title: "Funkcje poznawcze", desc: "Wsparcie koncentracji podczas długich misji", stat: "+23%", statLabel: "poprawa pamięci" },
-                  { icon: "💪", title: "Wytrzymałość", desc: "Utrzymanie siły w warunkach mikrograwitacji", stat: "40%", statLabel: "mniejsze zmęczenie" },
-                  { icon: "🛡️", title: "Odporność", desc: "Ochrona przed stresem oksydacyjnym", stat: "3x", statLabel: "lepsza regeneracja" },
+                  { icon: "🧠", title: "Badania naukowe", desc: "Radzieccy naukowcy prowadzili intensywne badania nad adaptogenami" },
+                  { icon: "💪", title: "Ekstremalne warunki", desc: "Kosmonauci potrzebowali naturalnych rozwiązań na wielomiesięczne misje" },
+                  { icon: "🛡️", title: "Tradycja i nauka", desc: "Połączenie wiedzy tradycyjnej z nowoczesnymi metodami badawczymi" },
                 ].map((item, index) => (
                   <motion.div
                     key={item.title}
@@ -1154,11 +1154,7 @@ const Brief = () => {
                   >
                     <div className="text-5xl mb-4">{item.icon}</div>
                     <h4 className="font-display font-bold text-xl mb-2">{item.title}</h4>
-                    <p className="text-foreground/60 text-sm mb-6">{item.desc}</p>
-                    <div className="pt-4 border-t border-border/30">
-                      <p className="text-3xl font-display font-bold" style={{ color: "hsl(var(--shroom-green))" }}>{item.stat}</p>
-                      <p className="text-xs text-foreground/50">{item.statLabel}</p>
-                    </div>
+                    <p className="text-foreground/60 text-sm">{item.desc}</p>
                   </motion.div>
                 ))}
               </div>
@@ -1181,10 +1177,10 @@ const Brief = () => {
                   
                   <div className="space-y-4">
                     {[
-                      { sport: "Ultramaratony", athlete: "Cordyceps dla wytrzymałości oddechowej", icon: "🏃" },
-                      { sport: "Biohacking", athlete: "Soplówka dla funkcji poznawczych", icon: "🧬" },
-                      { sport: "Joga & Medytacja", athlete: "Ashwagandha dla równowagi", icon: "🧘" },
-                      { sport: "E-sport", athlete: "Grzyby dla koncentracji", icon: "🎮" },
+                      { sport: "Ultramaratony", athlete: "Cordyceps — tradycyjnie stosowany przez tybetańskich pasterzy", icon: "🏃" },
+                      { sport: "Biohacking", athlete: "Soplówka jeżowata — grzyb znany w azjatyckiej kuchni", icon: "🧬" },
+                      { sport: "Joga & Medytacja", athlete: "Ashwagandha — składnik ajurwedyjskiej tradycji", icon: "🧘" },
+                      { sport: "E-sport", athlete: "Grzyby funkcjonalne — naturalne składniki", icon: "🎮" },
                     ].map((item, index) => (
                       <motion.div
                         key={item.sport}
@@ -1222,9 +1218,9 @@ const Brief = () => {
                           🏆
                         </motion.div>
                         <p className="font-display font-semibold text-lg" style={{ color: "hsl(var(--shroom-coral))" }}>
-                          Naturalna przewaga
+                          Naturalne składniki
                         </p>
-                        <p className="text-sm text-foreground/60 mt-2">Legalna. Skuteczna. Bezpieczna.</p>
+                        <p className="text-sm text-foreground/60 mt-2">Tradycja. Natura. Jakość.</p>
                       </div>
                     </div>
                   </motion.div>
@@ -1246,50 +1242,50 @@ const Brief = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   { 
-                    name: "Maczużnik bojowy", 
+                    name: "Soplówka jeżowata", 
                     latin: "Hericium erinaceus",
-                    benefit: "Funkcje poznawcze",
-                    desc: "Stymuluje produkcję NGF (czynnik wzrostu nerwów). Wspiera pamięć, koncentrację i neuroplastyczność.",
+                    benefit: "Tradycja azjatycka",
+                    desc: "Grzyb znany jako \"lwia grzywa\" — ceniony w chińskiej kuchni i medycynie tradycyjnej od tysięcy lat.",
                     color: "shroom-cream",
                     emoji: "🦔"
                   },
                   { 
                     name: "Cordyceps", 
                     latin: "Cordyceps militaris",
-                    benefit: "Energia & wytrzymałość",
-                    desc: "Zwiększa produkcję ATP w mitochondriach. Poprawia wykorzystanie tlenu i wydolność fizyczną.",
+                    benefit: "Tradycja tybetańska",
+                    desc: "Grzyb odkryty przez tybetańskich pasterzy jaków. Stosowany w tradycyjnej medycynie chińskiej.",
                     color: "shroom-gold",
                     emoji: "⚡"
                   },
                   { 
                     name: "Żeń-szeń syberyjski", 
                     latin: "Eleutherococcus senticosus",
-                    benefit: "Adaptacja do stresu",
-                    desc: "Reguluje oś HPA (podwzgórze-przysadka-nadnercza). Pomaga organizmowi reagować na stres.",
+                    benefit: "Tradycja syberyjska",
+                    desc: "Korzeń stosowany od wieków przez ludy Syberii. Badany przez radzieckich naukowców w XX wieku.",
                     color: "shroom-sage",
                     emoji: "🌿"
                   },
                   { 
                     name: "L-teanina", 
                     latin: "Z zielonej herbaty",
-                    benefit: "Spokój bez senności",
-                    desc: "Zwiększa fale alfa w mózgu. Daje relaksację bez efektu sedacji — idealne do pracy.",
+                    benefit: "Aminokwas z herbaty",
+                    desc: "Naturalny aminokwas występujący w liściach herbaty. Składnik rytuału parzenia herbaty od tysięcy lat.",
                     color: "shroom-lavender",
                     emoji: "🍵"
                   },
                   { 
                     name: "Ziele damiana", 
                     latin: "Turnera diffusa",
-                    benefit: "Nastrój & energia",
-                    desc: "Tradycyjnie używane przez Majów i Azteków. Wspiera dobry nastrój i naturalną energię.",
+                    benefit: "Tradycja Majów",
+                    desc: "Roślina z Ameryki Środkowej, tradycyjnie używana przez Majów i Azteków w ceremoniach i napojach.",
                     color: "diva-pink",
                     emoji: "🌸"
                   },
                   { 
                     name: "Inulina", 
                     latin: "Prebiotyk",
-                    benefit: "Zdrowie jelit",
-                    desc: "Karmi dobre bakterie w jelitach. Oś jelita-mózg to klucz do ogólnego samopoczucia.",
+                    benefit: "Błonnik naturalny",
+                    desc: "Naturalny błonnik występujący w cykorii i innych roślinach. Stosowany jako naturalny słodzik.",
                     color: "shroom-green",
                     emoji: "🦠"
                   },
@@ -1418,8 +1414,8 @@ const Brief = () => {
             />
             <FeatureCard
               icon={Heart}
-              title="Prebiotyk"
-              description="Inulina wspiera mikrobiotę jelitową"
+              title="Z prebiotykiem"
+              description="Zawiera inulinę — naturalny błonnik z cykorii"
               delay={0.2}
               color="shroom-coral"
             />
