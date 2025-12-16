@@ -390,6 +390,402 @@ const Brief = () => {
         color="shroom-green"
       />
 
+      {/* ===== ADAPTOGENS DEEP DIVE - MUSEUM SECTION ===== */}
+      <section className="relative">
+        {/* Intro Gateway */}
+        <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+          <div 
+            className="absolute inset-0"
+            style={{ 
+              background: "radial-gradient(ellipse at 50% 100%, hsl(var(--shroom-sage) / 0.3) 0%, transparent 60%)" 
+            }}
+          />
+          <RevealSection className="text-center px-6 relative z-10">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-8"
+            >
+              <div 
+                className="w-32 h-32 mx-auto rounded-full flex items-center justify-center"
+                style={{ 
+                  background: "linear-gradient(135deg, hsl(var(--shroom-green) / 0.2), hsl(var(--shroom-gold) / 0.2))",
+                  boxShadow: "0 0 80px hsl(var(--shroom-green) / 0.3)"
+                }}
+              >
+                <Leaf className="w-16 h-16" style={{ color: "hsl(var(--shroom-green))" }} />
+              </div>
+            </motion.div>
+            <p className="text-sm uppercase tracking-[0.4em] text-foreground/50 mb-6">Zanurz się głębiej</p>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-8">
+              <span style={{ color: "hsl(var(--shroom-green))" }}>Adaptogeny</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto leading-relaxed">
+              Substancje, które od tysięcy lat pomagają organizmom adaptować się do stresu. 
+              Od starożytnych praktyk po współczesne badania kosmiczne.
+            </p>
+          </RevealSection>
+        </div>
+
+        {/* Timeline Section */}
+        <div className="py-32 px-6 relative">
+          <div className="max-w-6xl mx-auto">
+            {/* Timeline Line */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-shroom-sage/30 to-transparent hidden lg:block" />
+            
+            {/* Era 1: Ancient Origins */}
+            <RevealSection className="mb-32">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="order-2 lg:order-1">
+                  <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ backgroundColor: "hsl(var(--shroom-gold) / 0.2)", color: "hsl(var(--shroom-coral))" }}>
+                    3000 lat p.n.e.
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-display font-bold mb-6">
+                    Starożytne początki
+                  </h3>
+                  <p className="text-lg text-foreground/70 leading-relaxed mb-6">
+                    W tradycyjnej medycynie chińskiej i ajurwedzie adaptogeny były używane przez tysiące lat. 
+                    Żeń-szeń nazywano "korzeniem życia", a grzyby jak Reishi były zarezerwowane dla cesarzy.
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    {["Chiny", "Indie", "Syberia", "Tybet"].map((place) => (
+                      <span key={place} className="px-4 py-2 rounded-full text-sm bg-card border border-border/50">
+                        {place}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="order-1 lg:order-2 relative">
+                  <motion.div
+                    whileInView={{ rotate: [0, 5, -5, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-full aspect-square max-w-md mx-auto rounded-3xl relative overflow-hidden"
+                    style={{ 
+                      background: "linear-gradient(135deg, hsl(var(--shroom-cream)) 0%, hsl(var(--shroom-gold) / 0.3) 100%)",
+                      boxShadow: "0 40px 80px -20px hsl(var(--shroom-black) / 0.15)"
+                    }}
+                  >
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-8xl mb-4">🍄</div>
+                        <p className="font-display font-semibold text-lg" style={{ color: "hsl(var(--shroom-coral))" }}>
+                          Grzyb Nieśmiertelności
+                        </p>
+                        <p className="text-sm text-foreground/60 mt-2">Reishi / Lingzhi</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </RevealSection>
+
+            {/* Era 2: Soviet Research */}
+            <RevealSection className="mb-32">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="relative">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="w-full aspect-square max-w-md mx-auto rounded-3xl relative overflow-hidden"
+                    style={{ 
+                      background: "linear-gradient(180deg, hsl(220, 30%, 15%) 0%, hsl(220, 20%, 25%) 100%)",
+                      boxShadow: "0 40px 80px -20px hsl(var(--shroom-black) / 0.4)"
+                    }}
+                  >
+                    {/* Animated stars */}
+                    {[...Array(20)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 bg-white rounded-full"
+                        style={{ 
+                          left: `${Math.random() * 100}%`, 
+                          top: `${Math.random() * 100}%`,
+                          opacity: 0.3 + Math.random() * 0.7
+                        }}
+                        animate={{ opacity: [0.3, 1, 0.3] }}
+                        transition={{ duration: 1 + Math.random() * 2, repeat: Infinity, delay: Math.random() * 2 }}
+                      />
+                    ))}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center relative z-10">
+                        <motion.div
+                          animate={{ y: [0, -10, 0] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                          className="text-8xl mb-4"
+                        >
+                          🚀
+                        </motion.div>
+                        <p className="font-display font-semibold text-lg text-white">
+                          Program Kosmiczny
+                        </p>
+                        <p className="text-sm text-white/60 mt-2">ZSRR 1960-1980</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+                <div>
+                  <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ backgroundColor: "hsl(0, 60%, 50% / 0.2)", color: "hsl(0, 60%, 50%)" }}>
+                    1947 - 1980
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-display font-bold mb-6">
+                    Radzieckie badania kosmiczne
+                  </h3>
+                  <p className="text-lg text-foreground/70 leading-relaxed mb-6">
+                    Dr Nikolai Lazarev ukuł termin "adaptogen" w 1947 roku. Radzieccy naukowcy badali te substancje 
+                    dla kosmonautów i sportowców olimpijskich. Szukali naturalnych sposobów na zwiększenie 
+                    wytrzymałości bez skutków ubocznych.
+                  </p>
+                  <div className="p-6 rounded-2xl bg-card border border-border/50">
+                    <p className="text-sm text-foreground/50 uppercase tracking-wider mb-2">Kluczowe odkrycie</p>
+                    <p className="font-display font-semibold text-lg">
+                      "Adaptogeny zwiększają niespecyficzną odporność organizmu na stres"
+                    </p>
+                    <p className="text-sm text-foreground/60 mt-2">— Dr Nikolai Lazarev, 1947</p>
+                  </div>
+                </div>
+              </div>
+            </RevealSection>
+
+            {/* Era 3: Cosmonauts */}
+            <RevealSection className="mb-32">
+              <div className="text-center mb-16">
+                <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ backgroundColor: "hsl(var(--shroom-lavender) / 0.3)", color: "hsl(var(--shroom-purple))" }}>
+                  Tajna broń kosmonautów
+                </div>
+                <h3 className="text-3xl md:text-5xl font-display font-bold mb-6">
+                  Z orbity na Ziemię
+                </h3>
+                <p className="text-lg text-foreground/60 max-w-3xl mx-auto">
+                  Kosmonauci na stacji Mir używali adaptogenów, by radzić sobie ze stresem 
+                  kosmicznym, brakiem grawitacji i ekstremalnym wysiłkiem.
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  { icon: "🧠", title: "Funkcje poznawcze", desc: "Wsparcie koncentracji podczas długich misji", stat: "+23%", statLabel: "poprawa pamięci" },
+                  { icon: "💪", title: "Wytrzymałość", desc: "Utrzymanie siły w warunkach mikrograwitacji", stat: "40%", statLabel: "mniejsze zmęczenie" },
+                  { icon: "🛡️", title: "Odporność", desc: "Ochrona przed stresem oksydacyjnym", stat: "3x", statLabel: "lepsza regeneracja" },
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="p-8 rounded-3xl border border-border/50 relative overflow-hidden"
+                    style={{ 
+                      background: "linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--secondary) / 0.5) 100%)" 
+                    }}
+                  >
+                    <div className="text-5xl mb-4">{item.icon}</div>
+                    <h4 className="font-display font-bold text-xl mb-2">{item.title}</h4>
+                    <p className="text-foreground/60 text-sm mb-6">{item.desc}</p>
+                    <div className="pt-4 border-t border-border/30">
+                      <p className="text-3xl font-display font-bold" style={{ color: "hsl(var(--shroom-green))" }}>{item.stat}</p>
+                      <p className="text-xs text-foreground/50">{item.statLabel}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </RevealSection>
+
+            {/* Era 4: Athletes */}
+            <RevealSection className="mb-32">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                  <div className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ backgroundColor: "hsl(var(--shroom-coral) / 0.2)", color: "hsl(var(--shroom-coral))" }}>
+                    Współczesny sport
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-display font-bold mb-6">
+                    Elita sportowa wybiera naturę
+                  </h3>
+                  <p className="text-lg text-foreground/70 leading-relaxed mb-8">
+                    Od ultramaratończyków po zawodowych e-sportowców — adaptogeny stały się 
+                    tajną bronią tych, którzy szukają przewagi bez naruszania zasad fair play.
+                  </p>
+                  
+                  <div className="space-y-4">
+                    {[
+                      { sport: "Ultramaratony", athlete: "Cordyceps dla wytrzymałości oddechowej", icon: "🏃" },
+                      { sport: "Biohacking", athlete: "Soplówka dla funkcji poznawczych", icon: "🧬" },
+                      { sport: "Joga & Medytacja", athlete: "Ashwagandha dla równowagi", icon: "🧘" },
+                      { sport: "E-sport", athlete: "Grzyby dla koncentracji", icon: "🎮" },
+                    ].map((item, index) => (
+                      <motion.div
+                        key={item.sport}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="flex items-center gap-4 p-4 rounded-2xl bg-card border border-border/30 hover:border-shroom-sage/50 transition-colors"
+                      >
+                        <div className="text-3xl">{item.icon}</div>
+                        <div>
+                          <p className="font-display font-semibold">{item.sport}</p>
+                          <p className="text-sm text-foreground/60">{item.athlete}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+                <div className="relative">
+                  <motion.div
+                    whileInView={{ scale: [0.95, 1] }}
+                    transition={{ duration: 0.8 }}
+                    className="w-full aspect-square max-w-md mx-auto rounded-3xl relative overflow-hidden"
+                    style={{ 
+                      background: "linear-gradient(135deg, hsl(var(--shroom-coral) / 0.2) 0%, hsl(var(--shroom-gold) / 0.2) 100%)",
+                      boxShadow: "0 40px 80px -20px hsl(var(--shroom-coral) / 0.2)"
+                    }}
+                  >
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                          className="text-8xl mb-4"
+                        >
+                          🏆
+                        </motion.div>
+                        <p className="font-display font-semibold text-lg" style={{ color: "hsl(var(--shroom-coral))" }}>
+                          Naturalna przewaga
+                        </p>
+                        <p className="text-sm text-foreground/60 mt-2">Legalna. Skuteczna. Bezpieczna.</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </RevealSection>
+
+            {/* Interactive Adaptogens Showcase */}
+            <RevealSection>
+              <div className="text-center mb-16">
+                <h3 className="text-3xl md:text-5xl font-display font-bold mb-6">
+                  Poznaj <span style={{ color: "hsl(var(--shroom-green))" }}>adaptogeny</span> w Shroomie
+                </h3>
+                <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
+                  Każdy składnik został wybrany na podstawie tradycji i współczesnych badań.
+                </p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { 
+                    name: "Maczużnik bojowy", 
+                    latin: "Hericium erinaceus",
+                    benefit: "Funkcje poznawcze",
+                    desc: "Stymuluje produkcję NGF (czynnik wzrostu nerwów). Wspiera pamięć, koncentrację i neuroplastyczność.",
+                    color: "shroom-cream",
+                    emoji: "🦔"
+                  },
+                  { 
+                    name: "Cordyceps", 
+                    latin: "Cordyceps militaris",
+                    benefit: "Energia & wytrzymałość",
+                    desc: "Zwiększa produkcję ATP w mitochondriach. Poprawia wykorzystanie tlenu i wydolność fizyczną.",
+                    color: "shroom-gold",
+                    emoji: "⚡"
+                  },
+                  { 
+                    name: "Żeń-szeń syberyjski", 
+                    latin: "Eleutherococcus senticosus",
+                    benefit: "Adaptacja do stresu",
+                    desc: "Reguluje oś HPA (podwzgórze-przysadka-nadnercza). Pomaga organizmowi reagować na stres.",
+                    color: "shroom-sage",
+                    emoji: "🌿"
+                  },
+                  { 
+                    name: "L-teanina", 
+                    latin: "Z zielonej herbaty",
+                    benefit: "Spokój bez senności",
+                    desc: "Zwiększa fale alfa w mózgu. Daje relaksację bez efektu sedacji — idealne do pracy.",
+                    color: "shroom-lavender",
+                    emoji: "🍵"
+                  },
+                  { 
+                    name: "Ziele damiana", 
+                    latin: "Turnera diffusa",
+                    benefit: "Nastrój & energia",
+                    desc: "Tradycyjnie używane przez Majów i Azteków. Wspiera dobry nastrój i naturalną energię.",
+                    color: "diva-pink",
+                    emoji: "🌸"
+                  },
+                  { 
+                    name: "Inulina", 
+                    latin: "Prebiotyk",
+                    benefit: "Zdrowie jelit",
+                    desc: "Karmi dobre bakterie w jelitach. Oś jelita-mózg to klucz do ogólnego samopoczucia.",
+                    color: "shroom-green",
+                    emoji: "🦠"
+                  },
+                ].map((adaptogen, index) => (
+                  <motion.div
+                    key={adaptogen.name}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.08 }}
+                    whileHover={{ y: -8 }}
+                    className="group p-6 rounded-3xl border border-border/30 hover:border-shroom-sage/50 transition-all duration-300 cursor-pointer relative overflow-hidden"
+                    style={{ backgroundColor: "hsl(var(--card))" }}
+                  >
+                    <div 
+                      className="absolute top-0 right-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity"
+                      style={{ 
+                        background: `radial-gradient(circle, hsl(var(--${adaptogen.color})) 0%, transparent 70%)`,
+                        transform: "translate(30%, -30%)"
+                      }}
+                    />
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-4xl">{adaptogen.emoji}</span>
+                        <span 
+                          className="px-3 py-1 rounded-full text-xs font-medium"
+                          style={{ 
+                            backgroundColor: `hsl(var(--${adaptogen.color}) / 0.2)`,
+                            color: `hsl(var(--${adaptogen.color === 'shroom-cream' ? 'shroom-coral' : adaptogen.color}))`
+                          }}
+                        >
+                          {adaptogen.benefit}
+                        </span>
+                      </div>
+                      <h4 className="font-display font-bold text-xl mb-1">{adaptogen.name}</h4>
+                      <p className="text-sm text-foreground/50 italic mb-4">{adaptogen.latin}</p>
+                      <p className="text-sm text-foreground/70 leading-relaxed">{adaptogen.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </RevealSection>
+          </div>
+        </div>
+
+        {/* Closing Statement */}
+        <div className="py-32 px-6">
+          <RevealSection className="text-center max-w-4xl mx-auto">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <p className="text-sm uppercase tracking-[0.3em] text-foreground/50 mb-8">Podsumowanie</p>
+              <h3 className="text-3xl md:text-5xl font-display font-bold mb-8 leading-tight">
+                Od kosmonautów, przez sportowców olimpijskich, do{" "}
+                <span style={{ color: "hsl(var(--shroom-green))" }}>Twojego codziennego dnia</span>.
+              </h3>
+              <p className="text-xl text-foreground/60 leading-relaxed">
+                Adaptogeny to nie trend. To wiedza przekazywana przez pokolenia, 
+                potwierdzona przez naukę i teraz dostępna w formie napoju, 
+                który po prostu smakuje.
+              </p>
+            </motion.div>
+          </RevealSection>
+        </div>
+      </section>
+      {/* ===== END ADAPTOGENS SECTION ===== */}
+
       {/* Benefits Grid */}
       <section className="py-32 px-6 bg-gradient-to-b from-transparent via-secondary/10 to-transparent">
         <div className="max-w-6xl mx-auto">
