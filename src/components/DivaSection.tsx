@@ -55,7 +55,7 @@ const DivaSection = () => {
               </span>
             </div>
 
-            <h2 className="font-display text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            <h2 className="font-headline text-5xl md:text-6xl font-bold mb-6 leading-tight">
               <span className="text-diva-pink">diva</span>
               <br />
               <span className="text-diva-foreground/90">Celebruj każdą chwilę</span>
