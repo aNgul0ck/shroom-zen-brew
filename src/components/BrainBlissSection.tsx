@@ -5,18 +5,18 @@ const BrainBlissSection = () => {
   const useCases = [
     {
       icon: Plane,
-      title: "Na lot",
-      description: "Weź przed podróżą dla ostrości umysłu",
+      title: "Na podróż",
+      description: "Wygodna forma kapsułek w drodze",
     },
     {
       icon: Brain,
-      title: "Przed prezentacją",
-      description: "Wsparcie kognitywne gdy tego potrzebujesz",
+      title: "Codzienna rutyna",
+      description: "Uzupełnienie diety w cynk",
     },
     {
       icon: Clock,
-      title: "Codziennie",
-      description: "Długoterminowe wsparcie funkcji mózgu",
+      title: "Regularnie",
+      description: "Badania sugerują efekty po 16 tyg.",
     },
   ];
 
@@ -41,16 +41,15 @@ const BrainBlissSection = () => {
             </h2>
 
             <p className="font-body text-lg text-muted-foreground mb-6">
-              Skoncentrowana moc soplówki jeżowatej w kapsułkach. Dla tych, którzy preferują 
-              suplementy — ten sam adaptogen, szybkie działanie, wygodna forma na podróż.
+              Soplówka jeżowata w kapsułkach. Dla tych, którzy preferują 
+              suplementy — ten sam składnik, wygodna forma na podróż.
             </p>
 
-            {/* Story */}
             <div className="bg-card rounded-2xl p-5 mb-6 border-l-4 border-shroom-blue">
               <p className="font-body text-sm text-foreground/80 italic">
-                "Stworzyliśmy BrainBliss dla osób w ciągłym ruchu. Kiedy nie masz czasu na napój, 
-                ale potrzebujesz wsparcia kognitywnego — przed lotem, ważnym spotkaniem 
-                czy egzaminem. 60 kapsułek, 500mg czystego ekstraktu z soplówki."
+                "Stworzyliśmy BrainBliss dla osób w ciągłym ruchu. Kiedy nie masz czasu na napój — 
+                przed lotem, ważnym spotkaniem czy egzaminem. 60 kapsułek, 500mg czystego ekstraktu 
+                z soplówki jeżowatej. Źródło cynku, który przyczynia się do prawidłowych funkcji poznawczych."
               </p>
             </div>
 
