@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Leaf, Sparkles, Heart, Brain, Zap, Moon, Sun, Coffee, Droplets, RotateCcw } from "lucide-react";
+import { DayCycleClock } from "@/components/DayCycleClock";
 import productPower from "@/assets/product-power.png";
 import productRelax from "@/assets/product-relax.png";
 import productDiva from "@/assets/product-diva.png";
@@ -1439,36 +1440,29 @@ const Brief = () => {
         color="shroom-lavender"
       />
 
-      {/* Content Ideas */}
-      <section className="py-32 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { icon: Sun, title: "Poranna rutyna", desc: "Pierwszy łyk dnia, który nadaje ton" },
-              { icon: Coffee, title: "Przerwa w pracy", desc: "Moment regeneracji między zadaniami" },
-              { icon: Heart, title: "Chwila dla siebie", desc: "Self-care bez kompromisów" },
-              { icon: Droplets, title: "Aktywność", desc: "Wsparcie przed lub po treningu" },
-              { icon: Moon, title: "Wieczorny reset", desc: "Wyciszenie na koniec dnia" },
-              { icon: Zap, title: "Moment oddechu", desc: "Krótka przerwa, duża różnica" },
-            ].map((item, index) => (
-              <RevealSection key={item.title}>
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -4 }}
-                  transition={{ duration: 0.2 }}
-                  className="p-8 rounded-3xl bg-card border border-border/50 hover:border-shroom-sage/50 hover:shadow-xl transition-all duration-300 cursor-pointer"
-                >
-                  <div 
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4"
-                    style={{ backgroundColor: "hsl(var(--shroom-sage) / 0.3)" }}
-                  >
-                    <item.icon className="w-6 h-6" style={{ color: "hsl(var(--shroom-green))" }} />
-                  </div>
-                  <h3 className="font-display font-semibold text-xl mb-2">{item.title}</h3>
-                  <p className="text-foreground/60">{item.desc}</p>
-                </motion.div>
-              </RevealSection>
-            ))}
-          </div>
+      {/* Day Cycle Clock Section */}
+      <section className="py-32 px-6 bg-gradient-to-b from-background to-card/30">
+        <div className="max-w-7xl mx-auto">
+          <RevealSection>
+            <div className="text-center mb-16">
+              <span 
+                className="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-6"
+                style={{ backgroundColor: "hsl(var(--shroom-sage) / 0.3)", color: "hsl(var(--shroom-green))" }}
+              >
+                Use Case
+              </span>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+                Cykl <span style={{ color: "hsl(var(--shroom-gold))" }}>dnia</span> ze Shroomem
+              </h2>
+              <p className="text-xl text-foreground/60 max-w-2xl mx-auto">
+                Każda pora ma swój napój. Zobacz, jak Shroom wpasowuje się w różne momenty.
+              </p>
+            </div>
+          </RevealSection>
+          
+          <RevealSection>
+            <DayCycleClock />
+          </RevealSection>
         </div>
       </section>
 
