@@ -11,13 +11,13 @@ interface TimeSlot {
 }
 
 const timeSlots: TimeSlot[] = [
-  { time: 'Rano', angle: -60, product: 'power', moment: 'Przed pracą, zamiast kawy', hook: '"My 8am secret"', emoji: '☀️' },
-  { time: 'Dzień', angle: 0, product: 'power', moment: 'Focus, deadline', hook: '"3pm slump? Not today"', emoji: '💼' },
-  { time: 'Po południu', angle: 30, product: 'relax', moment: 'After shitty call', hook: '"Deep breath moment"', emoji: '😤' },
-  { time: 'Po pracy', angle: 60, product: 'relax', moment: 'Decompression', hook: '"First thing after work"', emoji: '🏠' },
-  { time: 'Wieczór', angle: 120, product: 'relax', moment: 'Netflix, winding down', hook: '"Evening ritual"', emoji: '🌙' },
-  { time: 'Impreza', angle: 180, product: 'diva', moment: 'Social, zamiast alkoholu', hook: '"What I\'m drinking tonight"', emoji: '🎉' },
-  { time: 'Weekend', angle: -120, product: 'mix', moment: 'Brunch, friends', hook: '"Saturday mood"', emoji: '🥂' },
+  { time: '8:00', angle: 240, product: 'power', moment: 'Przed pracą, zamiast kawy', hook: '"My 8am secret"', emoji: '☀️' },
+  { time: '15:00', angle: 90, product: 'power', moment: 'Focus, deadline', hook: '"3pm slump? Not today"', emoji: '💼' },
+  { time: '16:00', angle: 120, product: 'relax', moment: 'After shitty call', hook: '"Deep breath moment"', emoji: '😤' },
+  { time: '18:00', angle: 180, product: 'relax', moment: 'Decompression', hook: '"First thing after work"', emoji: '🏠' },
+  { time: '21:00', angle: 270, product: 'relax', moment: 'Netflix, winding down', hook: '"Evening ritual"', emoji: '🌙' },
+  { time: '23:00', angle: 330, product: 'diva', moment: 'Social, zamiast alkoholu', hook: '"What I\'m drinking tonight"', emoji: '🎉' },
+  { time: '10:00', angle: 300, product: 'mix', moment: 'Brunch, friends', hook: '"Saturday mood"', emoji: '🥂' },
 ];
 
 const productColors = {
