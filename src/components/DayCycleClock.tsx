@@ -72,44 +72,44 @@ export const DayCycleClock = () => {
   const [hours, minutes] = currentSlot.time.split(':');
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <div className="flex flex-col items-center gap-8">
+    <div className="w-full max-w-4xl mx-auto px-4">
+      <div className="flex flex-col items-center gap-6 md:gap-8">
         {/* Digital Clock Display */}
         <motion.div
-          className="relative"
+          className="relative w-full max-w-sm md:max-w-lg"
           animate={{ 
-            boxShadow: `0 0 80px 20px ${colors.glow}` 
+            boxShadow: `0 0 60px 15px ${colors.glow}` 
           }}
           transition={{ duration: 0.8 }}
         >
           <div 
-            className={`relative px-8 py-6 md:px-16 md:py-10 rounded-3xl bg-gradient-to-br ${colors.bg} border border-white/10 backdrop-blur-sm`}
+            className="relative px-6 py-5 md:px-16 md:py-10 rounded-2xl md:rounded-3xl"
             style={{ 
               background: 'linear-gradient(145deg, rgba(20, 20, 25, 0.95), rgba(10, 10, 15, 0.98))',
               boxShadow: 'inset 0 2px 20px rgba(255,255,255,0.05), 0 10px 40px rgba(0,0,0,0.5)'
             }}
           >
             {/* Period indicator */}
-            <div className="absolute top-4 right-4 md:top-6 md:right-6">
+            <div className="absolute top-3 right-3 md:top-6 md:right-6">
               <motion.div
                 key={currentSlot.period}
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
-                className={`p-2 rounded-full bg-gradient-to-br ${colors.bg}`}
+                className={`p-1.5 md:p-2 rounded-full bg-gradient-to-br ${colors.bg}`}
               >
-                <PeriodIcon className={`w-5 h-5 md:w-6 md:h-6 ${colors.text}`} />
+                <PeriodIcon className={`w-4 h-4 md:w-6 md:h-6 ${colors.text}`} />
               </motion.div>
             </div>
 
             {/* Time Display */}
-            <div className="flex items-center justify-center gap-2 md:gap-4">
+            <div className="flex items-center justify-center">
               <AnimatePresence mode="wait">
                 <motion.span
                   key={hours}
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -20, opacity: 0 }}
-                  className={`text-7xl md:text-9xl font-mono font-bold tracking-tight ${colors.text}`}
+                  className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-mono font-bold tracking-tight ${colors.text}`}
                   style={{ 
                     textShadow: `0 0 30px ${colors.glow}`,
                     fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace'
@@ -120,7 +120,7 @@ export const DayCycleClock = () => {
               </AnimatePresence>
               
               <span 
-                className={`text-7xl md:text-9xl font-mono font-bold ${colors.text} transition-opacity duration-100`}
+                className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-mono font-bold ${colors.text} transition-opacity duration-100 mx-1 md:mx-2`}
                 style={{ 
                   opacity: colonVisible ? 1 : 0.3,
                   textShadow: `0 0 30px ${colors.glow}`,
@@ -136,7 +136,7 @@ export const DayCycleClock = () => {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -20, opacity: 0 }}
-                  className={`text-7xl md:text-9xl font-mono font-bold tracking-tight ${colors.text}`}
+                  className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-mono font-bold tracking-tight ${colors.text}`}
                   style={{ 
                     textShadow: `0 0 30px ${colors.glow}`,
                     fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace'
@@ -154,10 +154,10 @@ export const DayCycleClock = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="mt-6 flex items-center justify-center gap-3"
+                className="mt-4 md:mt-6 flex items-center justify-center gap-2 md:gap-3"
               >
-                <SlotIcon className={`w-5 h-5 ${colors.text}`} />
-                <span className={`text-lg md:text-xl font-medium ${colors.text}`}>
+                <SlotIcon className={`w-4 h-4 md:w-5 md:h-5 ${colors.text}`} />
+                <span className={`text-sm md:text-xl font-medium ${colors.text}`}>
                   {productNames[currentSlot.product]}
                 </span>
               </motion.div>
@@ -173,26 +173,26 @@ export const DayCycleClock = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="text-center space-y-4"
+            className="text-center space-y-2 md:space-y-4 px-2"
           >
-            <p className="text-lg md:text-xl text-foreground/70">
+            <p className="text-base md:text-xl text-foreground/70">
               {currentSlot.moment}
             </p>
-            <p className={`text-2xl md:text-3xl font-semibold italic ${colors.text}`}>
+            <p className={`text-xl md:text-3xl font-semibold italic ${colors.text}`}>
               {currentSlot.hook}
             </p>
           </motion.div>
         </AnimatePresence>
 
         {/* Timeline dots */}
-        <div className="flex items-center gap-3 pt-4">
+        <div className="flex items-center gap-2 md:gap-3 pt-2 md:pt-4">
           {timeSlots.map((slot, i) => {
             const slotColors = productColors[slot.product];
             return (
               <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}
-                className={`relative w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`relative w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
                   i === currentIndex 
                     ? 'scale-150' 
                     : 'opacity-40 hover:opacity-70'
@@ -208,7 +208,7 @@ export const DayCycleClock = () => {
                     layoutId="activeDot"
                     className="absolute inset-0 rounded-full"
                     style={{ 
-                      boxShadow: `0 0 20px 5px ${slotColors.glow}` 
+                      boxShadow: `0 0 15px 4px ${slotColors.glow}` 
                     }}
                   />
                 )}
