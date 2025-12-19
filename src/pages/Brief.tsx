@@ -82,8 +82,8 @@ const quizResults: Record<string, QuizResult> = {
     product: "Shroom Power",
     emoji: "⚡",
     title: "Dla aktywnych",
-    description: "Twój styl życia wymaga napoju, który pasuje do intensywnego dnia. Shroom Power to kompozycja maczużnika bojowego, cordycepsa oraz cynku i witaminy C.",
-    adaptogens: ["Maczużnik bojowy", "Cordyceps", "Cynk", "Witamina C"],
+    description: "Twój styl życia wymaga napoju, który pasuje do intensywnego dnia. Shroom Power to kompozycja soplówki jeżowatej, żeń-szenia oraz cynku i witaminy C.",
+    adaptogens: ["Soplówka jeżowata", "Żeń-szeń", "Cynk", "Witamina C"],
     color: "shroom-gold",
     image: productPower,
   },
@@ -879,9 +879,9 @@ const Brief = () => {
                 />
               </div>
               <h3 className="font-display font-bold text-2xl mb-2">Shroom Power</h3>
-              <p className="text-foreground/60 mb-6">Z maczużnikiem bojowym, cordycepsem, cynkiem i witaminą C</p>
+              <p className="text-foreground/60 mb-6">Z soplówką jeżowatą, żeń-szeniem, cynkiem i witaminą C</p>
               <div className="flex flex-wrap gap-2 justify-center">
-                {["Maczużnik bojowy", "Cordyceps", "Inulina", "Cynk", "Witamina C"].map((ing) => (
+                {["Soplówka jeżowata", "Żeń-szeń", "Inulina", "Cynk", "Witamina C"].map((ing) => (
                   <span 
                     key={ing}
                     className="px-3 py-1 rounded-full text-xs font-medium"
@@ -1178,7 +1178,7 @@ const Brief = () => {
                   
                   <div className="space-y-4">
                     {[
-                      { sport: "Ultramaratony", athlete: "Cordyceps — tradycyjnie stosowany przez tybetańskich pasterzy", icon: "🏃" },
+                      { sport: "Ultramaratony", athlete: "Żeń-szeń — korzeń stosowany od wieków w tradycyjnej medycynie", icon: "🏃" },
                       { sport: "Biohacking", athlete: "Soplówka jeżowata — grzyb znany w azjatyckiej kuchni", icon: "🧬" },
                       { sport: "Joga & Medytacja", athlete: "Ashwagandha — składnik ajurwedyjskiej tradycji", icon: "🧘" },
                       { sport: "E-sport", athlete: "Grzyby funkcjonalne — naturalne składniki", icon: "🎮" },
@@ -1251,10 +1251,10 @@ const Brief = () => {
                     emoji: "🦔"
                   },
                   { 
-                    name: "Cordyceps", 
-                    latin: "Cordyceps militaris",
-                    benefit: "Tradycja tybetańska",
-                    desc: "Grzyb odkryty przez tybetańskich pasterzy jaków. Stosowany w tradycyjnej medycynie chińskiej.",
+                    name: "Żeń-szeń", 
+                    latin: "Panax ginseng",
+                    benefit: "Tradycja azjatycka",
+                    desc: "Korzeń stosowany od tysięcy lat w tradycyjnej medycynie chińskiej i koreańskiej.",
                     color: "shroom-gold",
                     emoji: "⚡"
                   },

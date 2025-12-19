@@ -29,7 +29,7 @@ const faqItems = [
   },
   {
     question: "Czym różnią się Shroom Power, Shroom Relax i Diva?",
-    answer: "Shroom Power zawiera maczużnik bojowy i cordyceps. Shroom Relax zawiera soplówkę jeżowatą i L-teaninę. Diva Social Elixir to osobna marka z zielem damiany i żeń-szeniem syberyjskim — skierowana do osób ceniących towarzyskie chwile."
+    answer: "Shroom Power zawiera soplówkę jeżowatą i żeń-szeń. Shroom Relax zawiera soplówkę jeżowatą i L-teaninę. Diva Social Elixir to osobna marka z zielem damiany i żeń-szeniem syberyjskim — skierowana do osób ceniących towarzyskie chwile."
   },
   {
     question: "Gdzie mogę kupić napoje Shroom?",

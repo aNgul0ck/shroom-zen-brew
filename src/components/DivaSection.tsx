@@ -6,7 +6,7 @@ const DivaSection = () => {
     "13 składników botanicznych",
     "Bezalkoholowe aperitivo",
     "Jadalny brokat",
-    "Cordyceps militaris",
+    "Żeń-szeń",
     "Żeń-szeń syberyjski",
     "Lokalne superfoods",
   ];
