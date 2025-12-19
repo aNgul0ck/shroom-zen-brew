@@ -765,10 +765,7 @@ const Brief = () => {
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/30"
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm font-medium">Powrót</span>
-          </Link>
+          <div className="w-20" />
           <span className="font-display font-bold text-lg">Shroom Brief</span>
           <div className="w-20" />
         </div>
@@ -1483,8 +1480,8 @@ const Brief = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Link 
-                to="/"
+              <a 
+                href="mailto:kontakt@shroom.pl"
                 className="inline-flex items-center gap-3 px-10 py-5 rounded-full font-display font-semibold text-lg transition-all duration-300"
                 style={{ 
                   backgroundColor: "hsl(var(--shroom-black))",
@@ -1492,9 +1489,9 @@ const Brief = () => {
                   boxShadow: "0 20px 60px -15px hsl(var(--shroom-black) / 0.3)"
                 }}
               >
-                Wróć na stronę główną
-                <ArrowLeft className="w-5 h-5 rotate-180" />
-              </Link>
+                Skontaktuj się z nami
+                <Sparkles className="w-5 h-5" />
+              </a>
             </motion.div>
           </div>
         </RevealSection>
