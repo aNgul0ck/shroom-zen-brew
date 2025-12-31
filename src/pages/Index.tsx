@@ -3,10 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Products from "@/components/Products";
 import Reviews from "@/components/Reviews";
-import ComparisonSection from "@/components/ComparisonSection";
 import DivaSection from "@/components/DivaSection";
-import BrainBlissSection from "@/components/BrainBlissSection";
-import Benefits from "@/components/Benefits";
 import About from "@/components/About";
 import FAQ from "@/components/FAQ";
 import Newsletter from "@/components/Newsletter";
@@ -32,10 +29,7 @@ const Index = () => {
           <Hero />
           <Products />
           <Reviews />
-          <ComparisonSection />
           <DivaSection />
-          <BrainBlissSection />
-          <Benefits />
           <About />
           <FAQ />
           <Disclaimer />
