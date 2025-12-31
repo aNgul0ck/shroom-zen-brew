@@ -10,7 +10,7 @@ const Footer = () => {
       { name: "Diva Social Elixir", href: "#produkty" },
     ],
     informacje: [
-      { name: "O adaptogenach", href: "#adaptogeny" },
+      { name: "Blog", href: "/blog" },
       { name: "O nas", href: "#o-nas" },
       { name: "Kontakt", href: "#kontakt" },
     ],
