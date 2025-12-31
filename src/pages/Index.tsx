@@ -1,13 +1,18 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import MarqueeBanner from "@/components/MarqueeBanner";
+import BenefitsAccordion from "@/components/BenefitsAccordion";
+import ProductShowcase from "@/components/ProductShowcase";
 import Products from "@/components/Products";
 import Reviews from "@/components/Reviews";
+import StatsSection from "@/components/StatsSection";
+import LifestyleGallery from "@/components/LifestyleGallery";
 import DivaSection from "@/components/DivaSection";
 import About from "@/components/About";
 import FAQ from "@/components/FAQ";
-import Newsletter from "@/components/Newsletter";
 import Disclaimer from "@/components/Disclaimer";
+import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -27,8 +32,13 @@ const Index = () => {
         <Header />
         <main>
           <Hero />
+          <MarqueeBanner />
+          <BenefitsAccordion />
+          <ProductShowcase />
           <Products />
           <Reviews />
+          <StatsSection />
+          <LifestyleGallery />
           <DivaSection />
           <About />
           <FAQ />

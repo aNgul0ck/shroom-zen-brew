@@ -1,41 +1,43 @@
 import { ArrowRight, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import productPower from "@/assets/product-power.png";
 import productRelax from "@/assets/product-relax.png";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background decoration with brand colors */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-shroom-sage/40 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-shroom-peach/30 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-shroom-gold/15 rounded-full blur-3xl" />
-        <div className="absolute bottom-40 left-1/3 w-64 h-64 bg-shroom-pink/20 rounded-full blur-3xl" />
-      </div>
+    <section className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden">
+      {/* Subtle background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-secondary/30 to-background" />
 
-      <div className="container mx-auto px-6 lg:px-12 py-12 lg:py-0">
+      <div className="container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Text Content */}
-          <div className="max-w-xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-xl"
+          >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-secondary/80 backdrop-blur-sm px-4 py-2 rounded-full mb-6 animate-fade-up">
+            <div className="inline-flex items-center gap-2 bg-card border border-border/50 px-4 py-2 rounded-full mb-6 shadow-soft">
               <Sparkles className="w-4 h-4 text-accent" />
-              <span className="font-body text-sm font-medium text-secondary-foreground">
+              <span className="font-body text-sm font-medium text-foreground">
                 Pierwszy napój adaptogenowy w Polsce
               </span>
             </div>
 
-            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] mb-6 animate-fade-up delay-100">
+            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.05] mb-6">
               Moc natury
               <br />
-              <span className="text-gradient">w każdym łyku</span>
+              <span className="text-accent">w każdym łyku</span>
             </h1>
 
-            <p className="font-body text-lg md:text-xl text-muted-foreground mb-8 animate-fade-up delay-200">
-              Shroom to napoje funkcjonalne z soplówką jeżowatą i naturalną witaminą C. Bez dodanego cukru, bez sztucznych słodzików.
+            <p className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-md">
+              Napoje funkcjonalne z soplówką jeżowatą i naturalną witaminą C. 
+              Bez cukru, bez sztucznych słodzików.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-300">
+            <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="#produkty"
                 className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-display font-semibold text-base hover:scale-105 transition-all duration-300 shadow-elevated"
@@ -44,39 +46,28 @@ const Hero = () => {
                 <ArrowRight className="w-5 h-5" />
               </a>
               <a
-                href="#adaptogeny"
-                className="inline-flex items-center justify-center gap-2 bg-secondary text-secondary-foreground px-8 py-4 rounded-full font-display font-semibold text-base hover:bg-secondary/80 transition-all duration-300"
+                href="#o-nas"
+                className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-primary/20 text-foreground px-8 py-4 rounded-full font-display font-semibold text-base hover:border-primary hover:bg-primary/5 transition-all duration-300"
               >
-                Czym są adaptogeny?
+                Poznaj markę
               </a>
             </div>
+          </motion.div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-border/50 animate-fade-up delay-400">
-              <div>
-                <p className="font-display text-3xl font-bold text-primary">100%</p>
-                <p className="font-body text-sm text-muted-foreground">Naturalny skład</p>
-              </div>
-              <div>
-                <p className="font-display text-3xl font-bold text-primary">0g</p>
-                <p className="font-body text-sm text-muted-foreground">Dodanego cukru</p>
-              </div>
-              <div>
-                <p className="font-display text-3xl font-bold text-primary">🇵🇱</p>
-                <p className="font-body text-sm text-muted-foreground">Made in Poland</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Hero Image - Real Products */}
-          <div className="relative flex justify-center lg:justify-end">
+          {/* Hero Image */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative flex justify-center lg:justify-end"
+          >
             <div className="relative flex items-end gap-4">
               {/* Power Bottle */}
               <div className="animate-float">
                 <img
                   src={productPower}
                   alt="Shroom Power"
-                  className="h-72 md:h-96 w-auto object-contain drop-shadow-2xl"
+                  className="h-64 md:h-80 lg:h-96 w-auto object-contain drop-shadow-2xl"
                 />
               </div>
               
@@ -85,22 +76,11 @@ const Hero = () => {
                 <img
                   src={productRelax}
                   alt="Shroom Relax"
-                  className="h-72 md:h-96 w-auto object-contain drop-shadow-2xl"
+                  className="h-64 md:h-80 lg:h-96 w-auto object-contain drop-shadow-2xl"
                 />
               </div>
-              
-              {/* Floating badges */}
-              <div className="absolute -left-8 top-1/4 bg-card px-4 py-3 rounded-2xl shadow-card animate-float-delayed">
-                <p className="font-display font-bold text-primary text-sm">Lion's Mane</p>
-                <p className="font-body text-xs text-muted-foreground">Soplówka jeżowata</p>
-              </div>
-              
-              <div className="absolute -right-4 bottom-1/4 bg-shroom-coral text-shroom-cream px-4 py-3 rounded-2xl shadow-card animate-float">
-                <p className="font-display font-bold text-sm">Źródło cynku</p>
-                <p className="font-body text-xs text-shroom-cream/90">i witaminy C</p>
-              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
