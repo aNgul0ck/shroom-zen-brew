@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import IntroSection from "@/components/IntroSection";
 import FunctionalDrinks from "@/components/FunctionalDrinks";
+import DivaSection from "@/components/DivaSection";
 import MocktailRecipes from "@/components/MocktailRecipes";
 import Subscriptions from "@/components/Subscriptions";
 import Reviews from "@/components/Reviews";
@@ -31,6 +32,7 @@ const Index = () => {
           <MarqueeBanner />
           <IntroSection />
           <FunctionalDrinks />
+          <DivaSection />
           <MocktailRecipes />
           <Subscriptions />
           <Reviews />
