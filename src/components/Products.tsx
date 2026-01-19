@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import productPower from "@/assets/product-power.png";
 import productRelax from "@/assets/product-relax.png";
 
@@ -6,149 +7,136 @@ const products = [
   {
     id: 1,
     name: "Shroom Power",
-    version: "v1.1",
     tagline: "Moc & Skupienie",
-    description: "Napój funkcjonalny z soplówką jeżowatą i żeń-szeniem. Źródło cynku, który przyczynia się do prawidłowych funkcji poznawczych.",
+    description: "Ekstrakt z soplówki jeżowatej i żeń-szeń. Źródło cynku, który przyczynia się do prawidłowych funkcji poznawczych.",
     price: "79 zł",
-    priceNote: "6 sztuk",
+    priceNote: "6 × 330ml",
     image: productPower,
-    color: "bg-shroom-peach/30",
-    flavors: ["Ginger", "Exotic fruits", "Green Tea"],
-    features: ["Soplówka jeżowata", "Żeń-szeń", "Witaminy B"],
+    bgColor: "bg-shroom-peach/20",
+    ingredients: ["Soplówka jeżowata", "Żeń-szeń", "Cynk", "Wit. C"],
   },
   {
     id: 2,
     name: "Shroom Relax",
-    version: "v2.1",
-    tagline: "Spokój & Harmonia",
-    description: "Napój funkcjonalny z L-theaniną i chmielem. Źródło witaminy C, która przyczynia się do prawidłowego funkcjonowania układu nerwowego.",
+    tagline: "Spokój & Równowaga",
+    description: "L-theanina i chmiel dla naturalnego wyciszenia. Witamina C wspiera prawidłowe funkcjonowanie układu nerwowego.",
     price: "79 zł",
-    priceNote: "6 sztuk",
+    priceNote: "6 × 330ml",
     image: productRelax,
-    color: "bg-shroom-sky/30",
-    flavors: ["Aronia berry", "Bergamot", "Hops"],
-    features: ["L-theanina", "Chmiel", "Bergamotka"],
+    bgColor: "bg-shroom-sky/20",
+    ingredients: ["L-theanina", "Chmiel", "Bergamotka", "Wit. C"],
   },
 ];
 
 const Products = () => {
   return (
-    <section id="produkty" className="section-padding bg-shroom-sage/20">
-      <div className="container mx-auto">
+    <section id="produkty" className="py-24 md:py-32 bg-secondary/30">
+      <div className="container mx-auto px-6 lg:px-12">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block font-body text-sm font-semibold text-shroom-coral uppercase tracking-wider mb-4">
-            Mushrooms & Botanicals
-          </span>
-          <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Napoje Shroom
-          </h2>
-          <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-            Dwie formuły, jeden cel — wspierać Twoje ciało i umysł naturalnie. 
-            Wybierz Power do pobudzenia lub Relax do wyciszenia.
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <p className="font-body text-sm font-semibold text-accent uppercase tracking-[0.2em] mb-4">
+            Napoje funkcjonalne
           </p>
-        </div>
+          <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-6">
+            Wybierz swój Shroom
+          </h2>
+          <p className="font-body text-lg text-muted-foreground max-w-xl mx-auto">
+            Dwa smaki, jeden cel — wspierać Twoje ciało i umysł naturalnie.
+          </p>
+        </motion.div>
 
-        {/* Products Grid - Side by Side */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {/* Products Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {products.map((product, index) => (
-            <article
+            <motion.article
               key={product.id}
-              className={`group relative bg-card rounded-3xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 animate-fade-up`}
-              style={{ animationDelay: `${index * 150}ms` }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className={`group relative ${product.bgColor} rounded-3xl p-8 lg:p-10 overflow-hidden`}
             >
-              {/* Background accent */}
-              <div className={`absolute top-0 right-0 w-64 h-64 ${product.color} rounded-full blur-3xl -z-10 opacity-80`} />
-              
               {/* Product Image */}
-              <div className="relative h-80 md:h-96 flex items-center justify-center p-8 group-hover:scale-105 transition-transform duration-500">
+              <div className="relative h-64 md:h-80 flex items-center justify-center mb-8">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="h-full w-auto object-contain drop-shadow-2xl"
+                  className="h-full w-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
               {/* Content */}
-              <div className="p-6 pt-0">
-                {/* Version Badge */}
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="font-body text-xs font-semibold text-shroom-coral uppercase tracking-wider">
-                    {product.tagline}
-                  </span>
-                  <span className="text-xs text-muted-foreground font-body">
-                    {product.version}
-                  </span>
-                </div>
-                
-                <h3 className="font-display text-2xl font-bold text-foreground mb-3">
+              <div>
+                <p className="font-body text-sm font-semibold text-accent uppercase tracking-wider mb-2">
+                  {product.tagline}
+                </p>
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
                   {product.name}
                 </h3>
-                <p className="font-body text-sm text-muted-foreground mb-4">
+                <p className="font-body text-muted-foreground mb-6 leading-relaxed">
                   {product.description}
                 </p>
 
-                {/* Flavors */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {product.flavors.map((flavor) => (
+                {/* Ingredients */}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {product.ingredients.map((ingredient) => (
                     <span
-                      key={flavor}
-                      className="bg-shroom-blush/50 px-3 py-1 rounded-full font-body text-xs font-medium text-shroom-purple"
+                      key={ingredient}
+                      className="bg-background/60 backdrop-blur-sm px-4 py-2 rounded-full font-body text-xs font-medium text-foreground"
                     >
-                      {flavor}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Features */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {product.features.map((feature) => (
-                    <span
-                      key={feature}
-                      className="bg-secondary px-3 py-1 rounded-full font-body text-xs font-medium text-secondary-foreground"
-                    >
-                      {feature}
+                      {ingredient}
                     </span>
                   ))}
                 </div>
 
                 {/* Price & CTA */}
-                <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                <div className="flex items-center justify-between pt-6 border-t border-foreground/10">
                   <div>
-                    <p className="font-display text-2xl font-bold text-primary">
-                      {product.price}
-                    </p>
-                    <p className="font-body text-xs text-muted-foreground">
-                      {product.priceNote}
-                    </p>
+                    <p className="font-display text-3xl font-bold text-primary">{product.price}</p>
+                    <p className="font-body text-sm text-muted-foreground">{product.priceNote}</p>
                   </div>
-                  <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-3 rounded-full font-display font-semibold text-sm hover:scale-105 transition-transform duration-200">
+                  <button className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-display font-semibold text-sm hover:scale-105 transition-transform duration-200">
                     Zamów
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
 
         {/* Pack Options */}
-        <div className="mt-12 text-center">
-          <p className="font-body text-muted-foreground mb-4">
-            Dostępne również w paczkach 12 i 18 sztuk
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
+        >
+          <p className="font-body text-sm text-muted-foreground mb-4">
+            Dostępne również w większych paczkach
           </p>
-          <div className="inline-flex gap-4">
-            <span className="bg-card px-4 py-2 rounded-full font-body text-sm shadow-soft">
-              6 szt. — <strong>79 zł</strong>
-            </span>
-            <span className="bg-card px-4 py-2 rounded-full font-body text-sm shadow-soft">
-              12 szt. — <strong>148 zł</strong>
-            </span>
-            <span className="bg-card px-4 py-2 rounded-full font-body text-sm shadow-soft">
-              18 szt. — <strong>216 zł</strong>
-            </span>
+          <div className="inline-flex flex-wrap justify-center gap-4">
+            {[
+              { qty: "6 szt.", price: "79 zł" },
+              { qty: "12 szt.", price: "148 zł" },
+              { qty: "18 szt.", price: "216 zł" },
+            ].map((pack) => (
+              <span
+                key={pack.qty}
+                className="bg-card px-5 py-2.5 rounded-full font-body text-sm shadow-soft"
+              >
+                {pack.qty} — <strong>{pack.price}</strong>
+              </span>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
