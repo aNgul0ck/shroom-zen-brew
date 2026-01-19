@@ -1,34 +1,30 @@
 import { motion } from "framer-motion";
 
 const keywords = [
-  "Adaptogeny",
-  "Soplówka jeżowata",
-  "Lion's Mane",
-  "Nootropiki",
-  "Żeń-szeń",
-  "L-theanina",
-  "Bez cukru",
-  "Wegańskie",
-  "Naturalne",
-  "Made in Poland",
+  "Adaptogens",
+  "Nootropics",
+  "Botanicals",
+  "Medicinal Mushrooms",
+  "Natural",
+  "Mood enhancing",
 ];
 
 const MarqueeBanner = () => {
   return (
-    <div className="bg-primary py-4 overflow-hidden">
+    <div className="bg-shroom-peach py-3 overflow-hidden">
       <motion.div
-        className="flex gap-12 whitespace-nowrap"
+        className="flex gap-16 whitespace-nowrap"
         animate={{ x: ["0%", "-50%"] }}
         transition={{
-          duration: 30,
+          duration: 25,
           ease: "linear",
           repeat: Infinity,
         }}
       >
-        {[...keywords, ...keywords].map((keyword, index) => (
+        {[...keywords, ...keywords, ...keywords].map((keyword, index) => (
           <span
             key={index}
-            className="font-display text-sm font-semibold text-primary-foreground/80 uppercase tracking-[0.15em]"
+            className="font-body text-sm font-medium text-foreground tracking-wide"
           >
             {keyword}
           </span>
