@@ -3,13 +3,11 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import IntroSection from "@/components/IntroSection";
-import Products from "@/components/Products";
-import BenefitsSection from "@/components/BenefitsSection";
+import FunctionalDrinks from "@/components/FunctionalDrinks";
+import MocktailRecipes from "@/components/MocktailRecipes";
+import Subscriptions from "@/components/Subscriptions";
 import Reviews from "@/components/Reviews";
-import DivaSection from "@/components/DivaSection";
-import About from "@/components/About";
-import FAQ from "@/components/FAQ";
-import Disclaimer from "@/components/Disclaimer";
+import IngredientsCarousel from "@/components/IngredientsCarousel";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
@@ -32,13 +30,11 @@ const Index = () => {
           <Hero />
           <MarqueeBanner />
           <IntroSection />
-          <Products />
-          <BenefitsSection />
+          <FunctionalDrinks />
+          <MocktailRecipes />
+          <Subscriptions />
           <Reviews />
-          <DivaSection />
-          <About />
-          <FAQ />
-          <Disclaimer />
+          <IngredientsCarousel />
           <Newsletter />
         </main>
         <Footer />
