@@ -47,6 +47,18 @@ const steps = [
 
 const SWIPE_THRESHOLD = 50;
 
+// Haptic feedback utility
+const triggerHaptic = (style: 'light' | 'medium' | 'heavy' = 'light') => {
+  if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+    const patterns = {
+      light: 10,
+      medium: 20,
+      heavy: 30,
+    };
+    navigator.vibrate(patterns[style]);
+  }
+};
+
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [direction, setDirection] = useState(0);
@@ -62,10 +74,12 @@ const HowItWorks = () => {
           // Swipe right = previous step
           setDirection(-1);
           setActiveStep(activeStep - 1);
+          triggerHaptic('medium');
         } else if (offset.x < 0 && activeStep < steps.length) {
           // Swipe left = next step
           setDirection(1);
           setActiveStep(activeStep + 1);
+          triggerHaptic('medium');
         }
       }
     },
@@ -73,8 +87,11 @@ const HowItWorks = () => {
   );
 
   const goToStep = (stepId: number) => {
-    setDirection(stepId > activeStep ? 1 : -1);
-    setActiveStep(stepId);
+    if (stepId !== activeStep) {
+      setDirection(stepId > activeStep ? 1 : -1);
+      setActiveStep(stepId);
+      triggerHaptic('light');
+    }
   };
 
   const slideVariants = {
