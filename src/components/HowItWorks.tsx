@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useCallback } from "react";
+import { motion, AnimatePresence, PanInfo } from "framer-motion";
 import { Droplets, Zap, Brain, Sparkles, ArrowRight, Clock } from "lucide-react";
 
 const steps = [
@@ -45,10 +45,52 @@ const steps = [
   },
 ];
 
+const SWIPE_THRESHOLD = 50;
+
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(1);
+  const [direction, setDirection] = useState(0);
 
   const currentStep = steps.find((s) => s.id === activeStep) || steps[0];
+
+  const handleDragEnd = useCallback(
+    (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+      const { offset } = info;
+      
+      if (Math.abs(offset.x) > SWIPE_THRESHOLD) {
+        if (offset.x > 0 && activeStep > 1) {
+          // Swipe right = previous step
+          setDirection(-1);
+          setActiveStep(activeStep - 1);
+        } else if (offset.x < 0 && activeStep < steps.length) {
+          // Swipe left = next step
+          setDirection(1);
+          setActiveStep(activeStep + 1);
+        }
+      }
+    },
+    [activeStep]
+  );
+
+  const goToStep = (stepId: number) => {
+    setDirection(stepId > activeStep ? 1 : -1);
+    setActiveStep(stepId);
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 100 : -100,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? -100 : 100,
+      opacity: 0,
+    }),
+  };
 
   return (
     <section className="py-16 md:py-24 bg-background border-t border-border overflow-hidden">
@@ -75,22 +117,28 @@ const HowItWorks = () => {
         {/* Mobile: Detail Panel First, then Steps */}
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-20 items-start lg:items-center">
           
-          {/* Detail Panel - Shows first on mobile */}
+          {/* Detail Panel - Shows first on mobile, with swipe support */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="relative order-1 lg:order-2 w-full"
+            className="relative order-1 lg:order-2 w-full touch-pan-y"
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={activeStep}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.25 }}
-                className={`${currentStep.bgColor} rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12`}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={handleDragEnd}
+                className={`${currentStep.bgColor} rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 cursor-grab active:cursor-grabbing`}
               >
                 {/* Large Icon - Smaller on mobile */}
                 <div className="w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-background/60 backdrop-blur-sm flex items-center justify-center mb-5 md:mb-8">
@@ -122,19 +170,24 @@ const HowItWorks = () => {
                   {currentStep.description}
                 </p>
 
-                {/* Progress Dots - Hidden on mobile, shown on desktop */}
-                <div className="hidden md:flex gap-2 mt-10">
-                  {steps.map((step) => (
-                    <button
-                      key={step.id}
-                      onClick={() => setActiveStep(step.id)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        activeStep === step.id
-                          ? "w-8 bg-foreground"
-                          : "bg-foreground/30 hover:bg-foreground/50"
-                      }`}
-                    />
-                  ))}
+                {/* Mobile: Swipe hint + Progress dots */}
+                <div className="flex items-center justify-between mt-6 md:mt-10">
+                  <div className="flex gap-2">
+                    {steps.map((step) => (
+                      <button
+                        key={step.id}
+                        onClick={() => goToStep(step.id)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          activeStep === step.id
+                            ? "w-6 md:w-8 bg-foreground"
+                            : "bg-foreground/30 hover:bg-foreground/50"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <span className="md:hidden text-xs text-muted-foreground/60 font-body">
+                    ← przesuń →
+                  </span>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -153,7 +206,7 @@ const HowItWorks = () => {
               {steps.map((step) => (
                 <button
                   key={step.id}
-                  onClick={() => setActiveStep(step.id)}
+                  onClick={() => goToStep(step.id)}
                   className={`flex-shrink-0 flex items-center gap-2 px-4 py-3 rounded-full border transition-all duration-300 ${
                     activeStep === step.id
                       ? `${step.bgColor} border-transparent`
@@ -184,7 +237,7 @@ const HowItWorks = () => {
               {steps.map((step) => (
                 <button
                   key={step.id}
-                  onClick={() => setActiveStep(step.id)}
+                  onClick={() => goToStep(step.id)}
                   className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 group ${
                     activeStep === step.id
                       ? `${step.bgColor} border-${step.color}/30`
