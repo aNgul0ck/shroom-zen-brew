@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import IntroSection from "@/components/IntroSection";
+import HowItWorks from "@/components/HowItWorks";
 import FunctionalDrinks from "@/components/FunctionalDrinks";
 import DivaSection from "@/components/DivaSection";
 import MocktailRecipes from "@/components/MocktailRecipes";
@@ -31,6 +32,7 @@ const Index = () => {
           <Hero />
           <MarqueeBanner />
           <IntroSection />
+          <HowItWorks />
           <FunctionalDrinks />
           <DivaSection />
           <MocktailRecipes />
