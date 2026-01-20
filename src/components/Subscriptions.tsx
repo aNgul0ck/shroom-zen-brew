@@ -1,54 +1,58 @@
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Zap, Sun, Moon, Crown } from "lucide-react";
 
 const subscriptions = [
   {
     id: 1,
+    icon: Zap,
     badge: "Starter",
     badgeColor: "bg-shroom-peach text-foreground",
     name: "Starter Ritual",
-    description: "12 bottles of Power or Relax",
+    headline: "Spróbuj",
     price: "149",
-    period: "A 2-week ritual · 1 bottle per day",
-    perfectFor: "New users who want to gently explore the effects",
-    benefits: [
-      "A light start to feel the difference",
-      "Ideal as a personal or thoughtful gift",
+    bottles: "12 butelek",
+    period: "Power lub Relax",
+    highlights: [
+      "2 tygodnie eksperymentu",
+      "1 butelka dziennie",
+      "Idealny na prezent",
     ],
-    cta: "Start ritual",
+    cta: "Rozpocznij",
     ctaStyle: "bg-shroom-peach text-foreground hover:bg-shroom-peach/80",
-    toggle: true,
   },
   {
     id: 2,
-    badge: "Most popular",
+    icon: Sun,
+    badge: "Bestseller",
     badgeColor: "bg-shroom-green text-foreground",
     name: "Good Trip",
-    description: "A day in harmony",
+    headline: "Dzień w harmonii",
     price: "269",
-    period: "12 Power + 12 Relax · 24 bottles / month",
-    perfectFor: "Those who want to follow the natural rhythm of the day",
-    benefits: [
-      "Morning activation and evening unwind",
-      "Full-body support from AM to PM",
+    bottles: "24 butelki",
+    period: "12 Power + 12 Relax",
+    highlights: [
+      "Pełny rytm dnia",
+      "Rano: aktywacja",
+      "Wieczór: wyciszenie",
     ],
-    cta: "Choose Good Trip",
+    cta: "Wybierz",
     ctaStyle: "bg-shroom-green text-foreground hover:bg-shroom-green/80",
     featured: true,
   },
   {
     id: 3,
-    badge: "Advanced",
+    icon: Crown,
+    badge: "Pro",
     badgeColor: "bg-shroom-lavender text-white",
     name: "Feel Your Best",
-    description: "One month of balance",
+    headline: "Pełna transformacja",
     price: "499",
-    period: "24 Power + 24 Relax · 2 bottles per day",
-    perfectFor: "People who want clarity by day and recovery by night",
-    benefits: [
-      "Helps enter a state of focus and mental clarity",
-      "Keeps your rhythm steady without burning out",
-      "For those who go all in — consciously",
+    bottles: "48 butelek",
+    period: "24 Power + 24 Relax",
+    highlights: [
+      "Miesiąc wsparcia",
+      "2 butelki dziennie",
+      "Maksymalne efekty",
     ],
     cta: "Go Heroic",
     ctaStyle: "bg-shroom-lavender text-white hover:bg-shroom-lavender/80",
@@ -57,25 +61,30 @@ const subscriptions = [
 
 const Subscriptions = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground">
-            Subscriptions
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <p className="font-body text-sm font-medium text-muted-foreground uppercase tracking-[0.2em] mb-4">
+            Subskrypcje
+          </p>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Wybierz swój rytm
           </h2>
-          <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
-            <span className="text-xs">🍄</span>
-          </div>
-        </div>
-
-        <p className="font-body text-muted-foreground max-w-2xl mb-12">
-          Get more for less at a monthly rate, with dedicated customer portal access to manage
-          your subscriptions and cancel them anytime. Three packages to match your needs.
-        </p>
+          <p className="font-body text-muted-foreground max-w-xl mx-auto">
+            Regularne wsparcie organizmu. Elastyczne plany. 
+            Anuluj kiedy chcesz.
+          </p>
+        </motion.div>
 
         {/* Subscription Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {subscriptions.map((sub, index) => (
             <motion.div
               key={sub.id}
@@ -83,82 +92,70 @@ const Subscriptions = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className={`bg-card rounded-2xl p-6 border ${sub.featured ? 'border-shroom-green' : 'border-border'}`}
+              className={`bg-card rounded-2xl p-6 lg:p-8 border relative ${
+                sub.featured 
+                  ? 'border-shroom-green ring-2 ring-shroom-green/20' 
+                  : 'border-border'
+              }`}
             >
+              {/* Icon */}
+              <div className={`w-12 h-12 rounded-xl ${sub.badgeColor.split(' ')[0]} flex items-center justify-center mb-6`}>
+                <sub.icon className="w-6 h-6 text-foreground" />
+              </div>
+
               {/* Badge */}
               <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 ${sub.badgeColor}`}>
                 {sub.badge}
               </span>
 
-              {/* Toggle for Starter */}
-              {sub.toggle && (
-                <div className="flex gap-2 mb-4">
-                  <button className="px-4 py-2 bg-secondary rounded-full text-sm font-medium">
-                    Power
-                  </button>
-                  <button className="px-4 py-2 text-muted-foreground text-sm font-medium hover:bg-secondary/50 rounded-full transition-colors">
-                    Relax
-                  </button>
-                </div>
-              )}
-
-              {/* Name & Description */}
+              {/* Name & Headline */}
               <h3 className="font-display text-xl font-bold text-foreground mb-1">
                 {sub.name}
               </h3>
-              <p className="font-body text-sm text-muted-foreground mb-4">
-                {sub.description}
+              <p className="font-body text-muted-foreground mb-6">
+                {sub.headline}
               </p>
 
               {/* Price */}
-              <p className="font-display text-4xl font-bold text-foreground mb-1">
-                {sub.price} <span className="text-lg font-normal">PLN</span>
-              </p>
-              <p className="font-body text-xs text-muted-foreground mb-6">
-                {sub.period}
-              </p>
+              <div className="mb-6">
+                <p className="font-display text-4xl font-bold text-foreground">
+                  {sub.price} <span className="text-lg font-normal text-muted-foreground">zł</span>
+                </p>
+                <p className="font-body text-sm text-muted-foreground mt-1">
+                  {sub.bottles} · {sub.period}
+                </p>
+              </div>
 
-              {/* Perfect for */}
-              <p className="font-body text-xs text-muted-foreground mb-2">Perfect for:</p>
-              <p className="font-body text-sm text-foreground mb-6">
-                {sub.perfectFor}
-              </p>
-
-              {/* Benefits */}
-              <p className="font-body text-xs text-muted-foreground mb-3">What it gives you:</p>
-              <ul className="space-y-2 mb-6">
-                {sub.benefits.map((benefit, i) => (
-                  <li key={i} className="flex items-start gap-2 font-body text-sm text-foreground">
-                    <span className="text-muted-foreground mt-0.5">○</span>
-                    {benefit}
+              {/* Highlights */}
+              <ul className="space-y-3 mb-8">
+                {sub.highlights.map((highlight, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <div className="w-5 h-5 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+                      <Check className="w-3 h-3 text-foreground" />
+                    </div>
+                    <span className="font-body text-sm text-foreground">{highlight}</span>
                   </li>
                 ))}
               </ul>
 
-              {/* Cancel note for Starter */}
-              {sub.toggle && (
-                <p className="font-body text-xs text-muted-foreground mb-4">
-                  Not feeling it? Cancel anytime after the first month.
-                </p>
-              )}
-
               {/* CTA */}
-              <button className={`w-full py-3 rounded-full font-display font-semibold text-sm transition-colors ${sub.ctaStyle}`}>
+              <button className={`w-full py-3.5 rounded-full font-display font-semibold text-sm transition-colors ${sub.ctaStyle}`}>
                 {sub.cta}
               </button>
             </motion.div>
           ))}
         </div>
 
-        {/* Manage Button */}
-        <div className="text-center mt-10">
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 border border-foreground text-foreground px-8 py-3 rounded-full font-display font-medium text-sm hover:bg-foreground hover:text-background transition-all duration-300"
-          >
-            Manage subscriptions
-          </a>
-        </div>
+        {/* Trust Note */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mt-10 font-body text-sm text-muted-foreground"
+        >
+          Bez zobowiązań. Anuluj w dowolnym momencie. Bezpieczna płatność.
+        </motion.p>
       </div>
     </section>
   );
