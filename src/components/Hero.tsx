@@ -87,7 +87,7 @@ const Hero = () => {
               href="#produkty"
               className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-display font-medium text-sm hover:bg-white/90 transition-colors duration-300"
             >
-              Odkryj produkty
+              Kup Shrooma
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
