@@ -1,5 +1,6 @@
 import { ArrowRight, Wine, Sparkles, Leaf, Heart } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import productDiva from "@/assets/product-diva.png";
 
 const features = [
@@ -103,13 +104,13 @@ const DivaSection = () => {
                 <p className="font-body text-sm text-white/50">500ml</p>
               </div>
               
-              <a
-                href="#"
+              <Link
+                to="/produkt/diva"
                 className="inline-flex items-center gap-2 bg-diva-pink text-[#1a0a12] px-8 py-4 rounded-full font-display font-semibold text-sm hover:bg-white transition-colors duration-300"
               >
                 Shop Diva
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
