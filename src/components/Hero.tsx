@@ -11,17 +11,17 @@ const Hero = () => {
         <img
           src={heroImage}
           alt="Friends enjoying Shroom drinks together"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-x-[-1] object-[30%_center]"
         />
-        {/* Gradient overlay - stronger on left for text, transparent on right for photo */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 md:to-transparent" />
+        {/* Gradient overlay - stronger on right for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-l from-black/85 via-black/50 to-black/10 md:to-transparent" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 pt-32 pb-24">
-        <div className="max-w-xl">
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 pt-24 pb-24">
+        <div className="max-w-xl ml-auto">
           {/* Star rating badge */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2 mb-8"
@@ -37,7 +37,7 @@ const Hero = () => {
 
           {/* Dream outcome headline */}
           <motion.h1
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-headline text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-[1.05] mb-6"
@@ -50,7 +50,7 @@ const Hero = () => {
 
           {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="font-body text-base sm:text-lg text-white/70 leading-relaxed mb-8 max-w-md"
@@ -60,7 +60,7 @@ const Hero = () => {
 
           {/* Trust pills */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-wrap gap-3 mb-10"
@@ -78,7 +78,7 @@ const Hero = () => {
 
           {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-wrap gap-4 mb-14"
