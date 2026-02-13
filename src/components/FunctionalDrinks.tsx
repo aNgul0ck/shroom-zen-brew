@@ -1,5 +1,6 @@
 import { ArrowRight, Sun, Moon, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import productPower from "@/assets/product-power.png";
 import productRelax from "@/assets/product-relax.png";
 
@@ -110,13 +111,13 @@ const FunctionalDrinks = () => {
                   </div>
 
                   {/* CTA */}
-                  <a
-                    href="#"
+                  <Link
+                    to={`/produkt/${product.id === 1 ? "shroom-power" : "shroom-relax"}`}
                     className="inline-flex items-center gap-2 font-display font-semibold text-sm text-foreground hover:gap-3 transition-all duration-300"
                   >
                     Zobacz produkt
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>

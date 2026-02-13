@@ -1,5 +1,6 @@
 import { ArrowRight, Star, Check, Quote } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-lifestyle.jpg";
 
 const Hero = () => {
@@ -83,13 +84,13 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-wrap gap-4 mb-14"
           >
-            <a
-              href="#produkty"
+            <Link
+              to="/produkt/shroom-power"
               className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-display font-medium text-sm hover:bg-white/90 transition-colors duration-300"
             >
               Kup Shrooma
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
             <a
               href="#o-nas"
               className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-full font-display font-medium text-sm hover:bg-white/20 transition-colors duration-300"
