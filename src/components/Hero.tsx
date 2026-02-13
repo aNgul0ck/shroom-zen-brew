@@ -13,12 +13,12 @@ const Hero = () => {
           alt="Friends enjoying Shroom drinks together"
           className="w-full h-full object-cover scale-x-[-1] object-[30%_center]"
         />
-        {/* Gradient overlay - stronger on right for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-l from-black/85 via-black/50 to-black/10 md:to-transparent" />
+        {/* Gradient overlay - stronger on left for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/10 md:to-transparent" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12 pt-24 pb-24">
-        <div className="max-w-xl ml-auto">
+        <div className="max-w-xl">
           {/* Star rating badge */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
