@@ -1,44 +1,86 @@
 
 
-# Hero Section Rebuild
+# Product Pages - E-commerce UX
 
-## Concept
-Rebuild the hero into a high-converting, "dream outcome" hero inspired by the reference screenshot. The uploaded lifestyle photo will be used as the background. Text will be left-aligned (not centered), overlaying the image with a gradient for readability. A review badge and mini testimonial will add social proof directly in the hero.
+## Overview
+Create dedicated product pages for each of the 3 drinks (Shroom Power, Shroom Relax, Diva) with modern wellness e-commerce UX patterns. Each page will be a conversion-optimized product detail page (PDP).
 
-## Layout (Desktop)
-- Full-screen background: the uploaded lifestyle photo (girls drinking Shroom)
-- Dark gradient overlay from left side for text readability
-- Content left-aligned (or slightly left-of-center), vertically centered
-- Top: Star rating badge (e.g., "4.9/5 - 200+ reviews")
-- Main headline: "Dream outcome" style -- something like "Poczuj sie swietnie bez alkoholu" with the key benefit phrase highlighted in accent color
-- Subtitle: Short supporting line about what Shroom delivers
-- Trust pills: "0g cukru", "100% natural", "Lion's Mane"
-- CTA buttons
-- Bottom: A mini review quote from a real person
+## Routes
+- `/produkt/shroom-power`
+- `/produkt/shroom-relax`
+- `/produkt/diva`
 
-## Layout (Mobile)
-- Same concept but stacked, smaller text
-- Photo still covers full screen, gradient adjusted for mobile readability
+All existing links ("Zobacz produkt", "Shop Diva", "Kup Shrooma") will be updated to point to these pages.
 
-## Key Changes
-1. Copy the uploaded photo to `src/assets/hero-lifestyle.jpg`
-2. Rewrite `src/components/Hero.tsx`:
-   - Background: lifestyle photo with left-to-right dark gradient overlay
-   - Left-aligned text block with:
-     - Review badge (stars + count)
-     - "Dream outcome" headline with accent-colored key phrase
-     - Supporting subtitle
-     - Trust checkmarks (no sugar, natural, functional)
-     - CTA buttons
-     - Mini testimonial quote at bottom
-3. Remove the old centered layout, scroll indicator stays
+## Page Structure (each product page)
+
+### 1. Hero / Above the Fold
+- Large product image (left) with subtle float animation
+- Right side: product name, tagline, star rating (4.9/5), short description
+- Price with quantity selector (1x, 3x, 6x with progressive discounts)
+- Bold "Dodaj do koszyka" CTA button
+- Trust badges row: "Darmowa dostawa od 99 zl", "Naturalne skladniki", "Made in Poland"
+
+### 2. Key Benefits Strip
+- Horizontal row of 3-4 icon + label cards highlighting the product's main benefits
+- e.g., for Power: "Energia bez crashu", "500mg Lion's Mane", "0g cukru", "Witamina C"
+- Clean, scannable format -- icons + short text
+
+### 3. "How It Works" / Ingredients Spotlight
+- Visual breakdown of active ingredients with dosage amounts
+- Each ingredient gets an icon, name, dosage, and one-line EFSA-compliant benefit
+- Presented as a vertical timeline or horizontal cards
+
+### 4. Before/After or "Your Day With Shroom"
+- Visual storytelling showing how the product fits into a daily routine
+- For Power: morning routine flow (wake up -> Shroom -> focus all day)
+- For Relax: evening wind-down flow
+- For Diva: social occasion flow
+
+### 5. Social Proof Section
+- Product-specific reviews (filtered from the review data)
+- Star rating summary
+- "Verified purchase" badges
+
+### 6. FAQ Accordion
+- Product-specific questions (ingredients, taste, usage, shipping)
+- Using existing Radix accordion component
+
+### 7. Cross-sell / "Complete Your Ritual"
+- Cards linking to the other 2 products
+- "Pair Power with Relax for the full day-night cycle"
+
+## Diva Differentiation
+Diva's page uses the dark theme (`bg-[#1a0a12]` with pink accents) consistent with its "brand within a brand" identity, while Power and Relax use the standard cream/sage Shroom theme.
+
+## Files to Create/Edit
+
+### New Files
+- `src/pages/ProductPage.tsx` -- shared product detail page component with product data lookup by slug
+- `src/components/product/ProductHero.tsx` -- above-the-fold section (image + info + CTA)
+- `src/components/product/ProductBenefits.tsx` -- key benefits strip
+- `src/components/product/ProductIngredients.tsx` -- ingredients spotlight
+- `src/components/product/ProductRoutine.tsx` -- daily routine visual
+- `src/components/product/ProductReviews.tsx` -- filtered reviews
+- `src/components/product/ProductFAQ.tsx` -- FAQ accordion
+- `src/components/product/ProductCrossSell.tsx` -- cross-sell cards
+- `src/data/products.ts` -- centralized product data (name, slug, price, ingredients, benefits, reviews, FAQs)
+
+### Files to Edit
+- `src/App.tsx` -- add route `/produkt/:slug`
+- `src/components/FunctionalDrinks.tsx` -- update "Zobacz produkt" links to `/produkt/shroom-power` and `/produkt/shroom-relax`
+- `src/components/DivaSection.tsx` -- update "Shop Diva" link to `/produkt/diva`
+- `src/components/Hero.tsx` -- update "Kup Shrooma" link to `/produkt/shroom-power` or keep as `#produkty`
 
 ## Technical Details
-- Import the new image from `@/assets/hero-lifestyle.jpg`
-- Use `framer-motion` for entrance animations (staggered fade-in from left)
-- Gradient overlay: `bg-gradient-to-r from-black/80 via-black/50 to-transparent`
-- Headline: Afronaut font, with a `<span>` in accent/gold color for the dream outcome phrase
-- Star rating: inline flex with `lucide-react` Star icons filled in gold
-- Trust items: checkmark icons + text in small pills
-- Responsive: on mobile, gradient covers more of the image, text takes full width
+
+- Product data centralized in `src/data/products.ts` with full typing
+- `ProductPage.tsx` uses `useParams()` to get slug, looks up product data
+- Framer Motion for section entrance animations (consistent with existing patterns)
+- Quantity selector uses local state with `useState`
+- FAQ uses `@radix-ui/react-accordion` (already installed)
+- Diva page conditionally applies dark theme classes based on product slug
+- All components use existing font classes (`font-headline`, `font-display`, `font-body`)
+- EFSA-compliant copy only -- ingredient-level claims, no product-level health claims
+- Responsive: single column on mobile, two-column hero on desktop
 
