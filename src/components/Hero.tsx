@@ -6,7 +6,8 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 -z-10">
+      {/* Background Image */}
+      <div className="absolute inset-0">
         <img
           src={heroImage}
           alt="Friends enjoying Shroom drinks together"
@@ -16,7 +17,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 md:to-transparent" />
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 pt-32 pb-24">
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 pt-32 pb-24">
         <div className="max-w-xl">
           {/* Star rating badge */}
           <motion.div
@@ -119,7 +120,7 @@ const Hero = () => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
