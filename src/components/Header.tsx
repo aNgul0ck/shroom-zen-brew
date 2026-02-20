@@ -5,9 +5,9 @@ import { Menu, X, ShoppingBag, Heart, User, Search, Moon, Sun } from "lucide-rea
 const navLinks = [
   { name: "Shop", href: "#produkty" },
   { name: "Our story", href: "#o-nas" },
-  { name: "B2B", href: "#" },
-  { name: "Where to buy?", href: "#" },
+  { name: "Quiz", href: "/quiz" },
   { name: "Blog", href: "/blog" },
+  { name: "B2B", href: "#" },
   { name: "Contact", href: "#kontakt" },
 ];
 
