@@ -215,6 +215,22 @@ const IntroSection = () => {
           ))}
         </div>
 
+        {/* Quiz CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mt-16 md:mt-24 text-center"
+        >
+          <a
+            href="/quiz"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background font-bold text-base hover:bg-foreground/90 transition-colors"
+          >
+            🍄 Znajdź swojego Shrooma
+          </a>
+        </motion.div>
+
         {/* Stats */}
         <motion.div
           initial={{ opacity: 0 }}
