@@ -1,16 +1,18 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import MarqueeBanner from "@/components/MarqueeBanner";
 import TrustBar from "@/components/TrustBar";
+import MarqueeBanner from "@/components/MarqueeBanner";
 import FunctionalDrinks from "@/components/FunctionalDrinks";
 import { DayCycleClock } from "@/components/DayCycleClock";
 import Reviews from "@/components/Reviews";
 import ComparisonSection from "@/components/ComparisonSection";
 import IngredientsCarousel from "@/components/IngredientsCarousel";
 import Subscriptions from "@/components/Subscriptions";
+import QuizCTA from "@/components/QuizCTA";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
+import StickyCTA from "@/components/StickyCTA";
 
 const Index = () => {
   return (
@@ -49,8 +51,10 @@ const Index = () => {
           <ComparisonSection />
           <IngredientsCarousel />
           <Subscriptions />
+          <QuizCTA />
           <Newsletter />
         </main>
+        <StickyCTA />
         <Footer />
       </div>
     </HelmetProvider>

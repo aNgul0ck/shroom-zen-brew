@@ -55,7 +55,7 @@ const subscriptions = [
 
 const Subscriptions = () => {
   return (
-    <section className="py-28 md:py-36 bg-background">
+    <section className="py-28 md:py-36 bg-background" id="subskrypcje">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
