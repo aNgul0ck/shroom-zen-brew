@@ -2,6 +2,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MarqueeBanner from "@/components/MarqueeBanner";
+import TrustBar from "@/components/TrustBar";
 import FunctionalDrinks from "@/components/FunctionalDrinks";
 import { DayCycleClock } from "@/components/DayCycleClock";
 import Reviews from "@/components/Reviews";
