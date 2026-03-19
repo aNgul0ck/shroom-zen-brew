@@ -1,8 +1,9 @@
-import { ArrowRight, Sun, Moon } from "lucide-react";
+import { ArrowRight, Sun, Moon, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import productPower from "@/assets/product-power.png";
 import productRelax from "@/assets/product-relax.png";
+import productDiva from "@/assets/product-diva.png";
 
 const products = [
   {
@@ -17,6 +18,7 @@ const products = [
       "Aktywuj umysł i ciało. Bez crashu kofeinowego, bez jitterów. Czysta, stabilna energia na cały dzień.",
     color: "bg-shroom-gold/20",
     slug: "shroom-power",
+    price: "79 zł",
   },
   {
     id: 2,
@@ -30,6 +32,21 @@ const products = [
       "Wycisz się po intensywnym dniu. Regeneracja zaczyna się od odpuszczenia — nie od kolejnego scrollowania.",
     color: "bg-shroom-lavender/20",
     slug: "shroom-relax",
+    price: "79 zł",
+  },
+  {
+    id: 3,
+    name: "Diva",
+    tagline: "Celebruj każdą chwilę.",
+    image: productDiva,
+    icon: Sparkles,
+    benefits: ["13 botaników", "Jadalny brokat", "Żeń-szeń"],
+    time: "Social",
+    description:
+      "Bezalkoholowe aperitivo stworzone do wyjątkowych momentów. Spektakularny smak, zero kompromisów.",
+    color: "bg-diva-pink/15",
+    slug: "diva",
+    price: "112 zł",
   },
 ];
 
@@ -61,11 +78,11 @@ const FunctionalDrinks = () => {
           viewport={{ once: true }}
           className="font-body text-lg text-muted-foreground max-w-xl mb-16 md:mb-20"
         >
-          Dwa napoje zaprojektowane do naturalnego rytmu Twojego ciała. Energia rano, spokój wieczorem.
+          Trzy napoje zaprojektowane do naturalnego rytmu Twojego życia. Energia, spokój, celebracja.
         </motion.p>
 
         {/* Products */}
-        <div className="grid lg:grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-3 gap-5">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
@@ -73,7 +90,7 @@ const FunctionalDrinks = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.15, duration: 0.5 }}
               viewport={{ once: true }}
-              className={`${product.color} rounded-3xl p-8 md:p-10 lg:p-12 group`}
+              className={`${product.color} rounded-3xl p-8 md:p-10 group flex flex-col`}
             >
               {/* Time badge */}
               <div className="flex items-center gap-2 mb-8">
@@ -88,7 +105,7 @@ const FunctionalDrinks = () => {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="h-56 md:h-72 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                  className="h-48 md:h-56 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
@@ -99,7 +116,7 @@ const FunctionalDrinks = () => {
               <p className="font-body text-lg text-foreground/70 mb-4">
                 {product.tagline}
               </p>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6">
+              <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
                 {product.description}
               </p>
 
@@ -115,12 +132,12 @@ const FunctionalDrinks = () => {
                 ))}
               </div>
 
-              {/* CTA */}
+              {/* CTA with price */}
               <Link
                 to={`/produkt/${product.slug}`}
-                className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 rounded-full font-display font-semibold text-sm hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 rounded-full font-display font-semibold text-sm hover:opacity-90 transition-opacity self-start"
               >
-                Zobacz produkt
+                Kup teraz — {product.price}
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
