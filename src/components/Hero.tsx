@@ -1,4 +1,4 @@
-import { ArrowRight, Star, Check, Quote } from "lucide-react";
+import { ArrowRight, Award, Check, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-lifestyle.jpg";
