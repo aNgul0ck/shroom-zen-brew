@@ -29,6 +29,7 @@ const Index = () => {
         <Header />
         <main>
           <Hero />
+          <TrustBar />
           <MarqueeBanner />
           <FunctionalDrinks />
           <section className="py-24 md:py-32 bg-background">

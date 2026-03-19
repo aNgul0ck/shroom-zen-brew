@@ -127,6 +127,7 @@ export default {
         "float-delayed": "float 6s ease-in-out 2s infinite",
         "fade-up": "fade-up 0.8s ease-out forwards",
         "scale-in": "scale-in 0.6s ease-out forwards",
+        "scroll-x": "scroll-x 25s linear infinite",
       },
       boxShadow: {
         soft: "0 4px 20px -4px hsl(150 20% 15% / 0.08)",
