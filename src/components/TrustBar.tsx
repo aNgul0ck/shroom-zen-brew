@@ -1,24 +1,23 @@
 const items = [
   "🏆 World Alcohol-Free Awards 2025",
   "🥇 Best Functional Drink",
-  "✓ 0g cukru",
+  "✓ Bez cukru",
   "✓ Bez kofeiny",
-  "✓ Wyprodukowano w Polsce",
-  "✓ 100% naturalne składniki",
+  "✓ Made in Poland",
 ];
 
 const TrustBar = () => {
-  const repeated = [...items, ...items];
-
   return (
-    <div className="bg-foreground/5 border-y border-border/40 py-4 overflow-hidden">
-      <div className="flex animate-scroll-x whitespace-nowrap">
-        {repeated.map((item, i) => (
-          <span
-            key={i}
-            className="inline-block px-6 font-body text-xs sm:text-sm text-muted-foreground tracking-wide"
-          >
-            {item}
+    <div className="bg-foreground py-5 overflow-x-auto scrollbar-hide">
+      <div className="flex items-center justify-center gap-0 min-w-max mx-auto px-6">
+        {items.map((item, i) => (
+          <span key={i} className="flex items-center">
+            <span className="font-body text-sm text-background/60 whitespace-nowrap">
+              {item}
+            </span>
+            {i < items.length - 1 && (
+              <span className="mx-4 text-background/30">·</span>
+            )}
           </span>
         ))}
       </div>
