@@ -27,13 +27,8 @@ const Hero = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2 mb-8"
           >
-            <div className="flex gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-shroom-gold text-shroom-gold" />
-              ))}
-            </div>
-            <span className="font-body text-sm font-semibold text-white/90">4.9/5</span>
-            <span className="font-body text-xs text-white/60">· 200+ recenzji</span>
+            <Award className="w-4 h-4 text-shroom-gold" />
+            <span className="font-body text-sm font-medium text-white/80">Nagrodzony napój funkcjonalny</span>
           </motion.div>
 
           {/* Dream outcome headline */}
