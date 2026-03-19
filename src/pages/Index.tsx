@@ -2,14 +2,12 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import MarqueeBanner from "@/components/MarqueeBanner";
-import IntroSection from "@/components/IntroSection";
-import HowItWorks from "@/components/HowItWorks";
 import FunctionalDrinks from "@/components/FunctionalDrinks";
-import DivaSection from "@/components/DivaSection";
-import MocktailRecipes from "@/components/MocktailRecipes";
-import Subscriptions from "@/components/Subscriptions";
+import { DayCycleClock } from "@/components/DayCycleClock";
 import Reviews from "@/components/Reviews";
+import ComparisonSection from "@/components/ComparisonSection";
 import IngredientsCarousel from "@/components/IngredientsCarousel";
+import Subscriptions from "@/components/Subscriptions";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
@@ -31,14 +29,24 @@ const Index = () => {
         <main>
           <Hero />
           <MarqueeBanner />
-          <IntroSection />
-          <HowItWorks />
           <FunctionalDrinks />
-          <DivaSection />
-          <MocktailRecipes />
-          <Subscriptions />
+          <section className="py-24 md:py-32 bg-background">
+            <div className="container mx-auto px-6 lg:px-12">
+              <div className="text-center mb-12 md:mb-16">
+                <p className="font-body text-sm font-medium text-accent uppercase tracking-[0.2em] mb-4">
+                  Twój dzień z Shroom
+                </p>
+                <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+                  Kiedy pić?
+                </h2>
+              </div>
+              <DayCycleClock />
+            </div>
+          </section>
           <Reviews />
+          <ComparisonSection />
           <IngredientsCarousel />
+          <Subscriptions />
           <Newsletter />
         </main>
         <Footer />
