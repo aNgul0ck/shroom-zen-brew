@@ -30,7 +30,7 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <section className="py-24 bg-background border-t border-border">
+    <section className="ed-section ed-bg-sky border-t border-border">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
@@ -68,7 +68,7 @@ const Reviews = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-card rounded-2xl p-6 border border-border"
+              className="ed-overlay-card"
             >
               {/* Quote Icon */}
               <Quote className="w-8 h-8 text-muted-foreground/30 mb-4" />
