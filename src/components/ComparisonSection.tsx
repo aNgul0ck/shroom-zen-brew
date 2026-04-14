@@ -136,12 +136,12 @@ const ComparisonSection = () => {
   const allMetrics: MetricKey[] = ["energia", "fokus", "zdrowie"];
 
   return (
-    <section className="section-padding bg-shroom-blush/30">
-      <div className="container mx-auto">
+    <section className="ed-section ed-bg-sage">
+      <div className="container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-[1fr,380px] gap-8 lg:gap-16 items-start">
           
           {/* Left - Chart Area */}
-          <div className="bg-card rounded-3xl p-6 md:p-10 shadow-soft">
+          <div className="ed-overlay-card rounded-2xl p-6 md:p-10">
             {/* Competitor Selector - More prominent */}
             <div className="mb-8">
               <p className="text-sm font-body text-muted-foreground mb-3">Porównaj z:</p>
@@ -288,17 +288,17 @@ const ComparisonSection = () => {
 
             {/* Key Stats - Dynamic based on competitor */}
             <div className="space-y-4">
-              <div className={`bg-card rounded-2xl p-5 shadow-soft border-l-4 border-shroom-green transition-all duration-300`}>
+              <div className="ed-overlay-card rounded-2xl p-5 transition-all duration-300">
                 <p className="font-display text-3xl font-bold text-foreground">0g</p>
                 <p className="text-muted-foreground font-body text-sm">dodanego cukru</p>
               </div>
               
-              <div className="bg-card rounded-2xl p-5 shadow-soft border-l-4 border-shroom-sage">
+              <div className="ed-overlay-card rounded-2xl p-5">
                 <p className="font-display text-3xl font-bold text-foreground">Źródło cynku</p>
                 <p className="text-muted-foreground font-body text-sm">przyczynia się do funkcji poznawczych*</p>
               </div>
               
-              <div className="bg-card rounded-2xl p-5 shadow-soft border-l-4 border-shroom-gold">
+              <div className="ed-overlay-card rounded-2xl p-5">
                 <p className="font-display text-3xl font-bold text-foreground">Lion's Mane</p>
                 <p className="text-muted-foreground font-body text-sm">soplówka jeżowata w składzie</p>
               </div>

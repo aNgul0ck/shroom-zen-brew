@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const QuizCTA = () => {
   return (
-    <section className="py-20 md:py-24 bg-accent/10">
+    <section className="ed-section ed-bg-sky">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -13,7 +13,7 @@ const QuizCTA = () => {
           viewport={{ once: true }}
           className="text-center max-w-xl mx-auto"
         >
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="ed-heading text-foreground mb-4">
             Nie wiesz od czego zacząć?
           </h2>
           <p className="font-body text-muted-foreground mb-8">

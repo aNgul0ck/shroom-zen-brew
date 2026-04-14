@@ -14,7 +14,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-24 bg-shroom-peach">
+    <section className="ed-section ed-bg-gold">
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -24,8 +24,8 @@ const Newsletter = () => {
           className="max-w-2xl mx-auto text-center"
         >
           {/* Icon */}
-          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-background/50 flex items-center justify-center">
-            <Mail className="w-7 h-7 text-foreground" />
+          <div className="mb-6 flex justify-center">
+            <Mail className="w-8 h-8 text-foreground" />
           </div>
 
           <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -37,8 +37,8 @@ const Newsletter = () => {
           </p>
 
           {/* Benefit */}
-          <div className="inline-flex items-center gap-2 bg-background/50 backdrop-blur-sm px-4 py-2 rounded-full mb-8">
-            <Gift className="w-4 h-4 text-shroom-gold" />
+          <div className="ed-overlay-card inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8">
+            <Gift className="w-4 h-4 text-foreground" />
             <span className="font-body text-sm text-foreground">
               -10% na pierwsze zamówienie
             </span>

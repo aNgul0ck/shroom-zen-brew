@@ -34,13 +34,13 @@ const Index = () => {
           <TrustBar />
           <MarqueeBanner />
           <FunctionalDrinks />
-          <section className="py-24 md:py-32 bg-background">
+          <section className="ed-section ed-bg-mint">
             <div className="container mx-auto px-6 lg:px-12">
               <div className="text-center mb-12 md:mb-16">
-                <p className="font-body text-sm font-medium text-accent uppercase tracking-[0.2em] mb-4">
+                <p className="font-body text-sm font-medium text-muted-foreground uppercase tracking-[0.2em] mb-4">
                   Twój dzień z Shroom
                 </p>
-                <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+                <h2 className="ed-heading text-foreground">
                   Kiedy pić?
                 </h2>
               </div>
