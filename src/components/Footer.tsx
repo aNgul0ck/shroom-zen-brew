@@ -14,17 +14,19 @@ const Footer = () => {
 
   return (
     <footer>
-      {/* Editorial split footer like reference */}
-      <div className="ed-split min-h-[400px]">
-        {/* Left - cream with thank you */}
-        <div className="ed-bg-cream flex items-center justify-center p-12">
+      {/* Editorial split footer — matches reference exactly */}
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[500px]">
+        {/* Left - cream/sage with thank you */}
+        <div className="ed-bg-sage flex items-center p-12 md:p-16">
           <div>
-            <p className="font-display text-2xl font-bold text-foreground mb-4">:shroom</p>
-            <h3 className="ed-heading text-foreground">Thank you!</h3>
+            <p className="font-display text-xl font-bold text-foreground mb-8">:shroom</p>
+            <h3 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+              Thank you!
+            </h3>
           </div>
         </div>
 
-        {/* Right - sky blue banding with contact info */}
+        {/* Right - sky blue banding rows with contact info */}
         <div className="flex flex-col">
           {contactInfo.map((item, i) => (
             <a
@@ -32,9 +34,10 @@ const Footer = () => {
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="ed-band-sky flex items-center px-8 py-6 border-b border-foreground/5 hover:bg-shroom-sky/30 transition-colors"
+              className="flex-1 flex items-center px-8 md:px-12 border-b border-foreground/8 hover:opacity-80 transition-opacity"
+              style={{ background: `hsl(204 ${50 - i * 5}% ${83 + i * 2}%)` }}
             >
-              <span className="font-display text-lg md:text-2xl font-bold text-foreground">
+              <span className="font-display text-xl md:text-3xl font-bold text-foreground">
                 {item.label}
               </span>
             </a>
@@ -43,7 +46,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="bg-foreground py-6">
+      <div className="bg-foreground py-5">
         <div className="container mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-body text-xs text-background/40">
             © {currentYear} shroom. All rights reserved.
