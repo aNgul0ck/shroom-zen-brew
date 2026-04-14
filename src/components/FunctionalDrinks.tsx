@@ -1,5 +1,4 @@
 import { ArrowRight, Sun, Moon, PartyPopper, Brain } from "lucide-react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import productPower from "@/assets/product-power.png";
 import productRelax from "@/assets/product-relax.png";
@@ -73,7 +72,6 @@ const FunctionalDrinks = () => {
   return (
     <section className="ed-section ed-bg-cream" id="produkty">
       <div className="container mx-auto px-6 lg:px-12">
-        {/* Header */}
         <div className="max-w-4xl mb-6 md:mb-8">
           <p className="font-body text-sm font-medium text-accent uppercase tracking-[0.2em] mb-6">
             Shroom Drinks
@@ -88,18 +86,12 @@ const FunctionalDrinks = () => {
           Cztery produkty zaprojektowane do naturalnego rytmu Twojego życia. Energia, spokój, celebracja, fokus.
         </p>
 
-        {/* Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-1">
-          {products.map((product, index) => (
-            <motion.div
+          {products.map((product) => (
+            <div
               key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
               className={`${product.gradient} p-7 md:p-8 group flex flex-col`}
             >
-              {/* Time badge */}
               <div className="flex items-center gap-2 mb-6">
                 <span className="ed-overlay-card px-3 py-1 rounded-none font-display text-xs font-semibold text-foreground flex items-center gap-1.5">
                   <product.icon className="w-3.5 h-3.5" />
@@ -107,7 +99,6 @@ const FunctionalDrinks = () => {
                 </span>
               </div>
 
-              {/* Product image */}
               <div className="flex justify-center mb-6">
                 <img
                   src={product.image}
@@ -116,7 +107,6 @@ const FunctionalDrinks = () => {
                 />
               </div>
 
-              {/* Content */}
               <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-1">
                 {product.name}
               </h3>
@@ -130,7 +120,6 @@ const FunctionalDrinks = () => {
                 {product.description}
               </p>
 
-              {/* Benefits pills */}
               <div className="flex flex-wrap gap-1.5 mb-6">
                 {product.benefits.map((b) => (
                   <span
@@ -142,7 +131,6 @@ const FunctionalDrinks = () => {
                 ))}
               </div>
 
-              {/* CTA */}
               <Link
                 to={`/produkt/${product.slug}`}
                 className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-none font-display font-semibold text-sm hover:opacity-90 transition-opacity self-start"
@@ -150,7 +138,7 @@ const FunctionalDrinks = () => {
                 Kup teraz — {product.price}
                 <ArrowRight className="w-4 h-4" />
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,18 +1,11 @@
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const QuizCTA = () => {
   return (
     <section className="ed-section ed-bg-sky">
       <div className="container mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center max-w-xl mx-auto"
-        >
+        <div className="text-center max-w-xl mx-auto">
           <h2 className="ed-heading text-foreground mb-4">
             Nie wiesz od czego zacząć?
           </h2>
@@ -26,7 +19,7 @@ const QuizCTA = () => {
             Znajdź swojego Shrooma
             <ArrowRight className="w-4 h-4" />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,4 @@
-import { Star, Quote } from "lucide-react";
-import { motion } from "framer-motion";
+import { Star } from "lucide-react";
 
 const reviews = [
   {
@@ -40,7 +39,6 @@ const Reviews = () => {
   return (
     <section className="ed-section ed-bg-sky">
       <div className="container mx-auto px-6 lg:px-12">
-        {/* Header - left-aligned editorial style */}
         <div className="mb-12 md:mb-16">
           <h2 className="ed-heading text-foreground mb-4">
             Our customers'<br />Google reviews:
@@ -56,34 +54,24 @@ const Reviews = () => {
           </div>
         </div>
 
-        {/* Review Cards - 4 column grid like reference */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {reviews.map((review, index) => (
-            <motion.div
+          {reviews.map((review) => (
+            <div
               key={review.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
               className="ed-overlay-card"
             >
-              {/* Rating */}
               <div className="flex gap-0.5 mb-4">
                 {[...Array(review.rating)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-foreground text-foreground" />
                 ))}
               </div>
-
-              {/* Review Text */}
               <p className="font-body text-foreground leading-relaxed text-sm">
                 "{review.text}"
               </p>
-
-              {/* Author - minimal */}
               <p className="font-body text-xs text-muted-foreground mt-4">
                 — {review.author}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

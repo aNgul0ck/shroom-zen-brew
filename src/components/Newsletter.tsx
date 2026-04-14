@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ArrowRight, Gift, Mail } from "lucide-react";
-import { motion } from "framer-motion";
 import { toast } from "sonner";
 
 const Newsletter = () => {
@@ -17,13 +16,7 @@ const Newsletter = () => {
     <section className="ed-section ed-bg-gold">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-          {/* Left - CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <Mail className="w-8 h-8 text-foreground mb-6" />
             <h2 className="ed-heading text-foreground mb-4">
               Bądź na bieżąco
@@ -37,15 +30,9 @@ const Newsletter = () => {
                 -10% na pierwsze zamówienie
               </span>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right - Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="email"
@@ -66,7 +53,7 @@ const Newsletter = () => {
                 Szanujemy Twoją prywatność. Wypisz się w dowolnym momencie.
               </p>
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
