@@ -52,13 +52,19 @@
 
 /* ── Editorial Section ── */
 .ed-section {
-  padding: 4rem 3rem;
+  padding: 4rem 0;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .ed-section {
+    padding: 6rem 0;
+  }
 }
 
 @media (max-width: 640px) {
   .ed-section {
-    padding: 2.5rem 1.5rem;
+    padding: 2.5rem 0;
   }
 }
 

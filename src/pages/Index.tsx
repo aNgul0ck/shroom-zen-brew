@@ -34,6 +34,7 @@ const Index = () => {
           <TrustBar />
           <MarqueeBanner />
           <FunctionalDrinks />
+          <div className="ed-divider" />
           <section className="ed-section ed-bg-mint">
             <div className="container mx-auto px-6 lg:px-12">
               <div className="text-center mb-12 md:mb-16">
@@ -47,11 +48,17 @@ const Index = () => {
               <DayCycleClock />
             </div>
           </section>
+          <div className="ed-divider" />
           <Reviews />
+          <div className="ed-divider" />
           <ComparisonSection />
+          <div className="ed-divider" />
           <IngredientsCarousel />
+          <div className="ed-divider" />
           <Subscriptions />
+          <div className="ed-divider" />
           <QuizCTA />
+          <div className="ed-divider" />
           <Newsletter />
         </main>
         <StickyCTA />
