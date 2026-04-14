@@ -129,6 +129,16 @@ export default {
         "scale-in": "scale-in 0.6s ease-out forwards",
         "scroll-x": "scroll-x 25s linear infinite",
       },
+      backgroundImage: {
+        'ed-sky': 'var(--gradient-sky)',
+        'ed-mint': 'var(--gradient-mint)',
+        'ed-gold': 'var(--gradient-gold)',
+        'ed-sage': 'var(--gradient-sage)',
+        'ed-diva': 'var(--gradient-diva)',
+        'ed-sky-split': 'var(--gradient-sky-split)',
+        'ed-mint-split': 'var(--gradient-mint-split)',
+        'ed-hero': 'var(--gradient-hero)',
+      },
       boxShadow: {
         soft: "0 4px 20px -4px hsl(150 20% 15% / 0.08)",
         card: "0 8px 30px -8px hsl(150 20% 15% / 0.1)",
