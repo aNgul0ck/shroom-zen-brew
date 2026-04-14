@@ -5,111 +5,98 @@ const ingredients = [
   { 
     name: "Lion's Mane", 
     icon: Brain,
-    benefit: "Funkcje poznawcze",
-    description: "Wspiera koncentrację i pamięć"
+    benefit: "Supports brain function, boosts the immune system"
   },
   { 
     name: "L-Teanina", 
     icon: Moon,
-    benefit: "Relaksacja",
-    description: "Spokój bez senności"
+    benefit: "Promotes relaxation and calm alertness"
   },
   { 
     name: "Żeń-szeń", 
     icon: Zap,
-    benefit: "Energia",
-    description: "Naturalna witalność"
+    benefit: "Stamina and vitality boost"
   },
   { 
     name: "Chmiel", 
     icon: Leaf,
-    benefit: "Sen",
-    description: "Wsparcie regeneracji"
+    benefit: "Wsparcie regeneracji i snu"
   },
   { 
     name: "Witamina C", 
     icon: Shield,
-    benefit: "Odporność",
-    description: "Ochrona organizmu"
+    benefit: "Ochrona organizmu i odporność"
   },
   { 
     name: "Cynk", 
     icon: Heart,
-    benefit: "Metabolizm",
-    description: "Prawidłowe funkcjonowanie"
+    benefit: "Prawidłowe funkcjonowanie metabolizmu"
   },
 ];
 
 const IngredientsCarousel = () => {
   return (
-    <section className="ed-section ed-bg-gold">
+    <section className="ed-section ed-bg-cream">
       <div className="container mx-auto px-6 lg:px-12">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p className="font-body text-sm font-medium text-muted-foreground uppercase tracking-[0.2em] mb-4">
-            Składniki
-          </p>
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Tylko to, co działa
+        {/* Header - editorial, left-aligned */}
+        <div className="mb-4">
+          <h2 className="ed-heading text-foreground">
+            Adaptogens
           </h2>
-          <p className="font-body text-muted-foreground max-w-xl mx-auto">
-            Starannie dobrane składniki o udowodnionym działaniu.
-            Bez sztucznych dodatków. Bez kompromisów.
-          </p>
-        </motion.div>
+        </div>
+        <div className="ed-divider mb-8" />
+        <p className="font-body text-foreground/80 max-w-2xl mb-12 text-base md:text-lg leading-relaxed">
+          Adaptogens are natural botanicals and fungal extracts that help our bodies achieve homeostasis — the balance we all seek.
+        </p>
 
-        {/* Ingredients Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {ingredients.map((ingredient, index) => (
+        {/* Ingredients Grid - sky blue cards like reference */}
+        <div className="grid md:grid-cols-3 gap-1">
+          {ingredients.slice(0, 3).map((ingredient, index) => (
             <motion.div
               key={ingredient.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.08, duration: 0.5 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className="ed-overlay-card rounded-2xl p-5 text-center group transition-colors duration-300"
+              className="ed-bg-sky p-8 md:p-10"
             >
-              {/* Icon */}
-              <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
-                <ingredient.icon className="w-7 h-7 text-foreground" />
-              </div>
-
-              {/* Name */}
-              <h3 className="font-display text-sm font-semibold text-foreground mb-1">
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
                 {ingredient.name}
               </h3>
-
-              {/* Benefit Badge */}
-              <span className="inline-block bg-secondary/50 px-2 py-0.5 rounded text-xs font-body text-muted-foreground mb-2">
+              <p className="font-body text-sm text-foreground/70 leading-relaxed">
                 {ingredient.benefit}
-              </span>
+              </p>
+            </motion.div>
+          ))}
+        </div>
 
-              {/* Description */}
-              <p className="font-body text-xs text-muted-foreground leading-relaxed">
-                {ingredient.description}
+        {/* Second row */}
+        <div className="grid md:grid-cols-3 gap-1 mt-1">
+          {ingredients.slice(3).map((ingredient, index) => (
+            <motion.div
+              key={ingredient.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
+              viewport={{ once: true }}
+              className="ed-bg-mint p-8 md:p-10"
+            >
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
+                {ingredient.name}
+              </h3>
+              <p className="font-body text-sm text-foreground/70 leading-relaxed">
+                {ingredient.benefit}
               </p>
             </motion.div>
           ))}
         </div>
 
         {/* EFSA Note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mt-12 font-body text-xs text-muted-foreground max-w-2xl mx-auto"
-        >
+        <p className="font-body text-xs text-muted-foreground max-w-2xl mt-8">
           * Oświadczenia zdrowotne zgodne z rozporządzeniem EFSA. 
           Cynk przyczynia się do prawidłowego funkcjonowania układu odpornościowego. 
           Witamina C wspomaga prawidłowe funkcjonowanie układu nerwowego.
-        </motion.p>
+        </p>
       </div>
     </section>
   );

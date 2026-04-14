@@ -32,9 +32,11 @@ const Index = () => {
         <main>
           <Hero />
           <TrustBar />
+          <div className="ed-divider-thick" />
           <MarqueeBanner />
-          <FunctionalDrinks />
           <div className="ed-divider" />
+          <FunctionalDrinks />
+          <div className="ed-divider-thick" />
           <section className="ed-section ed-bg-mint">
             <div className="container mx-auto px-6 lg:px-12">
               <div className="text-center mb-12 md:mb-16">
@@ -48,15 +50,15 @@ const Index = () => {
               <DayCycleClock />
             </div>
           </section>
-          <div className="ed-divider" />
+          <div className="ed-divider-thick" />
           <Reviews />
-          <div className="ed-divider" />
+          <div className="ed-divider-thick" />
           <ComparisonSection />
-          <div className="ed-divider" />
+          <div className="ed-divider-thick" />
           <IngredientsCarousel />
-          <div className="ed-divider" />
+          <div className="ed-divider-thick" />
           <Subscriptions />
-          <div className="ed-divider" />
+          <div className="ed-divider-thick" />
           <QuizCTA />
           <div className="ed-divider" />
           <Newsletter />

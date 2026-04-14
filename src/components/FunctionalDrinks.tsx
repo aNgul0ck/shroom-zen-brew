@@ -18,7 +18,7 @@ const products = [
     time: "Rano",
     description:
       "Aktywuj umysł i ciało. Bez crashu kofeinowego, bez jitterów. Czysta, stabilna energia na cały dzień.",
-    color: "bg-shroom-gold/20",
+    gradient: "ed-bg-gold",
     slug: "shroom-power",
     price: "79 zł",
   },
@@ -33,7 +33,7 @@ const products = [
     time: "Wieczór",
     description:
       "Wycisz się po intensywnym dniu. Regeneracja zaczyna się od odpuszczenia — nie od kolejnego scrollowania.",
-    color: "bg-shroom-lavender/20",
+    gradient: "ed-bg-mint",
     slug: "shroom-relax",
     price: "79 zł",
   },
@@ -48,7 +48,7 @@ const products = [
     time: "Wieczór/Impreza",
     description:
       "Bezalkoholowy aperitivo z adaptogenami. Na każde wyjście, które chcesz zapamiętać.",
-    color: "bg-diva-pink/15",
+    gradient: "ed-bg-sky",
     slug: "diva-social-elixir",
     price: "112 zł",
   },
@@ -63,7 +63,7 @@ const products = [
     time: "Codziennie",
     description:
       "Soplówka jeżowata w czystej formie. Dla tych, którzy chcą więcej z każdego dnia.",
-    color: "bg-shroom-sage/20",
+    gradient: "ed-bg-sage",
     slug: "brainbliss",
     price: "47 zł",
   },
@@ -71,49 +71,37 @@ const products = [
 
 const FunctionalDrinks = () => {
   return (
-    <section className="py-28 md:py-36 bg-background" id="produkty">
+    <section className="ed-section ed-bg-cream" id="produkty">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mb-6 md:mb-8"
-        >
+        <div className="max-w-4xl mb-6 md:mb-8">
           <p className="font-body text-sm font-medium text-accent uppercase tracking-[0.2em] mb-6">
             Shroom Drinks
           </p>
-          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1]">
+          <h2 className="ed-heading text-foreground">
             Rytm dnia{" "}
             <span className="text-muted-foreground/40">i nocy.</span>
           </h2>
-        </motion.div>
+        </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="font-body text-lg text-muted-foreground max-w-xl mb-16 md:mb-20"
-        >
+        <p className="font-body text-lg text-muted-foreground max-w-xl mb-16 md:mb-20">
           Cztery produkty zaprojektowane do naturalnego rytmu Twojego życia. Energia, spokój, celebracja, fokus.
-        </motion.p>
+        </p>
 
-        {/* Products */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Products Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-1">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className={`${product.color} rounded-3xl p-7 md:p-8 group flex flex-col`}
+              className={`${product.gradient} p-7 md:p-8 group flex flex-col`}
             >
               {/* Time badge */}
               <div className="flex items-center gap-2 mb-6">
-                <span className="bg-background/70 backdrop-blur-sm px-3 py-1 rounded-full font-display text-xs font-semibold text-foreground flex items-center gap-1.5">
+                <span className="ed-overlay-card px-3 py-1 rounded-none font-display text-xs font-semibold text-foreground flex items-center gap-1.5">
                   <product.icon className="w-3.5 h-3.5" />
                   {product.time}
                 </span>
@@ -147,17 +135,17 @@ const FunctionalDrinks = () => {
                 {product.benefits.map((b) => (
                   <span
                     key={b}
-                    className="bg-background/60 backdrop-blur-sm px-2.5 py-1 rounded-full font-body text-xs text-foreground"
+                    className="ed-overlay-card px-2.5 py-1 rounded-none font-body text-xs text-foreground"
                   >
                     {b}
                   </span>
                 ))}
               </div>
 
-              {/* CTA with price */}
+              {/* CTA */}
               <Link
                 to={`/produkt/${product.slug}`}
-                className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-full font-display font-semibold text-sm hover:opacity-90 transition-opacity self-start"
+                className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-none font-display font-semibold text-sm hover:opacity-90 transition-opacity self-start"
               >
                 Kup teraz — {product.price}
                 <ArrowRight className="w-4 h-4" />

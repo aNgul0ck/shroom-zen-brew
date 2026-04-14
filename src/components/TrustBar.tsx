@@ -8,7 +8,7 @@ const items = [
 
 const TrustBar = () => {
   return (
-    <div className="bg-foreground py-5 overflow-x-auto scrollbar-hide">
+    <div className="bg-foreground py-4 overflow-x-auto scrollbar-hide">
       <div className="flex items-center justify-center gap-0 min-w-max mx-auto px-6">
         {items.map((item, i) => (
           <span key={i} className="flex items-center">
