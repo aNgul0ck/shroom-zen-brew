@@ -52,13 +52,19 @@
 
 /* ── Editorial Section ── */
 .ed-section {
-  padding: 4rem 3rem;
+  padding: 4rem 0;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .ed-section {
+    padding: 6rem 0;
+  }
 }
 
 @media (max-width: 640px) {
   .ed-section {
-    padding: 2.5rem 1.5rem;
+    padding: 2.5rem 0;
   }
 }
 
@@ -82,6 +88,7 @@
 /* ── Thin Separator Line ── */
 .ed-divider {
   height: 1px;
-  background: hsl(var(--foreground) / 0.12);
+  background: hsl(var(--foreground) / 0.15);
   width: 100%;
+  margin: 0;
 }

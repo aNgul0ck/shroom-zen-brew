@@ -73,7 +73,7 @@ const IngredientsCarousel = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.08, duration: 0.5 }}
               viewport={{ once: true }}
-              className="ed-overlay-card rounded-2xl p-5 text-center group hover:bg-[hsl(var(--background)/0.96)] transition-colors duration-300"
+              className="ed-overlay-card rounded-2xl p-5 text-center group transition-colors duration-300"
             >
               {/* Icon */}
               <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
