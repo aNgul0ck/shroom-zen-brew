@@ -16,56 +16,63 @@ const Newsletter = () => {
   return (
     <section className="ed-section ed-bg-gold">
       <div className="container mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto text-center"
-        >
-          {/* Icon */}
-          <div className="mb-6 flex justify-center">
-            <Mail className="w-8 h-8 text-foreground" />
-          </div>
+        {/* Split layout like reference */}
+        <div className="ed-split gap-0">
+          {/* Left - CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="flex items-center"
+          >
+            <div>
+              <Mail className="w-8 h-8 text-foreground mb-6" />
+              <h2 className="ed-heading text-foreground mb-4">
+                Bądź na bieżąco
+              </h2>
+              <p className="font-body text-muted-foreground mb-6">
+                Newsletter z przepisami, promocjami i nowościami ze świata Shroom.
+              </p>
+              <div className="ed-overlay-card inline-flex items-center gap-2 px-4 py-2 rounded-none">
+                <Gift className="w-4 h-4 text-foreground" />
+                <span className="font-body text-sm text-foreground">
+                  -10% na pierwsze zamówienie
+                </span>
+              </div>
+            </div>
+          </motion.div>
 
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Bądź na bieżąco
-          </h2>
-          
-          <p className="font-body text-muted-foreground mb-8">
-            Newsletter z przepisami, promocjami i nowościami ze świata Shroom.
-          </p>
-
-          {/* Benefit */}
-          <div className="ed-overlay-card inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8">
-            <Gift className="w-4 h-4 text-foreground" />
-            <span className="font-body text-sm text-foreground">
-              -10% na pierwsze zamówienie
-            </span>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Twój adres email"
-              className="w-full px-6 py-4 rounded-full bg-background border border-border font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20 transition-all"
-              required
-            />
-            <button
-              type="submit"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-foreground text-background px-8 py-4 rounded-full font-display font-semibold text-sm hover:bg-foreground/90 transition-colors"
-            >
-              Zapisz się
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </form>
-
-          <p className="font-body text-xs text-muted-foreground mt-6">
-            Szanujemy Twoją prywatność. Wypisz się w dowolnym momencie.
-          </p>
-        </motion.div>
+          {/* Right - Form with banding */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="flex items-center"
+          >
+            <form onSubmit={handleSubmit} className="w-full space-y-4">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Twój adres email"
+                className="w-full px-6 py-4 bg-background border border-foreground/10 font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-foreground/20 transition-all"
+                required
+              />
+              <button
+                type="submit"
+                className="w-full inline-flex items-center justify-center gap-2 bg-foreground text-background px-8 py-4 font-display font-semibold text-sm hover:opacity-90 transition-opacity"
+              >
+                Zapisz się
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <p className="font-body text-xs text-muted-foreground">
+                Szanujemy Twoją prywatność. Wypisz się w dowolnym momencie.
+              </p>
+            </form>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

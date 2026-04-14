@@ -21,7 +21,7 @@ const QuizCTA = () => {
           </p>
           <Link
             to="/quiz"
-            className="inline-flex items-center gap-2 bg-foreground text-background px-8 py-4 rounded-full font-display font-semibold text-sm hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 bg-foreground text-background px-8 py-4 font-display font-semibold text-sm hover:opacity-90 transition-opacity"
           >
             Znajdź swojego Shrooma
             <ArrowRight className="w-4 h-4" />

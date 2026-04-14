@@ -3,7 +3,6 @@ import { Zap, Coffee, Leaf, Droplets, TrendingUp, Heart, Brain } from "lucide-re
 import productPower from "@/assets/product-power.png";
 
 type CompetitorId = "energy" | "coffee" | "sports";
-
 type MetricKey = "energia" | "fokus" | "zdrowie";
 
 type CompetitorData = {
@@ -19,31 +18,22 @@ type CompetitorData = {
 
 const competitors: CompetitorData[] = [
   { 
-    id: "energy", 
-    name: "Napoje energetyczne", 
-    shortName: "Energetyki",
-    icon: Zap, 
-    color: "from-red-500 to-orange-400",
+    id: "energy", name: "Napoje energetyczne", shortName: "Energetyki",
+    icon: Zap, color: "from-red-500 to-orange-400",
     description: "Dużo kofeiny i cukru",
     metrics: { energia: 75, fokus: 30, zdrowie: 15 },
     keyFact: { title: "300mg+ kofeiny", desc: "często z dużą ilością cukru" }
   },
   { 
-    id: "coffee", 
-    name: "Kawa i napoje z kofeiną", 
-    shortName: "Kawa",
-    icon: Coffee, 
-    color: "from-amber-700 to-amber-500",
+    id: "coffee", name: "Kawa i napoje z kofeiną", shortName: "Kawa",
+    icon: Coffee, color: "from-amber-700 to-amber-500",
     description: "Klasyka z kofeiną",
     metrics: { energia: 65, fokus: 55, zdrowie: 45 },
     keyFact: { title: "Tylko kofeina", desc: "bez dodatkowych składników" }
   },
   { 
-    id: "sports", 
-    name: "Napoje izotoniczne", 
-    shortName: "Izotoniki",
-    icon: Droplets, 
-    color: "from-blue-500 to-cyan-400",
+    id: "sports", name: "Napoje izotoniczne", shortName: "Izotoniki",
+    icon: Droplets, color: "from-blue-500 to-cyan-400",
     description: "Głównie nawodnienie",
     metrics: { energia: 40, fokus: 20, zdrowie: 55 },
     keyFact: { title: "Głównie elektrolity", desc: "inne przeznaczenie" }
@@ -59,25 +49,13 @@ const metricConfig: Record<MetricKey, { label: string; icon: typeof Zap; shroomB
 };
 
 const VerticalBar = ({ 
-  value, 
-  isShroom = false,
-  delay = 0,
-  competitorColor = "",
-  animationKey = "",
-}: { 
-  value: number; 
-  isShroom?: boolean;
-  delay?: number;
-  competitorColor?: string;
-  animationKey?: string;
-}) => {
+  value, isShroom = false, delay = 0, competitorColor = "", animationKey = "",
+}: { value: number; isShroom?: boolean; delay?: number; competitorColor?: string; animationKey?: string; }) => {
   const [animatedHeight, setAnimatedHeight] = useState(0);
   
   useEffect(() => {
     setAnimatedHeight(0);
-    const timer = setTimeout(() => {
-      setAnimatedHeight(value);
-    }, delay + 50);
+    const timer = setTimeout(() => setAnimatedHeight(value), delay + 50);
     return () => clearTimeout(timer);
   }, [value, delay, animationKey]);
 
@@ -88,13 +66,11 @@ const VerticalBar = ({
       }`}>
         {value}%
       </span>
-      
-      <div className="w-full h-[180px] md:h-[240px] bg-secondary/50 rounded-xl overflow-hidden flex flex-col justify-end relative">
+      <div className="w-full h-[180px] md:h-[240px] bg-secondary/50 overflow-hidden flex flex-col justify-end relative">
         <div
-          className={`w-full rounded-t-lg transition-all duration-1000 ease-out ${
-            isShroom 
-              ? "bg-gradient-to-t from-shroom-green via-shroom-sage to-shroom-green/60" 
-              : `bg-gradient-to-t ${competitorColor}`
+          className={`w-full transition-all duration-1000 ease-out ${
+            isShroom ? "bg-gradient-to-t from-shroom-green via-shroom-sage to-shroom-green/60" 
+            : `bg-gradient-to-t ${competitorColor}`
           }`}
           style={{ height: `${animatedHeight}%` }}
         />
@@ -115,13 +91,11 @@ const ComparisonSection = () => {
     setAnimationKey(prev => prev + 1);
   };
 
-  // Rotate highlighted metric
   useEffect(() => {
     const interval = setInterval(() => {
       setHighlightedMetric(prev => {
         const metrics: MetricKey[] = ["energia", "fokus", "zdrowie"];
-        const idx = metrics.indexOf(prev);
-        return metrics[(idx + 1) % 3];
+        return metrics[(metrics.indexOf(prev) + 1) % 3];
       });
     }, 3000);
     return () => clearInterval(interval);
@@ -138,42 +112,40 @@ const ComparisonSection = () => {
   return (
     <section className="ed-section ed-bg-sage">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-[1fr,380px] gap-8 lg:gap-16 items-start">
-          
-          {/* Left - Chart Area */}
-          <div className="ed-overlay-card rounded-2xl p-6 md:p-10">
-            {/* Competitor Selector - More prominent */}
+        {/* Editorial header */}
+        <div className="mb-12">
+          <h2 className="ed-heading text-foreground mb-2">
+            Shroom vs. reszta
+          </h2>
+          <p className="font-body text-muted-foreground">
+            Średnio <span className="font-bold text-shroom-green">+{totalAdvantage}%</span> lepiej niż {competitor.shortName.toLowerCase()}.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-[1fr,340px] gap-8 lg:gap-12 items-start">
+          {/* Chart Area */}
+          <div className="ed-overlay-card p-6 md:p-10">
+            {/* Competitor Selector */}
             <div className="mb-8">
               <p className="text-sm font-body text-muted-foreground mb-3">Porównaj z:</p>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2">
                 {competitors.map((comp) => {
                   const Icon = comp.icon;
                   return (
                     <button
                       key={comp.id}
                       onClick={() => handleCompetitorChange(comp.id)}
-                      className={`flex flex-col items-center gap-2 p-4 rounded-2xl text-sm font-display font-semibold transition-all duration-300 ${
+                      className={`flex flex-col items-center gap-2 p-3 text-sm font-display font-semibold transition-all duration-300 ${
                         activeCompetitor === comp.id
-                          ? "bg-primary text-primary-foreground scale-105 shadow-lg"
-                          : "bg-secondary text-muted-foreground hover:bg-secondary/80 hover:scale-102"
+                          ? "bg-foreground text-background"
+                          : "bg-secondary/60 text-muted-foreground hover:bg-secondary"
                       }`}
                     >
                       <Icon className="w-5 h-5" />
-                      <span>{comp.shortName}</span>
+                      <span className="text-xs">{comp.shortName}</span>
                     </button>
                   );
                 })}
-              </div>
-            </div>
-
-            {/* Competitor Info Card - Changes with selection */}
-            <div className={`bg-gradient-to-r ${competitor.color} p-4 rounded-2xl mb-6 transition-all duration-500`}>
-              <div className="flex items-center gap-3 text-shroom-cream">
-                <competitor.icon className="w-6 h-6" />
-                <div>
-                  <p className="font-display font-bold">{competitor.name}</p>
-                  <p className="text-sm text-shroom-cream/90">{competitor.description}</p>
-                </div>
               </div>
             </div>
 
@@ -186,129 +158,68 @@ const ComparisonSection = () => {
                 const isHighlighted = highlightedMetric === metric;
                 
                 return (
-                  <div 
-                    key={metric} 
-                    className={`space-y-3 p-3 rounded-2xl transition-all duration-500 ${
-                      isHighlighted ? "bg-shroom-green/10 scale-105" : ""
-                    }`}
-                  >
-                    {/* Metric Title */}
+                  <div key={metric} className={`space-y-3 p-3 transition-all duration-500 ${
+                    isHighlighted ? "bg-shroom-green/10" : ""
+                  }`}>
                     <div className="text-center">
-                      <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-display font-semibold transition-all duration-300 ${
-                        isHighlighted 
-                          ? "bg-shroom-green text-shroom-cream" 
-                          : "bg-secondary text-foreground"
+                      <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-display font-semibold transition-all duration-300 ${
+                        isHighlighted ? "bg-shroom-green text-background" : "bg-secondary text-foreground"
                       }`}>
                         <Icon className="w-3.5 h-3.5" />
                         {config.label}
                       </span>
                     </div>
-                    
-                    {/* Bars */}
                     <div className="flex gap-1.5">
-                      <VerticalBar
-                        value={shroomMetrics[metric]}
-                        isShroom={true}
-                        delay={idx * 100}
-                        animationKey={`${animationKey}`}
-                      />
-                      <VerticalBar
-                        value={competitor.metrics[metric]}
-                        isShroom={false}
-                        delay={idx * 100 + 50}
-                        competitorColor={competitor.color}
-                        animationKey={`${animationKey}`}
-                      />
+                      <VerticalBar value={shroomMetrics[metric]} isShroom={true} delay={idx * 100} animationKey={`${animationKey}`} />
+                      <VerticalBar value={competitor.metrics[metric]} isShroom={false} delay={idx * 100 + 50} competitorColor={competitor.color} animationKey={`${animationKey}`} />
                     </div>
-                    
-                    {/* Animated Difference */}
                     <div className="text-center">
-                      <span className={`inline-block px-3 py-1 rounded-full font-display font-bold text-sm transition-all duration-500 ${
-                        isHighlighted 
-                          ? "bg-shroom-green text-shroom-cream scale-110" 
-                          : "bg-shroom-green/10 text-shroom-green"
+                      <span className={`inline-block px-3 py-1 font-display font-bold text-sm transition-all duration-500 ${
+                        isHighlighted ? "bg-shroom-green text-background" : "bg-shroom-green/10 text-shroom-green"
                       }`}>
                         +{diff}%
                       </span>
                     </div>
-                    
-                    {/* Shroom Benefit - shows on highlight */}
-                    <p className={`text-center text-xs font-body text-shroom-green transition-all duration-300 ${
-                      isHighlighted ? "opacity-100" : "opacity-0"
-                    }`}>
-                      {config.shroomBenefit}
-                    </p>
                   </div>
                 );
               })}
             </div>
 
-            {/* Legend & Competitor Fact */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mt-8 pt-6 border-t border-border">
-              <div className="flex gap-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded bg-gradient-to-t from-shroom-green to-shroom-sage" />
-                  <span className="font-body text-sm text-muted-foreground">Shroom Power</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className={`w-4 h-4 rounded bg-gradient-to-t ${competitor.color}`} />
-                  <span className="font-body text-sm text-muted-foreground">{competitor.shortName}</span>
-                </div>
+            {/* Legend */}
+            <div className="flex gap-6 mt-8 pt-6 border-t border-foreground/10">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-gradient-to-t from-shroom-green to-shroom-sage" />
+                <span className="font-body text-sm text-muted-foreground">Shroom Power</span>
               </div>
-              
-              {/* Dynamic Competitor Fact */}
-              <div className="bg-secondary/50 rounded-lg px-3 py-2 transition-all duration-500">
-                <p className="text-xs text-muted-foreground">
-                  <span className="font-semibold">{competitor.keyFact.title}</span> — {competitor.keyFact.desc}
-                </p>
+              <div className="flex items-center gap-2">
+                <div className={`w-4 h-4 bg-gradient-to-t ${competitor.color}`} />
+                <span className="font-body text-sm text-muted-foreground">{competitor.shortName}</span>
               </div>
             </div>
           </div>
 
-          {/* Right - Stats Panel */}
-          <div className="lg:sticky lg:top-24 space-y-6">
-            <div>
-              <p className="text-muted-foreground font-body text-sm mb-2">
-                Dlaczego Shroom Power?
-              </p>
-              
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground leading-tight">
-                Średnio <span className="text-shroom-green transition-all duration-500">+{totalAdvantage}%</span> lepiej niż {competitor.shortName.toLowerCase()}.
-              </h2>
-            </div>
-
-            {/* Product image */}
+          {/* Right Stats */}
+          <div className="lg:sticky lg:top-24 space-y-4">
             <div className="flex justify-center py-4">
-              <img 
-                src={productPower} 
-                alt="Shroom Power" 
-                className="h-40 w-auto object-contain drop-shadow-xl transition-transform duration-500 hover:scale-110"
-              />
+              <img src={productPower} alt="Shroom Power" className="h-40 w-auto object-contain" />
             </div>
 
-            {/* Key Stats - Dynamic based on competitor */}
-            <div className="space-y-4">
-              <div className="ed-overlay-card rounded-2xl p-5 transition-all duration-300">
-                <p className="font-display text-3xl font-bold text-foreground">0g</p>
-                <p className="text-muted-foreground font-body text-sm">dodanego cukru</p>
-              </div>
-              
-              <div className="ed-overlay-card rounded-2xl p-5">
-                <p className="font-display text-3xl font-bold text-foreground">Źródło cynku</p>
-                <p className="text-muted-foreground font-body text-sm">przyczynia się do funkcji poznawczych*</p>
-              </div>
-              
-              <div className="ed-overlay-card rounded-2xl p-5">
-                <p className="font-display text-3xl font-bold text-foreground">Lion's Mane</p>
-                <p className="text-muted-foreground font-body text-sm">soplówka jeżowata w składzie</p>
-              </div>
+            <div className="ed-overlay-card p-5">
+              <p className="ed-stat text-3xl">0g</p>
+              <p className="text-muted-foreground font-body text-sm">dodanego cukru</p>
+            </div>
+            
+            <div className="ed-overlay-card p-5">
+              <p className="font-display text-2xl font-bold text-foreground">Źródło cynku</p>
+              <p className="text-muted-foreground font-body text-sm">przyczynia się do funkcji poznawczych*</p>
+            </div>
+            
+            <div className="ed-overlay-card p-5">
+              <p className="font-display text-2xl font-bold text-foreground">Lion's Mane</p>
+              <p className="text-muted-foreground font-body text-sm">soplówka jeżowata w składzie</p>
             </div>
 
-            {/* CTA */}
-            <a
-              href="#produkty"
-              className="flex items-center justify-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-full font-display font-bold hover:scale-105 transition-transform w-full"
-            >
+            <a href="#produkty" className="flex items-center justify-center gap-3 bg-foreground text-background px-8 py-4 font-display font-bold hover:opacity-90 transition-opacity w-full">
               Zamów Shroom Power
               <Zap className="w-5 h-5" />
             </a>

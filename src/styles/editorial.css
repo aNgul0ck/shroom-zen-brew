@@ -9,14 +9,16 @@
 .ed-bg-gold  { background: var(--gradient-gold); }
 .ed-bg-sage  { background: var(--gradient-sage); }
 .ed-bg-diva  { background: var(--gradient-diva); }
+.ed-bg-cream { background: hsl(var(--shroom-cream)); }
 
 /* ── Split Panels (50/50) ── */
 .ed-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  min-height: 400px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .ed-split {
     grid-template-columns: 1fr;
   }
@@ -27,7 +29,7 @@
 
 /* ── Banding Rows ── */
 .ed-band {
-  padding: 2rem 3rem;
+  padding: 2.5rem 3rem;
 }
 
 .ed-band-sky  { background: var(--gradient-band-sky); }
@@ -52,19 +54,19 @@
 
 /* ── Editorial Section ── */
 .ed-section {
-  padding: 4rem 0;
+  padding: 5rem 0;
   position: relative;
 }
 
 @media (min-width: 768px) {
   .ed-section {
-    padding: 6rem 0;
+    padding: 7rem 0;
   }
 }
 
 @media (max-width: 640px) {
   .ed-section {
-    padding: 2.5rem 0;
+    padding: 3rem 0;
   }
 }
 
@@ -88,7 +90,15 @@
 /* ── Thin Separator Line ── */
 .ed-divider {
   height: 1px;
-  background: hsl(var(--foreground) / 0.15);
+  background: hsl(var(--foreground) / 0.12);
+  width: 100%;
+  margin: 0;
+}
+
+/* ── Thick Divider (section break) ── */
+.ed-divider-thick {
+  height: 3px;
+  background: hsl(var(--foreground));
   width: 100%;
   margin: 0;
 }
