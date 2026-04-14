@@ -1,0 +1,87 @@
+/* ══════════════════════════════════════════════
+   Shroom Editorial Design System
+   Analog-gradient, editorial-style utilities
+   ══════════════════════════════════════════════ */
+
+/* ── Section Backgrounds ── */
+.ed-bg-sky   { background: var(--gradient-sky); }
+.ed-bg-mint  { background: var(--gradient-mint); }
+.ed-bg-gold  { background: var(--gradient-gold); }
+.ed-bg-sage  { background: var(--gradient-sage); }
+.ed-bg-diva  { background: var(--gradient-diva); }
+
+/* ── Split Panels (50/50) ── */
+.ed-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 640px) {
+  .ed-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ed-split-sky-l  { background: var(--gradient-sky-split); }
+.ed-split-mint-l { background: var(--gradient-mint-split); }
+
+/* ── Banding Rows ── */
+.ed-band {
+  padding: 2rem 3rem;
+}
+
+.ed-band-sky  { background: var(--gradient-band-sky); }
+.ed-band-mint { background: var(--gradient-band-mint); }
+
+/* ── Oversized Stat Typography ── */
+.ed-stat {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: hsl(var(--foreground));
+}
+
+.ed-stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  color: hsl(var(--foreground) / 0.7);
+  margin-top: 0.5rem;
+}
+
+/* ── Editorial Section ── */
+.ed-section {
+  padding: 4rem 3rem;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .ed-section {
+    padding: 2.5rem 1.5rem;
+  }
+}
+
+/* ── Photo Overlay Cards (reviews style) ── */
+.ed-overlay-card {
+  background: hsl(var(--background) / 0.92);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+/* ── Editorial Heading (big, left-aligned, no decoration) ── */
+.ed-heading {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* ── Thin Separator Line ── */
+.ed-divider {
+  height: 1px;
+  background: hsl(var(--foreground) / 0.12);
+  width: 100%;
+}

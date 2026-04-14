@@ -11,6 +11,9 @@
 /* Fallback fonts from Google */
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
+/* Editorial Design System */
+@import './styles/editorial.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -90,6 +93,10 @@
     /* Horizontal split gradient (two-tone side-by-side) */
     --gradient-sky-split: linear-gradient(90deg, hsl(206 45% 85%) 0%, hsl(206 25% 92%) 50%, hsl(206 15% 95%) 100%);
     --gradient-mint-split: linear-gradient(90deg, hsl(150 40% 82%) 0%, hsl(150 25% 90%) 50%, hsl(150 15% 95%) 100%);
+
+    /* Banding: horizontal stripes of alternating opacity */
+    --gradient-band-sky: linear-gradient(180deg, hsl(206 45% 88%) 0%, hsl(206 35% 91%) 100%);
+    --gradient-band-mint: linear-gradient(180deg, hsl(150 40% 86%) 0%, hsl(150 30% 90%) 100%);
 
     /* Shadows */
     --shadow-soft: 0 4px 20px -4px hsl(180 50% 2% / 0.08);
