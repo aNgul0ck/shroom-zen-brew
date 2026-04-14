@@ -82,21 +82,20 @@
     --diva-dark: 0 0% 12%; /* Dark bottle */
     --diva-foreground: 43 38% 97%; /* Light text for dark backgrounds */
 
-    /* ── Editorial Analog Gradients ── */
-    /* Soft, pastel, analog-feel gradients inspired by brand editorial style */
-    --gradient-sky: linear-gradient(180deg, hsl(206 45% 85%) 0%, hsl(206 30% 93%) 50%, hsl(43 38% 97%) 100%);
-    --gradient-mint: linear-gradient(180deg, hsl(150 40% 85%) 0%, hsl(129 30% 88%) 50%, hsl(43 38% 97%) 100%);
-    --gradient-gold: linear-gradient(180deg, hsl(45 80% 82%) 0%, hsl(40 60% 88%) 50%, hsl(43 38% 97%) 100%);
-    --gradient-sage: linear-gradient(180deg, hsl(84 33% 85%) 0%, hsl(84 25% 90%) 50%, hsl(43 38% 97%) 100%);
+    /* ── Editorial Gradients — vivid, flat pastels matching brand deck ── */
+    --gradient-sky: linear-gradient(180deg, hsl(204 55% 82%) 0%, hsl(206 45% 87%) 100%);
+    --gradient-mint: linear-gradient(180deg, hsl(150 50% 80%) 0%, hsl(145 40% 85%) 100%);
+    --gradient-gold: linear-gradient(180deg, hsl(45 90% 80%) 0%, hsl(42 80% 85%) 100%);
+    --gradient-sage: linear-gradient(180deg, hsl(100 35% 85%) 0%, hsl(95 30% 88%) 100%);
     --gradient-diva: linear-gradient(180deg, hsl(336 72% 82%) 0%, hsl(330 62% 40%) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(43 38% 97%) 0%, hsl(84 33% 90%) 100%);
-    /* Horizontal split gradient (two-tone side-by-side) */
-    --gradient-sky-split: linear-gradient(90deg, hsl(206 45% 85%) 0%, hsl(206 25% 92%) 50%, hsl(206 15% 95%) 100%);
-    --gradient-mint-split: linear-gradient(90deg, hsl(150 40% 82%) 0%, hsl(150 25% 90%) 50%, hsl(150 15% 95%) 100%);
+    /* Horizontal split — left vivid, right lighter */
+    --gradient-sky-split: linear-gradient(90deg, hsl(200 60% 80%) 0%, hsl(206 40% 88%) 100%);
+    --gradient-mint-split: linear-gradient(90deg, hsl(150 55% 78%) 0%, hsl(145 35% 87%) 100%);
 
-    /* Banding: horizontal stripes of alternating opacity */
-    --gradient-band-sky: linear-gradient(180deg, hsl(206 45% 88%) 0%, hsl(206 35% 91%) 100%);
-    --gradient-band-mint: linear-gradient(180deg, hsl(150 40% 86%) 0%, hsl(150 30% 90%) 100%);
+    /* Banding: flat pastel rows for contact/footer */
+    --gradient-band-sky: hsl(204 50% 85%);
+    --gradient-band-mint: hsl(150 45% 83%);
 
     /* Shadows */
     --shadow-soft: 0 4px 20px -4px hsl(180 50% 2% / 0.08);

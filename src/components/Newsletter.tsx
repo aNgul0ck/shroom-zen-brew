@@ -16,42 +16,37 @@ const Newsletter = () => {
   return (
     <section className="ed-section ed-bg-gold">
       <div className="container mx-auto px-6 lg:px-12">
-        {/* Split layout like reference */}
-        <div className="ed-split gap-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left - CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="flex items-center"
           >
-            <div>
-              <Mail className="w-8 h-8 text-foreground mb-6" />
-              <h2 className="ed-heading text-foreground mb-4">
-                Bądź na bieżąco
-              </h2>
-              <p className="font-body text-muted-foreground mb-6">
-                Newsletter z przepisami, promocjami i nowościami ze świata Shroom.
-              </p>
-              <div className="ed-overlay-card inline-flex items-center gap-2 px-4 py-2 rounded-none">
-                <Gift className="w-4 h-4 text-foreground" />
-                <span className="font-body text-sm text-foreground">
-                  -10% na pierwsze zamówienie
-                </span>
-              </div>
+            <Mail className="w-8 h-8 text-foreground mb-6" />
+            <h2 className="ed-heading text-foreground mb-4">
+              Bądź na bieżąco
+            </h2>
+            <p className="font-body text-foreground/70 mb-6">
+              Newsletter z przepisami, promocjami i nowościami ze świata Shroom.
+            </p>
+            <div className="ed-overlay-card inline-flex items-center gap-2 px-4 py-2">
+              <Gift className="w-4 h-4 text-foreground" />
+              <span className="font-body text-sm text-foreground">
+                -10% na pierwsze zamówienie
+              </span>
             </div>
           </motion.div>
 
-          {/* Right - Form with banding */}
+          {/* Right - Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="flex items-center"
           >
-            <form onSubmit={handleSubmit} className="w-full space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="email"
                 value={email}
@@ -67,7 +62,7 @@ const Newsletter = () => {
                 Zapisz się
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <p className="font-body text-xs text-muted-foreground">
+              <p className="font-body text-xs text-foreground/50">
                 Szanujemy Twoją prywatność. Wypisz się w dowolnym momencie.
               </p>
             </form>
