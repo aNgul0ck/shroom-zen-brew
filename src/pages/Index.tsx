@@ -34,7 +34,7 @@ const Index = () => {
           <TrustBar />
           <div className="ed-divider-thick" />
           <MarqueeBanner />
-          <div className="ed-divider" />
+          <div className="ed-divider-thick" />
           <FunctionalDrinks />
           <div className="ed-divider-thick" />
           <section className="ed-section ed-bg-mint">
@@ -60,7 +60,7 @@ const Index = () => {
           <Subscriptions />
           <div className="ed-divider-thick" />
           <QuizCTA />
-          <div className="ed-divider" />
+          <div className="ed-divider-thick" />
           <Newsletter />
         </main>
         <StickyCTA />
