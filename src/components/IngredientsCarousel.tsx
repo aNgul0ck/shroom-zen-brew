@@ -42,7 +42,7 @@ const ingredients = [
 
 const IngredientsCarousel = () => {
   return (
-    <section className="py-24 bg-secondary/30">
+    <section className="ed-section ed-bg-gold">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
@@ -73,11 +73,11 @@ const IngredientsCarousel = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.08, duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-card rounded-2xl p-5 text-center group hover:bg-card/80 transition-colors duration-300 border border-border"
+              className="ed-overlay-card rounded-2xl p-5 text-center group hover:bg-[hsl(var(--background)/0.96)] transition-colors duration-300"
             >
               {/* Icon */}
-              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-secondary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <ingredient.icon className="w-6 h-6 text-foreground" />
+              <div className="mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                <ingredient.icon className="w-7 h-7 text-foreground" />
               </div>
 
               {/* Name */}
