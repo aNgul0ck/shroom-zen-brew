@@ -27,7 +27,7 @@ const IngredientsCarousel = () => {
 
         <div className="grid md:grid-cols-3 gap-[3px] mb-[3px]">
           {ingredients.slice(0, 3).map((ing) => (
-            <div key={ing.name} className="bg-[hsl(204,55%,85%)] p-6">
+            <div key={ing.name} className="bg-shroom-sky p-6">
               <h3 className="font-display text-xl font-bold text-foreground mb-1">{ing.name}</h3>
               <p className="font-body text-xs text-foreground/50">{ing.benefit}</p>
             </div>
@@ -35,7 +35,7 @@ const IngredientsCarousel = () => {
         </div>
         <div className="grid md:grid-cols-3 gap-[3px]">
           {ingredients.slice(3).map((ing) => (
-            <div key={ing.name} className="bg-[hsl(150,50%,82%)] p-6">
+            <div key={ing.name} className="bg-shroom-green p-6">
               <h3 className="font-display text-xl font-bold text-foreground mb-1">{ing.name}</h3>
               <p className="font-body text-xs text-foreground/50">{ing.benefit}</p>
             </div>

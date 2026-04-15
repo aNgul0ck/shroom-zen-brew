@@ -66,7 +66,7 @@ const ComparisonSection = () => {
   const allMetrics: MetricKey[] = ["energia", "fokus", "zdrowie"];
 
   return (
-    <section className="bg-[hsl(43,38%,97%)]">
+    <section className="bg-background">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
         <div className="mb-8">
           <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em] mb-3">Porównanie</p>
@@ -136,7 +136,7 @@ const ComparisonSection = () => {
           </div>
 
           {/* Right stats */}
-          <div className="bg-[hsl(150,50%,82%)] p-5 md:p-6 flex flex-col gap-4">
+          <div className="bg-shroom-green p-5 md:p-6 flex flex-col gap-4">
             <div className="flex justify-center py-2">
               <img src={productPower} alt="Shroom Power" className="h-32 w-auto object-contain" />
             </div>
