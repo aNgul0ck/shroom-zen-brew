@@ -12,12 +12,19 @@ const Footer = () => {
     { label: "shroom4you.com", href: "https://shroom4you.com" },
   ];
 
+  const bandColors = [
+    "bg-[hsl(150,50%,80%)]",
+    "bg-[hsl(150,45%,83%)]",
+    "bg-[hsl(150,40%,86%)]",
+    "bg-[hsl(150,35%,89%)]",
+    "bg-[hsl(150,30%,92%)]",
+  ];
+
   return (
     <footer>
-      {/* Editorial split footer — matches reference exactly */}
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[500px]">
-        {/* Left - cream/sage with thank you */}
-        <div className="ed-bg-sage flex items-center p-12 md:p-16">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        {/* Left - Thank you */}
+        <div className="bg-[hsl(100,35%,83%)] flex items-center p-12 md:p-16 min-h-[400px]">
           <div>
             <p className="font-display text-xl font-bold text-foreground mb-8">:shroom</p>
             <h3 className="font-display text-4xl md:text-5xl font-bold text-foreground">
@@ -26,7 +33,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Right - sky blue banding rows with contact info */}
+        {/* Right - contact bands */}
         <div className="flex flex-col">
           {contactInfo.map((item, i) => (
             <a
@@ -34,8 +41,7 @@ const Footer = () => {
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="flex-1 flex items-center px-8 md:px-12 border-b border-foreground/8 hover:opacity-80 transition-opacity"
-              style={{ background: `hsl(204 ${50 - i * 5}% ${83 + i * 2}%)` }}
+              className={`flex-1 flex items-center px-8 md:px-12 ${bandColors[i]} border-b border-foreground/8 hover:opacity-80 transition-opacity`}
             >
               <span className="font-display text-xl md:text-3xl font-bold text-foreground">
                 {item.label}
@@ -53,7 +59,7 @@ const Footer = () => {
           </p>
           <div className="flex gap-4">
             {[Instagram, Facebook, Linkedin, Youtube].map((Icon, i) => (
-              <a key={i} href="#" className="p-2 hover:bg-background/10 rounded-full transition-colors">
+              <a key={i} href="#" className="p-2 hover:bg-background/10 transition-colors">
                 <Icon className="w-4 h-4 text-background/60" />
               </a>
             ))}

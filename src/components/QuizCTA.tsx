@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 
 const QuizCTA = () => {
   return (
-    <section className="ed-section ed-bg-sky">
+    <section className="ed-section bg-[hsl(204,55%,82%)]">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center max-w-xl mx-auto">
+          <p className="font-body text-sm font-medium text-foreground/60 uppercase tracking-[0.2em] mb-4">
+            Quiz
+          </p>
           <h2 className="ed-heading text-foreground mb-4">
             Nie wiesz od czego zacząć?
           </h2>
-          <p className="font-body text-muted-foreground mb-8">
+          <p className="font-body text-foreground/60 mb-8">
             Zrób quiz — 4 pytania, dopasujemy Shrooma do Ciebie.
           </p>
           <Link
