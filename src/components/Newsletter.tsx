@@ -14,43 +14,41 @@ const Newsletter = () => {
 
   return (
     <section className="bg-[hsl(45,90%,78%)]">
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[400px]">
-        {/* Left - info */}
-        <div className="p-10 md:p-16 flex flex-col justify-center">
-          <Mail className="w-8 h-8 text-foreground mb-6" />
-          <h2 className="ed-heading text-foreground mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        {/* Left */}
+        <div className="p-8 md:p-12 flex flex-col justify-center">
+          <Mail className="w-6 h-6 text-foreground mb-4" />
+          <h2 className="ed-heading text-foreground mb-3 text-2xl md:text-3xl">
             Bądź na bieżąco
           </h2>
-          <p className="font-body text-foreground/60 mb-6 max-w-md">
+          <p className="font-body text-sm text-foreground/50 mb-4 max-w-sm">
             Newsletter z przepisami, promocjami i nowościami ze świata Shroom.
           </p>
-          <div className="bg-background/60 inline-flex items-center gap-2 px-4 py-2 self-start">
-            <Gift className="w-4 h-4 text-foreground" />
-            <span className="font-body text-sm text-foreground">
-              -10% na pierwsze zamówienie
-            </span>
+          <div className="bg-background/50 inline-flex items-center gap-2 px-3 py-1.5 self-start">
+            <Gift className="w-3.5 h-3.5 text-foreground" />
+            <span className="font-body text-xs text-foreground">-10% na pierwsze zamówienie</span>
           </div>
         </div>
 
-        {/* Right - form */}
-        <div className="bg-[hsl(45,85%,85%)] p-10 md:p-16 flex items-center">
-          <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md">
+        {/* Right */}
+        <div className="bg-[hsl(45,85%,85%)] p-8 md:p-12 flex items-center">
+          <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-sm">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Twój adres email"
-              className="w-full px-6 py-4 bg-background border-2 border-foreground/10 font-body text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-foreground/30 transition-all"
+              className="w-full px-4 py-3 bg-background border border-foreground/10 font-body text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-foreground/20 transition-all"
               required
             />
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 bg-foreground text-background px-8 py-4 font-display font-semibold text-sm hover:opacity-90 transition-opacity"
+              className="w-full flex items-center justify-center gap-2 bg-foreground text-background px-6 py-3 font-display font-semibold text-xs hover:opacity-90 transition-opacity"
             >
               Zapisz się
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
-            <p className="font-body text-xs text-foreground/40">
+            <p className="font-body text-[10px] text-foreground/30">
               Szanujemy Twoją prywatność. Wypisz się w dowolnym momencie.
             </p>
           </form>
