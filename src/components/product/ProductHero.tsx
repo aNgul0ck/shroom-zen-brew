@@ -86,7 +86,7 @@ const ProductHero = ({ product }: Props) => {
                   <span className="block text-xs font-body mt-0.5">{t.pricePerUnit} zł/szt.</span>
                   {t.savings && (
                     <span className={`absolute -top-2 -right-2 text-[10px] px-1.5 py-0.5 rounded-full font-body font-semibold ${
-                      isDiva ? "bg-diva-pink text-[#1a0a12]" : "bg-shroom-green text-foreground"
+                      isDiva ? "bg-diva-pink text-diva-dark" : "bg-shroom-green text-foreground"
                     }`}>
                       {t.savings}
                     </span>
@@ -108,7 +108,7 @@ const ProductHero = ({ product }: Props) => {
 
               <button className={`inline-flex items-center gap-2 px-8 py-4 rounded-full font-display font-semibold text-sm transition-all duration-300 hover:scale-105 ${
                 isDiva
-                  ? "bg-diva-pink text-[#1a0a12] hover:bg-white"
+                  ? "bg-diva-pink text-diva-dark hover:bg-white"
                   : "bg-foreground text-background hover:bg-foreground/90"
               }`}>
                 <ShoppingBag className="w-4 h-4" />

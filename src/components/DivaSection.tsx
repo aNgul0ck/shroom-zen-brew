@@ -106,7 +106,7 @@ const DivaSection = () => {
               
               <Link
                 to="/produkt/diva"
-                className="inline-flex items-center gap-2 bg-diva-pink text-[#1a0a12] px-8 py-4 rounded-full font-display font-semibold text-sm hover:bg-white transition-colors duration-300"
+                className="inline-flex items-center gap-2 bg-diva-pink text-diva-dark px-8 py-4 rounded-full font-display font-semibold text-sm hover:bg-white transition-colors duration-300"
               >
                 Shop Diva
                 <ArrowRight className="w-4 h-4" />
