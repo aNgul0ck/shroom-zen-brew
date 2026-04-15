@@ -11,7 +11,7 @@ const keywords = [
 
 const MarqueeBanner = () => {
   return (
-    <div className="ed-bg-sage py-4 overflow-hidden">
+    <div className="bg-foreground py-4 overflow-hidden">
       <motion.div
         className="flex gap-16 whitespace-nowrap"
         animate={{ x: ["0%", "-50%"] }}
@@ -24,7 +24,7 @@ const MarqueeBanner = () => {
         {[...keywords, ...keywords, ...keywords].map((keyword, index) => (
           <span
             key={index}
-            className="font-body text-sm font-medium text-foreground/70 tracking-wide uppercase"
+            className="font-body text-sm font-medium text-background/70 tracking-wide uppercase"
           >
             {keyword}
           </span>

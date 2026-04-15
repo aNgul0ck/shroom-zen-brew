@@ -12,19 +12,11 @@ const Footer = () => {
     { label: "shroom4you.com", href: "https://shroom4you.com" },
   ];
 
-  const bandColors = [
-    "bg-shroom-green",
-    "bg-shroom-sage",
-    "bg-shroom-peach",
-    "bg-shroom-blush",
-    "bg-shroom-sky",
-  ];
-
   return (
     <footer>
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Left */}
-        <div className="bg-shroom-sage flex items-center p-10 md:p-14 min-h-[300px]">
+        <div className="bg-foreground/[0.03] flex items-center p-10 md:p-14 min-h-[300px]">
           <div>
             <p className="font-display text-lg font-bold text-foreground mb-4">:shroom</p>
             <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground">Thank you!</h3>
@@ -39,7 +31,9 @@ const Footer = () => {
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className={`flex-1 flex items-center px-6 md:px-10 ${bandColors[i]} border-b border-foreground/5 hover:opacity-80 transition-opacity min-h-[60px]`}
+              className={`flex-1 flex items-center px-6 md:px-10 ${
+                i % 2 === 0 ? "bg-foreground/[0.03]" : "bg-foreground/[0.06]"
+              } border-b border-foreground/5 hover:bg-foreground/10 transition-colors min-h-[60px]`}
             >
               <span className="font-display text-base md:text-xl font-bold text-foreground">
                 {item.label}
