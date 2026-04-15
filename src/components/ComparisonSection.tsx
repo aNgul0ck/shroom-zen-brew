@@ -39,7 +39,7 @@ const VerticalBar = ({ value, isShroom, competitorColor, animationKey }: {
 
   return (
     <div className="flex flex-col items-center gap-1.5 flex-1">
-      <span className={`font-display text-sm font-bold ${isShroom ? "text-[hsl(129,35%,45%)]" : "text-foreground/30"}`}>{value}%</span>
+      <span className={`font-display text-sm font-bold ${isShroom ? "text-shroom-green" : "text-foreground/30"}`}>{value}%</span>
       <div className="w-full h-[140px] md:h-[180px] bg-foreground/5 flex flex-col justify-end">
         <div
           className={`w-full transition-all duration-700 ease-out ${isShroom 
@@ -72,7 +72,7 @@ const ComparisonSection = () => {
           <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em] mb-3">Porównanie</p>
           <h2 className="ed-heading text-foreground">Shroom vs. reszta</h2>
           <p className="font-body text-sm text-foreground/50 mt-2">
-            Średnio <span className="font-bold text-[hsl(129,35%,45%)]">+{adv}%</span> lepiej niż {comp.shortName.toLowerCase()}.
+            Średnio <span className="font-bold text-shroom-green">+{adv}%</span> lepiej niż {comp.shortName.toLowerCase()}.
           </p>
         </div>
 
@@ -116,7 +116,7 @@ const ComparisonSection = () => {
                       <VerticalBar value={comp.metrics[m]} isShroom={false} competitorColor={comp.color} animationKey={`${aKey}`} />
                     </div>
                     <p className="text-center">
-                      <span className="inline-block px-2 py-0.5 font-display font-bold text-xs bg-[hsl(129,35%,45%,0.1)] text-[hsl(129,35%,45%)]">+{diff}%</span>
+                      <span className="inline-block px-2 py-0.5 font-display font-bold text-xs bg-shroom-green/10 text-shroom-green">+{diff}%</span>
                     </p>
                   </div>
                 );
@@ -125,7 +125,7 @@ const ComparisonSection = () => {
 
             <div className="flex gap-5 mt-6 pt-4 border-t border-foreground/8">
               <div className="flex items-center gap-1.5">
-                <div className="w-3 h-3 bg-[hsl(129,35%,45%)]" />
+                <div className="w-3 h-3 bg-shroom-green" />
                 <span className="font-body text-xs text-foreground/40">Shroom</span>
               </div>
               <div className="flex items-center gap-1.5">
