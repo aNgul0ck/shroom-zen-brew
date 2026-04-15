@@ -75,7 +75,21 @@ const FunctionalDrinks = () => {
           </div>
         </div>
 
-        {/* Diva — full width featured card */}
+        {/* Duo CTA strip */}
+        <div className="bg-shroom-peach flex flex-col sm:flex-row items-center justify-between gap-3 px-5 py-4 mb-[3px]">
+          <p className="font-display text-sm md:text-base font-bold text-foreground text-center sm:text-left">
+            Rano + Wieczór = pełny rytm 🍄
+          </p>
+          <Link
+            to="/produkt/shroom-power"
+            className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 font-display font-semibold text-xs hover:opacity-90 transition-opacity whitespace-nowrap"
+          >
+            Kup duet — 149 zł
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        {/* Diva + BrainBliss */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[3px] mb-[3px]">
           <div className="bg-background border-t-[3px] border-t-shroom-sky p-5 md:p-8 group flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
             <div className="flex justify-center md:justify-start flex-shrink-0">
