@@ -33,7 +33,7 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <section className="bg-[hsl(204,55%,82%)]">
+    <section className="bg-shroom-sky">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
         {/* Header row */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">

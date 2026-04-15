@@ -13,18 +13,18 @@ const Footer = () => {
   ];
 
   const bandColors = [
-    "bg-[hsl(150,50%,80%)]",
-    "bg-[hsl(150,45%,83%)]",
-    "bg-[hsl(150,40%,86%)]",
-    "bg-[hsl(150,35%,89%)]",
-    "bg-[hsl(150,30%,92%)]",
+    "bg-shroom-green",
+    "bg-shroom-sage",
+    "bg-shroom-peach",
+    "bg-shroom-blush",
+    "bg-shroom-sky",
   ];
 
   return (
     <footer>
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Left */}
-        <div className="bg-[hsl(100,35%,83%)] flex items-center p-10 md:p-14 min-h-[300px]">
+        <div className="bg-shroom-sage flex items-center p-10 md:p-14 min-h-[300px]">
           <div>
             <p className="font-display text-lg font-bold text-foreground mb-4">:shroom</p>
             <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground">Thank you!</h3>

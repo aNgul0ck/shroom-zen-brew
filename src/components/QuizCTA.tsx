@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const QuizCTA = () => {
   return (
-    <section className="bg-[hsl(204,55%,82%)]">
+    <section className="bg-shroom-peach">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
         <div className="text-center max-w-md mx-auto">
           <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em] mb-3">

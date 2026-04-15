@@ -16,7 +16,7 @@ const products = [
     benefits: ["Lion's Mane", "Żeń-szeń", "Wit. C"],
     time: "Rano",
     description: "Aktywuj umysł i ciało. Czysta, stabilna energia na cały dzień.",
-    bg: "bg-[hsl(45,90%,78%)]",
+    bg: "bg-shroom-gold",
     slug: "shroom-power",
     price: "79 zł",
   },
@@ -30,7 +30,7 @@ const products = [
     benefits: ["Lion's Mane", "L-Teanina", "Chmiel"],
     time: "Wieczór",
     description: "Wycisz się po intensywnym dniu. Regeneracja zaczyna się od odpuszczenia.",
-    bg: "bg-[hsl(150,50%,78%)]",
+    bg: "bg-shroom-green",
     slug: "shroom-relax",
     price: "79 zł",
   },
@@ -44,7 +44,7 @@ const products = [
     benefits: ["Adaptogeny", "Bez alkoholu"],
     time: "Impreza",
     description: "Bezalkoholowy aperitivo z adaptogenami. Na każde wyjście.",
-    bg: "bg-[hsl(204,55%,80%)]",
+    bg: "bg-shroom-sky",
     slug: "diva-social-elixir",
     price: "112 zł",
   },
@@ -58,7 +58,7 @@ const products = [
     benefits: ["Lion's Mane 500mg", "30 porcji"],
     time: "Codziennie",
     description: "Soplówka jeżowata w czystej formie. Więcej z każdego dnia.",
-    bg: "bg-[hsl(100,35%,82%)]",
+    bg: "bg-shroom-sage",
     slug: "brainbliss",
     price: "47 zł",
   },
@@ -66,7 +66,7 @@ const products = [
 
 const FunctionalDrinks = () => {
   return (
-    <section className="bg-[hsl(43,38%,97%)]" id="produkty">
+    <section className="bg-background" id="produkty">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>
