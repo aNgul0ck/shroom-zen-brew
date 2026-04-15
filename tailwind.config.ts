@@ -84,6 +84,7 @@ export default {
           red: "hsl(var(--diva-red))",
           purple: "hsl(var(--diva-purple))",
           dark: "hsl(var(--diva-dark))",
+          darker: "hsl(var(--diva-darker))",
           foreground: "hsl(var(--diva-foreground))",
         },
       },
