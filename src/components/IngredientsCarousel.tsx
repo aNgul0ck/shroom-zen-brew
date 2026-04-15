@@ -1,15 +1,20 @@
 import { Brain, Zap, Moon, Leaf, Heart, Shield } from "lucide-react";
+import { useState } from "react";
 
 const ingredients = [
-  { name: "Lion's Mane", icon: Brain, benefit: "Supports brain function, boosts immune system", color: "bg-shroom-gold" },
-  { name: "L-Teanina", icon: Moon, benefit: "Promotes relaxation and calm alertness", color: "bg-shroom-sky" },
-  { name: "Żeń-szeń", icon: Zap, benefit: "Stamina and vitality boost", color: "bg-shroom-green" },
-  { name: "Chmiel", icon: Leaf, benefit: "Wsparcie regeneracji i snu", color: "bg-shroom-sage" },
-  { name: "Witamina C", icon: Shield, benefit: "Ochrona organizmu i odporność", color: "bg-shroom-peach" },
-  { name: "Cynk", icon: Heart, benefit: "Prawidłowe funkcjonowanie metabolizmu", color: "bg-shroom-green" },
+  { name: "Lion's Mane", icon: Brain, benefit: "Supports brain function, boosts immune system", color: "bg-shroom-gold", textColor: "text-shroom-gold" },
+  { name: "L-Teanina", icon: Moon, benefit: "Promotes relaxation and calm alertness", color: "bg-shroom-sky", textColor: "text-shroom-sky" },
+  { name: "Żeń-szeń", icon: Zap, benefit: "Stamina and vitality boost", color: "bg-shroom-green", textColor: "text-shroom-green" },
+  { name: "Chmiel", icon: Leaf, benefit: "Wsparcie regeneracji i snu", color: "bg-shroom-sage", textColor: "text-shroom-sage" },
+  { name: "Witamina C", icon: Shield, benefit: "Ochrona organizmu i odporność", color: "bg-shroom-peach", textColor: "text-shroom-peach" },
+  { name: "Cynk", icon: Heart, benefit: "Prawidłowe funkcjonowanie metabolizmu", color: "bg-shroom-green", textColor: "text-shroom-green" },
 ];
 
 const IngredientsCarousel = () => {
+  const [active, setActive] = useState(0);
+  const activeIng = ingredients[active];
+  const ActiveIcon = activeIng.icon;
+
   return (
     <section className="bg-background">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-20">
@@ -25,7 +30,48 @@ const IngredientsCarousel = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-[3px]">
+        {/* Mobile: interactive pill selector + detail card */}
+        <div className="md:hidden">
+          {/* Pill row - horizontally scrollable */}
+          <div className="flex gap-2 overflow-x-auto pb-4 -mx-6 px-6 scrollbar-hide">
+            {ingredients.map((ing, i) => {
+              const Icon = ing.icon;
+              const isActive = i === active;
+              return (
+                <button
+                  key={ing.name}
+                  onClick={() => setActive(i)}
+                  className={`flex items-center gap-2 px-4 py-2.5 shrink-0 border transition-all duration-200 ${
+                    isActive
+                      ? `${ing.color} border-foreground/20`
+                      : "bg-foreground/5 border-transparent"
+                  }`}
+                >
+                  <Icon className="w-4 h-4 text-foreground" />
+                  <span className="font-display text-sm font-semibold text-foreground whitespace-nowrap">
+                    {ing.name}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active detail card */}
+          <div className={`${activeIng.color}/10 border-l-[3px] border-l-foreground/30 p-6 mt-2`}>
+            <div className="flex items-center gap-3 mb-3">
+              <div className={`${activeIng.color} w-12 h-12 flex items-center justify-center`}>
+                <ActiveIcon className="w-6 h-6 text-foreground" />
+              </div>
+              <h3 className="font-display text-xl font-bold text-foreground">{activeIng.name}</h3>
+            </div>
+            <p className="font-body text-sm text-foreground/60 leading-relaxed">
+              {activeIng.benefit}
+            </p>
+          </div>
+        </div>
+
+        {/* Desktop: 3-col grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-[3px]">
           {ingredients.map((ing) => {
             const Icon = ing.icon;
             return (
