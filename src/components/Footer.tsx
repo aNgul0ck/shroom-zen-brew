@@ -23,13 +23,11 @@ const Footer = () => {
   return (
     <footer>
       <div className="grid grid-cols-1 md:grid-cols-2">
-        {/* Left - Thank you */}
-        <div className="bg-[hsl(100,35%,83%)] flex items-center p-12 md:p-16 min-h-[400px]">
+        {/* Left */}
+        <div className="bg-[hsl(100,35%,83%)] flex items-center p-10 md:p-14 min-h-[300px]">
           <div>
-            <p className="font-display text-xl font-bold text-foreground mb-8">:shroom</p>
-            <h3 className="font-display text-4xl md:text-5xl font-bold text-foreground">
-              Thank you!
-            </h3>
+            <p className="font-display text-lg font-bold text-foreground mb-4">:shroom</p>
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground">Thank you!</h3>
           </div>
         </div>
 
@@ -41,9 +39,9 @@ const Footer = () => {
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className={`flex-1 flex items-center px-8 md:px-12 ${bandColors[i]} border-b border-foreground/8 hover:opacity-80 transition-opacity`}
+              className={`flex-1 flex items-center px-6 md:px-10 ${bandColors[i]} border-b border-foreground/5 hover:opacity-80 transition-opacity min-h-[60px]`}
             >
-              <span className="font-display text-xl md:text-3xl font-bold text-foreground">
+              <span className="font-display text-base md:text-xl font-bold text-foreground">
                 {item.label}
               </span>
             </a>
@@ -52,22 +50,22 @@ const Footer = () => {
       </div>
 
       {/* Bottom bar */}
-      <div className="bg-foreground py-5">
-        <div className="container mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="font-body text-xs text-background/40">
+      <div className="bg-foreground py-4">
+        <div className="container mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="font-body text-[11px] text-background/40">
             © {currentYear} shroom. All rights reserved.
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-3">
             {[Instagram, Facebook, Linkedin, Youtube].map((Icon, i) => (
-              <a key={i} href="#" className="p-2 hover:bg-background/10 transition-colors">
-                <Icon className="w-4 h-4 text-background/60" />
+              <a key={i} href="#" className="p-1.5 hover:bg-background/10 transition-colors">
+                <Icon className="w-3.5 h-3.5 text-background/50" />
               </a>
             ))}
           </div>
-          <div className="flex gap-4">
-            <Link to="/blog" className="font-body text-xs text-background/40 hover:text-background/70 transition-colors">Blog</Link>
-            <a href="#" className="font-body text-xs text-background/40 hover:text-background/70 transition-colors">Privacy Policy</a>
-            <a href="#" className="font-body text-xs text-background/40 hover:text-background/70 transition-colors">Regulations</a>
+          <div className="flex gap-3">
+            <Link to="/blog" className="font-body text-[11px] text-background/40 hover:text-background/60 transition-colors">Blog</Link>
+            <a href="#" className="font-body text-[11px] text-background/40 hover:text-background/60 transition-colors">Privacy Policy</a>
+            <a href="#" className="font-body text-[11px] text-background/40 hover:text-background/60 transition-colors">Regulations</a>
           </div>
         </div>
       </div>

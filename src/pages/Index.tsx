@@ -37,15 +37,13 @@ const Index = () => {
           <div className="ed-divider-thick" />
           <FunctionalDrinks />
           <div className="ed-divider-thick" />
-          <section className="ed-section ed-bg-mint">
-            <div className="container mx-auto px-6 lg:px-12">
-              <div className="text-center mb-12 md:mb-16">
-                <p className="font-body text-sm font-medium text-foreground/60 uppercase tracking-[0.2em] mb-4">
+          <section className="bg-[hsl(150,50%,80%)]">
+            <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
+              <div className="text-center mb-8">
+                <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em] mb-3">
                   Twój dzień z Shroom
                 </p>
-                <h2 className="ed-heading text-foreground">
-                  Kiedy pić?
-                </h2>
+                <h2 className="ed-heading text-foreground">Kiedy pić?</h2>
               </div>
               <DayCycleClock />
             </div>
@@ -62,8 +60,8 @@ const Index = () => {
           <QuizCTA />
           <div className="ed-divider-thick" />
           <Newsletter />
+          <div className="ed-divider-thick" />
         </main>
-        <div className="ed-divider-thick" />
         <StickyCTA />
         <Footer />
       </div>
