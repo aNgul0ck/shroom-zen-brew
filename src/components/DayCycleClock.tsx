@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Sun, Sunset, Moon, Coffee, Briefcase, PartyPopper, UtensilsCrossed } from 'lucide-react';
 
 interface TimeSlot {
@@ -21,28 +21,25 @@ const timeSlots: TimeSlot[] = [
   { time: '11:00', period: 'weekend', product: 'mix', moment: 'Brunch, friends', hook: '"Saturday mood"', icon: UtensilsCrossed },
 ];
 
-const productColors = {
-  power: { bg: 'from-amber-500/20 to-orange-500/20', text: 'text-amber-400', glow: 'rgba(245, 158, 11, 0.4)' },
-  relax: { bg: 'from-emerald-500/20 to-teal-500/20', text: 'text-emerald-400', glow: 'rgba(16, 185, 129, 0.4)' },
-  diva: { bg: 'from-pink-500/20 to-rose-500/20', text: 'text-pink-400', glow: 'rgba(236, 72, 153, 0.4)' },
-  mix: { bg: 'from-purple-500/20 to-indigo-500/20', text: 'text-purple-400', glow: 'rgba(139, 92, 246, 0.4)' },
+const productAccent: Record<string, string> = {
+  power: 'bg-shroom-gold',
+  relax: 'bg-shroom-green',
+  diva: 'bg-shroom-peach',
+  mix: 'bg-shroom-sage',
 };
 
-const productNames = {
+const productTextAccent: Record<string, string> = {
+  power: 'text-shroom-gold',
+  relax: 'text-shroom-green',
+  diva: 'text-shroom-peach',
+  mix: 'text-shroom-sage',
+};
+
+const productNames: Record<string, string> = {
   power: 'Shroom Power',
   relax: 'Shroom Relax',
   diva: 'Diva Social Elixir',
   mix: 'Power + Relax',
-};
-
-const periodIcons = {
-  morning: Sun,
-  day: Sun,
-  afternoon: Sunset,
-  evening: Sunset,
-  night: Moon,
-  party: Moon,
-  weekend: Sun,
 };
 
 export const DayCycleClock = () => {
@@ -56,7 +53,6 @@ export const DayCycleClock = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Blinking colon effect
   useEffect(() => {
     const blinkInterval = setInterval(() => {
       setColonVisible((prev) => !prev);
@@ -65,156 +61,104 @@ export const DayCycleClock = () => {
   }, []);
 
   const currentSlot = timeSlots[currentIndex];
-  const colors = productColors[currentSlot.product];
-  const PeriodIcon = periodIcons[currentSlot.period];
   const SlotIcon = currentSlot.icon;
-
   const [hours, minutes] = currentSlot.time.split(':');
+  const accent = productAccent[currentSlot.product];
+  const textAccent = productTextAccent[currentSlot.product];
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4">
+    <div className="w-full max-w-4xl mx-auto">
       <div className="flex flex-col items-center gap-6 md:gap-8">
-        {/* Digital Clock Display */}
-        <motion.div
-          className="relative w-full max-w-sm md:max-w-lg"
-          animate={{ 
-            boxShadow: `0 0 60px 15px ${colors.glow}` 
-          }}
-          transition={{ duration: 0.8 }}
-        >
-          <div 
-            className="relative px-6 py-5 md:px-16 md:py-10 rounded-2xl md:rounded-3xl"
-            style={{ 
-              background: 'linear-gradient(145deg, rgba(20, 20, 25, 0.95), rgba(10, 10, 15, 0.98))',
-              boxShadow: 'inset 0 2px 20px rgba(255,255,255,0.05), 0 10px 40px rgba(0,0,0,0.5)'
-            }}
-          >
-            {/* Period indicator */}
-            <div className="absolute top-3 right-3 md:top-6 md:right-6">
-              <motion.div
-                key={currentSlot.period}
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                className={`p-1.5 md:p-2 rounded-full bg-gradient-to-br ${colors.bg}`}
-              >
-                <PeriodIcon className={`w-4 h-4 md:w-6 md:h-6 ${colors.text}`} />
-              </motion.div>
-            </div>
+        {/* Clock display — editorial, cream canvas */}
+        <div className="relative w-full max-w-sm md:max-w-lg border border-foreground/10 bg-background p-6 md:p-10">
+          {/* Accent top bar */}
+          <div className={`absolute top-0 left-0 right-0 h-[3px] ${accent} transition-colors duration-500`} />
 
-            {/* Time Display */}
-            <div className="flex items-center justify-center">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={hours}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -20, opacity: 0 }}
-                  className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-mono font-bold tracking-tight ${colors.text}`}
-                  style={{ 
-                    textShadow: `0 0 30px ${colors.glow}`,
-                    fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace'
-                  }}
-                >
-                  {hours}
-                </motion.span>
-              </AnimatePresence>
-              
-              <span 
-                className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-mono font-bold ${colors.text} transition-opacity duration-100 mx-1 md:mx-2`}
-                style={{ 
-                  opacity: colonVisible ? 1 : 0.3,
-                  textShadow: `0 0 30px ${colors.glow}`,
-                  fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace'
-                }}
-              >
-                :
-              </span>
-              
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={minutes}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -20, opacity: 0 }}
-                  className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-mono font-bold tracking-tight ${colors.text}`}
-                  style={{ 
-                    textShadow: `0 0 30px ${colors.glow}`,
-                    fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace'
-                  }}
-                >
-                  {minutes}
-                </motion.span>
-              </AnimatePresence>
-            </div>
-
-            {/* Product Badge */}
+          {/* Time */}
+          <div className="flex items-center justify-center">
             <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="mt-4 md:mt-6 flex items-center justify-center gap-2 md:gap-3"
+              <motion.span
+                key={hours}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tight text-foreground"
               >
-                <SlotIcon className={`w-4 h-4 md:w-5 md:h-5 ${colors.text}`} />
-                <span className={`text-sm md:text-xl font-medium ${colors.text}`}>
-                  {productNames[currentSlot.product]}
-                </span>
-              </motion.div>
+                {hours}
+              </motion.span>
+            </AnimatePresence>
+
+            <span
+              className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-bold text-foreground mx-1 md:mx-2 transition-opacity duration-100"
+              style={{ opacity: colonVisible ? 1 : 0.2 }}
+            >
+              :
+            </span>
+
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={minutes}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tight text-foreground"
+              >
+                {minutes}
+              </motion.span>
             </AnimatePresence>
           </div>
-        </motion.div>
 
-        {/* Info Panel */}
+          {/* Product badge */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="mt-4 md:mt-6 flex items-center justify-center gap-2"
+            >
+              <span className={`${accent} w-6 h-6 flex items-center justify-center`}>
+                <SlotIcon className="w-3.5 h-3.5 text-foreground" />
+              </span>
+              <span className="text-sm md:text-lg font-display font-semibold text-foreground">
+                {productNames[currentSlot.product]}
+              </span>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Info panel */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.4 }}
-            className="text-center space-y-2 md:space-y-4 px-2"
+            className="text-center space-y-1.5"
           >
-            <p className="text-base md:text-xl text-foreground/70">
+            <p className="text-sm md:text-base text-foreground/50 font-body">
               {currentSlot.moment}
             </p>
-            <p className={`text-xl md:text-3xl font-semibold italic ${colors.text}`}>
+            <p className={`text-lg md:text-2xl font-display font-bold italic ${textAccent}`}>
               {currentSlot.hook}
             </p>
           </motion.div>
         </AnimatePresence>
 
-        {/* Timeline dots */}
-        <div className="flex items-center gap-2 md:gap-3 pt-2 md:pt-4">
-          {timeSlots.map((slot, i) => {
-            const slotColors = productColors[slot.product];
-            return (
-              <button
-                key={i}
-                onClick={() => setCurrentIndex(i)}
-                className={`relative w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                  i === currentIndex 
-                    ? 'scale-150' 
-                    : 'opacity-40 hover:opacity-70'
-                }`}
-                style={{
-                  backgroundColor: i === currentIndex 
-                    ? (slot.product === 'power' ? '#f59e0b' : slot.product === 'relax' ? '#10b981' : slot.product === 'diva' ? '#ec4899' : '#8b5cf6')
-                    : 'currentColor'
-                }}
-              >
-                {i === currentIndex && (
-                  <motion.div
-                    layoutId="activeDot"
-                    className="absolute inset-0 rounded-full"
-                    style={{ 
-                      boxShadow: `0 0 15px 4px ${slotColors.glow}` 
-                    }}
-                  />
-                )}
-              </button>
-            );
-          })}
+        {/* Timeline dots — sharp squares */}
+        <div className="flex items-center gap-1.5 md:gap-2 pt-2">
+          {timeSlots.map((slot, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentIndex(i)}
+              className={`w-2 h-2 md:w-2.5 md:h-2.5 transition-all duration-300 ${
+                i === currentIndex
+                  ? `${productAccent[slot.product]} scale-125`
+                  : 'bg-foreground/15 hover:bg-foreground/30'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </div>

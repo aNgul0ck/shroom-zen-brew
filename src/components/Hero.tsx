@@ -7,20 +7,18 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
-      {/* Background Image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
           alt="Friends enjoying Shroom drinks together"
           className="w-full h-full object-cover scale-x-[-1] object-[30%_center]"
         />
-        {/* Gradient overlay - stronger on left for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/10 md:to-transparent" />
       </div>
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12 pt-24 pb-24">
         <div className="max-w-xl">
-          {/* Star rating badge */}
+          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -31,7 +29,7 @@ const Hero = () => {
             <span className="font-body text-sm font-medium text-white/80">Nagrodzony napój funkcjonalny</span>
           </motion.div>
 
-          {/* Dream outcome headline */}
+          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -54,17 +52,17 @@ const Hero = () => {
             Funkcjonalne napoje z soplówką jeżowatą. Energia, spokój i dobre samopoczucie — bez kompromisów.
           </motion.p>
 
-          {/* Trust pills */}
+          {/* Trust pills — sharp, editorial */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap gap-3 mb-10"
+            className="flex flex-wrap gap-2 mb-10"
           >
             {["0g cukru", "100% naturalne", "Lion's Mane"].map((item) => (
               <div
                 key={item}
-                className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-2 rounded-full"
+                className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-2"
               >
                 <Check className="w-3.5 h-3.5 text-shroom-green" />
                 <span className="font-body text-xs sm:text-sm text-white/90">{item}</span>
@@ -72,7 +70,7 @@ const Hero = () => {
             ))}
           </motion.div>
 
-          {/* CTAs */}
+          {/* CTAs — sharp, no rounded */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -81,14 +79,14 @@ const Hero = () => {
           >
             <Link
               to="/produkt/shroom-power"
-              className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-display font-medium text-sm hover:bg-white/90 transition-colors duration-300"
+              className="inline-flex items-center gap-2 bg-white text-foreground px-8 py-4 font-display font-semibold text-sm hover:bg-white/90 transition-colors duration-300"
             >
               Kup Shrooma
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href="#o-nas"
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-full font-display font-medium text-sm hover:bg-white/20 transition-colors duration-300"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 font-display font-medium text-sm hover:bg-white/20 transition-colors duration-300"
             >
               Dowiedz się więcej
             </a>
@@ -114,14 +112,14 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — sharp */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-1.5 bg-white/50 rounded-full" />
+        <div className="w-5 h-9 border-2 border-white/30 flex justify-center pt-2">
+          <div className="w-1 h-1 bg-white/50" />
         </div>
       </motion.div>
     </section>
