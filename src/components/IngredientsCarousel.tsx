@@ -12,15 +12,15 @@ const ingredients = [
 const IngredientsCarousel = () => {
   return (
     <section className="bg-background">
-      <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+      <div className="container mx-auto px-6 lg:px-12 py-12 md:py-20">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>
             <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em] mb-3">
               Składniki
             </p>
             <h2 className="ed-heading text-foreground leading-tight">Adaptogens</h2>
           </div>
-          <p className="font-body text-sm text-foreground/50 max-w-xs">
+          <p className="font-body text-sm lg:text-base text-foreground/50 max-w-xs">
             Natural botanicals and fungal extracts for homeostasis.
           </p>
         </div>
@@ -29,13 +29,16 @@ const IngredientsCarousel = () => {
           {ingredients.map((ing) => {
             const Icon = ing.icon;
             return (
-              <div key={ing.name} className="bg-background border border-foreground/8 p-6 flex items-start gap-4">
-                <div className={`${ing.color} w-8 h-8 flex items-center justify-center flex-shrink-0`}>
-                  <Icon className="w-4 h-4 text-foreground" />
+              <div
+                key={ing.name}
+                className="group bg-background border border-foreground/8 p-6 lg:p-8 flex items-start gap-4 hover:border-foreground/15 transition-all duration-300 cursor-default"
+              >
+                <div className={`${ing.color} w-10 h-10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                  <Icon className="w-5 h-5 text-foreground" />
                 </div>
                 <div>
-                  <h3 className="font-display text-base font-bold text-foreground mb-1">{ing.name}</h3>
-                  <p className="font-body text-xs text-foreground/50">{ing.benefit}</p>
+                  <h3 className="font-display text-base lg:text-lg font-bold text-foreground mb-1">{ing.name}</h3>
+                  <p className="font-body text-xs lg:text-sm text-foreground/50">{ing.benefit}</p>
                 </div>
               </div>
             );

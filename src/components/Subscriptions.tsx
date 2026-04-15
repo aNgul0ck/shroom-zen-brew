@@ -59,8 +59,8 @@ const Subscriptions = () => {
           {subscriptions.map((sub) => (
             <div
               key={sub.name}
-              className={`bg-background p-6 md:p-8 flex flex-col ${
-                sub.featured ? "border-2 border-foreground" : "border border-foreground/8"
+              className={`group bg-background p-6 md:p-8 lg:p-10 flex flex-col hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 ${
+                sub.featured ? "border-2 border-foreground" : "border border-foreground/8 hover:border-foreground/20"
               }`}
             >
               <div className="flex items-center gap-2 mb-5">
@@ -74,30 +74,30 @@ const Subscriptions = () => {
                 )}
               </div>
 
-              <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-1">
+              <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-1">
                 {sub.name}
               </h3>
-              <p className="font-body text-sm text-foreground/50 mb-5">{sub.headline}</p>
+              <p className="font-body text-sm lg:text-base text-foreground/50 mb-5">{sub.headline}</p>
 
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-2.5 mb-6">
                 {sub.highlights.map((h, i) => (
                   <li key={i} className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-shroom-green flex-shrink-0" />
-                    <span className="font-body text-xs text-foreground">{h}</span>
+                    <Check className="w-4 h-4 text-shroom-green flex-shrink-0" />
+                    <span className="font-body text-sm text-foreground">{h}</span>
                   </li>
                 ))}
               </ul>
 
               <div className="mt-auto">
-                <p className="font-display text-3xl font-bold text-foreground mb-0.5">
+                <p className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-0.5">
                   {sub.price} <span className="text-base font-normal text-foreground/40">zł</span>
                 </p>
-                <p className="font-body text-[11px] text-foreground/40 mb-4">
+                <p className="font-body text-xs text-foreground/40 mb-4">
                   {sub.bottles} · {sub.period}
                 </p>
-                <button className="w-full flex items-center justify-center gap-2 bg-foreground text-background py-3 font-display font-semibold text-xs hover:opacity-90 transition-opacity">
+                <button className="w-full flex items-center justify-center gap-2 bg-foreground text-background py-3.5 font-display font-semibold text-sm group-hover:gap-3 transition-all duration-300 hover:opacity-90">
                   {sub.cta}
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
                 </button>
               </div>
             </div>
