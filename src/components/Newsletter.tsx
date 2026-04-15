@@ -13,7 +13,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="bg-[hsl(45,90%,78%)]">
+    <section className="bg-shroom-gold">
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Left */}
         <div className="p-8 md:p-12 flex flex-col justify-center">
@@ -31,7 +31,7 @@ const Newsletter = () => {
         </div>
 
         {/* Right */}
-        <div className="bg-[hsl(45,85%,85%)] p-8 md:p-12 flex items-center">
+        <div className="bg-shroom-peach p-8 md:p-12 flex items-center">
           <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-sm">
             <input
               type="email"

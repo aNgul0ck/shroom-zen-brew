@@ -11,7 +11,7 @@ const ingredients = [
 
 const IngredientsCarousel = () => {
   return (
-    <section className="bg-[hsl(45,90%,80%)]">
+    <section className="bg-shroom-gold">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
           <div>
