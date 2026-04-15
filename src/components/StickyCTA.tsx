@@ -18,7 +18,6 @@ const StickyCTA = () => {
       const heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
       const pastHero = scrollY > heroBottom;
 
-      // Hide when in produkty or subscriptions sections
       let inHiddenZone = false;
       if (produktyEl) {
         const rect = produktyEl.getBoundingClientRect();
@@ -44,7 +43,7 @@ const StickyCTA = () => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-      <div className="bg-background/95 backdrop-blur-md border-t border-border px-4 py-3 flex items-center gap-3">
+      <div className="bg-background/95 backdrop-blur-md border-t border-foreground/10 px-4 py-3 flex items-center gap-3">
         <img
           src={productPower}
           alt="Shroom Power"
@@ -54,11 +53,11 @@ const StickyCTA = () => {
           <p className="font-display text-sm font-bold text-foreground truncate">
             Starter Pack
           </p>
-          <p className="font-body text-xs text-muted-foreground">79 zł</p>
+          <p className="font-body text-xs text-foreground/40">79 zł</p>
         </div>
         <Link
           to="/produkt/shroom-power"
-          className="inline-flex items-center gap-1.5 bg-shroom-green text-white px-5 py-2.5 rounded-full font-display font-semibold text-sm shrink-0 hover:opacity-90 transition-opacity"
+          className="inline-flex items-center gap-1.5 bg-foreground text-background px-5 py-2.5 font-display font-semibold text-sm shrink-0 hover:opacity-90 transition-opacity"
         >
           Zamów
           <ArrowRight className="w-3.5 h-3.5" />

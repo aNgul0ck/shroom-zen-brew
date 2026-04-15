@@ -13,13 +13,13 @@ const Footer = () => {
   ];
 
   return (
-    <footer>
+    <footer className="pb-16 md:pb-0">
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Left */}
-        <div className="bg-foreground/[0.03] flex items-center p-10 md:p-14 min-h-[300px]">
+        <div className="bg-foreground/[0.03] flex items-center p-8 md:p-14 min-h-[200px] md:min-h-[300px]">
           <div>
-            <p className="font-display text-lg font-bold text-foreground mb-4">:shroom</p>
-            <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground">Thank you!</h3>
+            <p className="font-display text-lg font-bold text-foreground mb-3">:shroom</p>
+            <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground">Thank you!</h3>
           </div>
         </div>
 
@@ -33,9 +33,9 @@ const Footer = () => {
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className={`flex-1 flex items-center px-6 md:px-10 ${
                 i % 2 === 0 ? "bg-foreground/[0.03]" : "bg-foreground/[0.06]"
-              } border-b border-foreground/5 hover:bg-foreground/10 transition-colors min-h-[60px]`}
+              } border-b border-foreground/5 hover:bg-foreground/10 transition-colors min-h-[52px] md:min-h-[60px]`}
             >
-              <span className="font-display text-base md:text-xl font-bold text-foreground">
+              <span className="font-display text-sm md:text-xl font-bold text-foreground">
                 {item.label}
               </span>
             </a>

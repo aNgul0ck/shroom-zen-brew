@@ -75,18 +75,18 @@ const Hero = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="flex flex-wrap gap-4 mb-14"
+            className="flex flex-col sm:flex-row gap-3 mb-14"
           >
             <Link
               to="/produkt/shroom-power"
-              className="inline-flex items-center gap-2 bg-white text-foreground px-8 py-4 font-display font-semibold text-sm hover:bg-white/90 transition-colors duration-300"
+              className="inline-flex items-center justify-center gap-2 bg-white text-foreground px-6 py-3.5 sm:px-8 sm:py-4 font-display font-semibold text-sm hover:bg-white/90 transition-colors duration-300"
             >
               Kup Shrooma
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href="#o-nas"
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 font-display font-medium text-sm hover:bg-white/20 transition-colors duration-300"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3.5 sm:px-8 sm:py-4 font-display font-medium text-sm hover:bg-white/20 transition-colors duration-300"
             >
               Dowiedz się więcej
             </a>

@@ -36,10 +36,10 @@ const Index = () => {
           <MarqueeBanner />
           <div className="ed-divider-thick" />
           <FunctionalDrinks />
-          <div className="ed-divider-thick" />
+          <div className="border-t border-foreground/10" />
           <section className="bg-background">
-            <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
-              <div className="text-center mb-8">
+            <div className="container mx-auto px-6 lg:px-12 py-10 md:py-16">
+              <div className="text-center mb-6 md:mb-8">
                 <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em] mb-3">
                   Twój dzień z Shroom
                 </p>
@@ -48,19 +48,18 @@ const Index = () => {
               <DayCycleClock />
             </div>
           </section>
-          <div className="ed-divider-thick" />
+          <div className="border-t border-foreground/10" />
           <Reviews />
           <div className="ed-divider-thick" />
           <ComparisonSection />
-          <div className="ed-divider-thick" />
+          <div className="border-t border-foreground/10" />
           <IngredientsCarousel />
-          <div className="ed-divider-thick" />
+          <div className="border-t border-foreground/10" />
           <Subscriptions />
           <div className="ed-divider-thick" />
           <QuizCTA />
-          <div className="ed-divider-thick" />
+          <div className="border-t border-foreground/10" />
           <Newsletter />
-          <div className="ed-divider-thick" />
         </main>
         <StickyCTA />
         <Footer />
