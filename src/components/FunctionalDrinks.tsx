@@ -5,73 +5,11 @@ import productRelax from "@/assets/product-relax.png";
 import productDiva from "@/assets/product-diva.png";
 import productBrainbliss from "@/assets/product-brainbliss.png";
 
-const products = [
-  {
-    id: 1,
-    name: "Shroom Power",
-    tagline: "Energia bez bullshitu.",
-    volume: "330ml",
-    image: productPower,
-    icon: Sun,
-    benefits: ["Lion's Mane", "Żeń-szeń", "Wit. C"],
-    time: "Rano",
-    description: "Aktywuj umysł i ciało. Czysta, stabilna energia na cały dzień.",
-    borderColor: "border-t-shroom-gold",
-    badgeBg: "bg-shroom-gold",
-    slug: "shroom-power",
-    price: "79 zł",
-  },
-  {
-    id: 2,
-    name: "Shroom Relax",
-    tagline: "Wyluzuj bez wina.",
-    volume: "330ml",
-    image: productRelax,
-    icon: Moon,
-    benefits: ["Lion's Mane", "L-Teanina", "Chmiel"],
-    time: "Wieczór",
-    description: "Wycisz się po intensywnym dniu. Regeneracja zaczyna się od odpuszczenia.",
-    borderColor: "border-t-shroom-green",
-    badgeBg: "bg-shroom-green",
-    slug: "shroom-relax",
-    price: "79 zł",
-  },
-  {
-    id: 3,
-    name: "Diva Social Elixir",
-    tagline: "Imprezuj bez alkoholu.",
-    volume: "500ml",
-    image: productDiva,
-    icon: PartyPopper,
-    benefits: ["Adaptogeny", "Bez alkoholu"],
-    time: "Impreza",
-    description: "Bezalkoholowy aperitivo z adaptogenami. Na każde wyjście.",
-    borderColor: "border-t-shroom-sky",
-    badgeBg: "bg-shroom-sky",
-    slug: "diva-social-elixir",
-    price: "112 zł",
-  },
-  {
-    id: 4,
-    name: "BrainBliss",
-    tagline: "Lion's Mane w tabletce.",
-    volume: "30 tabletek",
-    image: productBrainbliss,
-    icon: Brain,
-    benefits: ["Lion's Mane 500mg", "30 porcji"],
-    time: "Codziennie",
-    description: "Soplówka jeżowata w czystej formie. Więcej z każdego dnia.",
-    borderColor: "border-t-shroom-sage",
-    badgeBg: "bg-shroom-sage",
-    slug: "brainbliss",
-    price: "47 zł",
-  },
-];
-
 const FunctionalDrinks = () => {
   return (
     <section className="bg-background" id="produkty">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
+        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>
             <p className="font-body text-xs font-medium text-accent uppercase tracking-[0.2em] mb-3">
@@ -86,52 +24,109 @@ const FunctionalDrinks = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-[3px]">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className={`bg-background border-t-[3px] ${product.borderColor} p-6 group flex flex-col`}
-            >
-              <span className={`${product.badgeBg} self-start px-2.5 py-1 font-display text-[11px] font-semibold text-foreground flex items-center gap-1.5 mb-4`}>
-                <product.icon className="w-3 h-3" />
-                {product.time}
+        {/* Duo: Power + Relax — side by side even on mobile */}
+        <div className="grid grid-cols-2 gap-[3px] mb-[3px]">
+          {/* Power */}
+          <div className="bg-background border-t-[3px] border-t-shroom-gold p-4 md:p-6 group flex flex-col">
+            <span className="bg-shroom-gold self-start px-2 py-1 font-display text-[10px] md:text-[11px] font-semibold text-foreground flex items-center gap-1 mb-3">
+              <Sun className="w-3 h-3" />
+              Rano
+            </span>
+            <div className="flex justify-center mb-4">
+              <img src={productPower} alt="Shroom Power" className="h-28 md:h-36 w-auto object-contain group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <h3 className="font-display text-base md:text-lg font-bold text-foreground mb-0.5">Shroom Power</h3>
+            <p className="font-body text-xs text-foreground/60 mb-2">Energia bez bullshitu.</p>
+            <p className="font-body text-[11px] text-foreground/40 leading-relaxed mb-3 flex-1 hidden md:block">
+              Aktywuj umysł i ciało. Czysta, stabilna energia na cały dzień.
+            </p>
+            <div className="flex flex-wrap gap-1 mb-3">
+              {["Lion's Mane", "Żeń-szeń"].map((b) => (
+                <span key={b} className="bg-foreground/5 px-1.5 py-0.5 font-body text-[10px] text-foreground/50">{b}</span>
+              ))}
+            </div>
+            <Link to="/produkt/shroom-power" className="inline-flex items-center gap-1.5 bg-foreground text-background px-3 py-2 md:px-4 md:py-2.5 font-display font-semibold text-[11px] md:text-xs hover:opacity-90 transition-opacity self-start">
+              79 zł <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+
+          {/* Relax */}
+          <div className="bg-background border-t-[3px] border-t-shroom-green p-4 md:p-6 group flex flex-col">
+            <span className="bg-shroom-green self-start px-2 py-1 font-display text-[10px] md:text-[11px] font-semibold text-foreground flex items-center gap-1 mb-3">
+              <Moon className="w-3 h-3" />
+              Wieczór
+            </span>
+            <div className="flex justify-center mb-4">
+              <img src={productRelax} alt="Shroom Relax" className="h-28 md:h-36 w-auto object-contain group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <h3 className="font-display text-base md:text-lg font-bold text-foreground mb-0.5">Shroom Relax</h3>
+            <p className="font-body text-xs text-foreground/60 mb-2">Wyluzuj bez wina.</p>
+            <p className="font-body text-[11px] text-foreground/40 leading-relaxed mb-3 flex-1 hidden md:block">
+              Wycisz się po intensywnym dniu. Regeneracja zaczyna się od odpuszczenia.
+            </p>
+            <div className="flex flex-wrap gap-1 mb-3">
+              {["Lion's Mane", "L-Teanina"].map((b) => (
+                <span key={b} className="bg-foreground/5 px-1.5 py-0.5 font-body text-[10px] text-foreground/50">{b}</span>
+              ))}
+            </div>
+            <Link to="/produkt/shroom-relax" className="inline-flex items-center gap-1.5 bg-foreground text-background px-3 py-2 md:px-4 md:py-2.5 font-display font-semibold text-[11px] md:text-xs hover:opacity-90 transition-opacity self-start">
+              79 zł <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Diva — full width featured card */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[3px] mb-[3px]">
+          <div className="bg-background border-t-[3px] border-t-shroom-sky p-5 md:p-8 group flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div className="flex justify-center md:justify-start flex-shrink-0">
+              <img src={productDiva} alt="Diva Social Elixir" className="h-32 md:h-44 w-auto object-contain group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div className="flex-1">
+              <span className="bg-shroom-sky inline-flex items-center gap-1 px-2 py-1 font-display text-[11px] font-semibold text-foreground mb-3">
+                <PartyPopper className="w-3 h-3" />
+                Impreza
               </span>
-
-              <div className="flex justify-center mb-5">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="h-36 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-
-              <h3 className="font-display text-lg font-bold text-foreground mb-0.5">
-                {product.name}
-              </h3>
-              <p className="font-body text-sm text-foreground/60 mb-3">
-                {product.tagline}
+              <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-1">Diva Social Elixir</h3>
+              <p className="font-body text-sm text-foreground/60 mb-2">Imprezuj bez alkoholu.</p>
+              <p className="font-body text-xs text-foreground/40 leading-relaxed mb-4">
+                Bezalkoholowy aperitivo z adaptogenami. Na każde wyjście.
               </p>
-              <p className="font-body text-xs text-foreground/50 leading-relaxed mb-4 flex-1">
-                {product.description}
-              </p>
-
               <div className="flex flex-wrap gap-1 mb-4">
-                {product.benefits.map((b) => (
-                  <span key={b} className="bg-foreground/5 px-2 py-0.5 font-body text-[11px] text-foreground/60">
-                    {b}
-                  </span>
+                {["Adaptogeny", "Bez alkoholu", "500ml"].map((b) => (
+                  <span key={b} className="bg-foreground/5 px-2 py-0.5 font-body text-[11px] text-foreground/50">{b}</span>
                 ))}
               </div>
-
-              <Link
-                to={`/produkt/${product.slug}`}
-                className="inline-flex items-center gap-2 bg-foreground text-background px-4 py-2.5 font-display font-semibold text-xs hover:opacity-90 transition-opacity self-start"
-              >
-                {product.price}
-                <ArrowRight className="w-3.5 h-3.5" />
+              <Link to="/produkt/diva-social-elixir" className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 font-display font-semibold text-xs hover:opacity-90 transition-opacity">
+                112 zł <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
-          ))}
+          </div>
+
+          {/* BrainBliss — compact */}
+          <div className="bg-background border-t-[3px] border-t-shroom-sage p-5 md:p-8 group flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+            <div className="flex justify-center md:justify-start flex-shrink-0">
+              <img src={productBrainbliss} alt="BrainBliss" className="h-32 md:h-44 w-auto object-contain group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div className="flex-1">
+              <span className="bg-shroom-sage inline-flex items-center gap-1 px-2 py-1 font-display text-[11px] font-semibold text-foreground mb-3">
+                <Brain className="w-3 h-3" />
+                Codziennie
+              </span>
+              <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-1">BrainBliss</h3>
+              <p className="font-body text-sm text-foreground/60 mb-2">Lion's Mane w tabletce.</p>
+              <p className="font-body text-xs text-foreground/40 leading-relaxed mb-4">
+                Soplówka jeżowata w czystej formie. Więcej z każdego dnia.
+              </p>
+              <div className="flex flex-wrap gap-1 mb-4">
+                {["Lion's Mane 500mg", "30 porcji"].map((b) => (
+                  <span key={b} className="bg-foreground/5 px-2 py-0.5 font-body text-[11px] text-foreground/50">{b}</span>
+                ))}
+              </div>
+              <Link to="/produkt/brainbliss" className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 font-display font-semibold text-xs hover:opacity-90 transition-opacity">
+                47 zł <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
