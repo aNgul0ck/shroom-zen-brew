@@ -134,23 +134,25 @@ const ComparisonSection = () => {
           </div>
 
           {/* Right stats */}
-          <div className="bg-foreground/[0.03] border border-foreground/8 p-5 md:p-6 flex flex-col gap-4">
+          <div className="bg-foreground/[0.03] border border-foreground/8 p-4 md:p-6 flex flex-col gap-3">
             <div className="flex justify-center py-2">
-              <img src={productPower} alt="Shroom Power" className="h-32 w-auto object-contain" />
+              <img src={productPower} alt="Shroom Power" className="h-24 md:h-32 w-auto object-contain" />
             </div>
-            <div className="border border-foreground/8 bg-background p-4">
-              <p className="font-display text-2xl font-bold text-foreground">0g</p>
-              <p className="text-foreground/50 font-body text-xs">dodanego cukru</p>
+            <div className="grid grid-cols-3 md:grid-cols-1 gap-[3px]">
+              <div className="border border-foreground/8 bg-background p-3 md:p-4">
+                <p className="font-display text-lg md:text-2xl font-bold text-foreground">0g</p>
+                <p className="text-foreground/50 font-body text-[10px] md:text-xs">dodanego cukru</p>
+              </div>
+              <div className="border border-foreground/8 bg-background p-3 md:p-4">
+                <p className="font-display text-sm md:text-lg font-bold text-foreground">Cynk</p>
+                <p className="text-foreground/50 font-body text-[10px] md:text-xs">funkcje poznawcze*</p>
+              </div>
+              <div className="border border-foreground/8 bg-background p-3 md:p-4">
+                <p className="font-display text-sm md:text-lg font-bold text-foreground">Lion's Mane</p>
+                <p className="text-foreground/50 font-body text-[10px] md:text-xs">soplówka jeżowata</p>
+              </div>
             </div>
-            <div className="border border-foreground/8 bg-background p-4">
-              <p className="font-display text-lg font-bold text-foreground">Źródło cynku</p>
-              <p className="text-foreground/50 font-body text-xs">funkcje poznawcze*</p>
-            </div>
-            <div className="border border-foreground/8 bg-background p-4">
-              <p className="font-display text-lg font-bold text-foreground">Lion's Mane</p>
-              <p className="text-foreground/50 font-body text-xs">soplówka jeżowata</p>
-            </div>
-            <a href="#produkty" className="flex items-center justify-center gap-2 bg-foreground text-background px-6 py-3 font-display font-bold text-sm hover:opacity-90 transition-opacity mt-auto">
+            <a href="#produkty" className="flex items-center justify-center gap-2 bg-foreground text-background px-5 py-3 font-display font-bold text-sm hover:opacity-90 transition-opacity mt-auto">
               Zamów teraz
               <Zap className="w-4 h-4" />
             </a>
