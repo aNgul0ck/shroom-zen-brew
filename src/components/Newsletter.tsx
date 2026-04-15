@@ -13,7 +13,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="bg-shroom-gold">
+    <section className="bg-background">
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Left */}
         <div className="p-8 md:p-12 flex flex-col justify-center">
@@ -24,14 +24,14 @@ const Newsletter = () => {
           <p className="font-body text-sm text-foreground/50 mb-4 max-w-sm">
             Newsletter z przepisami, promocjami i nowościami ze świata Shroom.
           </p>
-          <div className="bg-background/50 inline-flex items-center gap-2 px-3 py-1.5 self-start">
+          <div className="bg-shroom-gold inline-flex items-center gap-2 px-3 py-1.5 self-start">
             <Gift className="w-3.5 h-3.5 text-foreground" />
             <span className="font-body text-xs text-foreground">-10% na pierwsze zamówienie</span>
           </div>
         </div>
 
         {/* Right */}
-        <div className="bg-shroom-peach p-8 md:p-12 flex items-center">
+        <div className="bg-foreground/[0.03] p-8 md:p-12 flex items-center">
           <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-sm">
             <input
               type="email"

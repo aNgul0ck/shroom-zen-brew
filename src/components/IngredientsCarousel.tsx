@@ -1,17 +1,17 @@
 import { Brain, Zap, Moon, Leaf, Heart, Shield } from "lucide-react";
 
 const ingredients = [
-  { name: "Lion's Mane", icon: Brain, benefit: "Supports brain function, boosts immune system" },
-  { name: "L-Teanina", icon: Moon, benefit: "Promotes relaxation and calm alertness" },
-  { name: "Żeń-szeń", icon: Zap, benefit: "Stamina and vitality boost" },
-  { name: "Chmiel", icon: Leaf, benefit: "Wsparcie regeneracji i snu" },
-  { name: "Witamina C", icon: Shield, benefit: "Ochrona organizmu i odporność" },
-  { name: "Cynk", icon: Heart, benefit: "Prawidłowe funkcjonowanie metabolizmu" },
+  { name: "Lion's Mane", icon: Brain, benefit: "Supports brain function, boosts immune system", color: "bg-shroom-gold" },
+  { name: "L-Teanina", icon: Moon, benefit: "Promotes relaxation and calm alertness", color: "bg-shroom-sky" },
+  { name: "Żeń-szeń", icon: Zap, benefit: "Stamina and vitality boost", color: "bg-shroom-green" },
+  { name: "Chmiel", icon: Leaf, benefit: "Wsparcie regeneracji i snu", color: "bg-shroom-sage" },
+  { name: "Witamina C", icon: Shield, benefit: "Ochrona organizmu i odporność", color: "bg-shroom-peach" },
+  { name: "Cynk", icon: Heart, benefit: "Prawidłowe funkcjonowanie metabolizmu", color: "bg-shroom-green" },
 ];
 
 const IngredientsCarousel = () => {
   return (
-    <section className="bg-shroom-gold">
+    <section className="bg-background">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
           <div>
@@ -25,21 +25,21 @@ const IngredientsCarousel = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-[3px] mb-[3px]">
-          {ingredients.slice(0, 3).map((ing) => (
-            <div key={ing.name} className="bg-shroom-sky p-6">
-              <h3 className="font-display text-xl font-bold text-foreground mb-1">{ing.name}</h3>
-              <p className="font-body text-xs text-foreground/50">{ing.benefit}</p>
-            </div>
-          ))}
-        </div>
         <div className="grid md:grid-cols-3 gap-[3px]">
-          {ingredients.slice(3).map((ing) => (
-            <div key={ing.name} className="bg-shroom-green p-6">
-              <h3 className="font-display text-xl font-bold text-foreground mb-1">{ing.name}</h3>
-              <p className="font-body text-xs text-foreground/50">{ing.benefit}</p>
-            </div>
-          ))}
+          {ingredients.map((ing) => {
+            const Icon = ing.icon;
+            return (
+              <div key={ing.name} className="bg-background border border-foreground/8 p-6 flex items-start gap-4">
+                <div className={`${ing.color} w-8 h-8 flex items-center justify-center flex-shrink-0`}>
+                  <Icon className="w-4 h-4 text-foreground" />
+                </div>
+                <div>
+                  <h3 className="font-display text-base font-bold text-foreground mb-1">{ing.name}</h3>
+                  <p className="font-body text-xs text-foreground/50">{ing.benefit}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         <p className="font-body text-[10px] text-foreground/30 max-w-xl mt-6">

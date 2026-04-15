@@ -43,7 +43,7 @@ const VerticalBar = ({ value, isShroom, competitorColor, animationKey }: {
       <div className="w-full h-[140px] md:h-[180px] bg-foreground/5 flex flex-col justify-end">
         <div
           className={`w-full transition-all duration-700 ease-out ${isShroom 
-            ? "bg-gradient-to-t from-[hsl(129,35%,45%)] to-[hsl(84,33%,70%)]" 
+            ? "bg-shroom-green" 
             : `bg-gradient-to-t ${competitorColor}`}`}
           style={{ height: `${h}%` }}
         />
@@ -78,8 +78,7 @@ const ComparisonSection = () => {
 
         <div className="grid lg:grid-cols-[1fr,300px] gap-[3px]">
           {/* Chart */}
-          <div className="bg-background p-5 md:p-8">
-            {/* Selector */}
+          <div className="bg-background border border-foreground/8 p-5 md:p-8">
             <div className="grid grid-cols-3 gap-[2px] mb-6">
               {competitors.map((c) => {
                 const Icon = c.icon;
@@ -98,7 +97,6 @@ const ComparisonSection = () => {
               })}
             </div>
 
-            {/* Bars */}
             <div className="grid grid-cols-3 gap-4">
               {allMetrics.map((m) => {
                 const cfg = metricLabels[m];
@@ -136,19 +134,19 @@ const ComparisonSection = () => {
           </div>
 
           {/* Right stats */}
-          <div className="bg-shroom-green p-5 md:p-6 flex flex-col gap-4">
+          <div className="bg-foreground/[0.03] border border-foreground/8 p-5 md:p-6 flex flex-col gap-4">
             <div className="flex justify-center py-2">
               <img src={productPower} alt="Shroom Power" className="h-32 w-auto object-contain" />
             </div>
-            <div className="bg-background/70 p-4">
+            <div className="border border-foreground/8 bg-background p-4">
               <p className="font-display text-2xl font-bold text-foreground">0g</p>
               <p className="text-foreground/50 font-body text-xs">dodanego cukru</p>
             </div>
-            <div className="bg-background/70 p-4">
+            <div className="border border-foreground/8 bg-background p-4">
               <p className="font-display text-lg font-bold text-foreground">Źródło cynku</p>
               <p className="text-foreground/50 font-body text-xs">funkcje poznawcze*</p>
             </div>
-            <div className="bg-background/70 p-4">
+            <div className="border border-foreground/8 bg-background p-4">
               <p className="font-display text-lg font-bold text-foreground">Lion's Mane</p>
               <p className="text-foreground/50 font-body text-xs">soplówka jeżowata</p>
             </div>

@@ -16,7 +16,8 @@ const products = [
     benefits: ["Lion's Mane", "Żeń-szeń", "Wit. C"],
     time: "Rano",
     description: "Aktywuj umysł i ciało. Czysta, stabilna energia na cały dzień.",
-    bg: "bg-shroom-gold",
+    borderColor: "border-t-shroom-gold",
+    badgeBg: "bg-shroom-gold",
     slug: "shroom-power",
     price: "79 zł",
   },
@@ -30,7 +31,8 @@ const products = [
     benefits: ["Lion's Mane", "L-Teanina", "Chmiel"],
     time: "Wieczór",
     description: "Wycisz się po intensywnym dniu. Regeneracja zaczyna się od odpuszczenia.",
-    bg: "bg-shroom-green",
+    borderColor: "border-t-shroom-green",
+    badgeBg: "bg-shroom-green",
     slug: "shroom-relax",
     price: "79 zł",
   },
@@ -44,7 +46,8 @@ const products = [
     benefits: ["Adaptogeny", "Bez alkoholu"],
     time: "Impreza",
     description: "Bezalkoholowy aperitivo z adaptogenami. Na każde wyjście.",
-    bg: "bg-shroom-sky",
+    borderColor: "border-t-shroom-sky",
+    badgeBg: "bg-shroom-sky",
     slug: "diva-social-elixir",
     price: "112 zł",
   },
@@ -58,7 +61,8 @@ const products = [
     benefits: ["Lion's Mane 500mg", "30 porcji"],
     time: "Codziennie",
     description: "Soplówka jeżowata w czystej formie. Więcej z każdego dnia.",
-    bg: "bg-shroom-sage",
+    borderColor: "border-t-shroom-sage",
+    badgeBg: "bg-shroom-sage",
     slug: "brainbliss",
     price: "47 zł",
   },
@@ -86,9 +90,9 @@ const FunctionalDrinks = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className={`${product.bg} p-6 group flex flex-col`}
+              className={`bg-background border-t-[3px] ${product.borderColor} p-6 group flex flex-col`}
             >
-              <span className="bg-background/70 self-start px-2.5 py-1 font-display text-[11px] font-semibold text-foreground flex items-center gap-1.5 mb-4">
+              <span className={`${product.badgeBg} self-start px-2.5 py-1 font-display text-[11px] font-semibold text-foreground flex items-center gap-1.5 mb-4`}>
                 <product.icon className="w-3 h-3" />
                 {product.time}
               </span>
@@ -113,7 +117,7 @@ const FunctionalDrinks = () => {
 
               <div className="flex flex-wrap gap-1 mb-4">
                 {product.benefits.map((b) => (
-                  <span key={b} className="bg-background/50 px-2 py-0.5 font-body text-[11px] text-foreground">
+                  <span key={b} className="bg-foreground/5 px-2 py-0.5 font-body text-[11px] text-foreground/60">
                     {b}
                   </span>
                 ))}

@@ -10,7 +10,7 @@ const subscriptions = [
     period: "Power lub Relax",
     highlights: ["2 tygodnie eksperymentu", "1 butelka dziennie", "Idealny na prezent"],
     cta: "Rozpocznij",
-    bg: "bg-shroom-gold",
+    badgeBg: "bg-shroom-gold",
   },
   {
     badge: "Bestseller",
@@ -21,7 +21,7 @@ const subscriptions = [
     period: "12 Power + 12 Relax",
     highlights: ["Pełny rytm dnia", "Rano: aktywacja", "Wieczór: wyciszenie"],
     cta: "Wybierz",
-    bg: "bg-shroom-green",
+    badgeBg: "bg-shroom-green",
     featured: true,
   },
   {
@@ -33,13 +33,13 @@ const subscriptions = [
     period: "24 Power + 24 Relax",
     highlights: ["Miesiąc wsparcia", "2 butelki dziennie", "Maksymalne efekty"],
     cta: "Go Heroic",
-    bg: "bg-shroom-sky",
+    badgeBg: "bg-shroom-sky",
   },
 ];
 
 const Subscriptions = () => {
   return (
-    <section className="bg-shroom-sage" id="subskrypcje">
+    <section className="bg-background" id="subskrypcje">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>
@@ -57,9 +57,14 @@ const Subscriptions = () => {
 
         <div className="grid md:grid-cols-3 gap-[3px]">
           {subscriptions.map((sub) => (
-            <div key={sub.name} className={`${sub.bg} p-6 md:p-8 flex flex-col`}>
+            <div
+              key={sub.name}
+              className={`bg-background p-6 md:p-8 flex flex-col ${
+                sub.featured ? "border-2 border-foreground" : "border border-foreground/8"
+              }`}
+            >
               <div className="flex items-center gap-2 mb-5">
-                <span className="bg-background/70 px-2.5 py-1 font-display text-[11px] font-semibold text-foreground">
+                <span className={`${sub.badgeBg} px-2.5 py-1 font-display text-[11px] font-semibold text-foreground`}>
                   {sub.badge}
                 </span>
                 {sub.featured && (
@@ -77,7 +82,7 @@ const Subscriptions = () => {
               <ul className="space-y-2 mb-6">
                 {sub.highlights.map((h, i) => (
                   <li key={i} className="flex items-center gap-2">
-                    <Check className="w-3.5 h-3.5 text-foreground flex-shrink-0" />
+                    <Check className="w-3.5 h-3.5 text-shroom-green flex-shrink-0" />
                     <span className="font-body text-xs text-foreground">{h}</span>
                   </li>
                 ))}

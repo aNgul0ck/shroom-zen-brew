@@ -33,9 +33,8 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <section className="bg-shroom-sky">
+    <section className="bg-background">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
-        {/* Header row */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
           <div>
             <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em] mb-3">
@@ -48,7 +47,7 @@ const Reviews = () => {
           <div className="flex items-center gap-2">
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-foreground text-foreground" />
+                <Star key={i} className="w-4 h-4 fill-shroom-gold text-shroom-gold" />
               ))}
             </div>
             <span className="font-display text-base font-semibold text-foreground">4.9</span>
@@ -56,16 +55,15 @@ const Reviews = () => {
           </div>
         </div>
 
-        {/* Review cards — tight grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-[3px]">
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="bg-background/90 backdrop-blur-sm p-6"
+              className="bg-background border border-foreground/8 p-6"
             >
               <div className="flex gap-0.5 mb-3">
                 {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-foreground text-foreground" />
+                  <Star key={i} className="w-3.5 h-3.5 fill-shroom-gold text-shroom-gold" />
                 ))}
               </div>
               <p className="font-body text-foreground text-sm leading-relaxed mb-4">
