@@ -76,13 +76,13 @@ const FunctionalDrinks = () => {
         </div>
 
         {/* Duo CTA strip */}
-        <div className="bg-shroom-peach flex flex-col sm:flex-row items-center justify-between gap-3 px-5 py-4 mb-[3px]">
+        <div className="border border-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-3 px-5 py-4 mb-[3px]">
           <p className="font-display text-sm md:text-base font-bold text-foreground text-center sm:text-left">
-            Rano + Wieczór = pełny rytm 🍄
+            Rano + Wieczór = pełny rytm <span className="text-foreground/30">→</span>
           </p>
           <Link
             to="/produkt/shroom-power"
-            className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 font-display font-semibold text-xs hover:opacity-90 transition-opacity whitespace-nowrap"
+            className="inline-flex items-center gap-2 border-2 border-foreground text-foreground px-5 py-2.5 font-display font-semibold text-xs hover:bg-foreground hover:text-background transition-colors whitespace-nowrap"
           >
             Kup duet — 149 zł
             <ArrowRight className="w-3.5 h-3.5" />
