@@ -79,7 +79,8 @@
     --diva-pink: 336 72% 72%; /* Pink label */
     --diva-red: 0 70% 50%; /* Lips red */
     --diva-purple: 240 50% 45%; /* Blue accent */
-    --diva-dark: 0 0% 12%; /* Dark bottle */
+    --diva-dark: 330 35% 8%; /* #1a0a12 - main dark bg */
+    --diva-darker: 325 40% 5%; /* #140810 - deeper dark */
     --diva-foreground: 43 38% 97%; /* Light text for dark backgrounds */
 
     /* ── Editorial Gradients — vivid, flat pastels matching brand deck ── */

@@ -10,7 +10,7 @@ const ProductReviews = ({ product }: Props) => {
   const isDiva = product.isDiva;
 
   return (
-    <section className={`py-24 ${isDiva ? "bg-[#140810]" : "bg-background"}`}>
+    <section className={`py-24 ${isDiva ? "bg-diva-darker" : "bg-background"}`}>
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -10,7 +10,7 @@ const subscriptions = [
     period: "Power lub Relax",
     highlights: ["2 tygodnie eksperymentu", "1 butelka dziennie", "Idealny na prezent"],
     cta: "Rozpocznij",
-    bg: "bg-[hsl(45,90%,78%)]",
+    bg: "bg-shroom-gold",
   },
   {
     badge: "Bestseller",
@@ -21,7 +21,7 @@ const subscriptions = [
     period: "12 Power + 12 Relax",
     highlights: ["Pełny rytm dnia", "Rano: aktywacja", "Wieczór: wyciszenie"],
     cta: "Wybierz",
-    bg: "bg-[hsl(150,50%,78%)]",
+    bg: "bg-shroom-green",
     featured: true,
   },
   {
@@ -33,13 +33,13 @@ const subscriptions = [
     period: "24 Power + 24 Relax",
     highlights: ["Miesiąc wsparcia", "2 butelki dziennie", "Maksymalne efekty"],
     cta: "Go Heroic",
-    bg: "bg-[hsl(204,55%,82%)]",
+    bg: "bg-shroom-sky",
   },
 ];
 
 const Subscriptions = () => {
   return (
-    <section className="bg-[hsl(100,35%,83%)]" id="subskrypcje">
+    <section className="bg-shroom-sage" id="subskrypcje">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>

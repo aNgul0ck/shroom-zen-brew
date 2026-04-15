@@ -16,7 +16,7 @@ const ProductRoutine = ({ product }: Props) => {
       : "Twój wieczór z Relax";
 
   return (
-    <section className={`py-24 ${isDiva ? "bg-[#1a0a12]" : "bg-secondary/20"}`}>
+    <section className={`py-24 ${isDiva ? "bg-diva-dark" : "bg-secondary/20"}`}>
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
