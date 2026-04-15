@@ -27,7 +27,7 @@ const ProductPage = () => {
   }
 
   return (
-    <div className={product.isDiva ? "bg-[#1a0a12]" : "bg-background"}>
+    <div className={product.isDiva ? "bg-diva-dark" : "bg-background"}>
       <Header />
       <ProductHero product={product} />
       <ProductBenefits product={product} />

@@ -12,7 +12,7 @@ const features = [
 
 const DivaSection = () => {
   return (
-    <section className="py-24 bg-[#1a0a12] text-white overflow-hidden">
+    <section className="py-24 bg-diva-dark text-white overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Brand Intro */}
         <motion.div

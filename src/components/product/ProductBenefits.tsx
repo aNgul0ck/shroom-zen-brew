@@ -9,7 +9,7 @@ const ProductBenefits = ({ product }: Props) => {
   const isDiva = product.isDiva;
 
   return (
-    <section className={`py-16 ${isDiva ? "bg-[#1a0a12] border-t border-white/5" : "bg-secondary/30"}`}>
+    <section className={`py-16 ${isDiva ? "bg-diva-dark border-t border-white/5" : "bg-secondary/30"}`}>
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {product.benefits.map((benefit, index) => (

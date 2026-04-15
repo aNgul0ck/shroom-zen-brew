@@ -9,7 +9,7 @@ const ProductIngredients = ({ product }: Props) => {
   const isDiva = product.isDiva;
 
   return (
-    <section className={`py-24 ${isDiva ? "bg-[#140810]" : "bg-background"}`}>
+    <section className={`py-24 ${isDiva ? "bg-diva-darker" : "bg-background"}`}>
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ const ProductIngredients = ({ product }: Props) => {
             >
               {/* Timeline dot */}
               <div className={`absolute left-4 top-1 w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                isDiva ? "border-diva-pink bg-[#1a0a12]" : "border-foreground bg-background"
+                isDiva ? "border-diva-pink bg-diva-dark" : "border-foreground bg-background"
               }`}>
                 <div className={`w-2 h-2 rounded-full ${isDiva ? "bg-diva-pink" : "bg-foreground"}`} />
               </div>

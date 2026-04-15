@@ -12,7 +12,7 @@ const ProductCrossSell = ({ currentSlug, isDiva }: Props) => {
   const others = getOtherProducts(currentSlug);
 
   return (
-    <section className={`py-24 ${isDiva ? "bg-[#140810]" : "bg-background"}`}>
+    <section className={`py-24 ${isDiva ? "bg-diva-darker" : "bg-background"}`}>
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ const ProductCrossSell = ({ currentSlug, isDiva }: Props) => {
                 to={`/produkt/${product.slug}`}
                 className={`block rounded-2xl p-6 group transition-all duration-300 hover:scale-[1.02] ${
                   product.isDiva
-                    ? "bg-[#1a0a12] border border-diva-pink/20"
+                    ? "bg-diva-dark border border-diva-pink/20"
                     : isDiva
                       ? "bg-white/5 border border-white/10"
                       : "bg-card border border-border"

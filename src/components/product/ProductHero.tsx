@@ -14,7 +14,7 @@ const ProductHero = ({ product }: Props) => {
   const isDiva = product.isDiva;
 
   return (
-    <section className={`pt-24 pb-16 ${isDiva ? "bg-[#1a0a12]" : "bg-background"}`}>
+    <section className={`pt-24 pb-16 ${isDiva ? "bg-diva-dark" : "bg-background"}`}>
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Product Image */}
