@@ -40,7 +40,7 @@ const Index = () => {
           <section className="ed-section ed-bg-mint">
             <div className="container mx-auto px-6 lg:px-12">
               <div className="text-center mb-12 md:mb-16">
-                <p className="font-body text-sm font-medium text-muted-foreground uppercase tracking-[0.2em] mb-4">
+                <p className="font-body text-sm font-medium text-foreground/60 uppercase tracking-[0.2em] mb-4">
                   Twój dzień z Shroom
                 </p>
                 <h2 className="ed-heading text-foreground">
@@ -63,6 +63,7 @@ const Index = () => {
           <div className="ed-divider-thick" />
           <Newsletter />
         </main>
+        <div className="ed-divider-thick" />
         <StickyCTA />
         <Footer />
       </div>

@@ -17,7 +17,7 @@ const products = [
     time: "Rano",
     description:
       "Aktywuj umysł i ciało. Bez crashu kofeinowego, bez jitterów. Czysta, stabilna energia na cały dzień.",
-    gradient: "ed-bg-gold",
+    bg: "bg-[hsl(45,90%,78%)]",
     slug: "shroom-power",
     price: "79 zł",
   },
@@ -32,7 +32,7 @@ const products = [
     time: "Wieczór",
     description:
       "Wycisz się po intensywnym dniu. Regeneracja zaczyna się od odpuszczenia — nie od kolejnego scrollowania.",
-    gradient: "ed-bg-mint",
+    bg: "bg-[hsl(150,50%,78%)]",
     slug: "shroom-relax",
     price: "79 zł",
   },
@@ -47,7 +47,7 @@ const products = [
     time: "Wieczór/Impreza",
     description:
       "Bezalkoholowy aperitivo z adaptogenami. Na każde wyjście, które chcesz zapamiętać.",
-    gradient: "ed-bg-sky",
+    bg: "bg-[hsl(204,55%,80%)]",
     slug: "diva-social-elixir",
     price: "112 zł",
   },
@@ -62,7 +62,7 @@ const products = [
     time: "Codziennie",
     description:
       "Soplówka jeżowata w czystej formie. Dla tych, którzy chcą więcej z każdego dnia.",
-    gradient: "ed-bg-sage",
+    bg: "bg-[hsl(100,35%,82%)]",
     slug: "brainbliss",
     price: "47 zł",
   },
@@ -70,7 +70,7 @@ const products = [
 
 const FunctionalDrinks = () => {
   return (
-    <section className="ed-section ed-bg-cream" id="produkty">
+    <section className="ed-section bg-[hsl(43,38%,97%)]" id="produkty">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-4xl mb-6 md:mb-8">
           <p className="font-body text-sm font-medium text-accent uppercase tracking-[0.2em] mb-6">
@@ -78,22 +78,22 @@ const FunctionalDrinks = () => {
           </p>
           <h2 className="ed-heading text-foreground">
             Rytm dnia{" "}
-            <span className="text-muted-foreground/40">i nocy.</span>
+            <span className="text-foreground/30">i nocy.</span>
           </h2>
         </div>
 
-        <p className="font-body text-lg text-muted-foreground max-w-xl mb-16 md:mb-20">
+        <p className="font-body text-lg text-foreground/60 max-w-xl mb-16 md:mb-20">
           Cztery produkty zaprojektowane do naturalnego rytmu Twojego życia. Energia, spokój, celebracja, fokus.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-1">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-[3px] bg-foreground">
           {products.map((product) => (
             <div
               key={product.id}
-              className={`${product.gradient} p-7 md:p-8 group flex flex-col`}
+              className={`${product.bg} p-7 md:p-8 group flex flex-col`}
             >
               <div className="flex items-center gap-2 mb-6">
-                <span className="ed-overlay-card px-3 py-1 rounded-none font-display text-xs font-semibold text-foreground flex items-center gap-1.5">
+                <span className="bg-background/80 backdrop-blur-sm px-3 py-1 font-display text-xs font-semibold text-foreground flex items-center gap-1.5">
                   <product.icon className="w-3.5 h-3.5" />
                   {product.time}
                 </span>
@@ -113,10 +113,10 @@ const FunctionalDrinks = () => {
               <p className="font-body text-base text-foreground/70 mb-1">
                 {product.tagline}
               </p>
-              <p className="font-body text-xs text-muted-foreground mb-4">
+              <p className="font-body text-xs text-foreground/50 mb-4">
                 {product.price} / {product.volume}
               </p>
-              <p className="font-body text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+              <p className="font-body text-sm text-foreground/60 leading-relaxed mb-5 flex-1">
                 {product.description}
               </p>
 
@@ -124,7 +124,7 @@ const FunctionalDrinks = () => {
                 {product.benefits.map((b) => (
                   <span
                     key={b}
-                    className="ed-overlay-card px-2.5 py-1 rounded-none font-body text-xs text-foreground"
+                    className="bg-background/60 px-2.5 py-1 font-body text-xs text-foreground"
                   >
                     {b}
                   </span>
@@ -133,7 +133,7 @@ const FunctionalDrinks = () => {
 
               <Link
                 to={`/produkt/${product.slug}`}
-                className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-none font-display font-semibold text-sm hover:opacity-90 transition-opacity self-start"
+                className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2.5 font-display font-semibold text-sm hover:opacity-90 transition-opacity self-start"
               >
                 Kup teraz — {product.price}
                 <ArrowRight className="w-4 h-4" />
