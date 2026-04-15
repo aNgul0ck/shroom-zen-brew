@@ -76,6 +76,7 @@ type Result = {
   description: string;
   adaptogens: string[];
   image: string;
+  accent: string;
 };
 
 const results: Record<string, Result> = {
@@ -88,6 +89,7 @@ const results: Record<string, Result> = {
     description: "Twój styl życia wymaga napoju na tempo dnia. Soplówka jeżowata + żeń-szeń + witamina C.",
     adaptogens: ["Lion's Mane", "Żeń-szeń", "Cynk", "Wit. C"],
     image: productPower,
+    accent: "bg-shroom-gold",
   },
   relax: {
     key: "relax",
@@ -98,6 +100,7 @@ const results: Record<string, Result> = {
     description: "Potrzebujesz wyciszenia. L-teanina + soplówka jeżowata — spokój bez senności.",
     adaptogens: ["L-teanina", "Lion's Mane", "Chmiel", "Cynk"],
     image: productRelax,
+    accent: "bg-shroom-green",
   },
   diva: {
     key: "diva",
@@ -105,74 +108,33 @@ const results: Record<string, Result> = {
     emoji: "💃",
     slug: "diva",
     title: "Dla towarzyskich",
-    description: "Cenisz autentyczne relacje i dobre vibes. Damiana + żeń-szeń syberyjski + brokat.",
-    adaptogens: ["Damiana", "Żeń-szeń", "Cordyceps", "Brokat"],
+    description: "Cenisz autentyczne relacje i dobre vibes. Damiana + żeń-szeń syberyjski.",
+    adaptogens: ["Damiana", "Żeń-szeń", "Cordyceps"],
     image: productDiva,
+    accent: "bg-shroom-peach",
   },
 };
 
-// ── Progress Ring ─────────────────────────────────────
+// ── Progress Bar ─────────────────────────────────────
 
-const ProgressRing = ({ step, total }: { step: number; total: number }) => {
-  const size = 64;
-  const stroke = 4;
-  const r = (size - stroke) / 2;
-  const circ = 2 * Math.PI * r;
-  const progress = ((step + 1) / total) * circ;
-
+const ProgressBar = ({ step, total }: { step: number; total: number }) => {
   return (
-    <div className="relative w-16 h-16 flex items-center justify-center">
-      <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="hsl(var(--border))" strokeWidth={stroke} />
-        <motion.circle
-          cx={size / 2}
-          cy={size / 2}
-          r={r}
-          fill="none"
-          stroke="hsl(var(--accent))"
-          strokeWidth={stroke}
-          strokeLinecap="round"
-          strokeDasharray={circ}
-          animate={{ strokeDashoffset: circ - progress }}
+    <div className="w-full max-w-xl mx-auto">
+      <div className="flex items-center justify-between mb-2">
+        <span className="font-display text-xs font-semibold text-foreground/40 uppercase tracking-wider">
+          Pytanie {step + 1} z {total}
+        </span>
+      </div>
+      <div className="w-full h-[3px] bg-foreground/10">
+        <motion.div
+          className="h-full bg-foreground"
+          animate={{ width: `${((step + 1) / total) * 100}%` }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         />
-      </svg>
-      <span className="absolute text-sm font-bold text-foreground">
-        {step + 1}/{total}
-      </span>
+      </div>
     </div>
   );
 };
-
-// ── Floating Particles (result) ───────────────────────
-
-const Particles = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {Array.from({ length: 24 }).map((_, i) => (
-      <motion.div
-        key={i}
-        className="absolute w-2 h-2 rounded-full bg-accent/40"
-        initial={{
-          x: "50%",
-          y: "50%",
-          opacity: 0,
-          scale: 0,
-        }}
-        animate={{
-          x: `${Math.random() * 100}%`,
-          y: `${Math.random() * 100}%`,
-          opacity: [0, 1, 0],
-          scale: [0, 1.5, 0],
-        }}
-        transition={{
-          duration: 2 + Math.random() * 2,
-          delay: Math.random() * 0.8,
-          ease: "easeOut",
-        }}
-      />
-    ))}
-  </div>
-);
 
 // ── Screens ───────────────────────────────────────────
 
@@ -197,8 +159,8 @@ const QuizIntro = ({ onStart }: { onStart: () => void }) => {
       {...transition}
       className="min-h-[100dvh] flex flex-col items-center justify-center text-center px-6 relative"
     >
-      {/* Floating bottles background */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.08]">
+      {/* Subtle floating bottles */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.06]">
         <motion.img src={productPower} alt="" className="absolute w-32 -left-4 top-1/4" animate={{ y: [0, -20, 0] }} transition={{ duration: 6, repeat: Infinity }} />
         <motion.img src={productRelax} alt="" className="absolute w-32 -right-4 top-1/3" animate={{ y: [0, 15, 0] }} transition={{ duration: 5, repeat: Infinity, delay: 1 }} />
         <motion.img src={productDiva} alt="" className="absolute w-28 left-1/4 bottom-1/4" animate={{ y: [0, -12, 0] }} transition={{ duration: 7, repeat: Infinity, delay: 2 }} />
@@ -206,37 +168,42 @@ const QuizIntro = ({ onStart }: { onStart: () => void }) => {
 
       <div className="relative z-10 max-w-lg">
         <motion.span
-          className="text-7xl md:text-8xl block mb-6"
+          className="text-6xl md:text-7xl block mb-6"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 200, damping: 12 }}
         >
           🍄
         </motion.span>
-        <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground leading-[1.1] mb-4">
+
+        <p className="font-body text-xs font-medium text-foreground/40 uppercase tracking-[0.2em] mb-4">
+          Quiz · 30 sekund
+        </p>
+
+        <h1 className="font-headline text-4xl md:text-6xl font-bold text-foreground leading-[1.1] mb-4">
           Znajdź swojego Shrooma
         </h1>
-        <p className="font-body text-lg md:text-xl text-muted-foreground mb-10">
-          5 pytań. 30 sekund. Zero bullshitu.
+        <p className="font-body text-base md:text-lg text-foreground/50 mb-10 max-w-sm mx-auto">
+          5 pytań. Zero bullshitu. Dopasujemy produkt do Twojego stylu życia.
         </p>
-        <motion.button
+
+        <button
           onClick={onStart}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-foreground text-background font-bold text-lg transition-colors hover:bg-foreground/90"
+          className="group inline-flex items-center gap-3 px-10 py-4 bg-foreground text-background font-display font-bold text-base hover:gap-5 transition-all duration-300"
         >
           Zaczynamy
-          <ArrowRight className="w-5 h-5" />
-        </motion.button>
-        <p className="mt-6 text-sm text-muted-foreground/60">
-          Naciśnij <kbd className="px-2 py-0.5 rounded bg-muted text-xs font-mono">Enter</kbd> aby zacząć
+          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+        </button>
+
+        <p className="mt-6 text-xs text-foreground/30 font-body">
+          Naciśnij <kbd className="px-2 py-0.5 bg-foreground/5 text-foreground/50 text-[11px] font-mono">Enter</kbd> aby zacząć
         </p>
       </div>
     </motion.div>
   );
 };
 
-const QuizQuestion = ({
+const QuizQuestionScreen = ({
   question,
   step,
   total,
@@ -258,7 +225,6 @@ const QuizQuestion = ({
     [selected, onAnswer, question.answers]
   );
 
-  // Keyboard shortcuts
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       const num = parseInt(e.key);
@@ -273,29 +239,30 @@ const QuizQuestion = ({
   return (
     <motion.div
       {...transition}
-      className="min-h-[100dvh] flex flex-col items-center px-6 pt-safe-top pb-safe-bottom"
+      className="min-h-[100dvh] flex flex-col items-center px-6 pt-24 pb-12"
     >
       {/* Progress */}
-      <div className="pt-8 mb-auto">
-        <ProgressRing step={step} total={total} />
+      <div className="w-full mb-12">
+        <ProgressBar step={step} total={total} />
       </div>
 
       {/* Question */}
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-xl -mt-8">
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-xl">
         <motion.span
-          className="text-6xl md:text-7xl mb-6 block"
+          className="text-5xl md:text-6xl mb-6 block"
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
         >
           {question.emoji}
         </motion.span>
-        <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground text-center leading-snug mb-10">
+
+        <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground text-center leading-snug mb-10">
           {question.question}
         </h2>
 
-        {/* Answer cards */}
-        <div className="w-full space-y-3 mb-8">
+        {/* Answer cards — sharp editorial */}
+        <div className="w-full space-y-[3px]">
           {question.answers.map((answer, i) => (
             <motion.button
               key={i}
@@ -304,41 +271,36 @@ const QuizQuestion = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 + i * 0.08 }}
-              whileHover={selected === null ? { scale: 1.02 } : {}}
-              whileTap={selected === null ? { scale: 0.98 } : {}}
-              className={`w-full p-5 rounded-2xl text-left border transition-all duration-300 min-h-[56px] ${
+              className={`group w-full p-5 md:p-6 text-left border transition-all duration-300 ${
                 selected === i
-                  ? "border-accent bg-accent/15 scale-[1.02]"
+                  ? "border-foreground bg-foreground/5"
                   : selected !== null
-                  ? "border-border/30 opacity-40"
-                  : "border-border bg-card hover:border-accent/40"
+                  ? "border-foreground/5 opacity-30"
+                  : "border-foreground/10 hover:border-foreground/30 hover:bg-foreground/[0.02]"
               }`}
             >
               <div className="flex items-center gap-4">
                 <div
-                  className={`w-8 h-8 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-300 ${
+                  className={`w-8 h-8 border-2 flex items-center justify-center shrink-0 transition-all duration-300 ${
                     selected === i
-                      ? "border-accent bg-accent"
-                      : "border-muted-foreground/30"
+                      ? "border-foreground bg-foreground"
+                      : "border-foreground/20 group-hover:border-foreground/40"
                   }`}
                 >
                   {selected === i ? (
                     <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                      <Check className="w-4 h-4 text-accent-foreground" />
+                      <Check className="w-4 h-4 text-background" />
                     </motion.div>
                   ) : (
-                    <span className="text-xs text-muted-foreground font-mono">{i + 1}</span>
+                    <span className="text-xs text-foreground/30 font-display font-bold">{i + 1}</span>
                   )}
                 </div>
-                <span className="font-body text-base md:text-lg text-foreground">{answer.text}</span>
+                <span className="font-body text-sm md:text-base text-foreground">{answer.text}</span>
               </div>
             </motion.button>
           ))}
         </div>
       </div>
-
-      {/* Bottom spacer */}
-      <div className="h-8" />
     </motion.div>
   );
 };
@@ -356,23 +318,21 @@ const QuizResult = ({
 
   const bars = [
     { label: "Power", value: scores.power, color: "bg-shroom-gold" },
-    { label: "Relax", value: scores.relax, color: "bg-shroom-lavender" },
+    { label: "Relax", value: scores.relax, color: "bg-shroom-green" },
     { label: "Diva", value: scores.diva, color: "bg-shroom-peach" },
   ];
 
   return (
     <motion.div
       {...transition}
-      className="min-h-[100dvh] flex flex-col items-center justify-center px-6 py-12 relative"
+      className="min-h-[100dvh] flex flex-col items-center justify-center px-6 py-16 relative"
     >
-      <Particles />
-
       <div className="relative z-10 w-full max-w-lg text-center">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-sm uppercase tracking-[0.25em] text-muted-foreground mb-2 font-body"
+          className="font-body text-xs uppercase tracking-[0.2em] text-foreground/40 mb-3"
         >
           Twój adaptogen to
         </motion.p>
@@ -381,28 +341,30 @@ const QuizResult = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="font-display text-4xl md:text-5xl font-bold text-foreground mb-2"
+          className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-2"
         >
-          {result.emoji} {result.product}
+          {result.product}
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="text-muted-foreground text-lg mb-8"
+          className="font-body text-foreground/50 text-base mb-8"
         >
           {result.title}
         </motion.p>
 
         {/* Product image */}
         <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
+          initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 120, damping: 14, delay: 0.3 }}
-          className="h-56 md:h-64 mb-8"
+          className="h-48 md:h-64 mb-8 relative"
         >
-          <img src={result.image} alt={result.product} className="h-full w-auto mx-auto object-contain drop-shadow-2xl" />
+          {/* Accent bg behind image */}
+          <div className={`absolute inset-x-12 inset-y-4 ${result.accent} opacity-20`} />
+          <img src={result.image} alt={result.product} className="h-full w-auto mx-auto object-contain relative z-10" />
         </motion.div>
 
         {/* Description */}
@@ -410,7 +372,7 @@ const QuizResult = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="font-body text-muted-foreground leading-relaxed mb-6"
+          className="font-body text-sm md:text-base text-foreground/60 leading-relaxed mb-6 max-w-md mx-auto"
         >
           {result.description}
         </motion.p>
@@ -420,15 +382,15 @@ const QuizResult = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
-          className="flex flex-wrap gap-2 justify-center mb-8"
+          className="flex flex-wrap gap-1.5 justify-center mb-8"
         >
           {result.adaptogens.map((a, i) => (
             <motion.span
               key={a}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 + i * 0.08 }}
-              className="px-4 py-2 rounded-full text-sm font-medium bg-accent/15 text-accent border border-accent/20"
+              className="px-3 py-1.5 text-xs font-display font-semibold bg-foreground/5 text-foreground border border-foreground/10"
             >
               {a}
             </motion.span>
@@ -444,10 +406,10 @@ const QuizResult = ({
         >
           {bars.map((bar) => (
             <div key={bar.label} className="flex items-center gap-3 text-sm">
-              <span className="w-12 text-right text-muted-foreground font-body">{bar.label}</span>
-              <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
+              <span className="w-12 text-right text-foreground/40 font-display text-xs font-semibold">{bar.label}</span>
+              <div className="flex-1 h-[3px] bg-foreground/5 overflow-hidden">
                 <motion.div
-                  className={`h-full rounded-full ${bar.color}`}
+                  className={`h-full ${bar.color}`}
                   initial={{ width: 0 }}
                   animate={{ width: `${(bar.value / maxScore) * 100}%` }}
                   transition={{ duration: 0.8, delay: 1 }}
@@ -462,18 +424,18 @@ const QuizResult = ({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1 }}
-          className="flex flex-col sm:flex-row gap-3 justify-center"
+          className="flex flex-col sm:flex-row gap-[3px] justify-center"
         >
           <Link
             to={`/produkt/${result.slug}`}
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-foreground text-background font-bold text-base hover:bg-foreground/90 transition-colors"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-foreground text-background font-display font-bold text-sm hover:gap-4 transition-all duration-300"
           >
             Zobacz produkt
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
           <button
             onClick={onRestart}
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-border text-muted-foreground font-medium hover:text-foreground hover:border-foreground/30 transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-foreground/10 text-foreground/50 font-display font-semibold text-sm hover:text-foreground hover:border-foreground/30 transition-all duration-300"
           >
             <RotateCcw className="w-4 h-4" />
             Zagraj ponownie
@@ -529,16 +491,16 @@ const QuizPage = () => {
   return (
     <div className="bg-background text-foreground overflow-hidden relative">
       {/* Minimal nav */}
-      <div className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between">
+      <div className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between bg-background/80 backdrop-blur-sm border-b border-foreground/5">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span className="font-display font-bold">:shroom</span>
         </Link>
         {phase === "quiz" && (
-          <span className="text-xs text-muted-foreground/50 font-mono">
+          <span className="font-display text-xs font-semibold text-foreground/30">
             {step + 1} / {questions.length}
           </span>
         )}
@@ -547,7 +509,7 @@ const QuizPage = () => {
       <AnimatePresence mode="wait">
         {phase === "intro" && <QuizIntro key="intro" onStart={startQuiz} />}
         {phase === "quiz" && (
-          <QuizQuestion
+          <QuizQuestionScreen
             key={`q-${step}`}
             question={questions[step]}
             step={step}
