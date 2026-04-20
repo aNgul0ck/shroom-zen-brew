@@ -1,6 +1,10 @@
 import productPower from "@/assets/product-power.png";
 import productRelax from "@/assets/product-relax.png";
 import productDiva from "@/assets/product-diva.png";
+import relaxAward from "@/assets/relax-award.png";
+import relaxPour from "@/assets/relax-pour.png";
+import relaxLifestyle from "@/assets/relax-lifestyle.png";
+import relaxNutrition from "@/assets/relax-nutrition.png";
 import { Brain, Zap, Shield, Moon, Leaf, Heart, Wine, Sparkles, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -57,12 +61,23 @@ export interface QuickFact {
   value: string;
 }
 
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  /** When true, the image fills its frame edge-to-edge (no centered "product on
+   *  background" treatment). Use for lifestyle photos and full-bleed shots. */
+  isLifestyle?: boolean;
+}
+
 export interface Product {
   slug: string;
   name: string;
   tagline: string;
   description: string;
   image: string;
+  /** Optional gallery — if present, ProductHero renders thumbnails. First image
+   *  is shown by default; falls back to `image` if gallery is omitted. */
+  gallery?: GalleryImage[];
   price: number;
   volume: string;
   isDiva: boolean;
@@ -137,6 +152,13 @@ export const products: Product[] = [
     tagline: "Spokój i regeneracja",
     description: "Funkcjonalny napój z L-teaniną i chmielem. Wyciszenie po intensywnym dniu bez senności.",
     image: productRelax,
+    gallery: [
+      { src: productRelax, alt: "Shroom Relax — butelka 330ml" },
+      { src: relaxAward, alt: "Shroom Relax — Best Functional Drink, World Alcohol-Free Awards 2025" },
+      { src: relaxPour, alt: "Shroom Relax podany w szklance ze skórką cytryny", isLifestyle: true },
+      { src: relaxLifestyle, alt: "Shroom Relax na stole w letnim ogrodzie", isLifestyle: true },
+      { src: relaxNutrition, alt: "Shroom Relax — wartości odżywcze i składniki" },
+    ],
     price: 89,
     volume: "330ml",
     isDiva: false,
