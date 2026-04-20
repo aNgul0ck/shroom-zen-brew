@@ -1,6 +1,7 @@
 const items = [
   "🏆 World Alcohol-Free Awards 2025",
   "🥇 Best Functional Drink",
+  "🚚 Darmowa dostawa od 89 zł",
   "✓ Bez cukru",
   "✓ Bez kofeiny",
   "✓ Made in Poland",
