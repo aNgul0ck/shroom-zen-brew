@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingBag, Heart, User, Search, Moon, Sun } from "lucide-react";
+import { useCartStore } from "@/stores/cartStore";
 
 const navLinks = [
   { name: "Shop", href: "#produkty" },
