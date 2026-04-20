@@ -21,8 +21,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <CartDrawer />
       <BrowserRouter>
+        {/* CartDrawer must be inside BrowserRouter — it uses <Link> for the
+            "Zobacz cały koszyk" CTA, which requires a Router context. */}
+        <CartDrawer />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/brief" element={<Brief />} />
