@@ -8,6 +8,7 @@ import SubscriptionToggle from "./SubscriptionToggle";
 import ShippingDeadline from "./ShippingDeadline";
 import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether";
 import PaymentBadges from "./PaymentBadges";
+import ProductGallery from "./ProductGallery";
 
 interface Props {
   product: Product;
