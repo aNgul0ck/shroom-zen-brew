@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ShoppingBag } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useCartStore } from "@/stores/cartStore";
-import { SUBSCRIPTION_DISCOUNT, SUBSCRIPTION_CADENCE_WEEKS, products } from "@/data/products";
+import { SUBSCRIPTION_DISCOUNT, SUBSCRIPTION_CADENCE_WEEKS, FREE_SHIPPING_THRESHOLD, products } from "@/data/products";
 import productPower from "@/assets/product-power.png";
 
 interface PdpSelection {
