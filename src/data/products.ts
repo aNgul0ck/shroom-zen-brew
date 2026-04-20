@@ -61,12 +61,23 @@ export interface QuickFact {
   value: string;
 }
 
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  /** When true, the image fills its frame edge-to-edge (no centered "product on
+   *  background" treatment). Use for lifestyle photos and full-bleed shots. */
+  isLifestyle?: boolean;
+}
+
 export interface Product {
   slug: string;
   name: string;
   tagline: string;
   description: string;
   image: string;
+  /** Optional gallery — if present, ProductHero renders thumbnails. First image
+   *  is shown by default; falls back to `image` if gallery is omitted. */
+  gallery?: GalleryImage[];
   price: number;
   volume: string;
   isDiva: boolean;
