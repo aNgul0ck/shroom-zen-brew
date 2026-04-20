@@ -10,6 +10,7 @@ import ProductRoutine from "@/components/product/ProductRoutine";
 import ProductReviews from "@/components/product/ProductReviews";
 import ProductFAQ from "@/components/product/ProductFAQ";
 import ProductCrossSell from "@/components/product/ProductCrossSell";
+import RecentPurchases from "@/components/RecentPurchases";
 
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -30,13 +31,15 @@ const ProductPage = () => {
     <div className={product.isDiva ? "bg-diva-dark" : "bg-background"}>
       <Header />
       <ProductHero product={product} />
+      {/* Reordered per Thorium framework: Benefits → Cross-sell → Reviews (validation early) → Ingredients → Routine → FAQ */}
       <ProductBenefits product={product} />
+      <ProductCrossSell currentSlug={product.slug} isDiva={product.isDiva} />
+      <ProductReviews product={product} />
       <ProductIngredients product={product} />
       <ProductRoutine product={product} />
-      <ProductReviews product={product} />
       <ProductFAQ product={product} />
-      <ProductCrossSell currentSlug={product.slug} isDiva={product.isDiva} />
       <Footer />
+      <RecentPurchases />
     </div>
   );
 };
