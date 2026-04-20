@@ -101,18 +101,28 @@ const ProductHero = ({ product }: Props) => {
     <section className={`pt-28 pb-12 md:pt-32 md:pb-20 ${isDiva ? "bg-diva-dark" : "ed-bg-cream"}`}>
       <div className="container mx-auto px-5 md:px-12">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
-          {/* Product Image */}
-          <div className="flex justify-center order-1 lg:sticky lg:top-28">
-            <div className="relative">
-              {isDiva && (
-                <div className="absolute inset-0 bg-diva-pink/20 blur-3xl scale-75" />
-              )}
-              <img
-                src={product.image}
-                alt={product.name}
-                className="relative h-[320px] md:h-[500px] w-auto object-contain"
+          {/* Product Image / Gallery */}
+          <div className="order-1 lg:sticky lg:top-28">
+            {product.gallery && product.gallery.length > 1 ? (
+              <ProductGallery
+                images={product.gallery}
+                productName={product.name}
+                isDiva={isDiva}
               />
-            </div>
+            ) : (
+              <div className="flex justify-center">
+                <div className="relative">
+                  {isDiva && (
+                    <div className="absolute inset-0 bg-diva-pink/20 blur-3xl scale-75" />
+                  )}
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="relative h-[320px] md:h-[500px] w-auto object-contain"
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Product Info */}
