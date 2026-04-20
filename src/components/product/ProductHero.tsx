@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Star, ShoppingBag, Truck, Leaf, MapPin } from "lucide-react";
-import { toast } from "sonner";
 import type { Product } from "@/data/products";
-import { SUBSCRIPTION_DISCOUNT, SUBSCRIPTION_CADENCE_WEEKS, FREE_SHIPPING_THRESHOLD } from "@/data/products";
+import { SUBSCRIPTION_DISCOUNT, SUBSCRIPTION_CADENCE_WEEKS, FREE_SHIPPING_THRESHOLD, products } from "@/data/products";
+import { useCartStore } from "@/stores/cartStore";
 import QuickFacts from "./QuickFacts";
 import SubscriptionToggle from "./SubscriptionToggle";
 import ShippingDeadline from "./ShippingDeadline";
