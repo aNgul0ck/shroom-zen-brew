@@ -11,6 +11,7 @@ import BlogPost from "./pages/BlogPost";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
 import QuizPage from "./pages/QuizPage";
+import CartPage from "./pages/Cart";
 import CartDrawer from "./components/cart/CartDrawer";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/produkt/:slug" element={<ProductPage />} />
           <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/koszyk" element={<CartPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
