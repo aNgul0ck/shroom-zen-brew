@@ -2,6 +2,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sh
 import { useCartStore } from "@/stores/cartStore";
 import { FREE_SHIPPING_THRESHOLD } from "@/data/products";
 import { Minus, Plus, X, ShoppingBag, Truck, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
 const CartDrawer = () => {
@@ -207,6 +208,13 @@ const CartDrawer = () => {
               <Lock className="w-3.5 h-3.5" />
               Przejdź do kasy
             </button>
+            <Link
+              to="/koszyk"
+              onClick={closeCart}
+              className="block w-full text-center font-body text-xs uppercase tracking-wider text-foreground/70 hover:text-foreground underline underline-offset-4 transition-colors py-1"
+            >
+              Zobacz cały koszyk
+            </Link>
             <button
               type="button"
               onClick={closeCart}
