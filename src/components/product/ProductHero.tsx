@@ -51,21 +51,49 @@ const ProductHero = ({ product }: Props) => {
     window.dispatchEvent(new CustomEvent("pdp:selection", { detail }));
   }, [product, tier, isSubscription, bundleSelected, grandTotal]);
 
+  const addItem = useCartStore((s) => s.addItem);
+
   const handleAddToCart = () => {
-    // TODO(backend): POST /api/cart/items with payload below
-    const payload = {
+    // TODO(backend): POST /api/cart/items — Zustand store mirrors the same payload shape
+    const subDiscountedUnit = isSubscription
+      ? Math.round(tier.totalPrice * (1 - SUBSCRIPTION_DISCOUNT))
+      : tier.totalPrice;
+
+    addItem({
       productId: product.slug,
-      quantity: tier.quantity,
+      productName: product.name,
+      productImage: product.image,
+      isDiva: product.isDiva,
+      bottlesPerUnit: tier.quantity,
+      unitPrice: subDiscountedUnit,
+      originalUnitPrice: tier.totalPrice,
       isSubscription,
       cadenceWeeks: isSubscription ? SUBSCRIPTION_CADENCE_WEEKS : undefined,
       bundleWith: bundleSelected ? product.bundleWith : undefined,
-    };
-    console.info("[ATC payload]", payload);
-    toast.success(`Dodano do koszyka — ${grandTotal} zł`, {
-      description: isSubscription
-        ? `Subskrypcja co ${SUBSCRIPTION_CADENCE_WEEKS} tygodnie`
-        : `Zamówienie jednorazowe${bundleSelected ? " z duetem" : ""}`,
     });
+
+    // If a bundle partner was selected, add it as a separate line item (1 szt @ 89zł, -9zł bundle discount)
+    if (bundleSelected && product.bundleWith) {
+      const partner = products.find((p) => p.slug === product.bundleWith);
+      if (partner) {
+        const partnerOriginal = 89;
+        const partnerDiscounted = isSubscription
+          ? Math.round(partnerOriginal * (1 - SUBSCRIPTION_DISCOUNT))
+          : partnerOriginal;
+        addItem({
+          productId: partner.slug,
+          productName: partner.name,
+          productImage: partner.image,
+          isDiva: partner.isDiva,
+          bottlesPerUnit: 1,
+          unitPrice: partnerDiscounted - 9,
+          originalUnitPrice: partnerOriginal,
+          isSubscription,
+          cadenceWeeks: isSubscription ? SUBSCRIPTION_CADENCE_WEEKS : undefined,
+          bundleWith: product.slug,
+        });
+      }
+    }
   };
 
   return (
