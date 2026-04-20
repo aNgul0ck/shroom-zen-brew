@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingBag, Heart, User, Search, Moon, Sun } from "lucide-react";
+import { useCartStore } from "@/stores/cartStore";
 
 const navLinks = [
   { name: "Shop", href: "#produkty" },
@@ -14,6 +15,8 @@ const navLinks = [
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const openCart = useCartStore((s) => s.openCart);
+  const cartCount = useCartStore((s) => s.getItemCount());
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -64,11 +67,18 @@ const Header = () => {
             <button className="hidden md:flex p-2 hover:bg-white/10 rounded-full transition-colors">
               <Heart className={`w-5 h-5 ${scrolled ? "text-foreground" : "text-white"}`} />
             </button>
-            <button className="relative p-2 hover:bg-white/10 rounded-full transition-colors">
+            <button
+              type="button"
+              onClick={openCart}
+              className="relative p-2 hover:bg-white/10 rounded-full transition-colors"
+              aria-label="Otwórz koszyk"
+            >
               <ShoppingBag className={`w-5 h-5 ${scrolled ? "text-foreground" : "text-white"}`} />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-accent-foreground text-xs rounded-full flex items-center justify-center">
-                2
-              </span>
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 min-w-4 h-4 px-1 bg-accent text-accent-foreground text-xs rounded-full flex items-center justify-center font-bold">
+                  {cartCount}
+                </span>
+              )}
             </button>
             <button className="hidden md:flex p-2 hover:bg-white/10 rounded-full transition-colors">
               <Moon className={`w-5 h-5 ${scrolled ? "text-foreground" : "text-white"}`} />

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { ShoppingBag } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import { toast } from "sonner";
+import { useCartStore } from "@/stores/cartStore";
+import { SUBSCRIPTION_DISCOUNT, SUBSCRIPTION_CADENCE_WEEKS, products } from "@/data/products";
 import productPower from "@/assets/product-power.png";
 
 interface PdpSelection {
@@ -81,19 +82,48 @@ const StickyCTA = () => {
   if (isPdp && pdpSelection) {
     const handleAtc = () => {
       // TODO(backend): POST /api/cart/items
-      const payload = {
+      const product = products.find((p) => p.slug === pdpSelection.productId);
+      const tier = product?.pricing.find((t) => t.quantity === pdpSelection.quantity);
+      const baseUnit = tier?.totalPrice ?? pdpSelection.total;
+      const subDiscountedUnit = pdpSelection.isSubscription
+        ? Math.round(baseUnit * (1 - SUBSCRIPTION_DISCOUNT))
+        : baseUnit;
+
+      useCartStore.getState().addItem({
         productId: pdpSelection.productId,
-        quantity: pdpSelection.quantity,
+        productName: pdpSelection.productName,
+        productImage: pdpSelection.productImage,
+        isDiva: pdpSelection.isDiva,
+        bottlesPerUnit: pdpSelection.quantity,
+        unitPrice: subDiscountedUnit,
+        originalUnitPrice: baseUnit,
         isSubscription: pdpSelection.isSubscription,
-        cadenceWeeks: pdpSelection.cadenceWeeks,
+        cadenceWeeks: pdpSelection.isSubscription ? SUBSCRIPTION_CADENCE_WEEKS : undefined,
         bundleWith: pdpSelection.bundleWith,
-      };
-      console.info("[StickyCTA ATC payload]", payload);
-      toast.success(`Dodano do koszyka — ${pdpSelection.total} zł`, {
-        description: pdpSelection.isSubscription
-          ? `Subskrypcja co ${pdpSelection.cadenceWeeks} tygodnie`
-          : "Zamówienie jednorazowe",
       });
+
+      // Add bundle partner as separate line if selected (matches PDP behavior)
+      if (pdpSelection.bundleWith) {
+        const partner = products.find((p) => p.slug === pdpSelection.bundleWith);
+        if (partner) {
+          const partnerOriginal = 89;
+          const partnerDiscounted = pdpSelection.isSubscription
+            ? Math.round(partnerOriginal * (1 - SUBSCRIPTION_DISCOUNT))
+            : partnerOriginal;
+          useCartStore.getState().addItem({
+            productId: partner.slug,
+            productName: partner.name,
+            productImage: partner.image,
+            isDiva: partner.isDiva,
+            bottlesPerUnit: 1,
+            unitPrice: partnerDiscounted - 9,
+            originalUnitPrice: partnerOriginal,
+            isSubscription: pdpSelection.isSubscription,
+            cadenceWeeks: pdpSelection.isSubscription ? SUBSCRIPTION_CADENCE_WEEKS : undefined,
+            bundleWith: pdpSelection.productId,
+          });
+        }
+      }
     };
 
     return (

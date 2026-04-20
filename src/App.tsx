@@ -11,6 +11,7 @@ import BlogPost from "./pages/BlogPost";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
 import QuizPage from "./pages/QuizPage";
+import CartDrawer from "./components/cart/CartDrawer";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CartDrawer />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
