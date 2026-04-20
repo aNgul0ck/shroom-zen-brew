@@ -11,6 +11,7 @@ import ProductReviews from "@/components/product/ProductReviews";
 import ProductFAQ from "@/components/product/ProductFAQ";
 import ProductCrossSell from "@/components/product/ProductCrossSell";
 import RecentPurchases from "@/components/RecentPurchases";
+import StickyCTA from "@/components/StickyCTA";
 
 const ProductPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -39,6 +40,7 @@ const ProductPage = () => {
       <ProductRoutine product={product} />
       <ProductFAQ product={product} />
       <Footer />
+      <StickyCTA />
       <RecentPurchases />
     </div>
   );

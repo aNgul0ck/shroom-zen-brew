@@ -45,6 +45,9 @@ const ProductHero = ({ product }: Props) => {
       bundleWith: bundleSelected ? product.bundleWith : undefined,
       total: grandTotal,
     };
+    // Cache on window so a late-mounting StickyCTA can read the latest selection
+    // even if it missed the initial dispatch event.
+    (window as unknown as { __pdpSelection?: typeof detail }).__pdpSelection = detail;
     window.dispatchEvent(new CustomEvent("pdp:selection", { detail }));
   }, [product, tier, isSubscription, bundleSelected, grandTotal]);
 

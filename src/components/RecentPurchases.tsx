@@ -41,7 +41,7 @@ const RecentPurchases = () => {
 
   return (
     <div
-      className={`fixed bottom-20 md:bottom-6 left-4 z-40 max-w-[280px] transition-all duration-500 ${
+      className={`hidden md:block fixed bottom-6 left-4 z-40 max-w-[280px] transition-all duration-500 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
       }`}
     >
