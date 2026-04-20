@@ -4,6 +4,13 @@ import productDiva from "@/assets/product-diva.png";
 import { Brain, Zap, Shield, Moon, Leaf, Heart, Wine, Sparkles, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
+// Free shipping threshold — single bottle qualifies (was 99zł, now 89zł)
+export const FREE_SHIPPING_THRESHOLD = 89;
+
+// Subscription discount — applied as % off one-time price
+export const SUBSCRIPTION_DISCOUNT = 0.15;
+export const SUBSCRIPTION_CADENCE_WEEKS = 4;
+
 export interface Ingredient {
   name: string;
   dosage: string;
@@ -44,6 +51,12 @@ export interface PricingTier {
   savings?: string;
 }
 
+export interface QuickFact {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+}
+
 export interface Product {
   slug: string;
   name: string;
@@ -60,6 +73,8 @@ export interface Product {
   reviews: Review[];
   faqs: FAQ[];
   trustBadges: string[];
+  quickFacts: QuickFact[];
+  bundleWith?: string; // slug of a paired product for "Frequently bought together"
 }
 
 export const products: Product[] = [
@@ -77,6 +92,13 @@ export const products: Product[] = [
       { quantity: 3, label: "3 szt.", pricePerUnit: 79, totalPrice: 237, savings: "-11%" },
       { quantity: 6, label: "6 szt.", pricePerUnit: 69, totalPrice: 414, savings: "-22%" },
     ],
+    quickFacts: [
+      { icon: Sparkles, label: "Smak", value: "Cytrusowo-ziołowy" },
+      { icon: Sun, label: "Pora dnia", value: "Rano / W dzień" },
+      { icon: Wine, label: "Format", value: "330 ml · gazowany" },
+      { icon: Zap, label: "Wysyłka", value: "24h kurierem" },
+    ],
+    bundleWith: "shroom-relax",
     benefits: [
       { icon: Zap, label: "Energia bez crashu", description: "Naturalna witalność" },
       { icon: Brain, label: "Lion's Mane 500mg", description: "Soplówka jeżowata" },
@@ -105,9 +127,9 @@ export const products: Product[] = [
       { question: "Czy mogę pić codziennie?", answer: "Tak, Shroom Power jest zaprojektowany do codziennego spożycia. Zalecana porcja to 1 butelka dziennie." },
       { question: "Czy zawiera kofeinę?", answer: "Nie, Shroom Power nie zawiera kofeiny. Energia pochodzi z naturalnych adaptogenów i witamin." },
       { question: "Jak przechowywać?", answer: "Przed otwarciem: w temperaturze pokojowej. Po otwarciu: w lodówce, spożyć w ciągu 24h." },
-      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 99 zł." },
+      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 89 zł — już od jednej butelki." },
     ],
-    trustBadges: ["Darmowa dostawa od 99 zł", "100% naturalne składniki", "Made in Poland"],
+    trustBadges: ["Darmowa dostawa od 89 zł", "100% naturalne składniki", "Made in Poland"],
   },
   {
     slug: "shroom-relax",
@@ -123,6 +145,13 @@ export const products: Product[] = [
       { quantity: 3, label: "3 szt.", pricePerUnit: 79, totalPrice: 237, savings: "-11%" },
       { quantity: 6, label: "6 szt.", pricePerUnit: 69, totalPrice: 414, savings: "-22%" },
     ],
+    quickFacts: [
+      { icon: Sparkles, label: "Smak", value: "Miód i lawenda" },
+      { icon: Moon, label: "Pora dnia", value: "Wieczór" },
+      { icon: Wine, label: "Format", value: "330 ml · gazowany" },
+      { icon: Zap, label: "Wysyłka", value: "24h kurierem" },
+    ],
+    bundleWith: "shroom-power",
     benefits: [
       { icon: Moon, label: "Spokój bez senności", description: "Naturalne wyciszenie" },
       { icon: Brain, label: "Lion's Mane 500mg", description: "Soplówka jeżowata" },
@@ -151,9 +180,9 @@ export const products: Product[] = [
       { question: "Czy powoduje senność?", answer: "Nie bezpośrednio. Relax wspiera naturalne wyciszenie organizmu, ale nie wywołuje nagłej senności." },
       { question: "Kiedy najlepiej pić?", answer: "Najlepsze efekty 1-2 godziny przed planowanym snem." },
       { question: "Czy mogę łączyć z Power?", answer: "Tak! Power rano, Relax wieczorem — to pełny cykl dnia i nocy." },
-      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 99 zł." },
+      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 89 zł — już od jednej butelki." },
     ],
-    trustBadges: ["Darmowa dostawa od 99 zł", "100% naturalne składniki", "Made in Poland"],
+    trustBadges: ["Darmowa dostawa od 89 zł", "100% naturalne składniki", "Made in Poland"],
   },
   {
     slug: "diva",
@@ -168,6 +197,12 @@ export const products: Product[] = [
       { quantity: 1, label: "1 szt.", pricePerUnit: 112, totalPrice: 112 },
       { quantity: 3, label: "3 szt.", pricePerUnit: 99, totalPrice: 297, savings: "-12%" },
       { quantity: 6, label: "6 szt.", pricePerUnit: 89, totalPrice: 534, savings: "-21%" },
+    ],
+    quickFacts: [
+      { icon: Sparkles, label: "Smak", value: "Botaniczny, gorzki" },
+      { icon: Wine, label: "Pora dnia", value: "Aperitivo" },
+      { icon: Heart, label: "Format", value: "500 ml · 0% alc." },
+      { icon: Zap, label: "Wysyłka", value: "24h kurierem" },
     ],
     benefits: [
       { icon: Wine, label: "Bezalkoholowe", description: "0% alkoholu" },
@@ -197,9 +232,9 @@ export const products: Product[] = [
       { question: "Czy brokat jest bezpieczny?", answer: "Tak, jadalny brokat posiada certyfikat bezpieczeństwa żywności UE. Jest całkowicie bezpieczny do spożycia." },
       { question: "Jak podawać Divę?", answer: "Schłodzona, z lodem, w kieliszku do wina lub koktajlowym. Dodaj plasterek pomarańczy lub gałązkę rozmarynu." },
       { question: "Czy jest bezalkoholowa?", answer: "Tak, Diva zawiera 0% alkoholu. To pełnowartościowe aperitivo bez efektów alkoholu." },
-      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 99 zł." },
+      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 89 zł." },
     ],
-    trustBadges: ["Darmowa dostawa od 99 zł", "100% naturalne składniki", "Made in Poland"],
+    trustBadges: ["Darmowa dostawa od 89 zł", "100% naturalne składniki", "Made in Poland"],
   },
 ];
 
