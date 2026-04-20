@@ -152,6 +152,13 @@ export const products: Product[] = [
     tagline: "Spokój i regeneracja",
     description: "Funkcjonalny napój z L-teaniną i chmielem. Wyciszenie po intensywnym dniu bez senności.",
     image: productRelax,
+    gallery: [
+      { src: productRelax, alt: "Shroom Relax — butelka 330ml" },
+      { src: relaxAward, alt: "Shroom Relax — Best Functional Drink, World Alcohol-Free Awards 2025" },
+      { src: relaxPour, alt: "Shroom Relax podany w szklance ze skórką cytryny", isLifestyle: true },
+      { src: relaxLifestyle, alt: "Shroom Relax na stole w letnim ogrodzie", isLifestyle: true },
+      { src: relaxNutrition, alt: "Shroom Relax — wartości odżywcze i składniki" },
+    ],
     price: 89,
     volume: "330ml",
     isDiva: false,
