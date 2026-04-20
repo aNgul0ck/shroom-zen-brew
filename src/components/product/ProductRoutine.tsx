@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { Clock } from "lucide-react";
 import type { Product } from "@/data/products";
 
 interface Props {
@@ -16,60 +14,43 @@ const ProductRoutine = ({ product }: Props) => {
       : "Twój wieczór z Relax";
 
   return (
-    <section className={`py-24 ${isDiva ? "bg-diva-dark" : "bg-secondary/20"}`}>
-      <div className="container mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p className={`font-body text-sm font-medium uppercase tracking-[0.2em] mb-4 ${isDiva ? "text-diva-pink" : "text-muted-foreground"}`}>
-            Rytuał
-          </p>
-          <h2 className={`font-headline text-3xl md:text-4xl font-bold ${isDiva ? "text-white" : "text-foreground"}`}>
-            {title}
-          </h2>
-        </motion.div>
+    <>
+      <div className={`h-[3px] w-full ${isDiva ? "bg-white" : "bg-foreground"}`} />
+      <section className={`py-16 md:py-24 ${isDiva ? "bg-diva-dark" : "bg-background"}`}>
+        <div className="container mx-auto px-5 md:px-12">
+          <div className="mb-10 md:mb-16">
+            <p className={`font-body text-xs font-medium uppercase tracking-[0.25em] mb-3 ${isDiva ? "text-diva-pink" : "text-foreground/60"}`}>
+              Rytuał
+            </p>
+            <h2 className={`font-headline text-3xl md:text-5xl uppercase ${isDiva ? "text-white" : "text-foreground"}`}>
+              {title}
+            </h2>
+          </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-4xl mx-auto">
-          {product.routine.map((step, index) => (
-            <motion.div
-              key={step.time}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-              className={`rounded-2xl p-6 text-center relative ${
-                isDiva ? "bg-white/5" : "bg-card border border-border"
-              }`}
-            >
-              {/* Connector arrow (not on last) */}
-              {index < product.routine.length - 1 && (
-                <div className={`hidden lg:block absolute top-1/2 -right-3 w-6 h-px ${isDiva ? "bg-diva-pink/20" : "bg-border"}`} />
-              )}
-
-              <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full mb-3 ${
-                isDiva ? "bg-diva-pink/10" : "bg-secondary/50"
-              }`}>
-                <Clock className={`w-3 h-3 ${isDiva ? "text-diva-pink" : "text-muted-foreground"}`} />
-                <span className={`font-display text-xs font-semibold ${isDiva ? "text-diva-pink" : "text-foreground"}`}>
+          <div className={`grid grid-cols-1 md:grid-cols-4 border-t border-l ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
+            {product.routine.map((step, index) => (
+              <div
+                key={step.time}
+                className={`relative p-6 md:p-8 border-b border-r ${isDiva ? "border-white/15 hover:bg-white/[0.03]" : "border-foreground/15 hover:bg-foreground/[0.03]"} transition-colors duration-200`}
+              >
+                <div className={`font-headline text-5xl md:text-6xl mb-3 ${isDiva ? "text-diva-pink/70" : "text-foreground/30"}`}>
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <p className={`font-display text-xs uppercase tracking-[0.2em] mb-2 ${isDiva ? "text-diva-pink" : "text-foreground/60"}`}>
                   {step.time}
-                </span>
+                </p>
+                <h3 className={`font-display text-base font-bold uppercase tracking-wide mb-2 ${isDiva ? "text-white" : "text-foreground"}`}>
+                  {step.label}
+                </h3>
+                <p className={`font-body text-xs leading-relaxed ${isDiva ? "text-white/55" : "text-foreground/65"}`}>
+                  {step.description}
+                </p>
               </div>
-
-              <h3 className={`font-display text-sm font-semibold mb-1 ${isDiva ? "text-white" : "text-foreground"}`}>
-                {step.label}
-              </h3>
-              <p className={`font-body text-xs leading-relaxed ${isDiva ? "text-white/50" : "text-muted-foreground"}`}>
-                {step.description}
-              </p>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

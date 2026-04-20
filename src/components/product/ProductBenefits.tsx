@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import type { Product } from "@/data/products";
 
 interface Props {
@@ -9,36 +8,38 @@ const ProductBenefits = ({ product }: Props) => {
   const isDiva = product.isDiva;
 
   return (
-    <section className={`py-16 ${isDiva ? "bg-diva-dark border-t border-white/5" : "bg-secondary/30"}`}>
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          {product.benefits.map((benefit, index) => (
-            <motion.div
-              key={benefit.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.4 }}
-              viewport={{ once: true }}
-              className={`rounded-2xl p-6 text-center ${
-                isDiva ? "bg-white/5 backdrop-blur-sm" : "bg-card border border-border"
-              }`}
-            >
-              <div className={`w-12 h-12 mx-auto mb-3 rounded-xl flex items-center justify-center ${
-                isDiva ? "bg-diva-pink/10" : "bg-secondary"
-              }`}>
-                <benefit.icon className={`w-6 h-6 ${isDiva ? "text-diva-pink" : "text-foreground"}`} />
+    <>
+      <div className={`h-[3px] w-full ${isDiva ? "bg-white" : "bg-foreground"}`} />
+      <section className={`py-16 md:py-20 ${isDiva ? "bg-diva-dark" : "bg-background"}`}>
+        <div className="container mx-auto px-5 md:px-12">
+          <div className="mb-10 md:mb-14">
+            <p className={`font-body text-xs font-medium uppercase tracking-[0.25em] mb-3 ${isDiva ? "text-diva-pink" : "text-foreground/60"}`}>
+              Korzyści
+            </p>
+            <h2 className={`font-headline text-3xl md:text-5xl uppercase ${isDiva ? "text-white" : "text-foreground"}`}>
+              Co dostajesz
+            </h2>
+          </div>
+
+          <div className={`grid grid-cols-2 lg:grid-cols-4 border-t border-l ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
+            {product.benefits.map((benefit) => (
+              <div
+                key={benefit.label}
+                className={`p-6 md:p-8 border-b border-r ${isDiva ? "border-white/15 bg-diva-dark hover:bg-white/[0.03]" : "border-foreground/15 hover:bg-foreground/[0.03]"} transition-colors duration-200 group`}
+              >
+                <benefit.icon className={`w-7 h-7 md:w-8 md:h-8 mb-4 transition-transform duration-300 group-hover:scale-110 ${isDiva ? "text-diva-pink" : "text-foreground"}`} />
+                <h3 className={`font-display text-base font-bold uppercase tracking-wide mb-2 ${isDiva ? "text-white" : "text-foreground"}`}>
+                  {benefit.label}
+                </h3>
+                <p className={`font-body text-xs leading-relaxed ${isDiva ? "text-white/55" : "text-foreground/65"}`}>
+                  {benefit.description}
+                </p>
               </div>
-              <h3 className={`font-display text-sm font-semibold mb-1 ${isDiva ? "text-white" : "text-foreground"}`}>
-                {benefit.label}
-              </h3>
-              <p className={`font-body text-xs ${isDiva ? "text-white/50" : "text-muted-foreground"}`}>
-                {benefit.description}
-              </p>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
