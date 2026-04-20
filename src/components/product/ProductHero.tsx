@@ -26,8 +26,14 @@ const ProductHero = ({ product }: Props) => {
   const finalTotal = isSubscription
     ? Math.round(baseTotal * (1 - SUBSCRIPTION_DISCOUNT))
     : baseTotal;
-  const bundleAdd = bundleSelected ? 89 - 9 : 0; // partner price minus 9 PLN bundle discount
-  const grandTotal = finalTotal + bundleAdd;
+  // Bundle partner: 1 bottle @ 89 zł, -9 zł bundle discount, also subject to
+  // the subscription discount when subscription is selected (mirrors the cart
+  // payload built in handleAddToCart so the displayed total matches what
+  // actually lands in the cart).
+  const bundlePartnerPrice = bundleSelected
+    ? (isSubscription ? Math.round(89 * (1 - SUBSCRIPTION_DISCOUNT)) : 89) - 9
+    : 0;
+  const grandTotal = finalTotal + bundlePartnerPrice;
 
   const qualifiesForFreeShipping = grandTotal >= FREE_SHIPPING_THRESHOLD;
   const remainingForFreeShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - grandTotal);
