@@ -1,6 +1,10 @@
 import productPower from "@/assets/product-power.png";
 import productRelax from "@/assets/product-relax.png";
 import productDiva from "@/assets/product-diva.png";
+import relaxAward from "@/assets/relax-award.png";
+import relaxPour from "@/assets/relax-pour.png";
+import relaxLifestyle from "@/assets/relax-lifestyle.png";
+import relaxNutrition from "@/assets/relax-nutrition.png";
 import { Brain, Zap, Shield, Moon, Leaf, Heart, Wine, Sparkles, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
