@@ -28,6 +28,10 @@ const StickyCTA = () => {
       setPdpSelection(null);
       return;
     }
+    // Read any cached selection (in case ProductHero already dispatched before mount)
+    const cached = (window as unknown as { __pdpSelection?: PdpSelection }).__pdpSelection;
+    if (cached) setPdpSelection(cached);
+
     const handler = (e: Event) => {
       const detail = (e as CustomEvent<PdpSelection>).detail;
       setPdpSelection(detail);
