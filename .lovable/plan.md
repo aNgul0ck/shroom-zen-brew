@@ -1,84 +1,113 @@
 
 
-# Plan: Frontend-only conversion improvements (PDP + checkout prep)
+# Plan: Aktualizacja cen, wariantów i progu darmowej dostawy (frontend)
 
-Skupiamy się **wyłącznie na frontendzie**. Wszystko co wymaga backendu (realny koszyk, płatności, persystencja subskrypcji, prawdziwy stock, prawdziwy social proof) zostawiamy jako **stub UI + dokumentację handoff** dla osoby technicznej.
+Na podstawie briefu PDF (analiza 559 transakcji Stripe, AOV 172 zł, 40% przychodu z subskrypcji) i danych z `unified_payments.csv`. Robimy **wyłącznie frontend** — żadnych zmian w backendzie/Woo.
 
-## Zasada: frontend-first, backend-ready
+## 1. Dlaczego to zmieniamy
 
-Każdy nowy element interaktywny:
-- Działa wizualnie i stanowo (React state, toast, localStorage gdzie sensowne)
-- Ma jasno oznaczone miejsce w kodzie z komentarzem `// TODO(backend): ...` opisującym co podpiąć
-- Zwraca strukturę danych gotową do wysłania do API (np. `{ productId, variant, quantity, isSubscription, cadenceWeeks }`)
+Obecnie SKU jest skonfigurowane jako 1/3/6 butelek po 89/79/69 zł (1 szt = 89 zł). Realne dane Stripe pokazują, że klient kupuje **packi po 6 sztuk** (1×6 = 79 zł, 2×6 = 158 zł, 3×6 = 237 zł, 4×6 = 316 zł). Próg darmowej dostawy 89 zł jest fikcją — w rzeczywistości próg w Woo to 300 zł i żaden z trzech głównych wariantów go nie spełnia. Brief rekomenduje **próg 200 zł** — wtedy 12 szt (158 zł) jest „prawie tam" (upsell o 42 zł), a 18 szt (237 zł) automatycznie odblokowuje darmową dostawę.
 
-## Co budujemy (Faza 1 — MVP konwersyjny)
+## 2. Zmiany w `src/data/products.ts`
 
-### 1. Fix shipping threshold — `src/data/products.ts` + `TrustBar.tsx`
-Zmiana komunikatu i logiki progu z 99 → **89 zł** (= 1 szt = darmowa dostawa). Czysto frontendowa zmiana copy + stałej.
+**Próg dostawy:**
+```
+FREE_SHIPPING_THRESHOLD: 89 → 200
+```
 
-### 2. Subscription toggle w `ProductHero.tsx`
-Nowy komponent `SubscriptionToggle.tsx` — radio "Jednorazowo" vs "Subskrypcja −15% co 4 tyg", **pre-selected: Subskrypcja**. Aktualizuje wyświetlaną cenę i tekst CTA. Stan trzymany lokalnie w `ProductHero`. Wybór trafia do payloadu ATC (stub).
+**Nowe warianty cenowe (Shroom Power / Shroom Relax):**
 
-### 3. Quick Facts strip — `QuickFacts.tsx`
-Pasek 4 ikon pod tytułem produktu w `ProductHero`: Smak / Pora dnia / Format 330ml / Wysyłka 24h. Dane z `products.ts` (dodajemy pole `quickFacts`).
+| Label | Butelki | Cena/szt | Total | Savings |
+|---|---|---|---|---|
+| 1 pack | 6 | 13,17 zł | **79 zł** | — |
+| 2 packi | 12 | 13,17 zł | **158 zł** | — |
+| 3 packi | 18 | 13,17 zł | **237 zł** | DARMOWA DOSTAWA |
+| 4 packi | 24 | 13,17 zł | **316 zł** | DARMOWA DOSTAWA |
 
-### 4. Shipping countdown — `ShippingDeadline.tsx`
-Komponent client-side liczący do dziennego cutoffu (np. 14:00) — "Zamów w ciągu 2h 14min, wysyłka dziś". Czysty `setInterval` + `Date`. Bez backendu.
+`label` na PDP: „1 pack (6 szt.)", „2 packi (12 szt.)", „3 packi (18 szt.)", „4 packi (24 szt.)". Domyślnie zaznaczony 2 packi (mediana zamówień, naturalny upsell do 3 packów).
 
-### 5. Frequently Bought Together — `FrequentlyBoughtTogether.tsx`
-Widget pod ATC w `ProductHero` (tylko Power i Relax) — checkbox "Dodaj drugi produkt z duetu, oszczędź 9 zł". Aktualizuje cenę i payload ATC.
+**Diva** (500 ml, single bottle): warianty 1 / 3 / 6 butelek po 99 / 89 / 79 zł (Total 99 / 267 / 474 zł). Diva sprzedaje się jako pojedyncze butelki, nie packi.
 
-### 6. Payment badges — `PaymentBadges.tsx`
-Statyczny rząd ikon (Visa/MC/BLIK/Apple Pay) pod ATC. Czysto wizualne — komunikat zaufania.
+**BrainBliss** (kapsułki): bez zmian poza synchronizacją z nowym progiem (89 zł nadal poniżej 200 zł — info o brakującej kwocie do dostawy).
 
-### 7. StickyCTA przepisany na kontekstowy
-`StickyCTA.tsx` — gdy user jest na `/produkt/:slug`, pokazuje aktualnie wybrany produkt + cenę (z stanu PDP via context lub `useLocation` + props). Klik = toast "Dodano do koszyka" + komentarz `// TODO(backend): POST /api/cart`.
+**Bundle partner price:** podbicie z 89 zł → 79 zł (1 pack Relax/Power), zniżka bundle -9 zł zostaje.
 
-## Faza 2 — UX/architektura PDP (też frontend)
+**Copy fix:** wszystkie wystąpienia „Darmowa dostawa od 89 zł" → „Darmowa dostawa od 200 zł" (FAQ × 3, `trustBadges` × 3, `TrustBar.tsx`, komentarz w `products.ts`).
 
-### 8. Reorder sekcji w `ProductPage.tsx`
-Hero → QuickFacts (już w Hero) → Benefits → **CrossSell duet** → Reviews → Ingredients → Routine → FAQ. Reviews wyżej dla validation.
+## 3. Progress bar — refactor i nowe stany
 
-### 9. Recent purchases ticker — `RecentPurchases.tsx` (opcjonalnie)
-Mały dismissible toast w prawym dolnym rogu z **mockowanymi** danymi z tablicy ("Anna z Warszawy kupiła Power 2 min temu"). Komentarz `// TODO(backend): zastąp realnym feedem z API`.
+Obecnie progress bar żyje w 4 miejscach (`ProductHero`, `StickyCTA`, `CartDrawer`, `Cart`). Wprowadzamy **wspólny komponent** `src/components/ShippingProgressBar.tsx` używany wszędzie.
 
-## Co zostawiamy dla backendu (handoff)
+**Props:**
+```
+{ amount: number; variant: "compact" | "default" | "sticky"; isDiva?: boolean }
+```
 
-Tworzymy `BACKEND_HANDOFF.md` w roocie z listą:
-- **Cart API** — endpoint dodawania, struktura payloadu (z subscription/bundle flagami)
-- **Subscription system** — Stripe/Recharge integration, cadence options
-- **Real stock** — endpoint z dostępnością wariantów
-- **Social proof feed** — endpoint /api/recent-purchases (z anonimizacją)
-- **Shipping cutoff config** — godzina cutoff jako env var, nie hardcode
-- **Checkout flow** — Shopify/Stripe Checkout integration
+**Stany copy (wg briefu, sekcja 6):**
+- `0 zł`: „Zamów za 200 zł i skorzystaj z darmowej dostawy"
+- `1–99 zł`: „Jeszcze {X} zł do darmowej dostawy"
+- `100–199 zł`: „Prawie! Brakuje tylko {X} zł do darmowej dostawy"
+- `≥200 zł`: „✓ Masz darmową dostawę! Wysyłka gratis."
 
-## Pliki
+**Wizualnie:**
+- Wysokość paska: 6 px (default), 4 px (sticky mobile), 8 px (cart page).
+- Kolor wypełnienia: `bg-shroom-gold` w trakcie, `bg-shroom-green-dark` po przekroczeniu.
+- Animacja: `transition-all duration-300 ease-out` (smooth fill).
+- Trzy progi wizualne: gradient sekcji bara (33% / 66% / 100%) z subtelnymi delimiterami — pokazują „droga do celu".
 
-**Nowe (frontend):**
-- `src/components/product/SubscriptionToggle.tsx`
-- `src/components/product/QuickFacts.tsx`
-- `src/components/product/ShippingDeadline.tsx`
-- `src/components/product/FrequentlyBoughtTogether.tsx`
-- `src/components/product/PaymentBadges.tsx`
-- `src/components/RecentPurchases.tsx` (opcjonalnie)
-- `BACKEND_HANDOFF.md` (dokumentacja dla osoby technicznej)
+**Lokalizacje** (zgodnie z priorytetami briefu):
+1. `ProductHero` — pod ceną/CTA, wariant `default`
+2. `CartDrawer` — wariant `default`, na górze listy
+3. `Cart.tsx` — wariant `default`, nad listą pozycji
+4. `StickyCTA` (mobile) — wariant `sticky` (cienki pasek)
 
-**Edytowane:**
-- `src/data/products.ts` — próg 89 zł, pole `quickFacts`, `subscriptionDiscount`, `bundleWith`
-- `src/components/product/ProductHero.tsx` — integracja 4 nowych komponentów
-- `src/components/StickyCTA.tsx` — kontekstowość per-PDP + toast
-- `src/components/TrustBar.tsx` — update copy
-- `src/pages/ProductPage.tsx` — kolejność sekcji
+## 4. Aktualizacja `FunctionalDrinks.tsx` (homepage grid)
 
-## Czego nie robimy
+- Power/Relax: cena z „79 zł" zostaje (1 pack), ale link prowadzi do PDP gdzie domyślnie zaznaczone są 2 packi.
+- Diva: 99 zł (1 butelka, było 112 zł).
+- BrainBliss: 89 zł (było 47 zł — to było błędne, brief od osoby technicznej tu nie sprzeczy).
+- Duo CTA: „Kup duet — 149 zł" → **„Kup duet — 158 zł"** (1 pack Power + 1 pack Relax = 158 zł, dokładnie próg „prawie darmowa dostawa", stymuluje upsell).
 
-- Realny koszyk / checkout (backend)
-- Realna persystencja subskrypcji (backend)
-- Realny stock / sold-out states (backend)
-- Realny social proof feed (backend)
-- Analytics events (wymaga konfiguracji GA4/Pixel — osobna decyzja)
+## 5. Aktualizacja `ProductHero.tsx`
 
-## Co zapiszemy do memory
+- Bundle partner price: 89 → 79 zł (1 pack).
+- Domyślny `selectedTier`: `0` → `1` (2 packi pre-selected zamiast 1 pack — najczęstszy zakup).
+- Pole `bundlePartnerPrice` korzysta z 79 zł.
+- Linijka „Dodaj X zł do darmowej dostawy" zastąpiona nowym komponentem `ShippingProgressBar`.
+- Strikethrough cena uwzględnia 79 zł bundle partner zamiast 89 zł.
 
-`mem://conversion/pdp-frontend-conversion-rules` — zasady: subskrypcja pre-selected, próg 89 zł, Quick Facts pod tytułem, shipping cutoff 14:00, każdy ATC ma payload-ready strukturę z komentarzem TODO(backend).
+## 6. Aktualizacja `StickyCTA.tsx` (mobile PDP)
+
+- Wymienić ręczny progress na `ShippingProgressBar variant="sticky"`.
+- Homepage variant: cena „79 zł" zostaje, ale CTA „Zamów" prowadzi do PDP z domyślnie zaznaczonym 2 pack.
+
+## 7. Aktualizacja `CartDrawer.tsx` i `pages/Cart.tsx`
+
+- Wymienić ręczny progress na `ShippingProgressBar variant="default"`.
+- Cart page: w podsumowaniu usunąć stałą opłatę „12 zł" jeśli `subtotal ≥ 200`, inaczej 12 zł dostawy.
+
+## 8. Memory update
+
+Aktualizujemy `mem://conversion/pdp-frontend-conversion-rules`:
+- Nowy próg darmowej dostawy: **200 zł**.
+- Warianty Power/Relax: 1/2/3/4 packi (6/12/18/24 szt) po 79/158/237/316 zł.
+- Domyślny wariant pre-selected: **2 packi (158 zł)** + subskrypcja.
+- Bundle partner: 1 pack za 79 zł, -9 zł rabat duet.
+- ShippingProgressBar to single source of truth dla 4 stanów copy.
+
+## 9. Czego NIE robimy
+
+- Backend / Woo settings (Jorgos zmienia próg w panelu osobno).
+- Realnego stocku, sold-out, payment integracji.
+- Zmiany domyślnej długości subskrypcji (zostaje 4 tyg).
+- Stripe pixel/analytics.
+
+## 10. QA checklist (po wdrożeniu)
+
+- `/produkt/shroom-power` desktop: domyślnie 2 packi + sub = ~134 zł; widać „brakuje 66 zł" (ze sub) lub „brakuje 42 zł" (bez sub).
+- 3 packi: progress bar zielony, „Masz darmową dostawę".
+- Drawer: dodanie 2 packi → bar 79% wypełniony, dodanie kolejnego → 100% zielony.
+- Mobile StickyCTA: cienki pasek odpowiada totalowi PDP.
+- Homepage `FunctionalDrinks`: nowe ceny zgadzają się z PDP po kliknięciu.
+- TrustBar marquee: „Darmowa dostawa od 200 zł".
 
