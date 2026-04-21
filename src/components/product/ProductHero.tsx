@@ -198,7 +198,7 @@ const ProductHero = ({ product }: Props) => {
                   <span className="block">{t.label}</span>
                   <span className="block text-[10px] font-body font-normal mt-0.5 opacity-80">{t.pricePerUnit} zł/szt.</span>
                   {t.savings && (
-                    <span className={`absolute -top-2.5 left-1/2 -translate-x-1/2 text-[10px] px-2 py-0.5 font-display font-bold uppercase tracking-wider ${
+                    <span className={`absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] leading-none px-1.5 py-0.5 font-display font-bold uppercase tracking-wider whitespace-nowrap ${
                       isDiva ? "bg-diva-pink text-diva-dark" : "bg-shroom-green text-foreground"
                     }`}>
                       {t.savings}

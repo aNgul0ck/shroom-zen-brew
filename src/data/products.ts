@@ -106,8 +106,8 @@ export const products: Product[] = [
     pricing: [
       { quantity: 6, label: "1 pack (6 szt.)", pricePerUnit: 13, totalPrice: 79 },
       { quantity: 12, label: "2 packi (12 szt.)", pricePerUnit: 13, totalPrice: 158 },
-      { quantity: 18, label: "3 packi (18 szt.)", pricePerUnit: 13, totalPrice: 237, savings: "FREE SHIP" },
-      { quantity: 24, label: "4 packi (24 szt.)", pricePerUnit: 13, totalPrice: 316, savings: "FREE SHIP" },
+      { quantity: 18, label: "3 packi (18 szt.)", pricePerUnit: 13, totalPrice: 237, savings: "GRATIS" },
+      { quantity: 24, label: "4 packi (24 szt.)", pricePerUnit: 13, totalPrice: 316, savings: "GRATIS" },
     ],
     quickFacts: [
       { icon: Sparkles, label: "Smak", value: "Cytrusowo-ziołowy" },
@@ -167,8 +167,8 @@ export const products: Product[] = [
     pricing: [
       { quantity: 6, label: "1 pack (6 szt.)", pricePerUnit: 13, totalPrice: 79 },
       { quantity: 12, label: "2 packi (12 szt.)", pricePerUnit: 13, totalPrice: 158 },
-      { quantity: 18, label: "3 packi (18 szt.)", pricePerUnit: 13, totalPrice: 237, savings: "FREE SHIP" },
-      { quantity: 24, label: "4 packi (24 szt.)", pricePerUnit: 13, totalPrice: 316, savings: "FREE SHIP" },
+      { quantity: 18, label: "3 packi (18 szt.)", pricePerUnit: 13, totalPrice: 237, savings: "GRATIS" },
+      { quantity: 24, label: "4 packi (24 szt.)", pricePerUnit: 13, totalPrice: 316, savings: "GRATIS" },
     ],
     quickFacts: [
       { icon: Sparkles, label: "Smak", value: "Miód i lawenda" },
