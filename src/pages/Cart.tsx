@@ -214,12 +214,17 @@ const CartPage = () => {
                       label="Dostawa"
                       value={
                         qualifiesShipping ? (
-                          <span className="text-shroom-green-dark font-bold">Darmowa</span>
+                          <span className="text-shroom-green-dark font-bold">Darmowa (0 zł)</span>
                         ) : (
                           `${shipping} zł`
                         )
                       }
                     />
+                    {!qualifiesShipping && (
+                      <p className="font-body text-[11px] text-foreground/50 leading-snug">
+                        Darmowa dostawa od {FREE_SHIPPING_THRESHOLD} zł.
+                      </p>
+                    )}
                     <p className="font-body text-[11px] text-foreground/50 leading-snug">
                       W tym VAT (23%): {vatPortion} zł
                     </p>
