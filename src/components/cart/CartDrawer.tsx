@@ -48,10 +48,12 @@ const CartDrawer = () => {
           </div>
         </SheetHeader>
 
-        {/* Free shipping progress */}
+        {/* Free shipping progress — compact variant: drawer is space-constrained
+            (vs. /koszyk page which uses default). 6px bar + smaller label keeps
+            items list above the fold on mobile. */}
         {items.length > 0 && (
           <div className="px-5 py-3 border-b border-foreground/10 bg-shroom-cream">
-            <ShippingProgressBar amount={subtotal} variant="default" />
+            <ShippingProgressBar amount={subtotal} variant="compact" />
           </div>
         )}
 
