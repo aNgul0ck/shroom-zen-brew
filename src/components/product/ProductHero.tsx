@@ -9,13 +9,18 @@ import ShippingDeadline from "./ShippingDeadline";
 import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether";
 import PaymentBadges from "./PaymentBadges";
 import ProductGallery from "./ProductGallery";
+import ShippingProgressBar from "@/components/ShippingProgressBar";
 
 interface Props {
   product: Product;
 }
 
 const ProductHero = ({ product }: Props) => {
-  const [selectedTier, setSelectedTier] = useState(0);
+  // Pre-select the 2nd tier (2 packi / 158 zł — median order per Stripe data)
+  // for Power/Relax (4 tiers); Diva keeps tier 0 (1 szt.) since it sells as
+  // single bottles and only has 3 tiers.
+  const defaultTierIndex = product.pricing.length >= 4 ? 1 : 0;
+  const [selectedTier, setSelectedTier] = useState(defaultTierIndex);
   const [isSubscription, setIsSubscription] = useState(true); // pre-selected per audit
   const [bundleSelected, setBundleSelected] = useState(false);
   const tier = product.pricing[selectedTier];
@@ -26,17 +31,17 @@ const ProductHero = ({ product }: Props) => {
   const finalTotal = isSubscription
     ? Math.round(baseTotal * (1 - SUBSCRIPTION_DISCOUNT))
     : baseTotal;
-  // Bundle partner: 1 bottle @ 89 zł, -9 zł bundle discount, also subject to
-  // the subscription discount when subscription is selected (mirrors the cart
+  // Bundle partner: 1 pack (6 szt.) @ 79 zł, -9 zł bundle discount, also subject
+  // to the subscription discount when subscription is selected (mirrors the cart
   // payload built in handleAddToCart so the displayed total matches what
   // actually lands in the cart).
+  const BUNDLE_PARTNER_BASE = 79;
   const bundlePartnerPrice = bundleSelected
-    ? (isSubscription ? Math.round(89 * (1 - SUBSCRIPTION_DISCOUNT)) : 89) - 9
+    ? (isSubscription ? Math.round(BUNDLE_PARTNER_BASE * (1 - SUBSCRIPTION_DISCOUNT)) : BUNDLE_PARTNER_BASE) - 9
     : 0;
   const grandTotal = finalTotal + bundlePartnerPrice;
 
   const qualifiesForFreeShipping = grandTotal >= FREE_SHIPPING_THRESHOLD;
-  const remainingForFreeShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - grandTotal);
 
   // Broadcast current PDP selection to StickyCTA (frontend-only event bus).
   // TODO(backend): replace with cart store (Zustand/Redux) once cart API exists.
@@ -83,7 +88,7 @@ const ProductHero = ({ product }: Props) => {
     if (bundleSelected && product.bundleWith) {
       const partner = products.find((p) => p.slug === product.bundleWith);
       if (partner) {
-        const partnerOriginal = 89;
+        const partnerOriginal = 79;
         const partnerDiscounted = isSubscription
           ? Math.round(partnerOriginal * (1 - SUBSCRIPTION_DISCOUNT))
           : partnerOriginal;
@@ -175,7 +180,7 @@ const ProductHero = ({ product }: Props) => {
             <p className={`font-body text-xs uppercase tracking-[0.2em] mb-3 ${isDiva ? "text-white/50" : "text-foreground/60"}`}>
               Wybierz ilość
             </p>
-            <div className="grid grid-cols-3 gap-2 mb-6">
+            <div className={`grid gap-2 mb-6 ${product.pricing.length >= 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-3"}`}>
               {product.pricing.map((t, i) => (
                 <button
                   key={t.quantity}
@@ -211,14 +216,14 @@ const ProductHero = ({ product }: Props) => {
             />
 
             {/* Price & CTA */}
-            <div className={`flex flex-wrap items-end justify-between gap-4 mb-4 pb-6 border-b ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
+            <div className={`flex flex-wrap items-end justify-between gap-4 mb-4 pb-4 border-b ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
               <div>
                 <p className={`font-headline text-4xl md:text-5xl ${isDiva ? "text-white" : "text-foreground"}`}>
                   {grandTotal} zł
                 </p>
                 {isSubscription && (
                   <p className={`font-body text-xs mt-1 line-through ${isDiva ? "text-white/30" : "text-foreground/40"}`}>
-                    {baseTotal + (bundleSelected ? 89 : 0)} zł
+                    {baseTotal + (bundleSelected ? 79 : 0)} zł
                   </p>
                 )}
                 <p className={`font-body text-xs mt-1 ${isDiva ? "text-white/50" : "text-foreground/60"}`}>
@@ -226,17 +231,18 @@ const ProductHero = ({ product }: Props) => {
                   {isSubscription && ` · co ${SUBSCRIPTION_CADENCE_WEEKS} tyg`}
                 </p>
               </div>
-              {qualifiesForFreeShipping ? (
+              {qualifiesForFreeShipping && (
                 <span className={`font-display text-[10px] font-bold uppercase tracking-wider px-2 py-1 ${
                   isDiva ? "bg-diva-pink text-diva-dark" : "bg-shroom-green text-foreground"
                 }`}>
                   ✓ Darmowa dostawa
                 </span>
-              ) : (
-                <span className={`font-body text-[11px] ${isDiva ? "text-white/60" : "text-foreground/65"}`}>
-                  Dodaj <span className="font-display font-bold">{remainingForFreeShipping} zł</span> do darmowej dostawy
-                </span>
               )}
+            </div>
+
+            {/* Shipping progress bar — single source of truth */}
+            <div className="mb-5">
+              <ShippingProgressBar amount={grandTotal} variant="default" isDiva={isDiva} />
             </div>
 
             <button

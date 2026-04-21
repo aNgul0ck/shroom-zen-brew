@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { Minus, Plus, X, ShoppingBag, Truck, Lock, ArrowLeft, Tag, ShieldCheck } from "lucide-react";
+import { Minus, Plus, X, ShoppingBag, Lock, ArrowLeft, Tag, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCartStore } from "@/stores/cartStore";
-import { FREE_SHIPPING_THRESHOLD } from "@/data/products";
+import ShippingProgressBar from "@/components/ShippingProgressBar";
 
 // Frontend-only Cart page. Backend integration TODOs are inline. Reuses the
 // same Zustand store as the drawer so state stays in sync across the app.
@@ -18,16 +18,12 @@ const CartPage = () => {
   const removeItem = useCartStore((s) => s.removeItem);
   const clear = useCartStore((s) => s.clear);
   const subtotal = useCartStore((s) => s.getSubtotal());
-  const remainingForShipping = useCartStore((s) => s.getRemainingForFreeShipping());
   const qualifiesShipping = useCartStore((s) => s.qualifiesForFreeShipping());
   const itemCount = useCartStore((s) => s.getItemCount());
 
   const shipping = qualifiesShipping ? 0 : SHIPPING_FEE;
   const total = subtotal + shipping;
   const vatPortion = Math.round((total * VAT_RATE) / (1 + VAT_RATE));
-  const progressPct = qualifiesShipping
-    ? 100
-    : Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
 
   const handleCheckout = () => {
     // TODO(backend): POST /api/checkout/create-session and redirect to provider.
@@ -87,31 +83,7 @@ const CartPage = () => {
               <section aria-label="Pozycje w koszyku">
                 {/* Free shipping progress */}
                 <div className="mb-6 p-4 bg-shroom-cream border border-foreground/10">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Truck className="w-4 h-4 text-foreground" />
-                    {qualifiesShipping ? (
-                      <p className="font-body text-sm text-foreground">
-                        <span className="font-display font-bold uppercase tracking-wider">
-                          ✓ Darmowa dostawa
-                        </span>{" "}
-                        odblokowana
-                      </p>
-                    ) : (
-                      <p className="font-body text-sm text-foreground/70">
-                        Dodaj{" "}
-                        <span className="font-display font-bold text-foreground">
-                          {remainingForShipping} zł
-                        </span>{" "}
-                        do darmowej dostawy
-                      </p>
-                    )}
-                  </div>
-                  <div className="h-2 bg-foreground/10 overflow-hidden">
-                    <div
-                      className="h-full bg-foreground transition-all duration-300"
-                      style={{ width: `${progressPct}%` }}
-                    />
-                  </div>
+                  <ShippingProgressBar amount={subtotal} variant="default" />
                 </div>
 
                 <ul className="border-t-2 border-foreground divide-y divide-foreground/10">

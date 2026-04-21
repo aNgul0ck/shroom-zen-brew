@@ -8,8 +8,9 @@ import relaxNutrition from "@/assets/relax-nutrition.png";
 import { Brain, Zap, Shield, Moon, Leaf, Heart, Wine, Sparkles, Sun } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-// Free shipping threshold — single bottle qualifies (was 99zł, now 89zł)
-export const FREE_SHIPPING_THRESHOLD = 89;
+// Free shipping threshold — set to 200 zł based on Stripe data analysis (AOV 172 zł).
+// 2 packi (158 zł) = "almost there" upsell; 3 packi (237 zł) auto-unlocks free shipping.
+export const FREE_SHIPPING_THRESHOLD = 200;
 
 // Subscription discount — applied as % off one-time price
 export const SUBSCRIPTION_DISCOUNT = 0.15;
@@ -99,13 +100,14 @@ export const products: Product[] = [
     tagline: "Energia na cały dzień",
     description: "Funkcjonalny napój z soplówką jeżowatą i żeń-szeniem. Naturalna energia bez crashu kofeinowego.",
     image: productPower,
-    price: 89,
+    price: 79,
     volume: "330ml",
     isDiva: false,
     pricing: [
-      { quantity: 1, label: "1 szt.", pricePerUnit: 89, totalPrice: 89 },
-      { quantity: 3, label: "3 szt.", pricePerUnit: 79, totalPrice: 237, savings: "-11%" },
-      { quantity: 6, label: "6 szt.", pricePerUnit: 69, totalPrice: 414, savings: "-22%" },
+      { quantity: 6, label: "1 pack (6 szt.)", pricePerUnit: 13, totalPrice: 79 },
+      { quantity: 12, label: "2 packi (12 szt.)", pricePerUnit: 13, totalPrice: 158 },
+      { quantity: 18, label: "3 packi (18 szt.)", pricePerUnit: 13, totalPrice: 237, savings: "FREE SHIP" },
+      { quantity: 24, label: "4 packi (24 szt.)", pricePerUnit: 13, totalPrice: 316, savings: "FREE SHIP" },
     ],
     quickFacts: [
       { icon: Sparkles, label: "Smak", value: "Cytrusowo-ziołowy" },
@@ -142,9 +144,9 @@ export const products: Product[] = [
       { question: "Czy mogę pić codziennie?", answer: "Tak, Shroom Power jest zaprojektowany do codziennego spożycia. Zalecana porcja to 1 butelka dziennie." },
       { question: "Czy zawiera kofeinę?", answer: "Nie, Shroom Power nie zawiera kofeiny. Energia pochodzi z naturalnych adaptogenów i witamin." },
       { question: "Jak przechowywać?", answer: "Przed otwarciem: w temperaturze pokojowej. Po otwarciu: w lodówce, spożyć w ciągu 24h." },
-      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 89 zł — już od jednej butelki." },
+      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 200 zł." },
     ],
-    trustBadges: ["Darmowa dostawa od 89 zł", "100% naturalne składniki", "Made in Poland"],
+    trustBadges: ["Darmowa dostawa od 200 zł", "100% naturalne składniki", "Made in Poland"],
   },
   {
     slug: "shroom-relax",
@@ -159,13 +161,14 @@ export const products: Product[] = [
       { src: relaxLifestyle, alt: "Shroom Relax na stole w letnim ogrodzie", isLifestyle: true },
       { src: relaxNutrition, alt: "Shroom Relax — wartości odżywcze i składniki" },
     ],
-    price: 89,
+    price: 79,
     volume: "330ml",
     isDiva: false,
     pricing: [
-      { quantity: 1, label: "1 szt.", pricePerUnit: 89, totalPrice: 89 },
-      { quantity: 3, label: "3 szt.", pricePerUnit: 79, totalPrice: 237, savings: "-11%" },
-      { quantity: 6, label: "6 szt.", pricePerUnit: 69, totalPrice: 414, savings: "-22%" },
+      { quantity: 6, label: "1 pack (6 szt.)", pricePerUnit: 13, totalPrice: 79 },
+      { quantity: 12, label: "2 packi (12 szt.)", pricePerUnit: 13, totalPrice: 158 },
+      { quantity: 18, label: "3 packi (18 szt.)", pricePerUnit: 13, totalPrice: 237, savings: "FREE SHIP" },
+      { quantity: 24, label: "4 packi (24 szt.)", pricePerUnit: 13, totalPrice: 316, savings: "FREE SHIP" },
     ],
     quickFacts: [
       { icon: Sparkles, label: "Smak", value: "Miód i lawenda" },
@@ -202,9 +205,9 @@ export const products: Product[] = [
       { question: "Czy powoduje senność?", answer: "Nie bezpośrednio. Relax wspiera naturalne wyciszenie organizmu, ale nie wywołuje nagłej senności." },
       { question: "Kiedy najlepiej pić?", answer: "Najlepsze efekty 1-2 godziny przed planowanym snem." },
       { question: "Czy mogę łączyć z Power?", answer: "Tak! Power rano, Relax wieczorem — to pełny cykl dnia i nocy." },
-      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 89 zł — już od jednej butelki." },
+      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 200 zł." },
     ],
-    trustBadges: ["Darmowa dostawa od 89 zł", "100% naturalne składniki", "Made in Poland"],
+    trustBadges: ["Darmowa dostawa od 200 zł", "100% naturalne składniki", "Made in Poland"],
   },
   {
     slug: "diva",
@@ -212,13 +215,13 @@ export const products: Product[] = [
     tagline: "Social Elixir",
     description: "Bezalkoholowe aperitivo z 13 składnikami botanicznymi i jadalnym brokatem. Celebruj bez kompromisów.",
     image: productDiva,
-    price: 112,
+    price: 99,
     volume: "500ml",
     isDiva: true,
     pricing: [
-      { quantity: 1, label: "1 szt.", pricePerUnit: 112, totalPrice: 112 },
-      { quantity: 3, label: "3 szt.", pricePerUnit: 99, totalPrice: 297, savings: "-12%" },
-      { quantity: 6, label: "6 szt.", pricePerUnit: 89, totalPrice: 534, savings: "-21%" },
+      { quantity: 1, label: "1 szt.", pricePerUnit: 99, totalPrice: 99 },
+      { quantity: 3, label: "3 szt.", pricePerUnit: 89, totalPrice: 267, savings: "-10%" },
+      { quantity: 6, label: "6 szt.", pricePerUnit: 79, totalPrice: 474, savings: "-20%" },
     ],
     quickFacts: [
       { icon: Sparkles, label: "Smak", value: "Botaniczny, gorzki" },
@@ -254,9 +257,9 @@ export const products: Product[] = [
       { question: "Czy brokat jest bezpieczny?", answer: "Tak, jadalny brokat posiada certyfikat bezpieczeństwa żywności UE. Jest całkowicie bezpieczny do spożycia." },
       { question: "Jak podawać Divę?", answer: "Schłodzona, z lodem, w kieliszku do wina lub koktajlowym. Dodaj plasterek pomarańczy lub gałązkę rozmarynu." },
       { question: "Czy jest bezalkoholowa?", answer: "Tak, Diva zawiera 0% alkoholu. To pełnowartościowe aperitivo bez efektów alkoholu." },
-      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 89 zł." },
+      { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 200 zł." },
     ],
-    trustBadges: ["Darmowa dostawa od 89 zł", "100% naturalne składniki", "Made in Poland"],
+    trustBadges: ["Darmowa dostawa od 200 zł", "100% naturalne składniki", "Made in Poland"],
   },
 ];
 
