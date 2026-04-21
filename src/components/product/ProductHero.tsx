@@ -9,13 +9,18 @@ import ShippingDeadline from "./ShippingDeadline";
 import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether";
 import PaymentBadges from "./PaymentBadges";
 import ProductGallery from "./ProductGallery";
+import ShippingProgressBar from "@/components/ShippingProgressBar";
 
 interface Props {
   product: Product;
 }
 
 const ProductHero = ({ product }: Props) => {
-  const [selectedTier, setSelectedTier] = useState(0);
+  // Pre-select the 2nd tier (2 packi / 158 zł — median order per Stripe data)
+  // for Power/Relax (4 tiers); Diva keeps tier 0 (1 szt.) since it sells as
+  // single bottles and only has 3 tiers.
+  const defaultTierIndex = product.pricing.length >= 4 ? 1 : 0;
+  const [selectedTier, setSelectedTier] = useState(defaultTierIndex);
   const [isSubscription, setIsSubscription] = useState(true); // pre-selected per audit
   const [bundleSelected, setBundleSelected] = useState(false);
   const tier = product.pricing[selectedTier];
@@ -26,17 +31,17 @@ const ProductHero = ({ product }: Props) => {
   const finalTotal = isSubscription
     ? Math.round(baseTotal * (1 - SUBSCRIPTION_DISCOUNT))
     : baseTotal;
-  // Bundle partner: 1 bottle @ 89 zł, -9 zł bundle discount, also subject to
-  // the subscription discount when subscription is selected (mirrors the cart
+  // Bundle partner: 1 pack (6 szt.) @ 79 zł, -9 zł bundle discount, also subject
+  // to the subscription discount when subscription is selected (mirrors the cart
   // payload built in handleAddToCart so the displayed total matches what
   // actually lands in the cart).
+  const BUNDLE_PARTNER_BASE = 79;
   const bundlePartnerPrice = bundleSelected
-    ? (isSubscription ? Math.round(89 * (1 - SUBSCRIPTION_DISCOUNT)) : 89) - 9
+    ? (isSubscription ? Math.round(BUNDLE_PARTNER_BASE * (1 - SUBSCRIPTION_DISCOUNT)) : BUNDLE_PARTNER_BASE) - 9
     : 0;
   const grandTotal = finalTotal + bundlePartnerPrice;
 
   const qualifiesForFreeShipping = grandTotal >= FREE_SHIPPING_THRESHOLD;
-  const remainingForFreeShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - grandTotal);
 
   // Broadcast current PDP selection to StickyCTA (frontend-only event bus).
   // TODO(backend): replace with cart store (Zustand/Redux) once cart API exists.
@@ -83,7 +88,7 @@ const ProductHero = ({ product }: Props) => {
     if (bundleSelected && product.bundleWith) {
       const partner = products.find((p) => p.slug === product.bundleWith);
       if (partner) {
-        const partnerOriginal = 89;
+        const partnerOriginal = 79;
         const partnerDiscounted = isSubscription
           ? Math.round(partnerOriginal * (1 - SUBSCRIPTION_DISCOUNT))
           : partnerOriginal;
