@@ -216,14 +216,14 @@ const ProductHero = ({ product }: Props) => {
             />
 
             {/* Price & CTA */}
-            <div className={`flex flex-wrap items-end justify-between gap-4 mb-4 pb-6 border-b ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
+            <div className={`flex flex-wrap items-end justify-between gap-4 mb-4 pb-4 border-b ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
               <div>
                 <p className={`font-headline text-4xl md:text-5xl ${isDiva ? "text-white" : "text-foreground"}`}>
                   {grandTotal} zł
                 </p>
                 {isSubscription && (
                   <p className={`font-body text-xs mt-1 line-through ${isDiva ? "text-white/30" : "text-foreground/40"}`}>
-                    {baseTotal + (bundleSelected ? 89 : 0)} zł
+                    {baseTotal + (bundleSelected ? 79 : 0)} zł
                   </p>
                 )}
                 <p className={`font-body text-xs mt-1 ${isDiva ? "text-white/50" : "text-foreground/60"}`}>
@@ -231,17 +231,18 @@ const ProductHero = ({ product }: Props) => {
                   {isSubscription && ` · co ${SUBSCRIPTION_CADENCE_WEEKS} tyg`}
                 </p>
               </div>
-              {qualifiesForFreeShipping ? (
+              {qualifiesForFreeShipping && (
                 <span className={`font-display text-[10px] font-bold uppercase tracking-wider px-2 py-1 ${
                   isDiva ? "bg-diva-pink text-diva-dark" : "bg-shroom-green text-foreground"
                 }`}>
                   ✓ Darmowa dostawa
                 </span>
-              ) : (
-                <span className={`font-body text-[11px] ${isDiva ? "text-white/60" : "text-foreground/65"}`}>
-                  Dodaj <span className="font-display font-bold">{remainingForFreeShipping} zł</span> do darmowej dostawy
-                </span>
               )}
+            </div>
+
+            {/* Shipping progress bar — single source of truth */}
+            <div className="mb-5">
+              <ShippingProgressBar amount={grandTotal} variant="default" isDiva={isDiva} />
             </div>
 
             <button
