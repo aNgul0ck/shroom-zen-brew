@@ -42,8 +42,8 @@ const products = [
     benefits: ["Adaptogeny", "Bez alkoholu", "500ml"],
     borderColor: "border-t-shroom-sky",
     badgeBg: "bg-shroom-sky",
-    slug: "diva-social-elixir",
-    price: "112 zł",
+    slug: "diva",
+    price: "99 zł",
   },
   {
     name: "BrainBliss",
@@ -56,7 +56,7 @@ const products = [
     borderColor: "border-t-shroom-sage",
     badgeBg: "bg-shroom-sage",
     slug: "brainbliss",
-    price: "47 zł",
+    price: "89 zł",
   },
 ];
 

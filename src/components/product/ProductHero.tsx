@@ -180,7 +180,7 @@ const ProductHero = ({ product }: Props) => {
             <p className={`font-body text-xs uppercase tracking-[0.2em] mb-3 ${isDiva ? "text-white/50" : "text-foreground/60"}`}>
               Wybierz ilość
             </p>
-            <div className="grid grid-cols-3 gap-2 mb-6">
+            <div className={`grid gap-2 mb-6 ${product.pricing.length >= 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-3"}`}>
               {product.pricing.map((t, i) => (
                 <button
                   key={t.quantity}

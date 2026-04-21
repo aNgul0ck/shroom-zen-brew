@@ -1,9 +1,9 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useCartStore } from "@/stores/cartStore";
-import { FREE_SHIPPING_THRESHOLD } from "@/data/products";
-import { Minus, Plus, X, ShoppingBag, Truck, Lock } from "lucide-react";
+import { Minus, Plus, X, ShoppingBag, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import ShippingProgressBar from "@/components/ShippingProgressBar";
 
 const CartDrawer = () => {
   const isOpen = useCartStore((s) => s.isOpen);
@@ -12,13 +12,7 @@ const CartDrawer = () => {
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const removeItem = useCartStore((s) => s.removeItem);
   const subtotal = useCartStore((s) => s.getSubtotal());
-  const remainingForShipping = useCartStore((s) => s.getRemainingForFreeShipping());
-  const qualifiesShipping = useCartStore((s) => s.qualifiesForFreeShipping());
   const itemCount = useCartStore((s) => s.getItemCount());
-
-  const progressPct = qualifiesShipping
-    ? 100
-    : Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
 
   const handleCheckout = () => {
     // TODO(backend): redirect to /api/checkout/create-session (Stripe/Shopify)
@@ -57,29 +51,7 @@ const CartDrawer = () => {
         {/* Free shipping progress */}
         {items.length > 0 && (
           <div className="px-5 py-3 border-b border-foreground/10 bg-shroom-cream">
-            <div className="flex items-center gap-2 mb-2">
-              <Truck className="w-3.5 h-3.5 text-foreground" />
-              {qualifiesShipping ? (
-                <p className="font-body text-xs text-foreground">
-                  <span className="font-display font-bold uppercase tracking-wider">✓ Darmowa dostawa</span>{" "}
-                  odblokowana
-                </p>
-              ) : (
-                <p className="font-body text-xs text-foreground/70">
-                  Dodaj{" "}
-                  <span className="font-display font-bold text-foreground">
-                    {remainingForShipping} zł
-                  </span>{" "}
-                  do darmowej dostawy
-                </p>
-              )}
-            </div>
-            <div className="h-1.5 bg-foreground/10 overflow-hidden">
-              <div
-                className="h-full bg-foreground transition-all duration-300"
-                style={{ width: `${progressPct}%` }}
-              />
-            </div>
+            <ShippingProgressBar amount={subtotal} variant="default" />
           </div>
         )}
 
