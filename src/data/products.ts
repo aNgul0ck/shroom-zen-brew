@@ -100,7 +100,7 @@ export const products: Product[] = [
     tagline: "Energia na cały dzień",
     description: "Funkcjonalny napój z soplówką jeżowatą i żeń-szeniem. Naturalna energia bez crashu kofeinowego.",
     image: productPower,
-    price: 89,
+    price: 79,
     volume: "330ml",
     isDiva: false,
     pricing: [
@@ -161,7 +161,7 @@ export const products: Product[] = [
       { src: relaxLifestyle, alt: "Shroom Relax na stole w letnim ogrodzie", isLifestyle: true },
       { src: relaxNutrition, alt: "Shroom Relax — wartości odżywcze i składniki" },
     ],
-    price: 89,
+    price: 79,
     volume: "330ml",
     isDiva: false,
     pricing: [
