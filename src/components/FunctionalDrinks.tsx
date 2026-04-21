@@ -153,7 +153,7 @@ const FunctionalDrinks = () => {
               to="/produkt/shroom-power"
               className="inline-flex items-center gap-2 border-2 border-foreground text-foreground px-5 py-2.5 font-display font-semibold text-xs hover:bg-foreground hover:text-background transition-colors whitespace-nowrap"
             >
-              Kup duet — 149 zł
+              Kup duet — 158 zł
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -174,7 +174,7 @@ const FunctionalDrinks = () => {
             to="/produkt/shroom-power"
             className="inline-flex items-center gap-2 border-2 border-foreground text-foreground px-6 py-3 font-display font-semibold text-sm hover:bg-foreground hover:text-background transition-colors"
           >
-            Kup duet — 149 zł
+            Kup duet — 158 zł
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
