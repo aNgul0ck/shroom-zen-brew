@@ -86,9 +86,11 @@ const ShippingProgressBar = ({
   const iconSize = variant === "sticky" ? "w-3 h-3" : "w-3.5 h-3.5";
   const wrapperSpacing = variant === "sticky" ? "gap-1" : "gap-2";
 
-  // Color tokens
+  // Color tokens. NOTE: use `bg-shroom-green` (defined in tailwind.config.ts) —
+  // there is no `shroom-green-dark` token, and an undefined class silently
+  // renders no background, leaving the qualified state looking gray.
   const trackBg = isDiva ? "bg-white/15" : "bg-foreground/10";
-  const fillBg = qualifies ? "bg-shroom-green-dark" : "bg-shroom-gold";
+  const fillBg = qualifies ? "bg-shroom-green" : "bg-shroom-gold";
   const labelColor = isDiva ? "text-white/80" : "text-foreground/75";
 
   // Tick positions for visual milestones (33% / 66%) — only on default/compact

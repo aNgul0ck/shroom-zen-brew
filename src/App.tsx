@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import QuizPage from "./pages/QuizPage";
 import CartPage from "./pages/Cart";
 import CartDrawer from "./components/cart/CartDrawer";
+import QaProgressBar from "./pages/QaProgressBar";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/produkt/:slug" element={<ProductPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/koszyk" element={<CartPage />} />
+          <Route path="/_qa/progress-bar" element={<QaProgressBar />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
