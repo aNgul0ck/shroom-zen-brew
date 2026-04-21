@@ -4,12 +4,13 @@ import { toast } from "sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCartStore } from "@/stores/cartStore";
+import { FREE_SHIPPING_THRESHOLD } from "@/data/products";
 import ShippingProgressBar from "@/components/ShippingProgressBar";
 
 // Frontend-only Cart page. Backend integration TODOs are inline. Reuses the
 // same Zustand store as the drawer so state stays in sync across the app.
 
-const SHIPPING_FEE = 12; // PLN — flat-rate fallback if below threshold
+const SHIPPING_FEE = 12; // PLN — flat-rate fallback when subtotal < FREE_SHIPPING_THRESHOLD
 const VAT_RATE = 0.23;   // For display only; backend will recompute at checkout.
 
 const CartPage = () => {
@@ -18,9 +19,12 @@ const CartPage = () => {
   const removeItem = useCartStore((s) => s.removeItem);
   const clear = useCartStore((s) => s.clear);
   const subtotal = useCartStore((s) => s.getSubtotal());
-  const qualifiesShipping = useCartStore((s) => s.qualifiesForFreeShipping());
   const itemCount = useCartStore((s) => s.getItemCount());
 
+  // Single source of truth: free shipping ONLY when subtotal ≥ 200 zł.
+  // Derived locally from the threshold constant so the page can never show
+  // 0 zł delivery with a sub-threshold cart, even if the store helper drifts.
+  const qualifiesShipping = subtotal >= FREE_SHIPPING_THRESHOLD;
   const shipping = qualifiesShipping ? 0 : SHIPPING_FEE;
   const total = subtotal + shipping;
   const vatPortion = Math.round((total * VAT_RATE) / (1 + VAT_RATE));
