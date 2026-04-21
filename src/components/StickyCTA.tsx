@@ -127,40 +127,12 @@ const StickyCTA = () => {
       }
     };
 
-    const qualifiesShipping = pdpSelection.total >= FREE_SHIPPING_THRESHOLD;
-    const remainingForShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - pdpSelection.total);
-    const shippingPct = qualifiesShipping
-      ? 100
-      : Math.min(100, (pdpSelection.total / FREE_SHIPPING_THRESHOLD) * 100);
-
     return (
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
         <div className="bg-background/95 backdrop-blur-md border-t border-foreground/10">
-          {/* Free shipping progress bar */}
+          {/* Free shipping progress bar — shared component */}
           <div className="px-4 pt-2 pb-1.5">
-            <div className="flex items-center justify-between gap-2 mb-1">
-              {qualifiesShipping ? (
-                <p className="font-body text-[10px] uppercase tracking-wider text-foreground font-bold">
-                  ✓ Darmowa dostawa odblokowana
-                </p>
-              ) : (
-                <p className="font-body text-[10px] text-foreground/70">
-                  Dodaj{" "}
-                  <span className="font-display font-bold text-foreground">
-                    {remainingForShipping} zł
-                  </span>{" "}
-                  do darmowej dostawy
-                </p>
-              )}
-            </div>
-            <div className="h-1 bg-foreground/10 overflow-hidden">
-              <div
-                className={`h-full transition-all duration-300 ${
-                  qualifiesShipping ? "bg-shroom-green-dark" : "bg-foreground"
-                }`}
-                style={{ width: `${shippingPct}%` }}
-              />
-            </div>
+            <ShippingProgressBar amount={pdpSelection.total} variant="sticky" />
           </div>
 
           <div className="px-4 pb-3 pt-2 flex items-center gap-3">
