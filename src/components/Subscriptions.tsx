@@ -9,7 +9,7 @@ const subscriptions = [
     bottles: "12 butelek",
     period: "Power lub Relax",
     highlights: ["2 tygodnie eksperymentu", "1 butelka dziennie", "Idealny na prezent"],
-    cta: "Rozpocznij",
+    cta: "Zacznij",
     badgeBg: "bg-shroom-gold",
   },
   {
