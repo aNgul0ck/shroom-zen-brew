@@ -2,36 +2,49 @@ import { manifestoPillars } from "@/data/about";
 
 const AboutManifesto = () => {
   return (
-    <section className="bg-background">
+    <section className="bg-background overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 py-20 md:py-28">
-        <div className="max-w-3xl mb-14 md:mb-20">
-          <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.25em] mb-4">
-            Manifest
-          </p>
-          <h2 className="ed-heading text-foreground">
-            Wierzymy, że napoje powinny dodawać Ci{" "}
-            <span className="text-foreground/40">lekkości i energii</span> — a
-            nie spowalniać czy otępiać.
-          </h2>
+        {/* Asymmetric header — text left, big number right */}
+        <div className="grid grid-cols-12 gap-6 mb-16 md:mb-24">
+          <div className="col-span-12 md:col-span-8">
+            <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.25em] mb-4">
+              Manifest
+            </p>
+            <h2 className="ed-heading text-foreground">
+              Napoje powinny dodawać Ci{" "}
+              <span className="text-foreground/40">lekkości i energii</span> —
+              nie spowalniać czy otępiać.
+            </h2>
+          </div>
+          <div className="hidden md:flex col-span-4 items-end justify-end">
+            <p className="font-headline text-[120px] leading-none font-bold text-foreground/10">
+              03
+            </p>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 border-t-[3px] border-foreground">
+        {/* Staggered pillars — each at different offset */}
+        <div className="space-y-12 md:space-y-0">
           {manifestoPillars.map((p, i) => (
             <article
               key={p.title}
-              className={`p-8 md:p-10 ${
-                i < 2 ? "md:border-r-[3px] border-foreground" : ""
-              } ${i < manifestoPillars.length - 1 ? "border-b-[3px] md:border-b-0 border-foreground" : ""}`}
+              className={`grid grid-cols-12 gap-4 md:gap-8 items-start ${
+                i === 1 ? "md:pl-[12%]" : i === 2 ? "md:pl-[24%]" : ""
+              } ${i > 0 ? "md:-mt-6" : ""}`}
             >
-              <p className="font-body text-xs text-foreground/40 mb-4">
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <h3 className="font-display text-2xl font-bold text-foreground mb-4">
-                {p.title}
-              </h3>
-              <p className="font-body text-base text-foreground/70 leading-relaxed">
-                {p.body}
-              </p>
+              <div className="col-span-2 md:col-span-1">
+                <p className="font-headline text-3xl md:text-5xl font-bold text-foreground/30">
+                  0{i + 1}
+                </p>
+              </div>
+              <div className="col-span-10 md:col-span-7">
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
+                  {p.title}
+                </h3>
+                <p className="font-body text-base md:text-lg text-foreground/70 leading-relaxed">
+                  {p.body}
+                </p>
+              </div>
             </article>
           ))}
         </div>

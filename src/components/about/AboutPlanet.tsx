@@ -4,36 +4,50 @@ const AboutPlanet = () => {
   return (
     <section className="bg-shroom-sage">
       <div className="container mx-auto px-6 lg:px-12 py-20 md:py-28">
-        <div className="max-w-3xl mb-14 md:mb-20">
-          <p className="font-body text-xs font-medium text-foreground/60 uppercase tracking-[0.25em] mb-4">
-            Nasza planeta
-          </p>
-          <h2 className="ed-heading text-foreground">
-            Wellness nie kończy się{" "}
-            <span className="text-foreground/40">na ciele i umyśle.</span>
-          </h2>
-          <p className="font-body text-base md:text-lg text-foreground/70 leading-relaxed mt-6 max-w-2xl">
-            Obejmuje też Ziemię, na której żyjemy. Każdy składnik i każda butelka
-            to świadomy krok ku bardziej zrównoważonej i różnorodnej przyszłości.
-            Nie jesteśmy idealni — ale jesteśmy zaangażowani.
-          </p>
+        {/* Asymmetric header */}
+        <div className="grid grid-cols-12 gap-6 mb-16 md:mb-24">
+          <div className="col-span-12 md:col-span-7">
+            <p className="font-body text-xs font-medium text-foreground/60 uppercase tracking-[0.25em] mb-4">
+              Nasza planeta
+            </p>
+            <h2 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.05]">
+              Wellness nie kończy się na{" "}
+              <span className="italic text-foreground/40">ciele i umyśle.</span>
+            </h2>
+          </div>
+          <div className="col-span-12 md:col-span-4 md:col-start-9 md:pt-4">
+            <p className="font-body text-base text-foreground/70 leading-relaxed border-l-2 border-foreground pl-5">
+              Obejmuje też Ziemię. Każdy składnik i każda butelka to świadomy
+              krok ku bardziej zrównoważonej przyszłości. Nie jesteśmy idealni —
+              ale jesteśmy zaangażowani.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t-[3px] border-l-[3px] border-foreground">
-          {planetCommitments.map((c) => (
+        {/* Commitments — staggered offset list, no boxes */}
+        <div className="max-w-5xl mx-auto space-y-10 md:space-y-12">
+          {planetCommitments.map((c, i) => (
             <article
               key={c.n}
-              className="bg-background border-r-[3px] border-b-[3px] border-foreground p-7 md:p-8"
+              className={`grid grid-cols-12 gap-4 md:gap-6 items-start pb-10 md:pb-12 border-b border-foreground/20 last:border-0 ${
+                i % 2 === 1 ? "md:pl-[10%]" : ""
+              }`}
             >
-              <p className="font-display text-3xl font-bold text-foreground/30 mb-4">
-                {c.n}
-              </p>
-              <h3 className="font-display text-lg font-bold text-foreground mb-3">
-                {c.title}
-              </h3>
-              <p className="font-body text-sm text-foreground/70 leading-relaxed">
-                {c.body}
-              </p>
+              <div className="col-span-2 md:col-span-1">
+                <p className="font-headline text-3xl md:text-5xl font-bold text-foreground/40">
+                  {c.n}
+                </p>
+              </div>
+              <div className="col-span-10 md:col-span-6">
+                <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
+                  {c.title}
+                </h3>
+              </div>
+              <div className="col-span-12 md:col-span-5">
+                <p className="font-body text-base text-foreground/70 leading-relaxed">
+                  {c.body}
+                </p>
+              </div>
             </article>
           ))}
         </div>

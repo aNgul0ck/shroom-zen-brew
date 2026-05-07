@@ -60,19 +60,12 @@ const AboutPage = () => {
         <main>
           <article>
             <AboutHero />
-            <div className="ed-divider-thick" />
             <AboutManifesto />
-            <div className="ed-divider-thick" />
             <AboutOrigin />
-            <div className="ed-divider-thick" />
             <AboutTimeline />
-            <div className="ed-divider-thick" />
             <AboutFlavorProfiles />
-            <div className="ed-divider-thick" />
             <AboutIngredients />
-            <div className="ed-divider-thick" />
             <AboutPlanet />
-            <div className="ed-divider-thick" />
             <AboutTeam />
           </article>
         </main>
