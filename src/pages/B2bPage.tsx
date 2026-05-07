@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import B2bHero from "@/components/b2b/B2bHero";
 import B2bDistributors from "@/components/b2b/B2bDistributors";
 import B2bMap from "@/components/b2b/B2bMap";
+import B2bProcess from "@/components/b2b/B2bProcess";
 import B2bSocialProof from "@/components/b2b/B2bSocialProof";
 import B2bOffers from "@/components/b2b/B2bOffers";
 import B2bCollab from "@/components/b2b/B2bCollab";
@@ -44,6 +45,7 @@ const B2bPage = () => {
             <B2bHero />
             <B2bDistributors />
             <B2bMap />
+            <B2bProcess />
             <B2bSocialProof />
             <B2bOffers />
             <B2bCollab />
