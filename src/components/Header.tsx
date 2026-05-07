@@ -5,7 +5,7 @@ import { useCartStore } from "@/stores/cartStore";
 
 const navLinks = [
   { name: "Shop", href: "#produkty" },
-  { name: "Our story", href: "#o-nas" },
+  { name: "O shroomie", href: "/o-shroomie" },
   { name: "Quiz", href: "/quiz" },
   { name: "Blog", href: "/blog" },
   { name: "B2B", href: "#" },
