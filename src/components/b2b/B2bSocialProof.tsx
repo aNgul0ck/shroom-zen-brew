@@ -2,33 +2,26 @@ import { trustedLogos } from "@/data/b2b";
 
 const B2bSocialProof = () => {
   return (
-    <section className="bg-foreground text-background border-b-[3px] border-foreground">
-      <div className="container mx-auto px-6 lg:px-12 py-16 md:py-20">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-          <div>
-            <p className="font-body text-xs font-medium text-background/60 uppercase tracking-[0.25em] mb-3">
-              03 — Social proof
-            </p>
-            <h2 className="font-headline text-3xl md:text-5xl font-bold leading-[1.05]">
-              Zaufali nam.
-            </h2>
-          </div>
-          <p className="font-body text-sm text-background/60 max-w-md">
-            Sieci handlowe, e-commerce i biura, które już wprowadziły Shrooma do
-            swojej oferty.
+    <section className="bg-background">
+      <div className="container mx-auto px-6 lg:px-12 py-20 md:py-28">
+        <div className="text-center mb-12 md:mb-16">
+          <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.3em] mb-4">
+            03 — Zaufali nam
           </p>
+          <h2 className="font-headline text-2xl md:text-3xl font-bold text-foreground/80 max-w-2xl mx-auto leading-snug">
+            Pojawiamy się na półkach najbardziej rozpoznawalnych marek w Polsce.
+          </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 border-t-[3px] border-l-[3px] border-background/20">
+        {/* Logo strip — flowing line, no boxes */}
+        <div className="flex flex-wrap items-center justify-center gap-x-12 md:gap-x-20 gap-y-8 py-10 border-y border-foreground/15">
           {trustedLogos.map((logo) => (
             <div
               key={logo}
-              className="border-r-[3px] border-b-[3px] border-background/20 aspect-[2/1] flex items-center justify-center p-6 hover:bg-background/5 transition-colors"
+              className="font-headline text-3xl md:text-4xl font-bold text-foreground/40 hover:text-foreground transition-colors duration-300"
+              title={`${logo} — partner Shroom`}
             >
-              {/* TODO: zastąpić logotypem PNG/SVG od partnera */}
-              <span className="font-headline text-2xl md:text-3xl font-bold text-background/80">
-                {logo}
-              </span>
+              {logo}
             </div>
           ))}
         </div>
