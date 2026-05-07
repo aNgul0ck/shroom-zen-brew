@@ -1,44 +1,133 @@
 /**
  * Mapa Europy z zaznaczonymi krajami obecności Shrooma.
- * Stylizowana, editorialowa — uproszczone outline'y krajów na dotted grid.
- * TODO: gdy Aga prześle finalny SVG/asset, podmienić blok <svg> poniżej.
+ * Używa realnego (uproszczonego) outline'u Europy z TopoJSON-style współrzędnych.
+ * Pinezki rysowane na podstawie rzeczywistych lon/lat, projekcja equirectangular.
  */
+
+import { useState } from "react";
 
 type Country = {
   code: string;
   name: string;
-  // Approximate centroid in lon/lat
   lon: number;
   lat: number;
-  // Optional callout offset
-  align?: "left" | "right";
 };
 
 const COUNTRIES: Country[] = [
-  { code: "IS", name: "Islandia", lon: -19, lat: 64.5, align: "right" },
-  { code: "FR", name: "Francja", lon: 2.3, lat: 47, align: "left" },
-  { code: "DE", name: "Niemcy", lon: 10.5, lat: 51.2, align: "left" },
-  { code: "DK", name: "Dania", lon: 10, lat: 56, align: "right" },
-  { code: "PL", name: "Polska", lon: 19.5, lat: 52, align: "right" },
-  { code: "CZ", name: "Czechy", lon: 15.5, lat: 49.7, align: "left" },
-  { code: "HU", name: "Węgry", lon: 19, lat: 47.2, align: "right" },
+  { code: "IS", name: "Islandia", lon: -19.0, lat: 64.9 },
+  { code: "FR", name: "Francja", lon: 2.35, lat: 47.0 },
+  { code: "DE", name: "Niemcy", lon: 10.45, lat: 51.2 },
+  { code: "DK", name: "Dania", lon: 9.5, lat: 56.0 },
+  { code: "PL", name: "Polska", lon: 19.5, lat: 52.0 },
+  { code: "CZ", name: "Czechy", lon: 15.5, lat: 49.8 },
+  { code: "HU", name: "Węgry", lon: 19.5, lat: 47.2 },
 ];
 
 const VIEW_W = 800;
-const VIEW_H = 560;
-const LON_MIN = -25;
-const LON_MAX = 35;
+const VIEW_H = 620;
+const LON_MIN = -28;
+const LON_MAX = 32;
 const LAT_MIN = 35;
-const LAT_MAX = 72;
+const LAT_MAX = 71;
 
-const projX = (lon: number) => ((lon - LON_MIN) / (LON_MAX - LON_MIN)) * VIEW_W;
-const projY = (lat: number) => ((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * VIEW_H;
+const projX = (lon: number) =>
+  ((lon - LON_MIN) / (LON_MAX - LON_MIN)) * VIEW_W;
+const projY = (lat: number) =>
+  ((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * VIEW_H;
+
+// Uproszczony, ale rozpoznawalny outline kontynentalnej Europy (lon, lat)
+// Trasa: Portugalia → Hiszpania → płd. Francja → Włochy → Bałkany → Grecja →
+// Bułgaria → Rumunia → Ukraina → Białoruś → kraje bałtyckie → Skandynawia
+// (Norwegia, Szwecja, Finlandia) → z powrotem przez Danię, Niemcy, Holandię,
+// Belgię, Francję atlantycką → Półwysep Iberyjski.
+const EUROPE_OUTLINE: [number, number][] = [
+  [-9.5, 38.7],   // Lizbona
+  [-9.0, 41.2],   // Porto
+  [-8.7, 43.4],   // Galicja
+  [-3.7, 43.5],   // Santander
+  [-1.5, 43.4],   // Bask
+  [-1.2, 46.2],   // Wybrzeże Francji
+  [-2.0, 48.6],   // Bretania
+  [0.3, 49.8],    // Normandia
+  [2.5, 51.0],    // Calais
+  [4.4, 52.0],    // Holandia
+  [8.1, 53.5],    // płn. Niemcy
+  [8.5, 55.0],    // Jutlandia płd
+  [9.5, 57.7],    // Skagen
+  [5.7, 58.9],    // Stavanger
+  [5.3, 60.4],    // Bergen
+  [7.5, 63.4],    // Trondheim
+  [14.4, 67.3],   // Bodø
+  [18.0, 69.6],   // Tromsø
+  [25.7, 71.0],   // Nordkapp
+  [28.5, 70.0],   // Kirkenes
+  [29.7, 62.6],   // wschodnia Finlandia
+  [27.7, 60.2],   // Zatoka Fińska
+  [24.1, 59.4],   // Tallin
+  [24.1, 56.9],   // Ryga
+  [21.1, 55.9],   // Kłajpeda
+  [19.9, 54.4],   // Mierzeja
+  [19.0, 49.5],   // Tatry
+  [22.3, 48.4],   // Karpaty
+  [28.6, 45.4],   // Delta Dunaju
+  [27.5, 42.5],   // Burgas
+  [26.1, 40.0],   // Dardanele
+  [23.7, 37.9],   // Ateny
+  [21.7, 38.4],   // Patras
+  [19.5, 40.0],   // Albania
+  [18.5, 42.4],   // Czarnogóra
+  [13.5, 45.5],   // Triest
+  [12.3, 44.5],   // Rawenna
+  [12.5, 41.9],   // Rzym
+  [14.3, 40.8],   // Neapol
+  [15.6, 38.1],   // Sycylia
+  [12.5, 37.8],   // płd. Sycylia
+  [9.2, 39.2],    // Sardynia
+  [9.5, 41.0],    // Korsyka
+  [5.4, 43.3],    // Marsylia
+  [3.0, 42.3],    // Perpignan
+  [2.2, 41.4],    // Barcelona
+  [-0.4, 39.5],   // Walencja
+  [-2.8, 36.7],   // Almería
+  [-5.3, 36.1],   // Tarifa
+  [-6.3, 36.5],   // Kadyks
+  [-9.5, 38.7],   // back to Lizbona
+];
+
+const polygonPath = (points: [number, number][]) =>
+  points
+    .map(([lon, lat], i) => `${i === 0 ? "M" : "L"} ${projX(lon).toFixed(1)} ${projY(lat).toFixed(1)}`)
+    .join(" ") + " Z";
+
+// Wielka Brytania (uproszczony outline)
+const UK_OUTLINE: [number, number][] = [
+  [-5.0, 50.1], [-3.0, 50.7], [0.5, 51.0], [1.4, 52.9], [-0.2, 53.7],
+  [-3.0, 54.0], [-1.5, 55.8], [-2.0, 57.7], [-3.5, 58.6], [-5.5, 58.5],
+  [-5.7, 56.5], [-4.5, 55.0], [-5.0, 53.4], [-4.5, 52.0], [-5.2, 51.7],
+  [-5.0, 50.1],
+];
+
+// Irlandia
+const IE_OUTLINE: [number, number][] = [
+  [-10.5, 51.6], [-6.0, 52.2], [-6.0, 54.5], [-9.9, 54.3], [-10.5, 51.6],
+];
+
+// Islandia (mała plama)
+const IS_OUTLINE: [number, number][] = [
+  [-24.5, 65.6], [-22.0, 66.5], [-15.5, 66.4], [-13.5, 65.4], [-15.0, 63.4],
+  [-19.5, 63.4], [-22.5, 63.8], [-24.5, 65.6],
+];
 
 const B2bMap = () => {
+  const [hovered, setHovered] = useState<string | null>(null);
+  const sortedNames = [...COUNTRIES].sort((a, b) =>
+    a.name.localeCompare(b.name, "pl")
+  );
+
   return (
     <section className="bg-shroom-peach">
-      <div className="container mx-auto px-6 lg:px-12 py-24 md:py-36">
-        <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-start">
+      <div className="container mx-auto px-6 lg:px-12 py-20 md:py-32">
+        <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
           <div className="md:col-span-4">
             <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.3em] mb-6 flex items-center gap-3">
               <span className="inline-block w-8 h-px bg-foreground/30" />
@@ -48,17 +137,21 @@ const B2bMap = () => {
               7 krajów. <br />
               <span className="text-foreground/40 italic">Jeden napój.</span>
             </h2>
-            <p className="font-body text-lg text-foreground/70 leading-relaxed mb-8">
-              Od Reykjavíku po Budapeszt. Shroom dotarł już do siedmiu europejskich
-              rynków — i szukamy kolejnych partnerów.
+            <p className="font-body text-base md:text-lg text-foreground/70 leading-relaxed mb-8">
+              Od Reykjavíku po Budapeszt. Shroom dotarł już do siedmiu
+              europejskich rynków — i szukamy kolejnych partnerów.
             </p>
-            <ul className="space-y-2">
-              {COUNTRIES.sort((a, b) => a.name.localeCompare(b.name, "pl")).map((c) => (
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
+              {sortedNames.map((c) => (
                 <li
                   key={c.code}
-                  className="flex items-center gap-3 font-display font-bold text-foreground"
+                  onMouseEnter={() => setHovered(c.code)}
+                  onMouseLeave={() => setHovered(null)}
+                  className={`flex items-center gap-3 font-display font-bold text-foreground transition-opacity cursor-default ${
+                    hovered && hovered !== c.code ? "opacity-40" : "opacity-100"
+                  }`}
                 >
-                  <span className="w-2 h-2 bg-foreground rounded-none" />
+                  <span className="w-2 h-2 bg-foreground" />
                   {c.name}
                 </li>
               ))}
@@ -66,78 +159,74 @@ const B2bMap = () => {
           </div>
 
           <div className="md:col-span-8">
-            <div className="relative w-full">
+            <div className="relative w-full bg-shroom-cream border-2 border-foreground p-4 md:p-6">
               <svg
                 viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
                 className="w-full h-auto"
                 role="img"
-                aria-label="Mapa krajów, w których dostępny jest Shroom"
+                aria-label="Mapa Europy z zaznaczonymi krajami dystrybucji Shrooma"
               >
-                {/* Subtle dot grid background */}
                 <defs>
-                  <pattern id="dotgrid" width="16" height="16" patternUnits="userSpaceOnUse">
+                  <pattern id="dotgrid-map" width="14" height="14" patternUnits="userSpaceOnUse">
                     <circle cx="1" cy="1" r="1" fill="hsl(var(--foreground) / 0.10)" />
                   </pattern>
                 </defs>
-                <rect width={VIEW_W} height={VIEW_H} fill="url(#dotgrid)" />
+                <rect width={VIEW_W} height={VIEW_H} fill="url(#dotgrid-map)" />
 
-                {/* Simplified Europe silhouette (stylized, editorial) */}
-                <path
-                  d="M 60 100 L 90 80 L 130 90 L 160 75 L 180 95 L 210 85 L 240 100 L 260 90 L 290 105 L 310 95 L 340 110 L 370 100 L 400 115 L 430 105 L 460 120 L 490 110 L 520 125 L 550 115 L 580 130 L 610 125 L 640 140 L 660 160 L 670 190 L 660 220 L 640 245 L 615 265 L 590 280 L 565 295 L 540 305 L 515 315 L 490 320 L 465 315 L 440 320 L 415 325 L 390 340 L 365 350 L 340 360 L 315 370 L 290 380 L 270 395 L 250 410 L 235 430 L 225 450 L 220 470 L 220 490 L 235 505 L 260 510 L 285 505 L 305 495 L 320 480 L 330 460 L 330 440 L 325 420 L 320 400 L 330 385 L 350 380 L 370 385 L 385 395 L 395 410 L 400 430 L 395 450 L 385 465 L 370 475 L 350 480 L 330 478 L 245 470 L 225 460 L 210 440 L 200 415 L 195 390 L 195 365 L 200 340 L 210 315 L 220 290 L 225 265 L 220 240 L 210 215 L 195 195 L 175 180 L 150 170 L 125 160 L 100 150 L 80 135 L 65 120 Z"
-                  fill="hsl(var(--foreground) / 0.06)"
-                  stroke="hsl(var(--foreground) / 0.18)"
-                  strokeWidth="1"
-                />
+                {/* Land masses */}
+                {[EUROPE_OUTLINE, UK_OUTLINE, IE_OUTLINE, IS_OUTLINE].map((shape, i) => (
+                  <path
+                    key={i}
+                    d={polygonPath(shape)}
+                    fill="hsl(var(--foreground) / 0.08)"
+                    stroke="hsl(var(--foreground) / 0.35)"
+                    strokeWidth="1.2"
+                    strokeLinejoin="round"
+                  />
+                ))}
 
-                {/* Iceland separate blob */}
-                <ellipse
-                  cx={projX(-19)}
-                  cy={projY(64.5)}
-                  rx="34"
-                  ry="18"
-                  fill="hsl(var(--foreground) / 0.06)"
-                  stroke="hsl(var(--foreground) / 0.18)"
-                  strokeWidth="1"
-                />
-
-                {/* Country dots + labels */}
+                {/* Country pins */}
                 {COUNTRIES.map((c) => {
                   const cx = projX(c.lon);
                   const cy = projY(c.lat);
-                  const labelDx = c.align === "left" ? -14 : 14;
-                  const anchor = c.align === "left" ? "end" : "start";
+                  const isHover = hovered === c.code;
                   return (
-                    <g key={c.code}>
-                      {/* Halo */}
-                      <circle cx={cx} cy={cy} r="14" fill="hsl(var(--foreground) / 0.08)" />
-                      {/* Pin */}
+                    <g
+                      key={c.code}
+                      onMouseEnter={() => setHovered(c.code)}
+                      onMouseLeave={() => setHovered(null)}
+                      className="cursor-pointer"
+                    >
+                      {isHover && (
+                        <circle
+                          cx={cx}
+                          cy={cy}
+                          r="22"
+                          fill="hsl(var(--foreground) / 0.12)"
+                        />
+                      )}
                       <circle
                         cx={cx}
                         cy={cy}
-                        r="6"
+                        r={isHover ? 9 : 7}
                         fill="hsl(var(--foreground))"
-                        stroke="hsl(var(--shroom-peach))"
-                        strokeWidth="2"
+                        stroke="hsl(var(--shroom-cream))"
+                        strokeWidth="2.5"
+                        className="transition-all"
                       />
-                      {/* Connector */}
-                      <line
-                        x1={cx}
-                        y1={cy}
-                        x2={cx + labelDx}
-                        y2={cy}
-                        stroke="hsl(var(--foreground) / 0.45)"
-                        strokeWidth="1"
-                      />
-                      {/* Label */}
                       <text
-                        x={cx + labelDx + (c.align === "left" ? -4 : 4)}
-                        y={cy + 4}
-                        textAnchor={anchor}
-                        className="font-display"
-                        style={{ fontFamily: "Archivo, sans-serif", fontWeight: 700, fontSize: 15 }}
+                        x={cx}
+                        y={cy - 14}
+                        textAnchor="middle"
+                        style={{
+                          fontFamily: "Archivo, sans-serif",
+                          fontWeight: 700,
+                          fontSize: 13,
+                          letterSpacing: "0.04em",
+                        }}
                         fill="hsl(var(--foreground))"
                       >
-                        {c.name}
+                        {c.name.toUpperCase()}
                       </text>
                     </g>
                   );
