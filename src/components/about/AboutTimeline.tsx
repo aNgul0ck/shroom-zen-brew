@@ -2,58 +2,61 @@ import { timelineMilestones } from "@/data/about";
 
 const AboutTimeline = () => {
   return (
-    <section className="bg-background">
+    <section className="bg-shroom-peach">
       <div className="container mx-auto px-6 lg:px-12 py-20 md:py-28">
-        <div className="max-w-3xl mb-14 md:mb-20">
-          <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.25em] mb-4">
-            Nasza droga
-          </p>
-          <h2 className="ed-heading text-foreground">Od kuchni do półek.</h2>
-        </div>
-
-        {/* Desktop: horizontal */}
-        <div className="hidden md:block relative">
-          <div className="absolute top-[60px] left-0 right-0 h-[3px] bg-foreground" />
-          <div className="grid grid-cols-4 gap-6">
-            {timelineMilestones.map((m) => (
-              <article key={m.year} className="relative">
-                <p className="font-display text-2xl font-bold text-foreground mb-3">
-                  {m.year}
-                </p>
-                <div
-                  className={`relative z-10 w-8 h-8 ${m.color} border-[3px] border-foreground mb-8`}
-                />
-                <h3 className="font-display text-xl font-bold text-foreground mb-3">
-                  {m.title}
-                </h3>
-                <p className="font-body text-sm text-foreground/70 leading-relaxed">
-                  {m.body}
-                </p>
-              </article>
-            ))}
+        <div className="grid grid-cols-12 gap-6 mb-14 md:mb-20">
+          <div className="col-span-12 md:col-span-7 md:col-start-3">
+            <p className="font-body text-xs font-medium text-foreground/60 uppercase tracking-[0.25em] mb-4 text-center">
+              Nasza droga
+            </p>
+            <h2 className="font-headline text-4xl md:text-6xl font-bold text-foreground leading-[1.05] text-center">
+              Od kuchni{" "}
+              <span className="italic text-foreground/40">do półek.</span>
+            </h2>
           </div>
         </div>
 
-        {/* Mobile: vertical */}
-        <div className="md:hidden relative pl-8">
-          <div className="absolute top-2 bottom-2 left-3 w-[3px] bg-foreground" />
-          <div className="space-y-10">
-            {timelineMilestones.map((m) => (
-              <article key={m.year} className="relative">
-                <div
-                  className={`absolute -left-[26px] top-1 w-5 h-5 ${m.color} border-[3px] border-foreground`}
-                />
-                <p className="font-display text-xl font-bold text-foreground mb-1">
-                  {m.year}
-                </p>
-                <h3 className="font-display text-lg font-bold text-foreground mb-2">
-                  {m.title}
-                </h3>
-                <p className="font-body text-sm text-foreground/70 leading-relaxed">
-                  {m.body}
-                </p>
-              </article>
-            ))}
+        {/* Zigzag layout — each milestone on alternating side */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Center vertical line on desktop */}
+          <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-foreground/30 -translate-x-1/2" />
+
+          <div className="space-y-12 md:space-y-20">
+            {timelineMilestones.map((m, i) => {
+              const isLeft = i % 2 === 0;
+              return (
+                <article
+                  key={m.year}
+                  className={`grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center`}
+                >
+                  {/* Left side */}
+                  <div className={`${isLeft ? "" : "md:order-2"} md:text-right`}>
+                    <div
+                      className={`flex items-center gap-4 ${
+                        isLeft ? "md:justify-end" : "md:justify-end md:flex-row-reverse"
+                      }`}
+                    >
+                      <div
+                        className={`w-16 h-16 md:w-20 md:h-20 ${m.color} flex items-center justify-center`}
+                      >
+                        <span className="font-headline text-xl md:text-2xl font-bold text-foreground">
+                          {m.year}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Right side */}
+                  <div className={`${isLeft ? "" : "md:order-1 md:text-right"}`}>
+                    <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
+                      {m.title}
+                    </h3>
+                    <p className="font-body text-base text-foreground/70 leading-relaxed max-w-md">
+                      {m.body}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>

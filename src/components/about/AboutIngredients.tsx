@@ -4,40 +4,53 @@ import { aboutIngredients } from "@/data/about";
 
 const AboutIngredients = () => {
   return (
-    <section className="bg-background">
+    <section className="bg-shroom-cream overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 py-20 md:py-28">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-          <div className="max-w-2xl">
+        <div className="grid grid-cols-12 gap-6 mb-14">
+          <div className="col-span-12 md:col-span-6">
             <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.25em] mb-4">
               Aktywne składniki
             </p>
-            <h2 className="ed-heading text-foreground">Co siedzi w butelce.</h2>
+            <h2 className="ed-heading text-foreground">
+              Co siedzi{" "}
+              <span className="italic text-foreground/40">w butelce.</span>
+            </h2>
           </div>
-          <Link
-            to="/badania"
-            className="inline-flex items-center gap-2 font-body text-sm font-bold text-foreground border-b-2 border-foreground hover:gap-3 transition-all"
-          >
-            Zobacz badania <ArrowUpRight className="w-4 h-4" />
-          </Link>
+          <div className="col-span-12 md:col-span-4 md:col-start-9 md:text-right md:self-end">
+            <Link
+              to="/badania"
+              className="inline-flex items-center gap-2 font-body text-sm font-bold text-foreground border-b-2 border-foreground hover:gap-3 transition-all"
+            >
+              Zobacz badania <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 border-t-[3px] border-l-[3px] border-foreground">
-          {aboutIngredients.map((ing) => (
-            <article
-              key={ing.name}
-              className={`${ing.color} border-r-[3px] border-b-[3px] border-foreground p-6 md:p-7`}
-            >
-              <div className="aspect-square bg-foreground/[0.04] border-[2px] border-foreground/15 mb-5 flex items-center justify-center text-foreground/30 font-display text-xs">
-                {ing.short}
-              </div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-2">
-                {ing.name}
-              </h3>
-              <p className="font-body text-sm text-foreground/70 leading-relaxed">
-                {ing.body}
-              </p>
-            </article>
-          ))}
+        {/* Asymmetric layout — first item large, others smaller varied */}
+        <div className="grid grid-cols-12 gap-4 md:gap-6">
+          {aboutIngredients.map((ing, i) => {
+            // varied spans: 7, 5, 4, 4, 4 -> creates rhythm
+            const spans = ["md:col-span-7", "md:col-span-5", "md:col-span-4", "md:col-span-4", "md:col-span-4"];
+            const heights = ["md:min-h-[360px]", "md:min-h-[360px]", "md:min-h-[280px]", "md:min-h-[280px]", "md:min-h-[280px]"];
+            return (
+              <article
+                key={ing.name}
+                className={`col-span-12 sm:col-span-6 ${spans[i]} ${heights[i]} ${ing.color} p-7 md:p-9 flex flex-col justify-between`}
+              >
+                <div>
+                  <p className="font-body text-xs uppercase tracking-wider text-foreground/50 mb-2">
+                    {ing.short}
+                  </p>
+                  <h3 className={`font-headline ${i === 0 ? "text-3xl md:text-5xl" : "text-2xl md:text-3xl"} font-bold text-foreground`}>
+                    {ing.name}
+                  </h3>
+                </div>
+                <p className={`font-body ${i === 0 ? "text-base md:text-lg" : "text-sm md:text-base"} text-foreground/70 leading-relaxed mt-6`}>
+                  {ing.body}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
