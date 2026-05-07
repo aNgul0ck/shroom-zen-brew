@@ -1,3 +1,5 @@
+import foundersPhoto from "@/assets/shroom-founders.jpg";
+
 const AboutOrigin = () => {
   return (
     <section className="bg-shroom-cream">
@@ -5,16 +7,10 @@ const AboutOrigin = () => {
         {/* Image */}
         <div className="relative bg-foreground/5 min-h-[420px] md:min-h-[640px] overflow-hidden">
           <img
-            src="/lovable-uploads/placeholder-founders.jpg"
-            alt="Założycielki Shroom — Aga i Kamila w barze"
+            src={foundersPhoto}
+            alt="Założycielki Shroom — Aga i Kamila w barze z butelkami Shroom Power i Relax"
             className="absolute inset-0 w-full h-full object-cover"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = "none";
-            }}
           />
-          <div className="absolute inset-0 flex items-center justify-center text-foreground/30 font-display text-sm">
-            Foto: Aga & Kamila
-          </div>
         </div>
 
         {/* Text */}
