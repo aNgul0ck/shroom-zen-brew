@@ -3,39 +3,54 @@ import { b2bOffers, SALES_EMAIL } from "@/data/b2b";
 
 const B2bOffers = () => {
   return (
-    <section className="bg-background border-b-[3px] border-foreground">
-      <div className="container mx-auto px-6 lg:px-12 py-16 md:py-24">
-        <div className="max-w-3xl mb-12 md:mb-16">
-          <p className="font-body text-xs font-medium text-foreground/60 uppercase tracking-[0.25em] mb-4">
-            04 — Co możemy dla Ciebie zrobić
-          </p>
-          <h2 className="font-headline text-3xl md:text-5xl font-bold text-foreground leading-[1.05]">
-            Sześć sposobów,{" "}
-            <span className="text-foreground/40">żeby pracować razem.</span>
-          </h2>
+    <section className="bg-shroom-cream">
+      <div className="container mx-auto px-6 lg:px-12 py-24 md:py-36">
+        <div className="grid md:grid-cols-12 gap-8 md:gap-16 mb-16 md:mb-20">
+          <div className="md:col-span-3">
+            <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.3em] flex items-center gap-3">
+              <span className="inline-block w-8 h-px bg-foreground/30" />
+              04 — Oferta
+            </p>
+          </div>
+          <div className="md:col-span-9">
+            <h2 className="font-headline text-4xl md:text-6xl font-bold text-foreground leading-[1.02] mb-6">
+              Sześć sposobów,{" "}
+              <span className="text-foreground/40 italic">żeby pracować razem.</span>
+            </h2>
+            <p className="font-body text-lg text-foreground/65 max-w-2xl">
+              Niezależnie od tego, czy prowadzisz sieć kawiarni, biuro, agencję
+              eventową czy markę osobistą — mamy model współpracy dla Ciebie.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t-[3px] border-l-[3px] border-foreground">
-          {b2bOffers.map((offer) => {
+        {/* Asymmetric editorial grid */}
+        <div className="grid md:grid-cols-3 gap-px bg-foreground/15">
+          {b2bOffers.map((offer, i) => {
             const Icon = offer.icon;
             const href = `mailto:${SALES_EMAIL}?subject=${encodeURIComponent(offer.subject)}`;
             return (
               <a
                 key={offer.title}
                 href={href}
-                className="group border-r-[3px] border-b-[3px] border-foreground p-8 md:p-10 bg-background hover:bg-shroom-cream transition-colors flex flex-col"
+                className="group bg-shroom-cream p-8 md:p-10 hover:bg-background transition-colors duration-300 flex flex-col min-h-[280px]"
               >
-                <div className="w-14 h-14 bg-foreground text-background flex items-center justify-center mb-6">
-                  <Icon className="w-7 h-7" />
+                <div className="flex items-start justify-between mb-8">
+                  <Icon className="w-9 h-9 text-foreground" strokeWidth={1.5} />
+                  <span className="font-display font-bold text-foreground/25 tabular-nums text-sm">
+                    0{i + 1}
+                  </span>
                 </div>
-                <h3 className="font-headline text-2xl font-bold text-foreground mb-3">
+                <h3 className="font-headline text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
                   {offer.title}
                 </h3>
-                <p className="font-body text-base text-foreground/70 leading-relaxed mb-8 flex-1">
+                <p className="font-body text-base text-foreground/65 leading-relaxed mb-8 flex-1">
                   {offer.desc}
                 </p>
-                <div className="flex items-center gap-2 font-display font-bold text-sm text-foreground border-t border-foreground/20 pt-4 group-hover:gap-4 transition-all">
-                  Napisz na sales@
+                <div className="inline-flex items-center gap-2 font-display font-bold text-sm text-foreground group-hover:gap-4 transition-all">
+                  <span className="border-b-2 border-foreground pb-0.5">
+                    Porozmawiajmy
+                  </span>
                   <ArrowUpRight className="w-4 h-4" />
                 </div>
               </a>
