@@ -8,7 +8,7 @@ const navLinks = [
   { name: "O shroomie", href: "/o-shroomie" },
   { name: "Quiz", href: "/quiz" },
   { name: "Blog", href: "/blog" },
-  { name: "B2B", href: "#" },
+  { name: "B2B", href: "/b2b" },
   { name: "Contact", href: "#kontakt" },
 ];
 
