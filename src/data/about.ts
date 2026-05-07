@@ -174,14 +174,14 @@ export const teamMembers = [
     name: "Niko",
     role: "Sales",
     bio:
-      "Ponad 40 lat doświadczenia w sprzedaży i odrobina „tysiącletniej" greckiej wiedzy. Wprowadzał zagraniczne marki na polski rynek. Tenis i filozofia po godzinach.",
+      'Ponad 40 lat doświadczenia w sprzedaży i odrobina „tysiącletniej" greckiej wiedzy. Wprowadzał zagraniczne marki na polski rynek. Tenis i filozofia po godzinach.',
     linkedin: "#",
   },
   {
     name: "Antek",
     role: "Marketing",
     bio:
-      "Urodzony w latach 90. w Warszawie. Dekada w branży tech, z pasją do foto, video i nocnych edycji. Skupiony na budowaniu rzeczy „prawdziwych".",
+      'Urodzony w latach 90. w Warszawie. Dekada w branży tech, z pasją do foto, video i nocnych edycji. Skupiony na budowaniu rzeczy „prawdziwych".',
     linkedin: "#",
   },
   {
