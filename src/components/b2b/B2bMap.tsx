@@ -101,18 +101,19 @@ const B2bMap = () => {
                           style={{
                             default: {
                               fill: isActive
-                                ? "hsl(var(--foreground) / 0.85)"
+                                ? "hsl(var(--shroom-coral))"
                                 : "hsl(var(--foreground) / 0.06)",
                               stroke: "hsl(var(--foreground))",
-                              strokeWidth: 0.5,
+                              strokeWidth: isActive ? 1 : 0.5,
                               outline: "none",
+                              transition: "fill 0.2s",
                             },
                             hover: {
                               fill: isActive
-                                ? "hsl(var(--foreground))"
+                                ? "hsl(var(--shroom-coral))"
                                 : "hsl(var(--foreground) / 0.06)",
                               stroke: "hsl(var(--foreground))",
-                              strokeWidth: 0.5,
+                              strokeWidth: isActive ? 1.5 : 0.5,
                               outline: "none",
                               cursor: isActive ? "pointer" : "default",
                             },
