@@ -45,7 +45,7 @@ const ProductRoutine = ({ product }: Props) => {
 
           {/* Meta strip — Best for / Instead / Pairs / Avoid */}
           {metaItems.length > 0 && (
-            <div className={`grid grid-cols-2 md:grid-cols-4 mb-10 md:mb-14 border-t-2 border-l-2 ${isDiva ? "border-white/20" : "border-foreground"}`}>
+            <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-10 md:mb-14 border-t-2 border-l-2 ${isDiva ? "border-white/20" : "border-foreground"}`}>
               {metaItems.map((m) => {
                 const Icon = m.icon;
                 return (
