@@ -43,7 +43,8 @@ const ProductHero = ({ product }: Props) => {
   const bundlePartnerPrice = bundleSelected
     ? (isSubscription ? Math.round(BUNDLE_PARTNER_BASE * (1 - SUBSCRIPTION_DISCOUNT)) : BUNDLE_PARTNER_BASE) - 9
     : 0;
-  const grandTotal = finalTotal + bundlePartnerPrice;
+  const addonPrice = addonSelected && addon ? addon.price : 0;
+  const grandTotal = finalTotal + bundlePartnerPrice + addonPrice;
 
   const qualifiesForFreeShipping = grandTotal >= FREE_SHIPPING_THRESHOLD;
 
