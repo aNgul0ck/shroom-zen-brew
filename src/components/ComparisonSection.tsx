@@ -194,7 +194,7 @@ const CellContent = ({ value, isShroom }: { value: Cell; isShroom: boolean }) =>
   }
   return (
     <span
-      className="font-body font-semibold text-[13px] md:text-[15px]"
+      className="font-body font-semibold text-[12px] md:text-[14px] leading-tight block break-words hyphens-auto px-1"
       style={{ color: isShroom ? "#FAF7F2" : "#1C0A12" }}
     >
       {value}
