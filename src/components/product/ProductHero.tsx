@@ -234,6 +234,16 @@ const ProductHero = ({ product }: Props) => {
               onToggle={setBundleSelected}
             />
 
+            {/* Compact addon picker — single curated upsell to keep ATC area lean */}
+            {addon && (
+              <AddonPicker
+                accessory={addon}
+                selected={addonSelected}
+                onToggle={setAddonSelected}
+                isDiva={isDiva}
+              />
+            )}
+
             {/* Price & CTA */}
             <div className={`flex flex-wrap items-end justify-between gap-4 mb-4 pb-4 border-b ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
               <div>
