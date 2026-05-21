@@ -47,15 +47,15 @@ const curiosities: Curiosity[] = [
     pillEyebrow: "Czy wiesz?",
     pillTitle: "Aronia > Acai",
     pillAriaLabel: "Otwórz ciekawostkę: Aronia vs Acai",
-    modalEyebrow: "Ciekawostka · Lokalne superfoods",
-    modalTitleLines: ["Potęga antyoksydacyjna:", "Aronia > Acai"],
+    modalEyebrow: "Ciekawostka . Lokalne superfoods",
+    modalTitleLines: ["Wskaźnik ORAC:", "Aronia > Acai"],
     lead: (
       <>
-        Acai zdobyło globalną sławę jako król antyoksydantów. Ale to{" "}
-        <strong style={{ color: "#1C0A12", fontWeight: 600 }}>aronia — polski superfood</strong> — ma o 56% wyższy
-        wskaźnik ORAC. Używamy jej w{" "}
+        Acai zdobyło globalną sławę dzięki marketingowi. Tymczasem{" "}
+        <strong style={{ color: "#1C0A12", fontWeight: 600 }}>aronia, polski owoc</strong>, ma o 56% wyższy
+        wskaźnik ORAC w testach laboratoryjnych. Używamy jej w sokach NFC w{" "}
         <strong style={{ color: "#1C0A12", fontWeight: 600 }}>:shroom Relax</strong> i{" "}
-        <strong style={{ color: "#1C0A12", fontWeight: 600 }}>Diva</strong>. Lokalnie. Lepiej.
+        <strong style={{ color: "#1C0A12", fontWeight: 600 }}>Diva</strong>. Lokalnie. Z polskich plantacji.
       </>
     ),
     chart: {
@@ -70,7 +70,7 @@ const curiosities: Curiosity[] = [
         deltaLabel: "+56%",
       },
       footnote:
-        "ORAC mierzy zdolność pochłaniania wolnych rodników. Im wyższy, tym silniejsze działanie ochronne dla komórek.",
+        "ORAC to laboratoryjny wskaźnik pojemności antyoksydacyjnej żywności. Pokazuje skład owocu, nie obietnicę działania na zdrowie.",
     },
     table: {
       colA: "Acai",
@@ -80,65 +80,64 @@ const curiosities: Curiosity[] = [
         { label: "ORAC (µmol TE/100g)", a: "~102 700", b: "~160 600" },
         { label: "Profil smaku", a: "Czekoladowo-jagodowy", b: "Cierpki, kwaśny, ściągający" },
         { label: "Antocyjany + rutyna", a: "Średnio", b: "Bardzo wysoko" },
-        { label: "Witaminy", a: "B1, B2, B3", b: "C, B, E, PP" },
+        { label: "Witaminy w owocu", a: "B1, B2, B3", b: "C, B, E, PP" },
         { label: "Dostępność", a: "Wyłącznie przetworzona", b: "Świeża, w sezonie" },
       ],
     },
     productsHeading: "Gdzie znajdziesz aronię",
     products: [
-      { name: "Shroom Relax", slug: "shroom-relax", img: productRelax, tag: "Wieczorne wyciszenie" },
+      { name: "Shroom Relax", slug: "shroom-relax", img: productRelax, tag: "Wieczorny rytuał" },
       { name: "Diva", slug: "diva", img: productDiva, tag: "Bezalkoholowe aperitivo" },
     ],
-    footerLine: "Lokalnie. Lepiej. Bez 8 000 km transportu.",
+    footerLine: "Lokalnie. Bez 8 000 km transportu.",
   },
   {
-    id: "ginseng-vs-caffeine",
+    id: "ginseng-tradition",
     pillEyebrow: "Czy wiesz?",
-    pillTitle: "Żeń-szeń > Kofeina",
-    pillAriaLabel: "Otwórz ciekawostkę: Żeń-szeń vs Kofeina",
-    modalEyebrow: "Ciekawostka · Adaptogeny",
-    modalTitleLines: ["Pożyczka vs inwestycja:", "Żeń-szeń kontra kofeina"],
+    pillTitle: "Żeń-szeń rośnie 6 lat",
+    pillAriaLabel: "Otwórz ciekawostkę: Żeń-szeń koreański",
+    modalEyebrow: "Ciekawostka . Tradycja botaniczna",
+    modalTitleLines: ["Sześć lat w ziemi:", "korzeń żeń-szenia"],
     lead: (
       <>
-        Kofeina to <strong style={{ color: "#1C0A12", fontWeight: 600 }}>pożyczka energetyczna</strong> — zmusza
-        układ nerwowy do pracy tu i teraz, a potem przychodzi crash. Żeń-szeń (Panax ginseng) to{" "}
-        <strong style={{ color: "#1C0A12", fontWeight: 600 }}>inwestycja</strong> — adaptogen, który uczy organizm
-        lepiej zarządzać energią. Znajdziesz go w{" "}
+        Panax ginseng to roślina z wielowiekową tradycją w kulturze koreańskiej. Najwyżej cenione korzenie{" "}
+        <strong style={{ color: "#1C0A12", fontWeight: 600 }}>rosną w ziemi przez 6 lat</strong>, zanim
+        zostaną zebrane. Używamy ekstraktu z koreańskiego żeń-szenia w{" "}
         <strong style={{ color: "#1C0A12", fontWeight: 600 }}>:shroom Power</strong>.
       </>
     ),
     chart: {
-      label: "Czas stabilnego działania (godziny)",
-      unit: "h",
-      left: { name: "Kofeina (kończy się crashem)", value: 4, display: "3–5 h", muted: true },
+      label: "Czas dojrzewania korzenia (lata)",
+      unit: "lat",
+      left: { name: "Roślina jednoroczna (typowa uprawa)", value: 1, display: "1 rok", muted: true },
       right: {
-        name: "Panax Ginseng (cały dzień)",
-        value: 24,
-        display: "cały dzień",
+        name: "Panax ginseng (klasa premium)",
+        value: 6,
+        display: "6 lat",
         highlight: true,
-        deltaLabel: "bez crashu",
+        deltaLabel: "tradycja koreańska",
       },
       footnote:
-        "Kofeina blokuje receptory adenozyny — energii nie dodaje, tylko maskuje zmęczenie. Ginsenozydy wspierają mikrokrążenie i mitochondria, dając stabilną energię bez kortyzolowego huśtawki.",
+        "Korzeń żeń-szenia koreańskiego dojrzewa w ziemi 4 do 6 lat. To informacja botaniczna i agrotechniczna, nie obietnica działania produktu.",
     },
     table: {
-      colA: "Kofeina",
-      colB: "Panax Ginseng",
+      colA: "Typowa uprawa",
+      colB: "Panax ginseng (Korea)",
       rows: [
-        { label: "Typ substancji", a: "Stymulant OUN", b: "Adaptogen" },
-        { label: "Substancje aktywne", a: "Kofeina (alkaloid)", b: "Ginsenozydy (saponiny)" },
-        { label: "Czas reakcji", a: "Błyskawiczny (15–45 min)", b: "Stopniowy, kumulujący się" },
-        { label: "Czas działania", a: "3–5 h + crash", b: "Stabilnie cały dzień" },
-        { label: "Wpływ na kortyzol", a: "Podkręca (fight or flight)", b: "Obniża i reguluje" },
-        { label: "Budowanie tolerancji", a: "Bardzo szybkie", b: "Brak tolerancji" },
+        { label: "Czas dojrzewania", a: "1 sezon", b: "4 do 6 lat" },
+        { label: "Pochodzenie", a: "Globalnie", b: "Korea, Chiny, Syberia" },
+        { label: "Cześć rośliny", a: "Liść lub owoc", b: "Korzeń" },
+        { label: "Tradycja", a: "Krótka", b: "Ponad 2 000 lat w kulturze azjatyckiej" },
+        { label: "Substancje botaniczne", a: "Różne", b: "Ginsenozydy (saponiny)" },
+        { label: "Forma w Shroom", a: ".", b: "Ekstrakt 200 mg" },
       ],
     },
     productsHeading: "Gdzie znajdziesz żeń-szeń",
     products: [
-      { name: "Shroom Power", slug: "shroom-power", img: productPower, tag: "Skupienie bez crashu" },
-      { name: "Diva", slug: "diva", img: productDiva, tag: "13 botaników + żeń-szeń" },
+      { name: "Shroom Power", slug: "shroom-power", img: productPower, tag: "Poranny rytuał" },
+      { name: "Diva", slug: "diva", img: productDiva, tag: "13 botaników i żeń-szeń" },
     ],
-    footerLine: "Energia jako inwestycja, nie pożyczka.",
+    footerLine: "Sześć lat w ziemi. Wielowiekowa tradycja.",
   },
 ];
 
