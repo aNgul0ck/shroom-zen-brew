@@ -55,7 +55,61 @@ const Subscriptions = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-[3px]">
+        {/* Mobile: horizontal snap-scroller */}
+        <div className="md:hidden -mx-6 px-6 flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 scrollbar-hide" style={{ scrollbarWidth: "none" }}>
+          {subscriptions.map((sub) => (
+            <div
+              key={sub.name}
+              className={`snap-start shrink-0 w-[82%] group bg-background p-5 flex flex-col ${
+                sub.featured ? "border-2 border-foreground" : "border border-foreground/8"
+              }`}
+            >
+              <div className="flex flex-wrap items-center gap-2 mb-4">
+                <span className={`${sub.badgeBg} px-2 py-0.5 font-display text-[10px] font-semibold text-foreground`}>
+                  {sub.badge}
+                </span>
+                {sub.featured && (
+                  <span className="bg-foreground text-background px-2 py-0.5 font-body text-[10px] font-medium">
+                    Najczęściej wybierany
+                  </span>
+                )}
+              </div>
+
+              <h3 className="font-display text-xl font-bold text-foreground mb-1">
+                {sub.name}
+              </h3>
+              <p className="font-body text-xs text-foreground/50 mb-4">{sub.headline}</p>
+
+              <ul className="space-y-2 mb-5">
+                {sub.highlights.map((h, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-shroom-green flex-shrink-0 mt-0.5" />
+                    <span className="font-body text-xs text-foreground">{h}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-auto">
+                <p className="font-display text-2xl font-bold text-foreground mb-0.5">
+                  {sub.price} <span className="text-sm font-normal text-foreground/40">zł</span>
+                </p>
+                <p className="font-body text-[11px] text-foreground/40 mb-3">
+                  {sub.bottles} . {sub.period}
+                </p>
+                <button className="w-full flex items-center justify-center gap-2 bg-foreground text-background py-3 font-display font-semibold text-xs">
+                  {sub.cta}
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="md:hidden font-body text-[10px] uppercase tracking-[0.2em] text-foreground/40 mt-2 mb-2">
+          ← przesuń →
+        </p>
+
+        {/* Tablet+: grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-[3px]">
           {subscriptions.map((sub) => (
             <div
               key={sub.name}
@@ -103,6 +157,7 @@ const Subscriptions = () => {
             </div>
           ))}
         </div>
+
 
         <p className="text-center mt-8 font-body text-[11px] text-foreground/40">
           Bez zobowiązań . Anuluj w dowolnym momencie . Bezpieczna płatność
