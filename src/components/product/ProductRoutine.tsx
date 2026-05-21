@@ -1,5 +1,5 @@
 import type { Product } from "@/data/products";
-import { Target, ArrowLeftRight, Sparkles, Ban, Coffee, Zap } from "lucide-react";
+import { Target, ArrowLeftRight, Sparkles, Ban } from "lucide-react";
 
 interface Props {
   product: Product;
