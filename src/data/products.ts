@@ -70,6 +70,20 @@ export interface GalleryImage {
   isLifestyle?: boolean;
 }
 
+export interface OccasionMeta {
+  eyebrow: string;      // e.g. "DAYTIME ENERGY"
+  headline: string;     // e.g. "Energia na cały dzień"
+  subtitle: string;     // e.g. "Clean energy without caffeine crash"
+  replaces: string[];   // e.g. ["Kawa", "Energetyki", "Matcha", "Kombucha"]
+}
+
+export interface RitualMeta {
+  bestFor: string;      // "Praca głęboka, deep focus, kreatywne sesje"
+  instead: string;      // "Zamiast trzeciej kawy"
+  pairsWith: string;    // "Śniadanie białkowe / lunch"
+  avoid: string;        // "Późnym wieczorem"
+}
+
 export interface Product {
   slug: string;
   name: string;
@@ -86,6 +100,8 @@ export interface Product {
   benefits: BenefitItem[];
   ingredients: Ingredient[];
   routine: RoutineStep[];
+  ritualMeta?: RitualMeta;
+  occasion?: OccasionMeta;
   reviews: Review[];
   faqs: FAQ[];
   trustBadges: string[];
