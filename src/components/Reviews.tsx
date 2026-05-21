@@ -69,22 +69,23 @@ const Reviews = () => {
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="group bg-background border border-foreground/8 p-6 lg:p-8 hover:border-foreground/20 hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 relative overflow-hidden"
+              className="group bg-background border border-foreground/8 p-4 sm:p-6 lg:p-8 hover:border-foreground/20 hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 relative overflow-hidden"
             >
               {/* Accent top line on hover */}
               <div className={`absolute top-0 left-0 right-0 h-[2px] ${productAccent[review.product] || "bg-shroom-gold"} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
 
-              <Quote className="w-5 h-5 text-foreground/10 group-hover:text-foreground/20 transition-colors duration-300 mb-4" />
+              <Quote className="w-4 h-4 sm:w-5 sm:h-5 text-foreground/10 group-hover:text-foreground/20 transition-colors duration-300 mb-2 sm:mb-4" />
 
-              <div className="flex gap-0.5 mb-3">
+              <div className="flex gap-0.5 mb-2 sm:mb-3">
                 {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-shroom-gold text-shroom-gold" />
+                  <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-shroom-gold text-shroom-gold" />
                 ))}
               </div>
 
-              <p className="font-body text-foreground text-sm lg:text-base leading-relaxed mb-5">
+              <p className="font-body text-foreground text-xs sm:text-sm lg:text-base leading-relaxed mb-3 sm:mb-5">
                 "{review.text}"
               </p>
+
 
               <div className="flex items-center justify-between mt-auto">
                 <div>
