@@ -96,18 +96,10 @@ const CreatorReels = () => {
     <section className="bg-foreground text-background py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto px-5 md:px-12">
         {/* Header */}
-        <div className="flex items-end justify-between gap-6 mb-10 md:mb-14">
-          <div className="max-w-2xl">
-            <p className="font-body text-xs font-medium uppercase tracking-[0.25em] text-background/55 mb-3">
-              Shroom IRL · feed od twórców
-            </p>
-            <h2 className="font-headline text-4xl md:text-6xl uppercase leading-[0.95] text-background">
-              Tak go pijają
-            </h2>
-            <p className="font-body text-sm md:text-base text-background/60 mt-4 max-w-md">
-              Rolki, tiktoki i stories od ludzi, którzy włączyli Shrooma w swój rytuał. Bez ściemy, bez filtra.
-            </p>
-          </div>
+        <div className="flex items-end justify-between gap-6 mb-8 md:mb-12">
+          <h2 className="font-headline text-4xl md:text-6xl uppercase leading-[0.95] text-background">
+            Tak go pijają
+          </h2>
 
           {/* Desktop arrows */}
           <div className="hidden md:flex gap-2 shrink-0">
