@@ -291,7 +291,7 @@ export const products: Product[] = [
       bestFor: "Kolacje, imprezy, randki, eventy social",
       instead: "Zamiast wina, prosecco, koktajli alkoholowych",
       pairsWith: "Lód, pomarańcza, rozmaryn, tonik",
-      avoid: "Picie bez okazji — to elixir, nie codzienność",
+      avoid: "Picie bez okazji. To elixir, nie codzienność.",
     },
     occasion: {
       eyebrow: "Social & dinner table",
