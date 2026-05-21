@@ -12,13 +12,12 @@ type Row = {
 
 const rows: Row[] = [
   { label: "Dodany cukier", shroom: "0 g", energy: "25–40 g", coffee: "0 g", kombucha: "2–8 g" },
-  { label: "Fermentowany", shroom: "x", energy: "x", coffee: "x", kombucha: "check" },
   { label: "Profil smaku", shroom: "orzeźwiający", energy: "słodki", coffee: "gorzki", kombucha: "octowy" },
   { label: "Sztuczne słodziki", shroom: "check", energy: "x", coffee: "check", kombucha: "check" },
   { label: "Sztuczne barwniki", shroom: "check", energy: "x", coffee: "check", kombucha: "check" },
   { label: "Grzyby funkcjonalne", shroom: "660 mg Lion's Mane", energy: "dash", coffee: "dash", kombucha: "dash" },
   { label: "Adaptogeny", shroom: "żeń-szeń", energy: "x", coffee: "x", kombucha: "x" },
-  { label: "Kultury / błonnik", shroom: "probiotyk", energy: "dash", coffee: "dash", kombucha: "prebiotyk" },
+  { label: "Fermentowane", shroom: "Nie", energy: "Nie", coffee: "Nie", kombucha: "Tak" },
   { label: "Źródło cynku", shroom: "check", energy: "x", coffee: "x", kombucha: "x" },
   { label: "Źródło witaminy C", shroom: "check", energy: "x", coffee: "x", kombucha: "x" },
 ];
