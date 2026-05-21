@@ -194,7 +194,7 @@ const CellContent = ({ value, isShroom }: { value: Cell; isShroom: boolean }) =>
   }
   return (
     <span
-      className="font-body font-semibold text-[13px] md:text-[15px]"
+      className="font-body font-semibold text-[12px] md:text-[14px] leading-tight block break-words hyphens-auto px-1"
       style={{ color: isShroom ? "#FAF7F2" : "#1C0A12" }}
     >
       {value}
@@ -278,16 +278,23 @@ const ComparisonSection = () => {
         {/* Table */}
         <div className="max-w-[1000px] mx-auto">
           <div className="overflow-x-auto md:overflow-visible -mx-6 md:mx-0 px-6 md:px-0">
-            <table className="w-full border-collapse" style={{ minWidth: "560px" }}>
+            <table className="w-full border-collapse table-fixed" style={{ minWidth: "640px" }}>
               <caption className="sr-only">
                 {active.productLabel} w porównaniu z konkurencją
               </caption>
+              <colgroup>
+                <col style={{ width: "22%" }} />
+                <col style={{ width: "19.5%" }} />
+                <col style={{ width: "19.5%" }} />
+                <col style={{ width: "19.5%" }} />
+                <col style={{ width: "19.5%" }} />
+              </colgroup>
               <thead>
                 <tr>
                   <th
                     scope="col"
                     className="sticky left-0 z-10 text-left align-bottom p-3 md:p-4"
-                    style={{ backgroundColor: "#FAF7F2", width: "130px", minWidth: "130px" }}
+                    style={{ backgroundColor: "#FAF7F2" }}
                   >
                     <span className="sr-only">Kryterium</span>
                   </th>
@@ -299,7 +306,6 @@ const ComparisonSection = () => {
                       style={{
                         backgroundColor: c.isShroom ? "#1C0A12" : "#F0EAE0",
                         color: c.isShroom ? "#FAF7F2" : "#1C0A12",
-                        minWidth: "110px",
                         borderTopLeftRadius: c.isShroom ? "12px" : "0",
                         borderTopRightRadius: c.isShroom ? "12px" : "0",
                       }}
