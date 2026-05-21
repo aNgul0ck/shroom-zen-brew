@@ -223,6 +223,18 @@ export const products: Product[] = [
       { time: "21:00", label: "Wyciszenie", description: "Naturalne przygotowanie do snu" },
       { time: "23:00", label: "Sen", description: "Głęboka, regeneracyjna noc" },
     ],
+    ritualMeta: {
+      bestFor: "Wieczorny reset, joga, czytanie, czas dla siebie",
+      instead: "Zamiast lampki wina lub piwa",
+      pairsWith: "Kolacja, kąpiel, wieczorny serial",
+      avoid: "Tuż przed treningiem siłowym",
+    },
+    occasion: {
+      eyebrow: "Evening wind-down",
+      headline: "Wyciszenie bez kaca",
+      subtitle: "Zwolnij obroty po pracy. Bez alkoholu, bez senności następnego dnia.",
+      replaces: ["Piwo", "Herbata ziołowa", "CBD drinks", "Kombucha", "Wino"],
+    },
     reviews: [
       { author: "Ewa K.", role: "Projektantka UX", rating: 5, text: "Relax pomaga mi wyłączyć się po intensywnym dniu. Śpię jak dziecko.", verified: true },
       { author: "Kasia M.", role: "Fizjoterapeutka", rating: 5, text: "Piję wieczorem zamiast wina. Zero alkoholu, pełen relaks.", verified: true },
