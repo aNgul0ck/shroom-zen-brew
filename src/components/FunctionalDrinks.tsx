@@ -168,7 +168,7 @@ const FunctionalDrinks = () => {
         {/* Desktop duo CTA — below 4-col grid */}
         <div className="hidden lg:flex border border-foreground/10 items-center justify-between px-8 py-5 mt-[3px]">
           <p className="font-display text-base font-bold text-foreground">
-            Rano + Wieczór = pełny rytm <span className="text-foreground/30">→</span>
+            Dzień + Wieczór = pełny rytm <span className="text-foreground/30">→</span>
           </p>
           <Link
             to="/produkt/shroom-power"
