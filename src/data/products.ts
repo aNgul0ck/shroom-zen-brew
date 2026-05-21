@@ -150,6 +150,18 @@ export const products: Product[] = [
       { time: "14:00", label: "Bez crashu", description: "Stabilna energia przez cały dzień" },
       { time: "18:00", label: "Wieczór", description: "Spokojne wyjście z energii — brak problemów z zasypianiem" },
     ],
+    ritualMeta: {
+      bestFor: "Praca głęboka, kreatywne sesje, trening porannym",
+      instead: "Zamiast 2-3 kawy lub energetyka",
+      pairsWith: "Śniadanie białkowe, lunch, przerwa 14:00",
+      avoid: "Po 18:00 — chcesz spać spokojnie",
+    },
+    occasion: {
+      eyebrow: "Daytime energy",
+      headline: "Energia bez crashu",
+      subtitle: "Czysty fokus na 6-8 godzin. Bez nerwówki, bez zjazdu.",
+      replaces: ["Kawa", "Energetyki", "Matcha", "Yerba mate"],
+    },
     reviews: [
       { author: "Olek R.", role: "Przedsiębiorca", rating: 5, text: "Power to mój codzienny rytuał. Skupienie i energia bez nerwowości kawy.", verified: true },
       { author: "Maja W.", role: "Studentka medycyny", rating: 5, text: "Piję przed nauką — czuję różnicę w koncentracji. Zero cukru to bonus!", verified: true },
