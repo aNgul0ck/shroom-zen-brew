@@ -147,7 +147,7 @@ const FunctionalDrinks = () => {
           {/* Duo CTA strip */}
           <div className="border border-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-3 px-5 py-4 mb-[3px]">
             <p className="font-display text-sm font-bold text-foreground text-center sm:text-left">
-              Rano + Wieczór = pełny rytm <span className="text-foreground/30">→</span>
+              Dzień + Wieczór = pełny rytm <span className="text-foreground/30">→</span>
             </p>
             <Link
               to="/produkt/shroom-power"
