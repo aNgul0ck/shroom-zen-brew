@@ -12,13 +12,13 @@ interface TimeSlot {
 }
 
 const timeSlots: TimeSlot[] = [
-  { time: '08:00', period: 'morning', product: 'power', moment: 'Przed pracą, zamiast kawy', hook: '"My 8am secret"', icon: Coffee },
-  { time: '15:00', period: 'day', product: 'power', moment: 'Focus, deadline', hook: '"3pm slump? Not today"', icon: Briefcase },
-  { time: '16:20', period: 'afternoon', product: 'relax', moment: 'After shitty call', hook: '"Deep breath moment"', icon: Sunset },
-  { time: '18:00', period: 'evening', product: 'relax', moment: 'Decompression', hook: '"First thing after work"', icon: Sunset },
-  { time: '21:37', period: 'night', product: 'diva', moment: 'Netflix, winding down', hook: '"Evening ritual"', icon: Moon },
+  { time: '08:00', period: 'morning', product: 'power', moment: 'Poranek zamiast kawy', hook: '"My 8am ritual"', icon: Coffee },
+  { time: '15:00', period: 'day', product: 'power', moment: 'Praca, popołudnie', hook: '"3pm pause"', icon: Briefcase },
+  { time: '16:20', period: 'afternoon', product: 'relax', moment: 'Po trudnej rozmowie', hook: '"Deep breath moment"', icon: Sunset },
+  { time: '18:00', period: 'evening', product: 'relax', moment: 'Po pracy', hook: '"First thing after work"', icon: Sunset },
+  { time: '21:37', period: 'night', product: 'diva', moment: 'Netflix, wieczór', hook: '"Evening ritual"', icon: Moon },
   { time: '23:00', period: 'party', product: 'diva', moment: 'Social, zamiast alkoholu', hook: '"What I\'m drinking tonight"', icon: PartyPopper },
-  { time: '11:00', period: 'weekend', product: 'mix', moment: 'Brunch, friends', hook: '"Saturday mood"', icon: UtensilsCrossed },
+  { time: '11:00', period: 'weekend', product: 'mix', moment: 'Brunch, znajomi', hook: '"Saturday brunch"', icon: UtensilsCrossed },
 ];
 
 const productAccent: Record<string, string> = {

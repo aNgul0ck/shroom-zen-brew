@@ -11,12 +11,12 @@ const BrainBlissSection = () => {
     {
       icon: Brain,
       title: "Codzienna rutyna",
-      description: "Uzupełnienie diety w cynk",
+      description: "Źródło cynku w diecie",
     },
     {
       icon: Clock,
       title: "Regularnie",
-      description: "Badania sugerują efekty po 16 tyg.",
+      description: "Codzienny rytuał, 60 kapsułek",
     },
   ];
 
@@ -41,15 +41,15 @@ const BrainBlissSection = () => {
             </h2>
 
             <p className="font-body text-lg text-muted-foreground mb-6">
-              Soplówka jeżowata w kapsułkach. Dla tych, którzy preferują 
-              suplementy — ten sam składnik, wygodna forma na podróż.
+              Soplówka jeżowata w kapsułkach. Wygodna forma na podróż,
+              ten sam składnik co w Shroom Drinks.
             </p>
 
             <div className="bg-card rounded-2xl p-5 mb-6 border-l-4 border-shroom-blue">
               <p className="font-body text-sm text-foreground/80 italic">
-                "Stworzyliśmy BrainBliss dla osób w ciągłym ruchu. Kiedy nie masz czasu na napój — 
-                przed lotem, ważnym spotkaniem czy egzaminem. 60 kapsułek, 500mg czystego ekstraktu 
-                z soplówki jeżowatej. Źródło cynku, który przyczynia się do prawidłowych funkcji poznawczych."
+                "Stworzyliśmy BrainBliss dla osób w ciągłym ruchu. Przed lotem, w podróży, w trakcie ważnych projektów.
+                60 kapsułek, 500 mg ekstraktu z soplówki jeżowatej. Cynk przyczynia się do prawidłowej funkcji
+                poznawczej (EFSA)."
               </p>
             </div>
 

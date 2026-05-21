@@ -15,11 +15,11 @@ const subscriptions = [
   {
     badge: "Bestseller",
     name: "Good Trip",
-    headline: "Dzień w harmonii.",
+    headline: "Rytm dnia i wieczoru.",
     price: "269",
     bottles: "24 butelki",
     period: "12 Power + 12 Relax",
-    highlights: ["Pełny rytm dnia", "Rano: aktywacja", "Wieczór: wyciszenie"],
+    highlights: ["Pełny rytm dnia", "Rano: poranny rytuał", "Wieczór: wieczorny rytuał"],
     cta: "Wybierz",
     badgeBg: "bg-shroom-green",
     featured: true,
@@ -27,11 +27,11 @@ const subscriptions = [
   {
     badge: "Pro",
     name: "Feel Your Best",
-    headline: "Pełna transformacja.",
+    headline: "Codzienny rytuał well-being.",
     price: "499",
     bottles: "48 butelek",
     period: "24 Power + 24 Relax",
-    highlights: ["Miesiąc wsparcia", "2 butelki dziennie", "Maksymalne efekty"],
+    highlights: ["Miesiąc codziennego rytuału", "2 butelki dziennie", "Najlepsza cena za butelkę"],
     cta: "Go Heroic",
     badgeBg: "bg-shroom-sky",
   },
@@ -51,7 +51,7 @@ const Subscriptions = () => {
             </h2>
           </div>
           <p className="font-body text-sm text-foreground/50 max-w-xs">
-            Elastyczne plany. Zero zobowiązań — anuluj kiedy chcesz.
+            Elastyczne plany. Zero zobowiązań, anuluj kiedy chcesz.
           </p>
         </div>
 
@@ -93,7 +93,7 @@ const Subscriptions = () => {
                   {sub.price} <span className="text-base font-normal text-foreground/40">zł</span>
                 </p>
                 <p className="font-body text-xs text-foreground/40 mb-4">
-                  {sub.bottles} · {sub.period}
+                  {sub.bottles} . {sub.period}
                 </p>
                 <button className="w-full flex items-center justify-center gap-2 bg-foreground text-background py-3.5 font-display font-semibold text-sm group-hover:gap-3 transition-all duration-300 hover:opacity-90">
                   {sub.cta}
@@ -105,7 +105,7 @@ const Subscriptions = () => {
         </div>
 
         <p className="text-center mt-8 font-body text-[11px] text-foreground/40">
-          Bez zobowiązań · Anuluj w dowolnym momencie · Bezpieczna płatność
+          Bez zobowiązań . Anuluj w dowolnym momencie . Bezpieczna płatność
         </p>
       </div>
     </section>

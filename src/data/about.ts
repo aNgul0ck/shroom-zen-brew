@@ -11,12 +11,12 @@ export const manifestoPillars = [
   {
     title: "Wellness-first",
     body:
-      "Funkcjonalność to nie buzzword. W każdej recepturze są realne dawki adaptogenów i nootropików — takie, które naprawdę robią robotę, oparte na tradycji i badaniach. Zero pudru, zero ściemy.",
+      "Funkcjonalność to nie buzzword. W każdej recepturze są realne ilości składników botanicznych, oparte na tradycji i badaniach. Zero pudru, zero ściemy.",
   },
   {
     title: "Naturalne składniki",
     body:
-      "Soplówka jeżowata, żeń-szeń, chmiel, inulina, witamina C, cynk — całość z natury. Bez sztucznych barwników, bez konserwantów, bez dodanego cukru. Krótka lista składników, którą zrozumie każdy.",
+      "Soplówka jeżowata, żeń-szeń, chmiel, inulina, witamina C, cynk. Całość z natury. Bez sztucznych barwników, bez konserwantów, bez dodanego cukru. Krótka lista składników, którą zrozumie każdy.",
   },
 ];
 
@@ -25,7 +25,7 @@ export const timelineMilestones = [
     year: "2020",
     title: "Założenie firmy",
     body:
-      "Shroom powstaje z osobistej potrzeby założycielek — szukania równowagi między pracą, życiem towarzyskim i wellness. Pierwsze receptury powstają w domowej kuchni.",
+      "Shroom powstaje z osobistej potrzeby założycielek. Szukanie równowagi między pracą, życiem towarzyskim i well-being. Pierwsze receptury powstają w domowej kuchni.",
     color: "bg-shroom-gold",
   },
   {
@@ -46,7 +46,7 @@ export const timelineMilestones = [
     year: "2025",
     title: "Nowe produkty",
     body:
-      "Rozszerzamy portfolio: Diva Social Elixir i BrainBliss kapsułki. Shroom staje się pełnym ekosystemem funkcjonalnego wellness.",
+      "Rozszerzamy portfolio: Diva Social Elixir i BrainBliss kapsułki. Shroom staje się pełnym ekosystemem funkcjonalnego well-being.",
     color: "bg-shroom-sky",
   },
 ];
@@ -90,28 +90,28 @@ export const aboutIngredients = [
     name: "Żeń-szeń",
     short: "Panax ginseng",
     body:
-      "Adaptogen o ponad 2000-letniej tradycji w medycynie azjatyckiej. Klasyk wśród roślin wspierających witalność.",
+      "Roślina o ponad 2000-letniej tradycji w kulturze koreańskiej. Najwyżej cenione korzenie dojrzewają w ziemi 4 do 6 lat.",
     color: "bg-shroom-peach",
   },
   {
     name: "Inulina",
     short: "Błonnik prebiotyczny",
     body:
-      "Naturalny błonnik z cykorii. Karmi pożyteczne bakterie jelitowe — fundament dobrego mikrobiomu.",
+      "Naturalny błonnik z cykorii. Tradycyjnie obecny w diecie roślinnej.",
     color: "bg-shroom-sage",
   },
   {
     name: "Chmiel",
     short: "Humulus lupulus",
     body:
-      "Tradycyjny składnik napojów wyciszających. W shroomie wykorzystywany dla wspierania spokoju i relaksu.",
+      "Tradycyjny składnik wieczornych naparów w kulturze europejskiej.",
     color: "bg-shroom-gold",
   },
   {
-    name: "Wapń + Witamina C",
-    short: "Mineralne wsparcie",
+    name: "Witamina C i cynk",
+    short: "Składniki odżywcze",
     body:
-      "Wapń przyczynia się do prawidłowego funkcjonowania mięśni; witamina C wspiera odporność i redukcję zmęczenia (EFSA).",
+      "Witamina C przyczynia się do zmniejszenia uczucia zmęczenia i znużenia oraz do prawidłowego funkcjonowania układu odpornościowego (EFSA). Cynk przyczynia się do prawidłowej funkcji poznawczej (EFSA).",
     color: "bg-shroom-sky",
   },
 ];
@@ -133,7 +133,7 @@ export const planetCommitments = [
     n: "03",
     title: "Bioróżnorodność",
     body:
-      "Wspieramy ekosystemy, korzystając z niszowych roślin i grzybów. Unikamy monokultur i pracujemy z drobnymi plantatorami.",
+      "Korzystamy z niszowych roślin i grzybów. Unikamy monokultur i pracujemy z drobnymi plantatorami.",
   },
   {
     n: "04",
