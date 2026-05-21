@@ -146,15 +146,15 @@ export const products: Product[] = [
     ],
     routine: [
       { time: "7:00", label: "Poranek", description: "Poranny rytuał zamiast porannej kawy." },
-      { time: "9:00", label: "Praca", description: "Codzienny rytuał w trakcie pracy." },
-      { time: "14:00", label: "Popołudnie", description: "Druga butelka w środku dnia." },
-      { time: "18:00", label: "Wieczór", description: "Bez kofeiny. Bez problemów z zasypianiem." },
+      { time: "10:00", label: "Praca", description: "Codzienny rytuał w trakcie pracy." },
+      { time: "13:00", label: "Lunch", description: "Druga butelka w środku dnia." },
+      { time: "16:00", label: "Popołudnie", description: "Domknięcie dnia pracy bez kolejnej kawy." },
     ],
     ritualMeta: {
-      bestFor: "Praca, codzienne projekty, poranny rytuał",
+      bestFor: "Poranek, praca, popołudniowa przerwa",
       instead: "Zamiast porannej kawy lub energetyka",
       pairsWith: "Śniadanie, lunch, przerwa popołudniowa",
-      avoid: "Tuż przed snem (kwestia smaku, nie składu)",
+      avoid: "Późny wieczór (kwestia rytuału, nie składu)",
     },
     occasion: {
       eyebrow: "Poranek i dzień",
