@@ -179,8 +179,8 @@ export const products: Product[] = [
   {
     slug: "shroom-relax",
     name: "Shroom Relax",
-    tagline: "Spokój i regeneracja",
-    description: "Funkcjonalny napój z L-teaniną i chmielem. Wyciszenie po intensywnym dniu bez senności.",
+    tagline: "Twój popołudniowy i wieczorny rytuał",
+    description: "Funkcjonalny napój z L-teaniną i chmielem. Rytuał wyciszenia po intensywnym dniu, bez alkoholu.",
     image: productRelax,
     gallery: [
       { src: productRelax, alt: "Shroom Relax — butelka 330ml" },
