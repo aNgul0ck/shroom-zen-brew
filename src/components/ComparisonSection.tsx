@@ -1,161 +1,262 @@
-import { useState, useEffect } from "react";
-import { Zap, Coffee, Droplets, TrendingUp, Heart, Brain } from "lucide-react";
-import productPower from "@/assets/product-power.png";
+import { Check, X, Minus } from "lucide-react";
 
-type CompetitorId = "energy" | "coffee" | "sports";
-type MetricKey = "energia" | "fokus" | "zdrowie";
+type Cell = "check" | "x" | "dash" | string;
 
-const competitors = [
-  { 
-    id: "energy" as CompetitorId, shortName: "Energetyki",
-    icon: Zap, color: "from-red-500 to-orange-400",
-    metrics: { energia: 75, fokus: 30, zdrowie: 15 },
-  },
-  { 
-    id: "coffee" as CompetitorId, shortName: "Kawa",
-    icon: Coffee, color: "from-amber-700 to-amber-500",
-    metrics: { energia: 65, fokus: 55, zdrowie: 45 },
-  },
-  { 
-    id: "sports" as CompetitorId, shortName: "Izotoniki",
-    icon: Droplets, color: "from-blue-500 to-cyan-400",
-    metrics: { energia: 40, fokus: 20, zdrowie: 55 },
-  },
+type Row = {
+  label: string;
+  shroom: Cell;
+  energy: Cell;
+  coffee: Cell;
+  kombucha: Cell;
+};
+
+const rows: Row[] = [
+  { label: "Dodany cukier", shroom: "0 g", energy: "25–40 g", coffee: "0 g", kombucha: "2–8 g" },
+  { label: "Sztuczne słodziki", shroom: "check", energy: "x", coffee: "check", kombucha: "check" },
+  { label: "Sztuczne barwniki", shroom: "check", energy: "x", coffee: "check", kombucha: "check" },
+  { label: "Grzyby funkcjonalne", shroom: "660 mg Lion's Mane", energy: "dash", coffee: "dash", kombucha: "dash" },
+  { label: "Adaptogeny", shroom: "żeń-szeń", energy: "x", coffee: "x", kombucha: "x" },
+  { label: "Źródło cynku", shroom: "check", energy: "x", coffee: "x", kombucha: "x" },
+  { label: "Źródło witaminy C", shroom: "check", energy: "x", coffee: "x", kombucha: "x" },
 ];
 
-const shroomMetrics: Record<MetricKey, number> = { energia: 92, fokus: 95, zdrowie: 100 };
-
-const metricLabels: Record<MetricKey, { label: string; icon: typeof Zap }> = {
-  energia: { label: "Skład", icon: TrendingUp },
-  fokus: { label: "Składniki", icon: Brain },
-  zdrowie: { label: "Czystość", icon: Heart },
+const CompetitorIcon = ({ type, className }: { type: "bottle" | "can" | "cup" | "kombucha"; className?: string }) => {
+  const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.5, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
+  switch (type) {
+    case "bottle":
+      return (
+        <svg viewBox="0 0 24 32" className={className} aria-hidden="true">
+          <path {...common} d="M10 2h4v4l2 3v19a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l2-3V2z" />
+          <line {...common} x1="8" y1="14" x2="16" y2="14" />
+        </svg>
+      );
+    case "can":
+      return (
+        <svg viewBox="0 0 24 32" className={className} aria-hidden="true">
+          <rect {...common} x="6" y="3" width="12" height="26" rx="1.5" />
+          <line {...common} x1="6" y1="8" x2="18" y2="8" />
+        </svg>
+      );
+    case "cup":
+      return (
+        <svg viewBox="0 0 28 28" className={className} aria-hidden="true">
+          <path {...common} d="M5 8h14v10a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6V8z" />
+          <path {...common} d="M19 11h2a3 3 0 0 1 0 6h-2" />
+          <path {...common} d="M9 3c0 1.5-1 1.5-1 3M13 3c0 1.5-1 1.5-1 3" />
+        </svg>
+      );
+    case "kombucha":
+      return (
+        <svg viewBox="0 0 24 32" className={className} aria-hidden="true">
+          <path {...common} d="M9 2h6v3h-1v3l2 4v17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V12l2-4V5H9V2z" />
+          <line {...common} x1="8" y1="18" x2="16" y2="18" />
+        </svg>
+      );
+  }
 };
 
-const VerticalBar = ({ value, isShroom, competitorColor, animationKey }: { 
-  value: number; isShroom: boolean; competitorColor?: string; animationKey: string;
-}) => {
-  const [h, setH] = useState(0);
-  useEffect(() => { setH(0); const t = setTimeout(() => setH(value), 80); return () => clearTimeout(t); }, [value, animationKey]);
-
+const CellContent = ({ value, isShroom }: { value: Cell; isShroom: boolean }) => {
+  if (value === "check") {
+    return <Check className="w-5 h-5 mx-auto" strokeWidth={2.5} style={{ color: isShroom ? "#B8742A" : "#7A6055" }} aria-label="tak" />;
+  }
+  if (value === "x") {
+    return <X className="w-5 h-5 mx-auto" strokeWidth={2} style={{ color: "#B85C45" }} aria-label="nie" />;
+  }
+  if (value === "dash") {
+    return <Minus className="w-4 h-4 mx-auto" style={{ color: "#C4B5A8" }} aria-label="nie dotyczy" />;
+  }
   return (
-    <div className="flex flex-col items-center gap-1.5 flex-1">
-      <span className={`font-display text-sm font-bold ${isShroom ? "text-shroom-green" : "text-foreground/30"}`}>{value}%</span>
-      <div className="w-full h-[140px] md:h-[180px] bg-foreground/5 flex flex-col justify-end">
-        <div
-          className={`w-full transition-all duration-700 ease-out ${isShroom 
-            ? "bg-shroom-green" 
-            : `bg-gradient-to-t ${competitorColor}`}`}
-          style={{ height: `${h}%` }}
-        />
-      </div>
-    </div>
+    <span
+      className="font-body font-semibold text-[13px] md:text-[15px]"
+      style={{ color: isShroom ? "#FAF7F2" : "#1C0A12" }}
+    >
+      {value}
+    </span>
   );
 };
+
+const competitors = [
+  { key: "shroom", label: ":shroom Power", sub: "RTD", icon: "bottle" as const, isShroom: true },
+  { key: "energy", label: "Energetyki", sub: "puszka", icon: "can" as const, isShroom: false },
+  { key: "coffee", label: "Kawa", sub: "kubek", icon: "cup" as const, isShroom: false },
+  { key: "kombucha", label: "Kombucha", sub: "butelka", icon: "kombucha" as const, isShroom: false },
+];
 
 const ComparisonSection = () => {
-  const [active, setActive] = useState<CompetitorId>("energy");
-  const [aKey, setAKey] = useState(0);
-
-  const comp = competitors.find(c => c.id === active)!;
-  const adv = Math.round(
-    ((shroomMetrics.energia - comp.metrics.energia) +
-    (shroomMetrics.fokus - comp.metrics.fokus) +
-    (shroomMetrics.zdrowie - comp.metrics.zdrowie)) / 3
-  );
-
-  const allMetrics: MetricKey[] = ["energia", "fokus", "zdrowie"];
-
   return (
-    <section className="bg-background">
-      <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
-        <div className="mb-8">
-          <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em] mb-3">Porównanie</p>
-          <h2 className="ed-heading text-foreground">Shroom vs. reszta</h2>
-          <p className="font-body text-sm text-foreground/50 mt-2">
-            Średnio <span className="font-bold text-shroom-green">+{adv}%</span> lepiej niż {comp.shortName.toLowerCase()}.
+    <section style={{ backgroundColor: "#FAF7F2" }}>
+      <div className="container mx-auto px-6 lg:px-12 py-16 md:py-24">
+        {/* Eyebrow + headline */}
+        <div className="text-center max-w-[640px] mx-auto mb-12 md:mb-16">
+          <p
+            className="font-body mb-5"
+            style={{
+              color: "#B8742A",
+              letterSpacing: "0.15em",
+              fontSize: "11px",
+              textTransform: "uppercase",
+              fontWeight: 600,
+            }}
+          >
+            Porównanie
+          </p>
+          <h2
+            className="mb-5"
+            style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontStyle: "italic",
+              fontWeight: 500,
+              color: "#1C0A12",
+              fontSize: "clamp(32px, 5vw, 48px)",
+              lineHeight: 1.1,
+            }}
+          >
+            Czyste składniki.
+            <br />
+            Żadnych skrótów.
+          </h2>
+          <p
+            className="font-body mx-auto"
+            style={{ color: "#7A6055", fontSize: "17px", lineHeight: 1.55, maxWidth: "520px" }}
+          >
+            Shroom Power łączy grzyby funkcjonalne z adaptogenami i naturalnymi sokami — bez dodanego cukru,
+            bez sztucznych barwników. Sprawdź, co masz w butelce.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr,300px] gap-[3px]">
-          {/* Chart */}
-          <div className="bg-background border border-foreground/8 p-5 md:p-8">
-            <div className="grid grid-cols-3 gap-[2px] mb-6">
-              {competitors.map((c) => {
-                const Icon = c.icon;
-                return (
-                  <button
-                    key={c.id}
-                    onClick={() => { setActive(c.id); setAKey(p => p + 1); }}
-                    className={`flex items-center justify-center gap-2 py-2.5 text-xs font-display font-semibold transition-all ${
-                      active === c.id ? "bg-foreground text-background" : "bg-foreground/5 text-foreground/50 hover:bg-foreground/10"
-                    }`}
+        {/* Table */}
+        <div className="max-w-[1000px] mx-auto">
+          <div className="overflow-x-auto md:overflow-visible -mx-6 md:mx-0 px-6 md:px-0">
+            <table className="w-full border-collapse" style={{ minWidth: "560px" }}>
+              <caption className="sr-only">
+                Shroom Power w porównaniu z energetykami, kawą i kombuchą
+              </caption>
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
+                    className="sticky left-0 z-10 text-left align-bottom p-3 md:p-4"
+                    style={{ backgroundColor: "#FAF7F2", width: "130px", minWidth: "130px" }}
                   >
-                    <Icon className="w-4 h-4" />
-                    {c.shortName}
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="grid grid-cols-3 gap-4">
-              {allMetrics.map((m) => {
-                const cfg = metricLabels[m];
-                const Icon = cfg.icon;
-                const diff = shroomMetrics[m] - comp.metrics[m];
-                return (
-                  <div key={m} className="space-y-2">
-                    <div className="text-center">
-                      <span className="inline-flex items-center gap-1 px-2 py-1 text-[11px] font-display font-semibold bg-foreground/5 text-foreground">
-                        <Icon className="w-3 h-3" />{cfg.label}
-                      </span>
-                    </div>
-                    <div className="flex gap-1">
-                      <VerticalBar value={shroomMetrics[m]} isShroom={true} animationKey={`${aKey}`} />
-                      <VerticalBar value={comp.metrics[m]} isShroom={false} competitorColor={comp.color} animationKey={`${aKey}`} />
-                    </div>
-                    <p className="text-center">
-                      <span className="inline-block px-2 py-0.5 font-display font-bold text-xs bg-shroom-green/10 text-shroom-green">+{diff}%</span>
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="flex gap-5 mt-6 pt-4 border-t border-foreground/8">
-              <div className="flex items-center gap-1.5">
-                <div className="w-3 h-3 bg-shroom-green" />
-                <span className="font-body text-xs text-foreground/40">Shroom</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <div className={`w-3 h-3 bg-gradient-to-t ${comp.color}`} />
-                <span className="font-body text-xs text-foreground/40">{comp.shortName}</span>
-              </div>
-            </div>
+                    <span className="sr-only">Kryterium</span>
+                  </th>
+                  {competitors.map((c) => (
+                    <th
+                      key={c.key}
+                      scope="col"
+                      className="text-center align-bottom p-3 md:p-5"
+                      style={{
+                        backgroundColor: c.isShroom ? "#1C0A12" : "#F0EAE0",
+                        color: c.isShroom ? "#FAF7F2" : "#1C0A12",
+                        minWidth: "110px",
+                        borderTopLeftRadius: c.isShroom ? "12px" : "0",
+                        borderTopRightRadius: c.isShroom ? "12px" : "0",
+                      }}
+                    >
+                      <div className="flex flex-col items-center gap-2">
+                        {c.isShroom && (
+                          <span
+                            className="font-body text-[9px] tracking-[0.2em] uppercase px-2 py-0.5"
+                            style={{ color: "#B8742A", border: "1px solid #B8742A", borderRadius: "999px" }}
+                          >
+                            :shroom
+                          </span>
+                        )}
+                        <CompetitorIcon
+                          type={c.icon}
+                          className="w-7 h-9 md:w-8 md:h-10"
+                        />
+                        <span
+                          className="font-body font-semibold text-[12px] md:text-[14px] mt-1"
+                          style={{ color: c.isShroom ? "#FAF7F2" : "#1C0A12" }}
+                        >
+                          {c.label}
+                        </span>
+                        <span
+                          className="font-body text-[10px] md:text-[11px]"
+                          style={{ color: c.isShroom ? "#B8742A" : "#7A6055" }}
+                        >
+                          {c.sub}
+                        </span>
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, idx) => {
+                  const isLast = idx === rows.length - 1;
+                  return (
+                    <tr key={row.label}>
+                      <th
+                        scope="row"
+                        className="sticky left-0 z-10 text-left font-body font-medium text-[12px] md:text-[14px] p-3 md:p-4"
+                        style={{
+                          backgroundColor: "#FAF7F2",
+                          color: "#1C0A12",
+                          borderBottom: "1px solid #E8DFD2",
+                          height: "56px",
+                        }}
+                      >
+                        {row.label}
+                      </th>
+                      {competitors.map((c) => {
+                        const value = row[c.key as keyof Row] as Cell;
+                        const bg = c.isShroom
+                          ? "#1C0A12"
+                          : idx % 2 === 0
+                          ? "#F0EAE0"
+                          : "#F6EFE4";
+                        return (
+                          <td
+                            key={c.key}
+                            className="text-center p-3 md:p-4"
+                            style={{
+                              backgroundColor: bg,
+                              height: "56px",
+                              borderBottomLeftRadius: isLast && c.isShroom ? "12px" : 0,
+                              borderBottomRightRadius: isLast && c.isShroom ? "12px" : 0,
+                            }}
+                          >
+                            <CellContent value={value} isShroom={c.isShroom} />
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
 
-          {/* Right stats */}
-          <div className="bg-foreground/[0.03] border border-foreground/8 p-4 md:p-6 flex flex-col gap-3">
-            <div className="flex justify-center py-2">
-              <img src={productPower} alt="Shroom Power" className="h-24 md:h-32 w-auto object-contain" />
-            </div>
-            <div className="grid grid-cols-3 md:grid-cols-1 gap-[3px]">
-              <div className="border border-foreground/8 bg-background p-3 md:p-4">
-                <p className="font-display text-lg md:text-2xl font-bold text-foreground">0g</p>
-                <p className="text-foreground/50 font-body text-[10px] md:text-xs">dodanego cukru</p>
-              </div>
-              <div className="border border-foreground/8 bg-background p-3 md:p-4">
-                <p className="font-display text-sm md:text-lg font-bold text-foreground">Cynk</p>
-                <p className="text-foreground/50 font-body text-[10px] md:text-xs">funkcje poznawcze*</p>
-              </div>
-              <div className="border border-foreground/8 bg-background p-3 md:p-4">
-                <p className="font-display text-sm md:text-lg font-bold text-foreground">Lion's Mane</p>
-                <p className="text-foreground/50 font-body text-[10px] md:text-xs">soplówka jeżowata</p>
-              </div>
-            </div>
-            <a href="#produkty" className="flex items-center justify-center gap-2 bg-foreground text-background px-5 py-3 font-display font-bold text-sm hover:opacity-90 transition-opacity mt-auto">
-              Zamów teraz
-              <Zap className="w-4 h-4" />
-            </a>
+          {/* Footnote */}
+          <p
+            className="font-body italic mt-6 text-center"
+            style={{ color: "#7A6055", fontSize: "11px", lineHeight: 1.6 }}
+          >
+            * Wartości dla typowych produktów kategorii. Dane aktualne na 2025.
+            <br />
+            Shroom Power to suplement diety, nie lek.
+          </p>
+
+          {/* Soft follow-up */}
+          <div className="text-center max-w-[600px] mx-auto mt-14 md:mt-20">
+            <p
+              className="mb-4"
+              style={{
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontStyle: "italic",
+                color: "#1C0A12",
+                fontSize: "22px",
+                lineHeight: 1.3,
+              }}
+            >
+              660 mg soplówki jeżowatej w każdej butelce.
+            </p>
+            <p className="font-body" style={{ color: "#7A6055", fontSize: "16px", lineHeight: 1.6 }}>
+              To grzyb funkcjonalny stosowany w suplementacji — i jeden z powodów, dla których skład
+              Shroom Power czyta się jak lista składników, nie jak lista kodów E.
+            </p>
           </div>
         </div>
       </div>
