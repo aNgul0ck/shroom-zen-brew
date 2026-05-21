@@ -6,9 +6,13 @@ import productRelax from "@/assets/product-relax.png";
 import productDiva from "@/assets/product-diva.png";
 import productPower from "@/assets/product-power.png";
 
-const SEEN_KEY = "shroom_curiosity_seen_v2"; // map of seen curiosity ids
-const DISMISSED_KEY = "shroom_curiosity_dismissed";
+const SEEN_KEY = "shroom_curiosity_seen_v2"; // map of seen curiosity ids -> count
+const CONSUMED_KEY = "shroom_curiosity_consumed_v2"; // array of curiosity ids the user closed/opened
 const EXCLUDED_PATHS = ["/quiz", "/koszyk", "/_qa"];
+
+const FIRST_DELAY_MS = 6000;
+const REPEAT_DELAY_MS = 1500;
+const NEXT_AFTER_CONSUME_MS = 45000; // wait before showing the next curiosity
 
 type ProductLink = { name: string; slug: string; img: string; tag: string };
 
