@@ -10,6 +10,7 @@ import ProductRoutine from "@/components/product/ProductRoutine";
 import ProductReviews from "@/components/product/ProductReviews";
 import ProductFAQ from "@/components/product/ProductFAQ";
 import ProductCrossSell from "@/components/product/ProductCrossSell";
+import ProductUpsells from "@/components/product/ProductUpsells";
 import RecentPurchases from "@/components/RecentPurchases";
 import StickyCTA from "@/components/StickyCTA";
 
