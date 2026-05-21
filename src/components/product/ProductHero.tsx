@@ -25,7 +25,9 @@ const ProductHero = ({ product }: Props) => {
   const [selectedTier, setSelectedTier] = useState(defaultTierIndex);
   const [isSubscription, setIsSubscription] = useState(true); // pre-selected per audit
   const [bundleSelected, setBundleSelected] = useState(false);
+  const [addonSelected, setAddonSelected] = useState(false);
   const tier = product.pricing[selectedTier];
+  const addon = upsellMap[product.slug]?.featured;
 
   const isDiva = product.isDiva;
 
