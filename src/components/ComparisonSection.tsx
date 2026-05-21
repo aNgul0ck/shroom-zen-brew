@@ -15,7 +15,7 @@ const rows: Row[] = [
   { label: "Profil smaku", shroom: "orzeźwiający", energy: "słodki", coffee: "gorzki", kombucha: "octowy" },
   { label: "Sztuczne słodziki", shroom: "check", energy: "x", coffee: "check", kombucha: "check" },
   { label: "Sztuczne barwniki", shroom: "check", energy: "x", coffee: "check", kombucha: "check" },
-  { label: "Grzyby i adaptogeny", shroom: "Lion's Mane + żeń-szeń", energy: "dash", coffee: "dash", kombucha: "dash" },
+  { label: "Adaptogeny", shroom: "Lion's Mane + żeń-szeń", energy: "dash", coffee: "dash", kombucha: "dash" },
   { label: "Fermentowane", shroom: "Nie", energy: "Nie", coffee: "Nie", kombucha: "Tak" },
   { label: "Źródło cynku", shroom: "check", energy: "x", coffee: "x", kombucha: "x" },
   { label: "Źródło witaminy C", shroom: "check", energy: "x", coffee: "x", kombucha: "x" },
