@@ -287,6 +287,18 @@ export const products: Product[] = [
       { time: "21:00", label: "Impreza", description: "Baw się bez ograniczeń" },
       { time: "8:00", label: "Poranek", description: "Obudź się bez kaca — gotowa na nowy dzień" },
     ],
+    ritualMeta: {
+      bestFor: "Kolacje, imprezy, randki, eventy social",
+      instead: "Zamiast wina, prosecco, koktajli alkoholowych",
+      pairsWith: "Lód, pomarańcza, rozmaryn, tonik",
+      avoid: "Picie bez okazji — to elixir, nie codzienność",
+    },
+    occasion: {
+      eyebrow: "Social & dinner table",
+      headline: "Celebracja bez kaca",
+      subtitle: "Aperitivo, które wygląda i smakuje jak drink. Bez alkoholu.",
+      replaces: ["Wino", "Non-alc wine", "Cocktails", "Three Spirit", "Kin Euphorics"],
+    },
     reviews: [
       { author: "Priyanka B.", role: "Software Developer", rating: 5, text: "Diva is my go-to for social events. All the fun, none of the hangover.", verified: true },
       { author: "Zuzia T.", role: "PR Manager", rating: 5, text: "Brokat robi wrażenie na każdym. Idealna do koktajli na imprezę.", verified: true },
