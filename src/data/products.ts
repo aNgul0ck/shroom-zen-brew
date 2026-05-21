@@ -278,7 +278,7 @@ export const products: Product[] = [
     ingredients: [
       { name: "Żeń-szeń", dosage: "200 mg", benefit: "Roślina o wielowiekowej tradycji w kulturze koreańskiej.", icon: Zap },
       { name: "Składniki botaniczne (13x)", dosage: "Kompleks", benefit: "Unikalna mieszanka kwiatów, ziół i korzeni", icon: Leaf },
-      { name: "Jadalny brokat", dosage: "—", benefit: "Certyfikowany do kontaktu z żywnością — efekt wizualny", icon: Sparkles },
+      { name: "Jadalny brokat", dosage: "·", benefit: "Certyfikowany do kontaktu z żywnością. Efekt wizualny.", icon: Sparkles },
       { name: "Cynk", dosage: "10mg (100% RWS)", benefit: "Przyczynia się do prawidłowej funkcji poznawczej*", icon: Brain },
     ],
     routine: [
