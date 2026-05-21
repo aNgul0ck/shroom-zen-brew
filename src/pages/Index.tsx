@@ -39,6 +39,8 @@ const Index = () => {
           <div className="ed-divider-thick" />
           <FunctionalDrinks />
           <div className="ed-divider-thick" />
+          <CreatorReels />
+          <div className="ed-divider-thick" />
           <div className="border-t border-foreground/10" />
           <section className="bg-background">
             <div className="container mx-auto px-6 lg:px-12 py-10 md:py-16">
