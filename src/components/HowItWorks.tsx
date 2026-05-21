@@ -31,7 +31,7 @@ const steps = [
     badge: "Krok 3",
     time: "Pora dnia",
     title: "Rytuał",
-    headline: "Power rano. Relax wieczorem.",
+    headline: "Power w ciągu dnia. Relax popołudniem i wieczorem.",
     description:
       "Twój wybór smaku i pory dnia. Dwa rytuały, jeden codzienny rytm.",
     color: "bg-shroom-lavender/25",
