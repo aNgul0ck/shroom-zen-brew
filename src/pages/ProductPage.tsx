@@ -39,6 +39,7 @@ const ProductPage = () => {
       <ProductReviews product={product} />
       <ProductIngredients product={product} />
       <ProductRoutine product={product} />
+      <ProductUpsells product={product} />
       <ProductFAQ product={product} />
       <Footer />
       <StickyCTA />
