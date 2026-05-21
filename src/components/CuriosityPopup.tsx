@@ -484,7 +484,7 @@ const CuriosityPopup = () => {
                 <Link
                   key={p.slug}
                   to={`/produkt/${p.slug}`}
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleOpenChange(false)}
                   className="group flex items-center gap-3 p-3 transition-colors hover:bg-[#F0EAE0]"
                   style={{ border: "1.5px solid #1C0A12" }}
                 >
