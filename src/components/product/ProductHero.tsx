@@ -7,6 +7,8 @@ import QuickFacts from "./QuickFacts";
 import SubscriptionToggle from "./SubscriptionToggle";
 import ShippingDeadline from "./ShippingDeadline";
 import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether";
+import AddonPicker from "./AddonPicker";
+import { upsellMap } from "@/data/accessories";
 import PaymentBadges from "./PaymentBadges";
 import ProductGallery from "./ProductGallery";
 import ShippingProgressBar from "@/components/ShippingProgressBar";
@@ -23,7 +25,9 @@ const ProductHero = ({ product }: Props) => {
   const [selectedTier, setSelectedTier] = useState(defaultTierIndex);
   const [isSubscription, setIsSubscription] = useState(true); // pre-selected per audit
   const [bundleSelected, setBundleSelected] = useState(false);
+  const [addonSelected, setAddonSelected] = useState(false);
   const tier = product.pricing[selectedTier];
+  const addon = upsellMap[product.slug]?.featured;
 
   const isDiva = product.isDiva;
 
@@ -39,7 +43,8 @@ const ProductHero = ({ product }: Props) => {
   const bundlePartnerPrice = bundleSelected
     ? (isSubscription ? Math.round(BUNDLE_PARTNER_BASE * (1 - SUBSCRIPTION_DISCOUNT)) : BUNDLE_PARTNER_BASE) - 9
     : 0;
-  const grandTotal = finalTotal + bundlePartnerPrice;
+  const addonPrice = addonSelected && addon ? addon.price : 0;
+  const grandTotal = finalTotal + bundlePartnerPrice + addonPrice;
 
   const qualifiesForFreeShipping = grandTotal >= FREE_SHIPPING_THRESHOLD;
 
@@ -105,6 +110,20 @@ const ProductHero = ({ product }: Props) => {
           bundleWith: product.slug,
         });
       }
+    }
+
+    // Optional addon (Glass / BrainBliss / Matcha) — flat-priced, no subscription discount
+    if (addonSelected && addon) {
+      addItem({
+        productId: addon.slug,
+        productName: addon.name,
+        productImage: addon.image,
+        isDiva: product.isDiva,
+        bottlesPerUnit: 1,
+        unitPrice: addon.price,
+        originalUnitPrice: addon.price,
+        isSubscription: false,
+      });
     }
   };
 
@@ -214,6 +233,16 @@ const ProductHero = ({ product }: Props) => {
               selected={bundleSelected}
               onToggle={setBundleSelected}
             />
+
+            {/* Compact addon picker — single curated upsell to keep ATC area lean */}
+            {addon && (
+              <AddonPicker
+                accessory={addon}
+                selected={addonSelected}
+                onToggle={setAddonSelected}
+                isDiva={isDiva}
+              />
+            )}
 
             {/* Price & CTA */}
             <div className={`flex flex-wrap items-end justify-between gap-4 mb-4 pb-4 border-b ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
