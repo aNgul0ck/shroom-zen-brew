@@ -70,6 +70,20 @@ export interface GalleryImage {
   isLifestyle?: boolean;
 }
 
+export interface OccasionMeta {
+  eyebrow: string;      // e.g. "DAYTIME ENERGY"
+  headline: string;     // e.g. "Energia na cały dzień"
+  subtitle: string;     // e.g. "Clean energy without caffeine crash"
+  replaces: string[];   // e.g. ["Kawa", "Energetyki", "Matcha", "Kombucha"]
+}
+
+export interface RitualMeta {
+  bestFor: string;      // "Praca głęboka, deep focus, kreatywne sesje"
+  instead: string;      // "Zamiast trzeciej kawy"
+  pairsWith: string;    // "Śniadanie białkowe / lunch"
+  avoid: string;        // "Późnym wieczorem"
+}
+
 export interface Product {
   slug: string;
   name: string;
@@ -86,6 +100,8 @@ export interface Product {
   benefits: BenefitItem[];
   ingredients: Ingredient[];
   routine: RoutineStep[];
+  ritualMeta?: RitualMeta;
+  occasion?: OccasionMeta;
   reviews: Review[];
   faqs: FAQ[];
   trustBadges: string[];
@@ -134,6 +150,18 @@ export const products: Product[] = [
       { time: "14:00", label: "Bez crashu", description: "Stabilna energia przez cały dzień" },
       { time: "18:00", label: "Wieczór", description: "Spokojne wyjście z energii — brak problemów z zasypianiem" },
     ],
+    ritualMeta: {
+      bestFor: "Praca głęboka, kreatywne sesje, trening porannym",
+      instead: "Zamiast 2-3 kawy lub energetyka",
+      pairsWith: "Śniadanie białkowe, lunch, przerwa 14:00",
+      avoid: "Po 18:00 — chcesz spać spokojnie",
+    },
+    occasion: {
+      eyebrow: "Daytime energy",
+      headline: "Energia bez crashu",
+      subtitle: "Czysty fokus na 6-8 godzin. Bez nerwówki, bez zjazdu.",
+      replaces: ["Kawa", "Energetyki", "Matcha", "Yerba mate"],
+    },
     reviews: [
       { author: "Olek R.", role: "Przedsiębiorca", rating: 5, text: "Power to mój codzienny rytuał. Skupienie i energia bez nerwowości kawy.", verified: true },
       { author: "Maja W.", role: "Studentka medycyny", rating: 5, text: "Piję przed nauką — czuję różnicę w koncentracji. Zero cukru to bonus!", verified: true },
@@ -195,6 +223,18 @@ export const products: Product[] = [
       { time: "21:00", label: "Wyciszenie", description: "Naturalne przygotowanie do snu" },
       { time: "23:00", label: "Sen", description: "Głęboka, regeneracyjna noc" },
     ],
+    ritualMeta: {
+      bestFor: "Wieczorny reset, joga, czytanie, czas dla siebie",
+      instead: "Zamiast lampki wina lub piwa",
+      pairsWith: "Kolacja, kąpiel, wieczorny serial",
+      avoid: "Tuż przed treningiem siłowym",
+    },
+    occasion: {
+      eyebrow: "Evening wind-down",
+      headline: "Wyciszenie bez kaca",
+      subtitle: "Zwolnij obroty po pracy. Bez alkoholu, bez senności następnego dnia.",
+      replaces: ["Piwo", "Herbata ziołowa", "CBD drinks", "Kombucha", "Wino"],
+    },
     reviews: [
       { author: "Ewa K.", role: "Projektantka UX", rating: 5, text: "Relax pomaga mi wyłączyć się po intensywnym dniu. Śpię jak dziecko.", verified: true },
       { author: "Kasia M.", role: "Fizjoterapeutka", rating: 5, text: "Piję wieczorem zamiast wina. Zero alkoholu, pełen relaks.", verified: true },
@@ -247,6 +287,18 @@ export const products: Product[] = [
       { time: "21:00", label: "Impreza", description: "Baw się bez ograniczeń" },
       { time: "8:00", label: "Poranek", description: "Obudź się bez kaca — gotowa na nowy dzień" },
     ],
+    ritualMeta: {
+      bestFor: "Kolacje, imprezy, randki, eventy social",
+      instead: "Zamiast wina, prosecco, koktajli alkoholowych",
+      pairsWith: "Lód, pomarańcza, rozmaryn, tonik",
+      avoid: "Picie bez okazji — to elixir, nie codzienność",
+    },
+    occasion: {
+      eyebrow: "Social & dinner table",
+      headline: "Celebracja bez kaca",
+      subtitle: "Aperitivo, które wygląda i smakuje jak drink. Bez alkoholu.",
+      replaces: ["Wino", "Non-alc wine", "Cocktails", "Three Spirit", "Kin Euphorics"],
+    },
     reviews: [
       { author: "Priyanka B.", role: "Software Developer", rating: 5, text: "Diva is my go-to for social events. All the fun, none of the hangover.", verified: true },
       { author: "Zuzia T.", role: "PR Manager", rating: 5, text: "Brokat robi wrażenie na każdym. Idealna do koktajli na imprezę.", verified: true },
