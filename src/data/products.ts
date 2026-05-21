@@ -200,7 +200,7 @@ export const products: Product[] = [
     ],
     quickFacts: [
       { icon: Sparkles, label: "Smak", value: "Miód i lawenda" },
-      { icon: Moon, label: "Pora dnia", value: "Wieczór" },
+      { icon: Moon, label: "Pora dnia", value: "Popołudnie i wieczór" },
       { icon: Wine, label: "Format", value: "330 ml · gazowany" },
       { icon: Zap, label: "Wysyłka", value: "24h kurierem" },
     ],
