@@ -111,6 +111,20 @@ const ProductHero = ({ product }: Props) => {
         });
       }
     }
+
+    // Optional addon (Glass / BrainBliss / Matcha) — flat-priced, no subscription discount
+    if (addonSelected && addon) {
+      addItem({
+        productId: addon.slug,
+        productName: addon.name,
+        productImage: addon.image,
+        isDiva: product.isDiva,
+        bottlesPerUnit: 1,
+        unitPrice: addon.price,
+        originalUnitPrice: addon.price,
+        isSubscription: false,
+      });
+    }
   };
 
   return (
