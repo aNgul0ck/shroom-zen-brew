@@ -8,11 +8,11 @@ import productBrainbliss from "@/assets/product-brainbliss.png";
 const products = [
   {
     name: "Shroom Power",
-    tagline: "Twój poranny rytuał.",
-    description: "Funkcjonalny napój na poranek. Z soplówką jeżowatą i żeń-szeniem.",
+    tagline: "Twój dzienny rytuał.",
+    description: "Funkcjonalny napój na cały dzień. Z soplówką jeżowatą i żeń-szeniem.",
     image: productPower,
     icon: Sun,
-    time: "Rano",
+    time: "Dzień",
     benefits: ["Lion's Mane", "Żeń-szeń", "Wit. C"],
     borderColor: "border-t-shroom-gold",
     badgeBg: "bg-shroom-gold",
@@ -21,11 +21,11 @@ const products = [
   },
   {
     name: "Shroom Relax",
-    tagline: "Twój wieczorny rytuał.",
-    description: "Funkcjonalny napój na wieczór. Z L-teaniną i chmielem. Bez alkoholu.",
+    tagline: "Twój popołudniowy i wieczorny rytuał.",
+    description: "Funkcjonalny napój na popołudnie i wieczór. Z L-teaniną i chmielem. Bez alkoholu.",
     image: productRelax,
     icon: Moon,
-    time: "Wieczór",
+    time: "Popołudnie / wieczór",
     benefits: ["Lion's Mane", "L-Teanina", "Chmiel"],
     borderColor: "border-t-shroom-green",
     badgeBg: "bg-shroom-green",
@@ -147,7 +147,7 @@ const FunctionalDrinks = () => {
           {/* Duo CTA strip */}
           <div className="border border-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-3 px-5 py-4 mb-[3px]">
             <p className="font-display text-sm font-bold text-foreground text-center sm:text-left">
-              Rano + Wieczór = pełny rytm <span className="text-foreground/30">→</span>
+              Dzień + Wieczór = pełny rytm <span className="text-foreground/30">→</span>
             </p>
             <Link
               to="/produkt/shroom-power"
@@ -168,7 +168,7 @@ const FunctionalDrinks = () => {
         {/* Desktop duo CTA — below 4-col grid */}
         <div className="hidden lg:flex border border-foreground/10 items-center justify-between px-8 py-5 mt-[3px]">
           <p className="font-display text-base font-bold text-foreground">
-            Rano + Wieczór = pełny rytm <span className="text-foreground/30">→</span>
+            Dzień + Wieczór = pełny rytm <span className="text-foreground/30">→</span>
           </p>
           <Link
             to="/produkt/shroom-power"

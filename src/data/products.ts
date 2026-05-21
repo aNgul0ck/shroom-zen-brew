@@ -146,15 +146,15 @@ export const products: Product[] = [
     ],
     routine: [
       { time: "7:00", label: "Poranek", description: "Poranny rytuał zamiast porannej kawy." },
-      { time: "9:00", label: "Praca", description: "Codzienny rytuał w trakcie pracy." },
-      { time: "14:00", label: "Popołudnie", description: "Druga butelka w środku dnia." },
-      { time: "18:00", label: "Wieczór", description: "Bez kofeiny. Bez problemów z zasypianiem." },
+      { time: "10:00", label: "Praca", description: "Codzienny rytuał w trakcie pracy." },
+      { time: "13:00", label: "Lunch", description: "Druga butelka w środku dnia." },
+      { time: "16:00", label: "Popołudnie", description: "Domknięcie dnia pracy bez kolejnej kawy." },
     ],
     ritualMeta: {
-      bestFor: "Praca, codzienne projekty, poranny rytuał",
+      bestFor: "Poranek, praca, popołudniowa przerwa",
       instead: "Zamiast porannej kawy lub energetyka",
       pairsWith: "Śniadanie, lunch, przerwa popołudniowa",
-      avoid: "Tuż przed snem (kwestia smaku, nie składu)",
+      avoid: "Późny wieczór (kwestia rytuału, nie składu)",
     },
     occasion: {
       eyebrow: "Poranek i dzień",
@@ -179,8 +179,8 @@ export const products: Product[] = [
   {
     slug: "shroom-relax",
     name: "Shroom Relax",
-    tagline: "Spokój i regeneracja",
-    description: "Funkcjonalny napój z L-teaniną i chmielem. Wyciszenie po intensywnym dniu bez senności.",
+    tagline: "Twój popołudniowy i wieczorny rytuał",
+    description: "Funkcjonalny napój z L-teaniną i chmielem. Rytuał wyciszenia po intensywnym dniu, bez alkoholu.",
     image: productRelax,
     gallery: [
       { src: productRelax, alt: "Shroom Relax — butelka 330ml" },
@@ -200,7 +200,7 @@ export const products: Product[] = [
     ],
     quickFacts: [
       { icon: Sparkles, label: "Smak", value: "Miód i lawenda" },
-      { icon: Moon, label: "Pora dnia", value: "Wieczór" },
+      { icon: Moon, label: "Pora dnia", value: "Popołudnie i wieczór" },
       { icon: Wine, label: "Format", value: "330 ml · gazowany" },
       { icon: Zap, label: "Wysyłka", value: "24h kurierem" },
     ],
@@ -244,7 +244,7 @@ export const products: Product[] = [
       { question: "Jak smakuje Shroom Relax?", answer: "Delikatny, ziołowy smak z nutą miodu i lawendy. Lekko gazowany, idealny na wieczór." },
       { question: "Czy powoduje senność?", answer: "Nie zawiera substancji nasennych. To napój funkcjonalny, nie lek." },
       { question: "Kiedy najlepiej pić?", answer: "Najlepsze efekty 1-2 godziny przed planowanym snem." },
-      { question: "Czy mogę łączyć z Power?", answer: "Tak! Power rano, Relax wieczorem — to pełny cykl dnia i nocy." },
+      { question: "Czy mogę łączyć z Power?", answer: "Tak. Power w ciągu dnia, Relax popołudniami i wieczorem. Pełny rytuał od rana do nocy." },
       { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 200 zł." },
     ],
     trustBadges: ["Darmowa dostawa od 200 zł", "100% naturalne składniki", "Made in Poland"],
@@ -278,7 +278,7 @@ export const products: Product[] = [
     ingredients: [
       { name: "Żeń-szeń", dosage: "200 mg", benefit: "Roślina o wielowiekowej tradycji w kulturze koreańskiej.", icon: Zap },
       { name: "Składniki botaniczne (13x)", dosage: "Kompleks", benefit: "Unikalna mieszanka kwiatów, ziół i korzeni", icon: Leaf },
-      { name: "Jadalny brokat", dosage: "—", benefit: "Certyfikowany do kontaktu z żywnością — efekt wizualny", icon: Sparkles },
+      { name: "Jadalny brokat", dosage: "·", benefit: "Certyfikowany do kontaktu z żywnością. Efekt wizualny.", icon: Sparkles },
       { name: "Cynk", dosage: "10mg (100% RWS)", benefit: "Przyczynia się do prawidłowej funkcji poznawczej*", icon: Brain },
     ],
     routine: [
