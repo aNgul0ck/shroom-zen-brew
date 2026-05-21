@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import QuizPage from "./pages/QuizPage";
 import CartPage from "./pages/Cart";
 import CartDrawer from "./components/cart/CartDrawer";
+import CuriosityPopup from "./components/CuriosityPopup";
 import QaProgressBar from "./pages/QaProgressBar";
 import AboutPage from "./pages/AboutPage";
 import B2bPage from "./pages/B2bPage";
@@ -28,6 +29,7 @@ const App = () => (
         {/* CartDrawer must be inside BrowserRouter — it uses <Link> for the
             "Zobacz cały koszyk" CTA, which requires a Router context. */}
         <CartDrawer />
+        <CuriosityPopup />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/brief" element={<Brief />} />
