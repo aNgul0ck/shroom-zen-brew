@@ -294,7 +294,7 @@ const ComparisonSection = () => {
                   <th
                     scope="col"
                     className="sticky left-0 z-10 text-left align-bottom p-3 md:p-4"
-                    style={{ backgroundColor: "#FAF7F2", width: "130px", minWidth: "130px" }}
+                    style={{ backgroundColor: "#FAF7F2" }}
                   >
                     <span className="sr-only">Kryterium</span>
                   </th>
@@ -306,7 +306,6 @@ const ComparisonSection = () => {
                       style={{
                         backgroundColor: c.isShroom ? "#1C0A12" : "#F0EAE0",
                         color: c.isShroom ? "#FAF7F2" : "#1C0A12",
-                        minWidth: "110px",
                         borderTopLeftRadius: c.isShroom ? "12px" : "0",
                         borderTopRightRadius: c.isShroom ? "12px" : "0",
                       }}
