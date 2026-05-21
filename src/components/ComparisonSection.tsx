@@ -278,10 +278,17 @@ const ComparisonSection = () => {
         {/* Table */}
         <div className="max-w-[1000px] mx-auto">
           <div className="overflow-x-auto md:overflow-visible -mx-6 md:mx-0 px-6 md:px-0">
-            <table className="w-full border-collapse" style={{ minWidth: "560px" }}>
+            <table className="w-full border-collapse table-fixed" style={{ minWidth: "640px" }}>
               <caption className="sr-only">
                 {active.productLabel} w porównaniu z konkurencją
               </caption>
+              <colgroup>
+                <col style={{ width: "22%" }} />
+                <col style={{ width: "19.5%" }} />
+                <col style={{ width: "19.5%" }} />
+                <col style={{ width: "19.5%" }} />
+                <col style={{ width: "19.5%" }} />
+              </colgroup>
               <thead>
                 <tr>
                   <th
