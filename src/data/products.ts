@@ -113,7 +113,7 @@ export const products: Product[] = [
   {
     slug: "shroom-power",
     name: "Shroom Power",
-    tagline: "Twój poranny rytuał",
+    tagline: "Twój dzienny rytuał",
     description: "Funkcjonalny napój z soplówką jeżowatą i żeń-szeniem koreańskim. Bez kofeiny, bez dodanego cukru.",
     image: productPower,
     price: 79,
