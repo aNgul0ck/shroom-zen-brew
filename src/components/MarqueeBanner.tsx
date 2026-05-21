@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
 const keywords = [
-  "Adaptogens",
-  "Nootropics",
+  "Lion's Mane",
   "Botanicals",
-  "Medicinal Mushrooms",
-  "Natural",
-  "Mood enhancing",
+  "Functional drinks",
+  "Zero alcohol",
+  "No added sugar",
+  "Made in Poland",
 ];
 
 const MarqueeBanner = () => {

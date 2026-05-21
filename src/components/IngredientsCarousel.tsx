@@ -2,12 +2,12 @@ import { Brain, Zap, Moon, Leaf, Heart, Shield } from "lucide-react";
 import { useState } from "react";
 
 const ingredients = [
-  { name: "Lion's Mane", icon: Brain, benefit: "Supports brain function, boosts immune system", color: "bg-shroom-gold", textColor: "text-shroom-gold" },
-  { name: "L-Teanina", icon: Moon, benefit: "Promotes relaxation and calm alertness", color: "bg-shroom-sky", textColor: "text-shroom-sky" },
-  { name: "Żeń-szeń", icon: Zap, benefit: "Stamina and vitality boost", color: "bg-shroom-green", textColor: "text-shroom-green" },
-  { name: "Chmiel", icon: Leaf, benefit: "Wsparcie regeneracji i snu", color: "bg-shroom-sage", textColor: "text-shroom-sage" },
-  { name: "Witamina C", icon: Shield, benefit: "Ochrona organizmu i odporność", color: "bg-shroom-peach", textColor: "text-shroom-peach" },
-  { name: "Cynk", icon: Heart, benefit: "Prawidłowe funkcjonowanie metabolizmu", color: "bg-shroom-green", textColor: "text-shroom-green" },
+  { name: "Lion's Mane", icon: Brain, benefit: "Soplówka jeżowata. Grzyb funkcjonalny z tradycji azjatyckiej. 500 mg w butelce.", color: "bg-shroom-gold", textColor: "text-shroom-gold" },
+  { name: "L-Teanina", icon: Moon, benefit: "Aminokwas naturalnie obecny w liściach zielonej herbaty.", color: "bg-shroom-sky", textColor: "text-shroom-sky" },
+  { name: "Żeń-szeń", icon: Zap, benefit: "Roślina o wielowiekowej tradycji w kulturze koreańskiej.", color: "bg-shroom-green", textColor: "text-shroom-green" },
+  { name: "Chmiel", icon: Leaf, benefit: "Tradycyjny składnik wieczornych naparów.", color: "bg-shroom-sage", textColor: "text-shroom-sage" },
+  { name: "Witamina C", icon: Shield, benefit: "Przyczynia się do prawidłowego funkcjonowania układu odpornościowego (EFSA).", color: "bg-shroom-peach", textColor: "text-shroom-peach" },
+  { name: "Cynk", icon: Heart, benefit: "Przyczynia się do prawidłowej funkcji poznawczej (EFSA).", color: "bg-shroom-green", textColor: "text-shroom-green" },
 ];
 
 const IngredientsCarousel = () => {
@@ -23,10 +23,10 @@ const IngredientsCarousel = () => {
             <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em] mb-3">
               Składniki
             </p>
-            <h2 className="ed-heading text-foreground leading-tight">Adaptogens</h2>
+            <h2 className="ed-heading text-foreground leading-tight">Składniki</h2>
           </div>
           <p className="font-body text-sm lg:text-base text-foreground/50 max-w-xs">
-            Natural botanicals and fungal extracts for homeostasis.
+            Naturalne składniki botaniczne i ekstrakty z grzybów. Pełen skład znajdziesz na etykiecie.
           </p>
         </div>
 

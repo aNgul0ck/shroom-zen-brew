@@ -19,12 +19,12 @@ const Index = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Shroom - Napoje funkcjonalne z soplówką jeżowatą</title>
+        <title>Shroom . Napoje funkcjonalne z soplówką jeżowatą</title>
         <meta
           name="description"
-          content="Shroom to pierwszy w Polsce napój funkcjonalny z soplówką jeżowatą. Źródło cynku i witaminy C. Bez dodanego cukru, bez sztucznych dodatków."
+          content="Shroom to polski napój funkcjonalny z soplówką jeżowatą. Źródło cynku i witaminy C. Bez dodanego cukru, bez sztucznych dodatków."
         />
-        <meta name="keywords" content="shroom, soplówka jeżowata, lion's mane, napój funkcjonalny, wellness, zdrowy napój, diva, social elixir, brainbliss, cynk, witamina c" />
+        <meta name="keywords" content="shroom, soplówka jeżowata, lion's mane, napój funkcjonalny, well-being, funkcjonalny napój, diva, social elixir, brainbliss, cynk, witamina c" />
         <link rel="canonical" href="https://shroom4you.com" />
       </Helmet>
 

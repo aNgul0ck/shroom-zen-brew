@@ -49,7 +49,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="font-body text-base sm:text-lg text-white/70 leading-relaxed mb-8 max-w-md"
           >
-            Funkcjonalne napoje z soplówką jeżowatą. Energia, spokój i dobre samopoczucie — bez kompromisów.
+            Funkcjonalne napoje z soplówką jeżowatą. Twój rytuał dobrego samopoczucia, bez kompromisów.
           </motion.p>
 
           {/* Trust pills — sharp, editorial */}
@@ -105,7 +105,7 @@ const Hero = () => {
                 "Diva zastąpiła mi kieliszek wina. Wychodzę, bawię się i rano czuję się super."
               </p>
               <p className="font-body text-xs text-white/40 mt-1.5">
-                — Ewa K., Projektantka UX
+                Ewa K., Projektantka UX
               </p>
             </div>
           </motion.div>
