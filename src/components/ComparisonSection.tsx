@@ -30,7 +30,7 @@ const datasets: Dataset[] = [
   {
     productKey: "power",
     productLabel: "Shroom Power",
-    headline: { line1: "Czyste składniki.", line2: "Żadnych skrótów." },
+    headline: { line1: "Czyste składniki.", line2: "Żadnych kompromisów." },
     intro: (
       <>
         Shroom Power to <strong style={{ color: "#1C0A12", fontWeight: 600 }}>orzeźwiający napój funkcjonalny</strong>,
