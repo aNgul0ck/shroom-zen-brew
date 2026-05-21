@@ -244,7 +244,7 @@ export const products: Product[] = [
       { question: "Jak smakuje Shroom Relax?", answer: "Delikatny, ziołowy smak z nutą miodu i lawendy. Lekko gazowany, idealny na wieczór." },
       { question: "Czy powoduje senność?", answer: "Nie zawiera substancji nasennych. To napój funkcjonalny, nie lek." },
       { question: "Kiedy najlepiej pić?", answer: "Najlepsze efekty 1-2 godziny przed planowanym snem." },
-      { question: "Czy mogę łączyć z Power?", answer: "Tak! Power rano, Relax wieczorem — to pełny cykl dnia i nocy." },
+      { question: "Czy mogę łączyć z Power?", answer: "Tak. Power w ciągu dnia, Relax popołudniami i wieczorem. Pełny rytuał od rana do nocy." },
       { question: "Jaki jest czas dostawy?", answer: "Wysyłka w 24h od zamówienia. Dostawa kurierem 1-2 dni robocze. Darmowa od 200 zł." },
     ],
     trustBadges: ["Darmowa dostawa od 200 zł", "100% naturalne składniki", "Made in Poland"],
