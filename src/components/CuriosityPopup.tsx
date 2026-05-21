@@ -308,7 +308,7 @@ const CuriosityPopup = () => {
       </div>
 
       {/* Expanded modal */}
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent
           className="max-w-[760px] w-[calc(100%-2rem)] p-0 gap-0 border-2 rounded-none overflow-hidden max-h-[90vh] overflow-y-auto"
           style={{ backgroundColor: "#FAF7F2", borderColor: "#1C0A12" }}
