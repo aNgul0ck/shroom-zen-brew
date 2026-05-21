@@ -224,15 +224,15 @@ export const products: Product[] = [
       { time: "23:00", label: "Sen", description: "Głęboka, regeneracyjna noc" },
     ],
     ritualMeta: {
-      bestFor: "Wieczorny reset, joga, czytanie, czas dla siebie",
-      instead: "Zamiast lampki wina lub piwa",
-      pairsWith: "Kolacja, kąpiel, wieczorny serial",
+      bestFor: "Reset po stresującym dniu, gdy przesadzisz z kawą, wieczór dla siebie",
+      instead: "Zamiast lampki wina, piwa lub kolejnej kawy",
+      pairsWith: "Kolacja, kąpiel, joga, czytanie, wieczorny serial",
       avoid: "Tuż przed treningiem siłowym",
     },
     occasion: {
       eyebrow: "Evening wind-down",
       headline: "Wyciszenie bez kaca",
-      subtitle: "Zwolnij obroty po pracy. Bez alkoholu, bez senności następnego dnia.",
+      subtitle: "Zwolnij obroty po pracy pełnej kawy i stresu. Bez alkoholu, bez senności następnego dnia.",
       replaces: ["Piwo", "Herbata ziołowa", "CBD drinks", "Kombucha", "Wino"],
     },
     reviews: [
