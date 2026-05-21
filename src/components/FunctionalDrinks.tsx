@@ -195,7 +195,7 @@ const SecondaryCard = ({ product }: { product: SecondaryProduct }) => {
 const DivaBanner = () => {
   return (
     <div
-      className="relative overflow-hidden border border-white/10 my-10 md:my-16"
+      className="relative overflow-hidden border border-white/10 my-6 sm:my-10 md:my-16"
       style={{
         background:
           "radial-gradient(120% 100% at 20% 0%, hsl(280 40% 22%) 0%, hsl(265 35% 14%) 45%, hsl(260 50% 8%) 100%)",
