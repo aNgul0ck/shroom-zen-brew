@@ -45,7 +45,7 @@ const ProductRoutine = ({ product }: Props) => {
 
           {/* Meta strip — Best for / Instead / Pairs / Avoid */}
           {metaItems.length > 0 && (
-            <div className={`grid grid-cols-2 md:grid-cols-4 mb-10 md:mb-14 border-t-2 border-l-2 ${isDiva ? "border-white/20" : "border-foreground"}`}>
+            <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-10 md:mb-14 border-t-2 border-l-2 ${isDiva ? "border-white/20" : "border-foreground"}`}>
               {metaItems.map((m) => {
                 const Icon = m.icon;
                 return (
@@ -69,13 +69,13 @@ const ProductRoutine = ({ product }: Props) => {
 
 
           {/* Hour-by-hour ritual */}
-          <div className={`grid grid-cols-1 md:grid-cols-4 border-t border-l ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
+          <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-l ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
             {product.routine.map((step, index) => (
               <div
                 key={step.time}
-                className={`relative p-6 md:p-8 border-b border-r ${isDiva ? "border-white/15 hover:bg-white/[0.03]" : "border-foreground/15 hover:bg-foreground/[0.03]"} transition-colors duration-200`}
+                className={`relative p-5 md:p-6 lg:p-8 border-b border-r ${isDiva ? "border-white/15 hover:bg-white/[0.03]" : "border-foreground/15 hover:bg-foreground/[0.03]"} transition-colors duration-200`}
               >
-                <div className={`font-headline text-5xl md:text-6xl mb-3 ${isDiva ? "text-diva-pink/70" : "text-foreground/30"}`}>
+                <div className={`font-headline text-4xl md:text-5xl lg:text-6xl mb-3 ${isDiva ? "text-diva-pink/70" : "text-foreground/30"}`}>
                   {String(index + 1).padStart(2, "0")}
                 </div>
                 <p className={`font-display text-xs uppercase tracking-[0.2em] mb-2 ${isDiva ? "text-diva-pink" : "text-foreground/60"}`}>

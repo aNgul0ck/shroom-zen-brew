@@ -285,13 +285,13 @@ export const products: Product[] = [
       { time: "18:00", label: "Przygotowania", description: "Wybierz ulubiony kieliszek" },
       { time: "19:00", label: "Aperitivo", description: "Podaj Divę z lodem i plasterkiem pomarańczy" },
       { time: "21:00", label: "Impreza", description: "Baw się bez ograniczeń" },
-      { time: "8:00", label: "Poranek", description: "Obudź się bez kaca — gotowa na nowy dzień" },
+      { time: "8:00", label: "Poranek", description: "Obudź się bez kaca. Gotowa na nowy dzień." },
     ],
     ritualMeta: {
       bestFor: "Kolacje, imprezy, randki, eventy social",
       instead: "Zamiast wina, prosecco, koktajli alkoholowych",
       pairsWith: "Lód, pomarańcza, rozmaryn, tonik",
-      avoid: "Picie bez okazji — to elixir, nie codzienność",
+      avoid: "Picie bez okazji. To elixir, nie codzienność.",
     },
     occasion: {
       eyebrow: "Social & dinner table",
