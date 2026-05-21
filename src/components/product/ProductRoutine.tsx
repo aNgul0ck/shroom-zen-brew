@@ -66,6 +66,41 @@ const ProductRoutine = ({ product }: Props) => {
             </div>
           )}
 
+          {/* Daytime SOS — only for Relax */}
+          {product.slug === "shroom-relax" && (
+            <div className="mb-10 md:mb-14 border-2 border-foreground">
+              <div className="px-5 md:px-6 py-3 border-b-2 border-foreground bg-foreground text-background">
+                <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em]">
+                  Dzienny SOS · nie tylko wieczór
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="p-5 md:p-6 flex items-start gap-4 border-b-2 md:border-b-0 md:border-r-2 border-foreground">
+                  <Coffee className="w-5 h-5 mt-0.5 shrink-0" strokeWidth={2} />
+                  <div>
+                    <p className="font-display text-sm font-bold uppercase tracking-wide mb-1">
+                      Za dużo kawy
+                    </p>
+                    <p className="font-body text-sm leading-snug text-foreground/70">
+                      Trzęsą Ci się ręce po trzeciej kawie? Sięgnij po Relax — L-teanina wygładza działanie kofeiny, bez crashu.
+                    </p>
+                  </div>
+                </div>
+                <div className="p-5 md:p-6 flex items-start gap-4">
+                  <Zap className="w-5 h-5 mt-0.5 shrink-0" strokeWidth={2} />
+                  <div>
+                    <p className="font-display text-sm font-bold uppercase tracking-wide mb-1">
+                      Stres dojechał w pracy
+                    </p>
+                    <p className="font-body text-sm leading-snug text-foreground/70">
+                      Trudna rozmowa, deadline, zła wiadomość? Otwórz Relax w środku dnia — chmiel i adaptogeny resetują głowę, bez senności.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Hour-by-hour ritual */}
           <div className={`grid grid-cols-1 md:grid-cols-4 border-t border-l ${isDiva ? "border-white/15" : "border-foreground/15"}`}>
             {product.routine.map((step, index) => (
