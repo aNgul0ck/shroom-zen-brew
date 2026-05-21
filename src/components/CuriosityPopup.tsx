@@ -150,19 +150,31 @@ const getSeenMap = (): Record<string, number> => {
   }
 };
 
-const pickCuriosity = (): Curiosity => {
-  const seen = getSeenMap();
-  // pick the curiosity with the lowest seen count, ties broken by array order
-  let best = curiosities[0];
-  let bestCount = seen[best.id] ?? 0;
-  for (const c of curiosities) {
-    const count = seen[c.id] ?? 0;
-    if (count < bestCount) {
-      best = c;
-      bestCount = count;
-    }
+const getConsumed = (): string[] => {
+  try {
+    const v = JSON.parse(sessionStorage.getItem(CONSUMED_KEY) || "[]");
+    return Array.isArray(v) ? v : [];
+  } catch {
+    return [];
   }
-  return best;
+};
+
+const markConsumed = (id: string) => {
+  try {
+    const arr = getConsumed();
+    if (!arr.includes(id)) {
+      arr.push(id);
+      sessionStorage.setItem(CONSUMED_KEY, JSON.stringify(arr));
+    }
+  } catch {}
+};
+
+const pickNextCuriosity = (): Curiosity | null => {
+  const consumed = new Set(getConsumed());
+  const unseen = curiosities.filter((c) => !consumed.has(c.id));
+  if (unseen.length === 0) return null;
+  // pick the first unseen in definition order
+  return unseen[0];
 };
 
 const CuriosityPopup = () => {
@@ -171,29 +183,34 @@ const CuriosityPopup = () => {
   const [open, setOpen] = useState(false);
   const [animateBars, setAnimateBars] = useState(false);
   const [curiosity, setCuriosity] = useState<Curiosity | null>(null);
+  const [scheduleTick, setScheduleTick] = useState(0);
 
   const isExcluded = EXCLUDED_PATHS.some((p) => location.pathname.startsWith(p));
 
+  // Schedule showing the next unseen curiosity
   useEffect(() => {
     if (isExcluded) return;
     if (typeof window === "undefined") return;
-    try {
-      if (sessionStorage.getItem(DISMISSED_KEY)) return;
-    } catch {}
-    const picked = pickCuriosity();
-    setCuriosity(picked);
-    const seen = getSeenMap();
-    const totalShown = Object.values(seen).reduce((a, b) => a + b, 0);
-    const delay = totalShown > 0 ? 1500 : 6000;
+    if (visible || open) return;
+
+    const picked = pickNextCuriosity();
+    if (!picked) return;
+
+    const consumed = getConsumed();
+    const isFirstEver = consumed.length === 0;
+    const delay = isFirstEver ? FIRST_DELAY_MS : scheduleTick === 0 ? REPEAT_DELAY_MS : NEXT_AFTER_CONSUME_MS;
+
     const t = setTimeout(() => {
+      setCuriosity(picked);
       setVisible(true);
       try {
+        const seen = getSeenMap();
         seen[picked.id] = (seen[picked.id] ?? 0) + 1;
         sessionStorage.setItem(SEEN_KEY, JSON.stringify(seen));
       } catch {}
     }, delay);
     return () => clearTimeout(t);
-  }, [isExcluded]);
+  }, [isExcluded, scheduleTick, visible, open]);
 
   useEffect(() => {
     if (open) {
@@ -203,12 +220,31 @@ const CuriosityPopup = () => {
     }
   }, [open]);
 
+  // When user closes the modal, consume current and queue the next
+  useEffect(() => {
+    if (!open && curiosity && visible === false) return;
+    // no-op placeholder; actual consume happens via handlers below
+  }, [open, curiosity, visible]);
+
+  const consumeAndQueueNext = (id: string) => {
+    markConsumed(id);
+    setVisible(false);
+    setCuriosity(null);
+    // bump tick to re-run scheduler with NEXT_AFTER_CONSUME_MS delay
+    setScheduleTick((n) => n + 1);
+  };
+
   const handleDismiss = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setVisible(false);
-    try {
-      sessionStorage.setItem(DISMISSED_KEY, "1");
-    } catch {}
+    if (curiosity) consumeAndQueueNext(curiosity.id);
+  };
+
+  const handleOpenChange = (next: boolean) => {
+    setOpen(next);
+    if (!next && curiosity) {
+      // closing modal counts as consuming
+      consumeAndQueueNext(curiosity.id);
+    }
   };
 
   const widths = useMemo(() => {
