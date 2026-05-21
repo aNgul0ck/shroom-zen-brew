@@ -12,10 +12,13 @@ type Row = {
 
 const rows: Row[] = [
   { label: "Dodany cukier", shroom: "0 g", energy: "25–40 g", coffee: "0 g", kombucha: "2–8 g" },
+  { label: "Fermentowany", shroom: "x", energy: "x", coffee: "x", kombucha: "check" },
+  { label: "Profil smaku", shroom: "orzeźwiający", energy: "słodki", coffee: "gorzki", kombucha: "octowy" },
   { label: "Sztuczne słodziki", shroom: "check", energy: "x", coffee: "check", kombucha: "check" },
   { label: "Sztuczne barwniki", shroom: "check", energy: "x", coffee: "check", kombucha: "check" },
   { label: "Grzyby funkcjonalne", shroom: "660 mg Lion's Mane", energy: "dash", coffee: "dash", kombucha: "dash" },
   { label: "Adaptogeny", shroom: "żeń-szeń", energy: "x", coffee: "x", kombucha: "x" },
+  { label: "Kultury / błonnik", shroom: "probiotyk", energy: "dash", coffee: "dash", kombucha: "prebiotyk" },
   { label: "Źródło cynku", shroom: "check", energy: "x", coffee: "x", kombucha: "x" },
   { label: "Źródło witaminy C", shroom: "check", energy: "x", coffee: "x", kombucha: "x" },
 ];
@@ -117,11 +120,37 @@ const ComparisonSection = () => {
           </h2>
           <p
             className="font-body mx-auto"
-            style={{ color: "#7A6055", fontSize: "17px", lineHeight: 1.55, maxWidth: "520px" }}
+            style={{ color: "#7A6055", fontSize: "17px", lineHeight: 1.55, maxWidth: "540px" }}
           >
-            Shroom Power łączy grzyby funkcjonalne z adaptogenami i naturalnymi sokami — bez dodanego cukru,
-            bez sztucznych barwników. Sprawdź, co masz w butelce.
+            Shroom Power to <strong style={{ color: "#1C0A12", fontWeight: 600 }}>orzeźwiający napój funkcjonalny</strong> —
+            nie fermentowany kwas. Grzyby, adaptogeny i naturalne soki w czystej formule.
+            Sprawdź, co masz w butelce.
           </p>
+
+          {/* Pro vs Pre callout */}
+          <div
+            className="mt-8 grid grid-cols-2 gap-[2px] max-w-[520px] mx-auto"
+            style={{ border: "1px solid #1C0A12" }}
+          >
+            <div className="p-4 text-left" style={{ backgroundColor: "#1C0A12", color: "#FAF7F2" }}>
+              <p className="font-body text-[10px] uppercase tracking-[0.18em] mb-1" style={{ color: "#B8742A" }}>
+                :shroom
+              </p>
+              <p className="font-body font-semibold text-[15px]">Probiotyk</p>
+              <p className="font-body text-[12px] mt-1" style={{ color: "#C4B5A8" }}>
+                żywe kultury, lekki, orzeźwiający
+              </p>
+            </div>
+            <div className="p-4 text-left" style={{ backgroundColor: "#F0EAE0", color: "#1C0A12" }}>
+              <p className="font-body text-[10px] uppercase tracking-[0.18em] mb-1" style={{ color: "#7A6055" }}>
+                Kombucha
+              </p>
+              <p className="font-body font-semibold text-[15px]">Prebiotyk</p>
+              <p className="font-body text-[12px] mt-1" style={{ color: "#7A6055" }}>
+                fermentowana, octowy posmak
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Table */}
