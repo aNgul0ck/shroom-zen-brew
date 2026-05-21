@@ -12,7 +12,7 @@ const ProductRoutine = ({ product }: Props) => {
     ? "Twój wieczór z Divą"
     : product.slug === "shroom-power"
       ? "Twój dzień z Power"
-      : "Twój reset z Relax";
+      : "Twój rytuał z Relax";
 
   const meta = product.ritualMeta;
   const metaItems = meta
