@@ -11,40 +11,40 @@ const steps = [
     title: "Wypij",
     headline: "Jeden łyk. Zero bullshitu.",
     description:
-      "Bez sztucznych dodatków, bez cukru. Czysta formuła, która zaczyna działać od razu.",
+      "Bez sztucznych dodatków, bez dodanego cukru. Czysta formuła do Twojego codziennego rytuału.",
     color: "bg-shroom-gold/25",
   },
   {
     id: 2,
     icon: Zap,
     badge: "Krok 2",
-    time: "15–30 min",
-    title: "Wchłoń",
-    headline: "Składniki wchodzą do akcji.",
+    time: "15 do 30 min",
+    title: "Smak",
+    headline: "Naturalne składniki w każdym łyku.",
     description:
-      "L-teanina, adaptogeny i witaminy trafiają do krwioobiegu. Naturalna aktywacja lub wyciszenie — zależy od napoju.",
+      "L-teanina, składniki botaniczne, witaminy i ekstrakt z soplówki jeżowatej. Pełen skład znajdziesz na etykiecie.",
     color: "bg-shroom-sage/30",
   },
   {
     id: 3,
     icon: Brain,
     badge: "Krok 3",
-    time: "30–60 min",
-    title: "Poczuj",
-    headline: "Efekty stają się realne.",
+    time: "Pora dnia",
+    title: "Rytuał",
+    headline: "Power rano. Relax wieczorem.",
     description:
-      "Power: wyostrzone skupienie. Relax: spokój umysłu. Bez nerwowości, bez senności.",
+      "Twój wybór smaku i pory dnia. Dwa rytuały, jeden codzienny rytm.",
     color: "bg-shroom-lavender/25",
   },
   {
     id: 4,
     icon: Sparkles,
     badge: "Krok 4",
-    time: "2–4h+",
-    title: "Korzystaj",
-    headline: "Efekty rosną z czasem.",
+    time: "Codziennie",
+    title: "Codzienność",
+    headline: "Twój codzienny rytuał well-being.",
     description:
-      "Lion's Mane wspiera neuroplastyczność. Regularne picie = efekt kumulacyjny. To nie energy drink.",
+      "Soplówka jeżowata. Grzyb funkcjonalny z wielowiekowej tradycji azjatyckiej. Świadomy wybór dla siebie.",
     color: "bg-shroom-peach/30",
   },
 ];
@@ -122,7 +122,7 @@ const HowItWorks = () => {
           viewport={{ once: true }}
           className="font-body text-lg text-muted-foreground max-w-xl mb-16 md:mb-20"
         >
-          Naturalna droga do lepszego samopoczucia. Cztery kroki, zero magii — same składniki.
+          Codzienny rytuał well-being. Cztery kroki, zero magii, same naturalne składniki.
         </motion.p>
 
         {/* Mobile: Swipeable Timeline */}

@@ -33,8 +33,8 @@ const datasets: Dataset[] = [
     headline: { line1: "Czyste składniki.", line2: "Żadnych skrótów." },
     intro: (
       <>
-        Shroom Power to <strong style={{ color: "#1C0A12", fontWeight: 600 }}>orzeźwiający napój funkcjonalny</strong> —
-        nie energetyk, nie kawa, nie fermentowany kwas. Grzyby, adaptogeny i naturalne soki w czystej formule.
+        Shroom Power to <strong style={{ color: "#1C0A12", fontWeight: 600 }}>orzeźwiający napój funkcjonalny</strong>,
+        nie energetyk, nie kawa, nie fermentowany kwas. Grzyby, składniki botaniczne i naturalne soki w czystej formule.
       </>
     ),
     competitors: [
@@ -48,24 +48,24 @@ const datasets: Dataset[] = [
       { label: "Profil smaku", values: { shroom: "orzeźwiający", energy: "słodki", coffee: "gorzki", kombucha: "octowy" } },
       { label: "Sztuczne słodziki", values: { shroom: "check", energy: "x", coffee: "check", kombucha: "check" } },
       { label: "Sztuczne barwniki", values: { shroom: "check", energy: "x", coffee: "check", kombucha: "check" } },
-      { label: "Adaptogeny", values: { shroom: "Lion's Mane + żeń-szeń", energy: "dash", coffee: "dash", kombucha: "dash" } },
+      { label: "Składniki botaniczne", values: { shroom: "Lion's Mane + żeń-szeń", energy: "dash", coffee: "dash", kombucha: "dash" } },
       { label: "Fermentowane", values: { shroom: "Nie", energy: "Nie", coffee: "Nie", kombucha: "Tak" } },
       { label: "Źródło cynku", values: { shroom: "check", energy: "x", coffee: "x", kombucha: "x" } },
       { label: "Źródło witaminy C", values: { shroom: "check", energy: "x", coffee: "x", kombucha: "x" } },
     ],
     footer: {
       italic: "660 mg soplówki jeżowatej w każdej butelce.",
-      body: "To grzyb funkcjonalny stosowany w suplementacji — i jeden z powodów, dla których skład Shroom Power czyta się jak lista składników, nie jak lista kodów E.",
+      body: "Grzyb funkcjonalny z wielowiekowej tradycji azjatyckiej. Skład Shroom Power czyta się jak lista składników, nie jak lista kodów E.",
     },
   },
   {
     productKey: "relax",
     productLabel: "Shroom Relax",
-    headline: { line1: "Wieczorne wyciszenie.", line2: "Bez alkoholu, bez kompromisów." },
+    headline: { line1: "Wieczorny rytuał.", line2: "Bez alkoholu, bez kompromisów." },
     intro: (
       <>
-        Shroom Relax to <strong style={{ color: "#1C0A12", fontWeight: 600 }}>funkcjonalny napój wieczorny</strong> —
-        L-teanina, chmiel i adaptogeny. Pomaga zwolnić obroty bez piwa, bez nudnej herbaty, bez octowej kombuchy.
+        Shroom Relax to <strong style={{ color: "#1C0A12", fontWeight: 600 }}>funkcjonalny napój wieczorny</strong>.
+        L-teanina, chmiel i ekstrakt z soplówki jeżowatej. Bez piwa, bez nudnej herbaty, bez octowej kombuchy.
       </>
     ),
     competitors: [
@@ -75,9 +75,9 @@ const datasets: Dataset[] = [
       { key: "kombucha", label: "Kombucha", sub: "butelka", icon: "kombucha", isShroom: false },
     ],
     rows: [
-      { label: "Dodany cukier", values: { shroom: "0 g", beer: "3–5 g / 100ml", tea: "0 g", kombucha: "2–8 g" } },
+      { label: "Dodany cukier", values: { shroom: "0 g", beer: "3 do 5 g / 100 ml", tea: "0 g", kombucha: "2 do 8 g" } },
       { label: "L-teanina", values: { shroom: "200 mg", beer: "dash", tea: "dash", kombucha: "dash" } },
-      { label: "Adaptogeny", values: { shroom: "Lion's Mane + chmiel", beer: "dash", tea: "dash", kombucha: "dash" } },
+      { label: "Składniki botaniczne", values: { shroom: "Lion's Mane + chmiel", beer: "dash", tea: "dash", kombucha: "dash" } },
       { label: "Gluten", values: { shroom: "check", beer: "x", tea: "check", kombucha: "check" } },
       { label: "Probiotyk / Prebiotyk", values: { shroom: "Prebiotyk", beer: "dash", tea: "dash", kombucha: "Probiotyk" } },
       { label: "Fermentowane", values: { shroom: "Nie", beer: "Tak", tea: "Nie", kombucha: "Tak" } },
@@ -85,8 +85,8 @@ const datasets: Dataset[] = [
       { label: "Gotowy do picia (RTD)", values: { shroom: "check", beer: "check", tea: "x", kombucha: "check" } },
     ],
     footer: {
-      italic: "200 mg L-teaniny + 500 mg Lion's Mane w każdej butelce.",
-      body: "Wieczorny rytuał, który nie zostawia kaca następnego dnia. Spokój bez senności, regeneracja bez alkoholu.",
+      italic: "200 mg L-teaniny i 500 mg Lion's Mane w każdej butelce.",
+      body: "Wieczorny rytuał, który nie zostawia kaca następnego dnia. Bez alkoholu.",
     },
   },
   {
@@ -95,8 +95,8 @@ const datasets: Dataset[] = [
     headline: { line1: "Aperitivo bez kaca.", line2: "Cała celebracja, zero alkoholu." },
     intro: (
       <>
-        Diva to <strong style={{ color: "#1C0A12", fontWeight: 600 }}>bezalkoholowe aperitivo</strong> —
-        13 botaników, żeń-szeń i jadalny brokat. To samo doświadczenie co kieliszek wina,
+        Diva to <strong style={{ color: "#1C0A12", fontWeight: 600 }}>bezalkoholowe aperitivo</strong>.
+        13 składników botanicznych, żeń-szeń i jadalny brokat. Doświadczenie kieliszka wina,
         bez alkoholu i bez nudnych opcji 0%.
       </>
     ),
@@ -110,7 +110,7 @@ const datasets: Dataset[] = [
       { label: "Alkohol", values: { shroom: "0%", wine: "~12%", beer: "0%", gin: "0%" } },
       { label: "Kalorie", values: { shroom: "~35 kcal / 50ml", wine: "~120 kcal / 150ml", beer: "~30 kcal / 100ml", gin: "~50 kcal / drink" } },
       { label: "13 składników botanicznych", values: { shroom: "check", wine: "x", beer: "x", gin: "x" } },
-      { label: "Adaptogeny", values: { shroom: "żeń-szeń", wine: "dash", beer: "dash", gin: "dash" } },
+      { label: "Składniki botaniczne", values: { shroom: "żeń-szeń + 13 botaników", wine: "dash", beer: "dash", gin: "dash" } },
       { label: "Jadalny brokat", values: { shroom: "check", wine: "x", beer: "x", gin: "x" } },
       { label: "Źródło cynku", values: { shroom: "check", wine: "x", beer: "x", gin: "x" } },
       { label: "Nadaje się jako mixer", values: { shroom: "check", wine: "x", beer: "x", gin: "check" } },
@@ -118,7 +118,7 @@ const datasets: Dataset[] = [
     ],
     footer: {
       italic: "13 botaników i żeń-szeń w każdej butelce.",
-      body: "To samo doświadczenie, ten sam rytuał — bez alkoholu i bez kaca. Idealna baza do mocktaili lub samodzielne aperitivo.",
+      body: "To samo doświadczenie, ten sam rytuał, bez alkoholu i bez kaca. Baza do mocktaili lub samodzielne aperitivo.",
     },
   },
 ];

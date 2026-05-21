@@ -5,29 +5,29 @@ import { Brain, Battery, Moon, Heart } from "lucide-react";
 const pillars = [
   {
     icon: Brain,
-    title: "Focus",
-    description: "Wyostrz umysł bez kawy na pusty żołądek.",
+    title: "Rano",
+    description: "Poranny rytuał zamiast porannej kawy.",
     color: "bg-shroom-sage/40",
     ringColor: "hsl(84 33% 80%)",
   },
   {
     icon: Battery,
-    title: "Energy",
-    description: "Naturalna moc bez crashu o 15:00.",
+    title: "Praca",
+    description: "Codzienny rytuał w środku dnia.",
     color: "bg-shroom-peach/40",
     ringColor: "hsl(18 95% 86%)",
   },
   {
     icon: Moon,
-    title: "Relax",
-    description: "Wycisz się bez scrollowania do 3 w nocy.",
+    title: "Wieczór",
+    description: "Wieczorny rytuał bez alkoholu.",
     color: "bg-shroom-lavender/30",
     ringColor: "hsl(247 28% 64%)",
   },
   {
     icon: Heart,
-    title: "Balance",
-    description: "Adaptogeny, nie kolejna tabletka.",
+    title: "Social",
+    description: "Spotkania, kolacje, aperitivo bez alkoholu.",
     color: "bg-shroom-gold/30",
     ringColor: "hsl(40 100% 71%)",
   },
@@ -75,7 +75,7 @@ const IntroSection = () => {
             <span className="text-muted-foreground/40">like shit.</span>
           </h2>
           <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-            Napoje funkcjonalne z soplówką jeżowatą. Bez cukru, bez ściemy, bez efektów ubocznych. Tylko to, czego Twój organizm naprawdę potrzebuje.
+            Napoje funkcjonalne z soplówką jeżowatą. Bez dodanego cukru, bez ściemy. Świadomy wybór dla siebie.
           </p>
         </motion.div>
 

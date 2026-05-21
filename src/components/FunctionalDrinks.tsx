@@ -8,8 +8,8 @@ import productBrainbliss from "@/assets/product-brainbliss.png";
 const products = [
   {
     name: "Shroom Power",
-    tagline: "Energia bez bullshitu.",
-    description: "Aktywuj umysł i ciało. Czysta, stabilna energia na cały dzień.",
+    tagline: "Twój poranny rytuał.",
+    description: "Funkcjonalny napój na poranek. Z soplówką jeżowatą i żeń-szeniem.",
     image: productPower,
     icon: Sun,
     time: "Rano",
@@ -21,8 +21,8 @@ const products = [
   },
   {
     name: "Shroom Relax",
-    tagline: "Wyluzuj bez wina.",
-    description: "Wycisz się po intensywnym dniu. Regeneracja zaczyna się od odpuszczenia.",
+    tagline: "Twój wieczorny rytuał.",
+    description: "Funkcjonalny napój na wieczór. Z L-teaniną i chmielem. Bez alkoholu.",
     image: productRelax,
     icon: Moon,
     time: "Wieczór",
@@ -34,12 +34,12 @@ const products = [
   },
   {
     name: "Diva Social Elixir",
-    tagline: "Imprezuj bez alkoholu.",
-    description: "Bezalkoholowy aperitivo z adaptogenami. Na każde wyjście.",
+    tagline: "Aperitivo bez alkoholu.",
+    description: "Bezalkoholowy elixir z 13 składnikami botanicznymi. Na każde wyjście.",
     image: productDiva,
     icon: PartyPopper,
-    time: "Impreza",
-    benefits: ["Adaptogeny", "Bez alkoholu", "500ml"],
+    time: "Social",
+    benefits: ["13 botaników", "Bez alkoholu", "500 ml"],
     borderColor: "border-t-shroom-sky",
     badgeBg: "bg-shroom-sky",
     slug: "diva",
@@ -47,12 +47,12 @@ const products = [
   },
   {
     name: "BrainBliss",
-    tagline: "Lion's Mane w tabletce.",
-    description: "Soplówka jeżowata w czystej formie. Więcej z każdego dnia.",
+    tagline: "Lion's Mane w kapsułce.",
+    description: "Soplówka jeżowata w kapsułkach. 500 mg, 30 porcji.",
     image: productBrainbliss,
     icon: Brain,
     time: "Codziennie",
-    benefits: ["Lion's Mane 500mg", "30 porcji"],
+    benefits: ["Lion's Mane 500 mg", "30 porcji"],
     borderColor: "border-t-shroom-sage",
     badgeBg: "bg-shroom-sage",
     slug: "brainbliss",
@@ -153,7 +153,7 @@ const FunctionalDrinks = () => {
               to="/produkt/shroom-power"
               className="inline-flex items-center gap-2 border-2 border-foreground text-foreground px-5 py-2.5 font-display font-semibold text-xs hover:bg-foreground hover:text-background transition-colors whitespace-nowrap"
             >
-              Kup duet — 158 zł
+              Kup duet za 158 zł
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -174,7 +174,7 @@ const FunctionalDrinks = () => {
             to="/produkt/shroom-power"
             className="inline-flex items-center gap-2 border-2 border-foreground text-foreground px-6 py-3 font-display font-semibold text-sm hover:bg-foreground hover:text-background transition-colors"
           >
-            Kup duet — 158 zł
+            Kup duet za 158 zł
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
