@@ -104,29 +104,29 @@ const secondary: SecondaryProduct[] = [
 const HeroCard = ({ product }: { product: Product }) => {
   const Icon = product.icon;
   return (
-    <div className={`relative bg-background border-t-[4px] ${product.borderColor} p-6 md:p-10 lg:p-12 flex flex-col group overflow-hidden`}>
-      <span className={`${product.badgeBg} self-start px-3 py-1.5 font-display text-xs font-bold text-foreground flex items-center gap-1.5 mb-6`}>
-        <Icon className="w-3.5 h-3.5" />
+    <div className={`relative bg-background border-t-[4px] ${product.borderColor} p-4 sm:p-6 md:p-10 lg:p-12 flex flex-col group overflow-hidden`}>
+      <span className={`${product.badgeBg} self-start px-2 py-1 sm:px-3 sm:py-1.5 font-display text-[10px] sm:text-xs font-bold text-foreground flex items-center gap-1 sm:gap-1.5 mb-3 sm:mb-6`}>
+        <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
         {product.time}
       </span>
 
-      <div className="flex justify-center items-end min-h-[260px] md:min-h-[360px] mb-6">
+      <div className="flex justify-center items-end min-h-[160px] sm:min-h-[260px] md:min-h-[360px] mb-3 sm:mb-6">
         <img
           src={product.image}
           alt={product.name}
-          className="h-[260px] md:h-[360px] lg:h-[420px] w-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+          className="h-[160px] sm:h-[260px] md:h-[360px] lg:h-[420px] w-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
         />
       </div>
 
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
-        <div className="flex-1">
-          <h3 className="font-headline text-3xl md:text-4xl lg:text-5xl uppercase text-foreground leading-[0.95] mb-2">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-5">
+        <div className="flex-1 min-w-0">
+          <h3 className="font-headline text-xl sm:text-3xl md:text-4xl lg:text-5xl uppercase text-foreground leading-[0.95] mb-1 sm:mb-2">
             {product.name}
           </h3>
-          <p className="font-body text-sm md:text-base text-foreground/65 mb-4">
+          <p className="font-body text-xs sm:text-sm md:text-base text-foreground/65 mb-2 sm:mb-4 line-clamp-2">
             {product.tagline}
           </p>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-body text-xs md:text-sm text-foreground/60">
+          <div className="hidden sm:flex flex-wrap items-center gap-x-3 gap-y-1 font-body text-xs md:text-sm text-foreground/60">
             {product.benefits.map((b, i) => (
               <span key={b} className="flex items-center gap-3">
                 {i > 0 && <span className="text-foreground/25">|</span>}
@@ -134,14 +134,18 @@ const HeroCard = ({ product }: { product: Product }) => {
               </span>
             ))}
           </div>
+          <p className="sm:hidden font-display font-bold text-foreground text-sm">
+            {product.price}
+          </p>
         </div>
 
         <Link
           to={`/produkt/${product.slug}`}
-          className="inline-flex items-center justify-center gap-2 bg-foreground text-background font-display font-bold text-xs md:text-sm uppercase tracking-wider px-6 py-3.5 md:px-7 md:py-4 hover:opacity-85 transition-opacity whitespace-nowrap"
+          className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-foreground text-background font-display font-bold text-[11px] sm:text-xs md:text-sm uppercase tracking-wider px-3 py-2.5 sm:px-6 sm:py-3.5 md:px-7 md:py-4 hover:opacity-85 transition-opacity whitespace-nowrap"
         >
-          {product.cta}
-          <ArrowRight className="w-4 h-4" />
+          <span className="sm:hidden">Kup</span>
+          <span className="hidden sm:inline">{product.cta}</span>
+          <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </Link>
       </div>
     </div>
@@ -279,11 +283,11 @@ const DivaBanner = () => {
 const FunctionalDrinks = () => {
   return (
     <section className="bg-background" id="produkty">
-      <div className="container mx-auto px-6 lg:px-12 py-12 md:py-20">
+      <div className="container mx-auto px-5 sm:px-6 lg:px-12 py-10 md:py-20">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 lg:mb-14">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-4 mb-6 md:mb-14">
           <div>
-            <p className="font-body text-xs font-medium text-accent uppercase tracking-[0.2em] mb-3">
+            <p className="font-body text-xs font-medium text-accent uppercase tracking-[0.2em] mb-2 sm:mb-3">
               Shroom Drinks
             </p>
             <h2 className="ed-heading text-foreground leading-tight">
@@ -295,21 +299,21 @@ const FunctionalDrinks = () => {
           </p>
         </div>
 
-        {/* Hero duo: Power + Relax */}
-        <div className="grid md:grid-cols-2 gap-[3px] bg-foreground/10">
+        {/* Hero duo: Power + Relax — always 2 col, even on mobile */}
+        <div className="grid grid-cols-2 gap-[2px] sm:gap-[3px] bg-foreground/10">
           {hero.map((product) => (
             <HeroCard key={product.slug} product={product} />
           ))}
         </div>
 
         {/* Duo CTA strip */}
-        <div className="border border-t-0 border-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-3 px-5 md:px-8 py-4 md:py-5">
-          <p className="font-display text-sm md:text-base font-bold text-foreground text-center sm:text-left">
+        <div className="border border-t-0 border-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-3 px-4 sm:px-5 md:px-8 py-3.5 md:py-5">
+          <p className="font-display text-xs sm:text-sm md:text-base font-bold text-foreground text-center sm:text-left">
             Dzień + Wieczór = pełny rytm <span className="text-foreground/30">→</span>
           </p>
           <Link
             to="/produkt/shroom-power"
-            className="inline-flex items-center gap-2 border-2 border-foreground text-foreground px-5 py-2.5 md:px-6 md:py-3 font-display font-semibold text-xs md:text-sm hover:bg-foreground hover:text-background transition-colors whitespace-nowrap"
+            className="inline-flex items-center gap-2 border-2 border-foreground text-foreground px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 font-display font-semibold text-[11px] sm:text-xs md:text-sm hover:bg-foreground hover:text-background transition-colors whitespace-nowrap"
           >
             Kup duet za 158 zł
             <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
@@ -320,18 +324,31 @@ const FunctionalDrinks = () => {
         <DivaBanner />
 
         {/* Secondary line: BrainBliss + Matcha + Glass */}
-        <div className="flex items-end justify-between gap-4 mb-6 md:mb-8 pt-6 md:pt-8 border-t border-foreground/10">
+        <div className="flex items-end justify-between gap-4 mb-5 md:mb-8 pt-6 md:pt-8 border-t border-foreground/10">
           <div>
             <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em] mb-2">
               Reszta linii
             </p>
-            <h3 className="font-headline text-2xl md:text-3xl uppercase text-foreground">
+            <h3 className="font-headline text-xl sm:text-2xl md:text-3xl uppercase text-foreground">
               Codzienność, poranek i akcesoria.
             </h3>
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-[3px] bg-foreground/10">
+        {/* Mobile: horizontal snap-scroller */}
+        <div className="sm:hidden -mx-5 px-5 flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 scrollbar-hide" style={{ scrollbarWidth: "none" }}>
+          {secondary.map((product) => (
+            <div key={product.slug} className="snap-start shrink-0 w-[78%]">
+              <SecondaryCard product={product} />
+            </div>
+          ))}
+        </div>
+        <p className="sm:hidden font-body text-[10px] uppercase tracking-[0.2em] text-foreground/40 mt-2">
+          ← przesuń →
+        </p>
+
+        {/* Tablet+: grid */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-[3px] bg-foreground/10">
           {secondary.map((product) => (
             <SecondaryCard key={product.slug} product={product} />
           ))}
