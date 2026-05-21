@@ -31,39 +31,75 @@ const reels: CreatorReel[] = [
 ];
 
 const AUTOPLAY_MS = 4500;
+const N = reels.length;
+// Triple the list to fake infinite scrolling — we keep cursor in the middle copy
+// and instantly snap back when it drifts into the edge copies.
+const loop = [...reels, ...reels, ...reels];
 
 const CreatorReels = () => {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const tileRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [muted] = useState(true);
-  const [active, setActive] = useState(0);
+  const [cursor, setCursor] = useState(N); // start in middle copy
   const [paused, setPaused] = useState(false);
+  const active = ((cursor % N) + N) % N;
 
+  // Auto-advance
   useEffect(() => {
     if (paused) return;
     const id = window.setInterval(() => {
-      setActive((i) => (i + 1) % reels.length);
+      setCursor((c) => c + 1);
     }, AUTOPLAY_MS);
     return () => window.clearInterval(id);
   }, [paused]);
 
-  // Always center the active tile inside the scroller
+  // Center the cursor tile; jump invisibly when crossing into edge copies
+  useEffect(() => {
+    const el = scrollerRef.current;
+    const tile = tileRefs.current[cursor];
+    if (!el || !tile) return;
+    const target = tile.offsetLeft - (el.clientWidth - tile.offsetWidth) / 2;
+    el.scrollTo({ left: target, behavior: "smooth" });
+
+    if (cursor >= 2 * N || cursor < N) {
+      const t = window.setTimeout(() => {
+        const sc = scrollerRef.current;
+        const newCursor = N + active;
+        const newTile = tileRefs.current[newCursor];
+        if (sc && newTile) {
+          const t2 = newTile.offsetLeft - (sc.clientWidth - newTile.offsetWidth) / 2;
+          sc.scrollTo({ left: t2, behavior: "auto" });
+          setCursor(newCursor);
+        }
+      }, 650);
+      return () => window.clearTimeout(t);
+    }
+  }, [cursor, active]);
+
+  // Initial centering + on resize (instant, no animation)
   useEffect(() => {
     const center = () => {
       const el = scrollerRef.current;
-      const tile = tileRefs.current[active];
+      const tile = tileRefs.current[cursor];
       if (!el || !tile) return;
       const target = tile.offsetLeft - (el.clientWidth - tile.offsetWidth) / 2;
-      el.scrollTo({ left: target, behavior: "smooth" });
+      el.scrollTo({ left: target, behavior: "auto" });
     };
     center();
     window.addEventListener("resize", center);
     return () => window.removeEventListener("resize", center);
-  }, [active]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const step = (dir: 1 | -1) => {
     setPaused(true);
-    setActive((i) => (i + dir + reels.length) % reels.length);
+    setCursor((c) => c + dir);
+  };
+
+  const jumpTo = (targetActive: number) => {
+    setPaused(true);
+    // Jump to the nearest occurrence in the middle copy
+    setCursor(N + targetActive);
   };
 
   return (
@@ -115,24 +151,27 @@ const CreatorReels = () => {
           paddingRight: "50%",
         }}
       >
-        {reels.map((reel, i) => (
-          <div
-            key={reel.id}
-            ref={(el) => (tileRefs.current[i] = el)}
-            className="shrink-0 cursor-pointer"
-            style={{
-              transition: "transform 600ms cubic-bezier(0.22, 1, 0.36, 1), opacity 500ms ease",
-              transform: i === active ? "scale(1.04)" : "scale(0.94)",
-              opacity: i === active ? 1 : 0.55,
-            }}
-            onClick={() => {
-              setPaused(true);
-              setActive(i);
-            }}
-          >
-            <ReelTile reel={reel} muted={muted} isActive={i === active} />
-          </div>
-        ))}
+        {loop.map((reel, i) => {
+          const isActive = i === cursor;
+          return (
+            <div
+              key={`${reel.id}-${i}`}
+              ref={(el) => (tileRefs.current[i] = el)}
+              className="shrink-0 cursor-pointer"
+              style={{
+                transition: "transform 600ms cubic-bezier(0.22, 1, 0.36, 1), opacity 500ms ease",
+                transform: isActive ? "scale(1.04)" : "scale(0.94)",
+                opacity: isActive ? 1 : 0.55,
+              }}
+              onClick={() => {
+                setPaused(true);
+                setCursor(i);
+              }}
+            >
+              <ReelTile reel={reel} muted={muted} isActive={isActive} />
+            </div>
+          );
+        })}
       </div>
 
       <div className="container mx-auto px-5 md:px-12">
@@ -142,10 +181,7 @@ const CreatorReels = () => {
             <button
               key={r.id}
               type="button"
-              onClick={() => {
-                setPaused(true);
-                setActive(i);
-              }}
+              onClick={() => jumpTo(i)}
               aria-label={`Pokaż rolkę ${i + 1}`}
               className="h-[3px] transition-all"
               style={{
