@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import FunctionalDrinks from "@/components/FunctionalDrinks";
+import CreatorReels from "@/components/CreatorReels";
 
 import { DayCycleClock } from "@/components/DayCycleClock";
 import Reviews from "@/components/Reviews";
