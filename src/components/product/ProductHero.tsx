@@ -7,6 +7,8 @@ import QuickFacts from "./QuickFacts";
 import SubscriptionToggle from "./SubscriptionToggle";
 import ShippingDeadline from "./ShippingDeadline";
 import FrequentlyBoughtTogether from "./FrequentlyBoughtTogether";
+import AddonPicker from "./AddonPicker";
+import { upsellMap } from "@/data/accessories";
 import PaymentBadges from "./PaymentBadges";
 import ProductGallery from "./ProductGallery";
 import ShippingProgressBar from "@/components/ShippingProgressBar";
