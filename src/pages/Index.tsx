@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import FunctionalDrinks from "@/components/FunctionalDrinks";
+import CreatorReels from "@/components/CreatorReels";
 
 import { DayCycleClock } from "@/components/DayCycleClock";
 import Reviews from "@/components/Reviews";
@@ -37,6 +38,8 @@ const Index = () => {
           <MarqueeBanner />
           <div className="ed-divider-thick" />
           <FunctionalDrinks />
+          <div className="ed-divider-thick" />
+          <CreatorReels />
           <div className="ed-divider-thick" />
           <div className="border-t border-foreground/10" />
           <section className="bg-background">
