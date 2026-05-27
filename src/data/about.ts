@@ -4,19 +4,19 @@
 
 export const manifestoPillars = [
   {
-    title: "Mindful drinking",
+    title: "Nie pijesz, bo musisz",
     body:
-      "Pijesz, bo chcesz — nie bo musisz. Każda butelka shrooma to świadomy wybór: bez alkoholu, bez kompromisów na smaku i bez kaca następnego dnia. Robimy napoje dla ludzi, którzy chcą zwolnić, ale nie zrezygnować z imprezy.",
+      "Pijesz, bo chcesz — nie bo musisz. Shroom powstał dla tych, którzy chcą wybierać świadomie, bez kompromisów między smakiem, rytuałem i samopoczuciem.",
   },
   {
-    title: "Wellness-first",
+    title: "Bez wody z cukrem",
     body:
-      "Funkcjonalność to nie buzzword. W każdej recepturze są realne ilości składników botanicznych, oparte na tradycji i badaniach. Zero pudru, zero ściemy.",
+      "Nie chcieliśmy kolejnego słodkiego napoju, który znika po pięciu minutach. Chcieliśmy czegoś, co naprawdę ma sens.",
   },
   {
-    title: "Naturalne składniki",
+    title: "Z czymś więcej",
     body:
-      "Soplówka jeżowata, żeń-szeń, chmiel, inulina, witamina C, cynk. Całość z natury. Bez sztucznych barwników, bez konserwantów, bez dodanego cukru. Krótka lista składników, którą zrozumie każdy.",
+      "Napoje funkcjonalne z adaptogenami, grzybami funkcjonalnymi i prostym składem — stworzone dla ludzi, którzy chcą czegoś więcej niż chwilowego efektu.",
   },
 ];
 
