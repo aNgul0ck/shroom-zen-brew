@@ -121,13 +121,13 @@ export const planetCommitments = [
     n: "01",
     title: "Lokalnie i odpowiedzialnie",
     body:
-      "Produkujemy lokalnie w Polsce, minimalizując transport. Pracujemy z dostawcami.",
+      "Produkujemy lokalnie w Polsce, minimalizując transport. Pracujemy ze sprawdzonymi dostawcami.",
   },
   {
     n: "02",
-    title: "Roślinne i planet-friendly",
+    title: "Roślinne z założenia",
     body:
-      "100% wegańskie, cruelty-free, bez składników odzwierzęcych. Bo dbanie o siebie nie powinno krzywdzić innych istot ani planety.",
+      "Stawiamy na składy zgodne z naszym podejściem do wellbing. 100%. Bez krzywdy.",
   },
   {
     n: "03",
