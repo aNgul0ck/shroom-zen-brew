@@ -121,25 +121,25 @@ export const planetCommitments = [
     n: "01",
     title: "Blisko źródła ",
     body:
-      "Produkujemy lokalnie w Polsce, minimalizując transport. Pracujemy ze sprawdzonymi dostawcami.",
+      "Produkujemy lokalnie w Polsce, minimalizując transport. ",
   },
   {
     n: "02",
     title: "Roślinne z założenia",
     body:
-      "Stawiamy na składy zgodne z naszym podejściem do wellbing. 100%. Bez krzywdy.",
+      "Stawiamy na składniki roślinne i grzybowe. Wspieramy bioróżnorodność. 100% vegan",
   },
   {
     n: "03",
-    title: "Mniej obciązenia",
+    title: "Mniej obciążenia",
     body:
-      "Korzystamy z niszowych roślin i grzybów. Unikamy monokultur i pracujemy z drobnymi plantatorami.",
+      "Wybieramy mniej obciążające rozwiązania. Wybieramy biodegradowalne opakowania. ",
   },
   {
     n: "04",
     title: "Świadome źródła",
     body:
-      "Szkło, papier, etykiety — wszystko nadaje się do recyklingu. Odchodzimy od plastiku tam, gdzie tylko się da.",
+      "Pracujemy z dostawcami, którzy rozumieją jakość, pochodzenie i odpowiedzialność.",
   },
 ];
 
