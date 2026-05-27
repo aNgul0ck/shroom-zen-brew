@@ -1,16 +1,25 @@
 import { ArrowRight, Award, Check, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/hero-lifestyle.jpg";
+import { useLocalizedPath } from "@/lib/i18nRoutes";
 
 const Hero = () => {
+  const { t } = useTranslation();
+  const lp = useLocalizedPath();
+  const pills = [
+    t("homepage.hero.pills.noSugar"),
+    t("homepage.hero.pills.natural"),
+    t("homepage.hero.pills.lionsMane"),
+  ];
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Friends enjoying Shroom drinks together"
+          alt={t("homepage.hero.imageAlt")}
           className="w-full h-full object-cover scale-x-[-1] object-[30%_center]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/10 md:to-transparent" />
@@ -18,7 +27,6 @@ const Hero = () => {
 
       <div className="relative z-10 container mx-auto px-6 lg:px-12 pt-24 pb-24">
         <div className="max-w-xl">
-          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -26,40 +34,37 @@ const Hero = () => {
             className="flex items-center gap-2 mb-8"
           >
             <Award className="w-4 h-4 text-shroom-gold" />
-            <span className="font-body text-sm font-medium text-white/80">Nagrodzony napój funkcjonalny</span>
+            <span className="font-body text-sm font-medium text-white/80">{t("homepage.hero.awardBadge")}</span>
           </motion.div>
 
-          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-headline text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-[1.05] mb-6"
           >
-            Poczuj się{" "}
-            <span className="text-shroom-gold">świetnie</span>
+            {t("homepage.hero.headlinePart1")}{" "}
+            <span className="text-shroom-gold">{t("homepage.hero.headlineAccent")}</span>
             <br />
-            bez alkoholu
+            {t("homepage.hero.headlinePart2")}
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="font-body text-base sm:text-lg text-white/70 leading-relaxed mb-8 max-w-md"
           >
-            Funkcjonalne napoje z soplówką jeżowatą. Twój rytuał dobrego samopoczucia, bez kompromisów.
+            {t("homepage.hero.subheadline")}
           </motion.p>
 
-          {/* Trust pills — sharp, editorial */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-wrap gap-2 mb-10"
           >
-            {["0g cukru", "100% naturalne", "Lion's Mane"].map((item) => (
+            {pills.map((item) => (
               <div
                 key={item}
                 className="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/15 px-4 py-2"
@@ -70,7 +75,6 @@ const Hero = () => {
             ))}
           </motion.div>
 
-          {/* CTAs — sharp, no rounded */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -78,21 +82,20 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-3 mb-14"
           >
             <Link
-              to="/produkt/shroom-power"
+              to={lp("/produkt/shroom-power")}
               className="inline-flex items-center justify-center gap-2 bg-white text-foreground px-6 py-3.5 sm:px-8 sm:py-4 font-display font-semibold text-sm hover:bg-white/90 transition-colors duration-300"
             >
-              Kup Shrooma
+              {t("homepage.hero.ctaPrimary")}
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href="#o-nas"
               className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3.5 sm:px-8 sm:py-4 font-display font-medium text-sm hover:bg-white/20 transition-colors duration-300"
             >
-              Dowiedz się więcej
+              {t("homepage.hero.ctaSecondary")}
             </a>
           </motion.div>
 
-          {/* Mini testimonial */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -102,17 +105,16 @@ const Hero = () => {
             <Quote className="w-5 h-5 text-shroom-gold/60 shrink-0 mt-0.5" />
             <div>
               <p className="font-body text-sm text-white/70 italic leading-relaxed">
-                "Diva zastąpiła mi kieliszek wina. Wychodzę, bawię się i rano czuję się super."
+                {t("homepage.hero.testimonialQuote")}
               </p>
               <p className="font-body text-xs text-white/40 mt-1.5">
-                Ewa K., Projektantka UX
+                {t("homepage.hero.testimonialAuthor")}
               </p>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator — sharp */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         animate={{ y: [0, 8, 0] }}
