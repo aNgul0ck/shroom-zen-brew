@@ -1,17 +1,24 @@
 import { timelineMilestones } from "@/data/about";
+import { useTranslation } from "react-i18next";
 
 const AboutTimeline = () => {
+  const { t } = useTranslation();
+  const milestonesFromTranslation = t("about.timeline.milestones", { returnObjects: true });
+  const milestones = Array.isArray(milestonesFromTranslation) 
+    ? milestonesFromTranslation.map((m, i) => ({ ...m, year: timelineMilestones[i]?.year, color: timelineMilestones[i]?.color }))
+    : timelineMilestones;
+
   return (
     <section className="bg-shroom-peach">
       <div className="container mx-auto px-6 lg:px-12 py-20 md:py-28">
         <div className="grid grid-cols-12 gap-6 mb-14 md:mb-20">
           <div className="col-span-12 md:col-span-7 md:col-start-3">
             <p className="font-body text-xs font-medium text-foreground/60 uppercase tracking-[0.25em] mb-4 text-center">
-              Nasza droga
+              {t("about.timeline.kicker")}
             </p>
             <h2 className="font-headline text-4xl md:text-6xl font-bold text-foreground leading-[1.05] text-center">
-              Od kuchni{" "}
-              <span className="italic text-foreground/40">do półek.</span>
+              {t("about.timeline.headlineLine1")}{" "}
+              <span className="italic text-foreground/40">{t("about.timeline.headlineLine2")}</span>
             </h2>
           </div>
         </div>
@@ -22,7 +29,7 @@ const AboutTimeline = () => {
           <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-foreground/30 -translate-x-1/2" />
 
           <div className="space-y-12 md:space-y-20">
-            {timelineMilestones.map((m, i) => {
+            {milestones.map((m, i) => {
               const isLeft = i % 2 === 0;
               return (
                 <article
@@ -50,7 +57,7 @@ const AboutTimeline = () => {
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
                       {m.title}
                     </h3>
-                    <p className="font-body text-base text-foreground/70 leading-relaxed max-w-md">
+                    <p className="font-body text-base text-foreground/70 leading-relaxed max-w-md bg-black/0">
                       {m.body}
                     </p>
                   </div>

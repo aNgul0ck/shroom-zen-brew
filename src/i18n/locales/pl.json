@@ -656,25 +656,25 @@
       ]
     },
     "timeline": {
-      "kicker": "How we got here",
-      "headlineLine1": "From an idea",
-      "headlineLine2": "to the shelf.",
+      "kicker": "Nasza droga",
+      "headlineLine1": "Od kuchni",
+      "headlineLine2": "do półek.",
       "milestones": [
         {
-          "title": "The company is founded",
-          "body": "Shroom grows out of a personal need of its founders — finding balance between work, social life and well-being. The first recipes are made in a home kitchen."
+          "title": "Start",
+          "body": "Shroom powstaje z "
         },
         {
-          "title": "Accelerator programme",
-          "body": "Shroom joins a startup programme to refine the recipe, branding and strategy. First consumer tests."
+          "title": "Program akceleracyjny",
+          "body": "Shroom dołącza do programu startupowego, w którym dopracowuje recepturę, branding i strategię. Pierwsze testy konsumenckie."
         },
         {
-          "title": "First sales",
-          "body": "Shroom Power and Shroom Relax launch online. First thousands of bottles, first reviews, first returning customers."
+          "title": "Pierwsza sprzedaż",
+          "body": "Shroom Power i Shroom Relax trafiają do sklepów online. Pierwsze tysiące butelek, pierwsze recenzje, pierwsi stali klienci."
         },
         {
-          "title": "New products",
-          "body": "We expand the portfolio: Diva Social Elixir and BrainBliss capsules. Shroom becomes a full ecosystem of functional well-being."
+          "title": "Nowe produkty",
+          "body": "Rozszerzamy portfolio: Diva Social Elixir i BrainBliss kapsułki. Shroom staje się pełnym ekosystemem funkcjonalnego well-being."
         }
       ]
     },
