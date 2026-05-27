@@ -8,11 +8,11 @@ const AboutTimeline = () => {
         <div className="grid grid-cols-12 gap-6 mb-14 md:mb-20">
           <div className="col-span-12 md:col-span-7 md:col-start-3">
             <p className="font-body text-xs font-medium text-foreground/60 uppercase tracking-[0.25em] mb-4 text-center">
-              Nasza droga
+              {t("about.timeline.kicker")}
             </p>
             <h2 className="font-headline text-4xl md:text-6xl font-bold text-foreground leading-[1.05] text-center">
-              Od kuchni{" "}
-              <span className="italic text-foreground/40">do półek.</span>
+              {t("about.timeline.headlineLine1")}{" "}
+              <span className="italic text-foreground/40">{t("about.timeline.headlineLine2")}</span>
             </h2>
           </div>
         </div>
