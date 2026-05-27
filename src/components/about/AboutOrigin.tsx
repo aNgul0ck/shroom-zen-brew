@@ -40,8 +40,8 @@ const AboutOrigin = () => {
         {/* Pull quote — full width, oversized */}
         <div className="mt-16 md:mt-24 max-w-5xl">
           <p className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1]">
-            <span className="text-foreground/30">„</span>A gdyby tak istniał
-            napój, który naprawdę wspiera ciało i umysł?
+            <span className="text-foreground/30">„</span>Nie wszystko co działa,
+            musi kosztować Cię następny dzień{" "}
             <span className="text-foreground/30">"</span>
           </p>
         </div>
