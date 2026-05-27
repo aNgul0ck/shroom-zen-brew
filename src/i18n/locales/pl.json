@@ -56,20 +56,20 @@
     "hero": {
       "awardBadge": "Nagrodzony napój funkcjonalny",
       "headline": "The drink that gets it.",
-      "subheadline": "Funkcjonalne napoje z soplówką jeżowatą. Twój rytuał dobrego samopoczucia, bez kompromisów.",
+      "subheadline": "Napoje funkcjonalne z soplówką jeżowatą. 0g cukru, zero alkoholu. The choice of feeling good",
       "ctaPrimary": "Kup Shrooma",
       "ctaSecondary": "Dowiedz się więcej",
       "imageAlt": "Przyjaciele cieszą się napojami Shroom",
       "ingredientChip": "Lion's Mane",
       "testimonialQuote": "\"Diva zastąpiła mi kieliszek wina. Wychodzę, bawię się i rano czuję się super.\"",
       "testimonialAuthor": "Ewa K., Projektantka UX",
-      "headlinePart1": "Poczuj się",
+      "headlinePart1": "czujesz się",
       "headlineAccent": "świetnie",
-      "headlinePart2": "bez alkoholu",
+      "headlinePart2": "z wyboru",
       "pills": {
-        "noSugar": "0g cukru",
-        "natural": "100% naturalne",
-        "lionsMane": "Lion's Mane"
+        "noSugar": "bez alkoholu",
+        "natural": "adaptogeny",
+        "lionsMane": "witaminy"
       }
     },
     "trustBar": {
