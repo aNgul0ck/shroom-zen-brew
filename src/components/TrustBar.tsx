@@ -1,13 +1,16 @@
-const items = [
-  "🏆 World Alcohol-Free Awards 2025",
-  "🥇 Best Functional Drink",
-  "🚚 Darmowa dostawa od 200 zł",
-  "✓ Bez cukru",
-  "✓ Bez kofeiny",
-  "✓ Made in Poland",
-];
+import { useTranslation } from "react-i18next";
 
 const TrustBar = () => {
+  const { t } = useTranslation();
+  const items = [
+    t("homepage.trustBar.award"),
+    t("homepage.trustBar.awardCategory"),
+    t("homepage.trustBar.freeShipping"),
+    t("homepage.trustBar.noSugar"),
+    t("homepage.trustBar.noCaffeine"),
+    t("homepage.trustBar.madeIn"),
+  ];
+
   return (
     <div className="bg-foreground py-4 overflow-x-auto scrollbar-hide">
       <div className="flex items-center justify-center gap-0 min-w-max mx-auto px-6">
