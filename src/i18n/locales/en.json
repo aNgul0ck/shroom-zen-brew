@@ -56,20 +56,20 @@
     "hero": {
       "awardBadge": "Award-winning functional drink",
       "headline": "The drink that gets it.",
-      "subheadline": "Functional drinks with lion's mane and adaptogens. No alcohol, no added sugar, no fluff.",
+      "subheadline": "Functional drinks with lion's mane. 0g sugar, zero alcohol. The choice of feeling good",
       "ctaPrimary": "Find your drink",
       "ctaSecondary": "When to drink?",
       "imageAlt": "Friends enjoying Shroom drinks together",
       "ingredientChip": "Lion's Mane",
       "testimonialQuote": "Diva took the place of my glass of wine. I go out, I have a great time, and I wake up feeling great.",
       "testimonialAuthor": " - Ewa K.",
-      "headlinePart1": "The drink",
-      "headlineAccent": "that gets",
-      "headlinePart2": "it.",
+      "headlinePart1": "you feel",
+      "headlineAccent": "great",
+      "headlinePart2": "by choice",
       "pills": {
-        "noSugar": "0g sugar",
-        "natural": "100% natural",
-        "lionsMane": "Lion's Mane"
+        "noSugar": "alcohol-free",
+        "natural": "adaptogens",
+        "lionsMane": "vitamins"
       }
     },
     "trustBar": {
