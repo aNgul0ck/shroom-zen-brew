@@ -28,11 +28,11 @@ const AboutOrigin = () => {
               Z osobistego poszukiwania{" "}
               <span className="text-foreground/40">równowagi.</span>
             </h2>
-            <p className="font-body text-base md:text-lg text-foreground/70 leading-relaxed mb-6">
-              Pomysł na Shroom Drink narodził się z prostej frustracji. Po
-              latach życia w warunkach pełnych stresu, wśród rutyn towarzyskich
-              opartych na alkoholu i stylu życia, który częściej odbierał
-              energię niż dodawał — zadałyśmy sobie proste pytanie:
+            <p className="font-body md:text-lg text-foreground/70 leading-relaxed mb-6 text-lg font-mono">
+              Miałyśmy dość napojów i rytuałów, po których czujesz się gorzej niż
+              przed nimi. Shroom powstał z potrzeby zrobienia czegoś sensownego
+              - dla ludzi, którzy nie chcą już wybierać między przyjemnością a
+              samopoczuciem. Mniej syfu. Więcej jakości. Zero udawania.
             </p>
           </div>
         </div>
