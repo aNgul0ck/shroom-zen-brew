@@ -119,7 +119,7 @@ export const aboutIngredients = [
 export const planetCommitments = [
   {
     n: "01",
-    title: "Lokalnie i odpowiedzialnie",
+    title: "Blisko źródła ",
     body:
       "Produkujemy lokalnie w Polsce, minimalizując transport. Pracujemy ze sprawdzonymi dostawcami.",
   },
@@ -131,13 +131,13 @@ export const planetCommitments = [
   },
   {
     n: "03",
-    title: "Bioróżnorodność",
+    title: "Mniej obciązenia",
     body:
       "Korzystamy z niszowych roślin i grzybów. Unikamy monokultur i pracujemy z drobnymi plantatorami.",
   },
   {
     n: "04",
-    title: "Recykling opakowań",
+    title: "Świadome źródła",
     body:
       "Szkło, papier, etykiety — wszystko nadaje się do recyklingu. Odchodzimy od plastiku tam, gdzie tylko się da.",
   },
