@@ -1,22 +1,27 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ShoppingBag, Heart, User, Search, Moon, Sun } from "lucide-react";
+import { Menu, X, ShoppingBag, Heart, User, Search, Moon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useCartStore } from "@/stores/cartStore";
-
-const navLinks = [
-  { name: "Shop", href: "#produkty" },
-  { name: "O shroomie", href: "/o-shroomie" },
-  { name: "Quiz", href: "/quiz" },
-  { name: "Blog", href: "/blog" },
-  { name: "B2B", href: "/b2b" },
-  { name: "Contact", href: "#kontakt" },
-];
+import { useLocalizedPath } from "@/lib/i18nRoutes";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const openCart = useCartStore((s) => s.openCart);
   const cartCount = useCartStore((s) => s.getItemCount());
+  const { t } = useTranslation();
+  const lp = useLocalizedPath();
+
+  const navLinks = [
+    { name: t("common.header.shop"), href: "#produkty" },
+    { name: t("common.header.about"), href: lp("/o-shroomie") },
+    { name: t("common.header.quiz"), href: lp("/quiz") },
+    { name: t("common.header.blog"), href: lp("/blog") },
+    { name: t("common.header.b2b"), href: lp("/b2b") },
+    { name: t("common.header.contact"), href: "#kontakt" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -28,12 +33,10 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent border-b border-transparent"}`}>
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className={`font-display text-xl font-bold tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>
+          <Link to={lp("/")} className={`font-display text-xl font-bold tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-white"}`}>
             :shroom
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               link.href.startsWith('/') ? (
@@ -56,7 +59,6 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Right Icons */}
           <div className="flex items-center gap-2">
             <button className="hidden md:flex p-2 hover:bg-white/10 rounded-full transition-colors">
               <Search className={`w-5 h-5 ${scrolled ? "text-foreground" : "text-white"}`} />
@@ -71,7 +73,7 @@ const Header = () => {
               type="button"
               onClick={openCart}
               className="relative p-2 hover:bg-white/10 rounded-full transition-colors"
-              aria-label="Otwórz koszyk"
+              aria-label={t("common.cta.openCart")}
             >
               <ShoppingBag className={`w-5 h-5 ${scrolled ? "text-foreground" : "text-white"}`} />
               {cartCount > 0 && (
@@ -84,12 +86,10 @@ const Header = () => {
               <Moon className={`w-5 h-5 ${scrolled ? "text-foreground" : "text-white"}`} />
             </button>
 
-            {/* Language */}
-            <button className={`hidden md:flex items-center gap-1 px-3 py-1.5 border rounded-full text-sm transition-colors ${scrolled ? "border-border text-foreground" : "border-white/30 text-white"}`}>
-              🇬🇧 EN
-            </button>
+            <div className="hidden md:flex">
+              <LanguageSwitcher variant={scrolled ? "default" : "light"} />
+            </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`lg:hidden p-2 ${scrolled ? "text-foreground" : "text-white"}`}
@@ -100,7 +100,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
           <nav className="lg:hidden py-4 border-t border-white/10 bg-black/80 backdrop-blur-md px-6 -mx-6">
             {navLinks.map((link) => (
@@ -124,6 +123,9 @@ const Header = () => {
                 </a>
               )
             ))}
+            <div className="pt-3 mt-2 border-t border-white/10">
+              <LanguageSwitcher variant="light" />
+            </div>
           </nav>
         )}
       </div>

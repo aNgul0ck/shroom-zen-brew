@@ -1,29 +1,31 @@
 import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useLocalizedPath } from "@/lib/i18nRoutes";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
+  const lp = useLocalizedPath();
 
   const contactInfo = [
-    { label: "hii@shroom4you.com", href: "mailto:hii@shroom4you.com" },
+    { label: t("common.footer.email"), href: "mailto:hii@shroom4you.com" },
     { label: "(+48) 510 866 906", href: "tel:+48510866906" },
-    { label: "IG: @shroom.drink", href: "https://instagram.com/shroom.drink" },
-    { label: "FB: fb.com/shroom4you", href: "https://facebook.com/shroom4you" },
-    { label: "shroom4you.com", href: "https://shroom4you.com" },
+    { label: t("common.footer.instagram"), href: "https://instagram.com/shroom.drink" },
+    { label: t("common.footer.facebook"), href: "https://facebook.com/shroom4you" },
+    { label: t("common.footer.website"), href: "https://shroom4you.com" },
   ];
 
   return (
     <footer className="pb-16 md:pb-0">
       <div className="grid grid-cols-1 md:grid-cols-2">
-        {/* Left */}
         <div className="bg-foreground/[0.03] flex items-center p-8 md:p-14 min-h-[200px] md:min-h-[300px]">
           <div>
-            <p className="font-display text-lg font-bold text-foreground mb-3">:shroom</p>
-            <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground">Thank you!</h3>
+            <p className="font-display text-lg font-bold text-foreground mb-3">{t("common.footer.brand")}</p>
+            <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground">{t("common.footer.thankYou")}</h3>
           </div>
         </div>
 
-        {/* Right - contact bands */}
         <div className="flex flex-col">
           {contactInfo.map((item, i) => (
             <a
@@ -43,23 +45,22 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="bg-foreground py-4">
         <div className="container mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-body text-[11px] text-background/40">
-            © {currentYear} shroom. All rights reserved.
+            © {currentYear} shroom. {t("common.footer.rights")}
           </p>
           <div className="flex gap-3">
             {[Instagram, Facebook, Linkedin, Youtube].map((Icon, i) => (
-              <a key={i} href="#" className="p-1.5 hover:bg-background/10 transition-colors">
+              <a key={i} href="#" className="p-1.5 hover:bg-background/10 transition-colors" aria-label="Social">
                 <Icon className="w-3.5 h-3.5 text-background/50" />
               </a>
             ))}
           </div>
           <div className="flex gap-3">
-            <Link to="/blog" className="font-body text-[11px] text-background/40 hover:text-background/60 transition-colors">Blog</Link>
-            <a href="#" className="font-body text-[11px] text-background/40 hover:text-background/60 transition-colors">Privacy Policy</a>
-            <a href="#" className="font-body text-[11px] text-background/40 hover:text-background/60 transition-colors">Regulations</a>
+            <Link to={lp("/blog")} className="font-body text-[11px] text-background/40 hover:text-background/60 transition-colors">{t("common.header.blog")}</Link>
+            <a href="#" className="font-body text-[11px] text-background/40 hover:text-background/60 transition-colors">{t("common.footer.privacyPolicy")}</a>
+            <a href="#" className="font-body text-[11px] text-background/40 hover:text-background/60 transition-colors">{t("common.footer.regulations")}</a>
           </div>
         </div>
       </div>

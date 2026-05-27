@@ -20,32 +20,51 @@ import B2bPage from "./pages/B2bPage";
 
 const queryClient = new QueryClient();
 
+// Routes are defined twice: once with PL slugs (default), once mirrored under
+// /en/* with EN slugs. Both render the same page components — the language
+// switch happens via i18n based on URL prefix (handled by LanguageSwitcher).
+const AppRoutes = () => (
+  <Routes>
+    {/* PL — default */}
+    <Route path="/" element={<Index />} />
+    <Route path="/brief" element={<Brief />} />
+    <Route path="/badania" element={<Research />} />
+    <Route path="/blog" element={<Blog />} />
+    <Route path="/blog/:slug" element={<BlogPost />} />
+    <Route path="/produkt/:slug" element={<ProductPage />} />
+    <Route path="/quiz" element={<QuizPage />} />
+    <Route path="/koszyk" element={<CartPage />} />
+    <Route path="/_qa/progress-bar" element={<QaProgressBar />} />
+    <Route path="/o-shroomie" element={<AboutPage />} />
+    <Route path="/nasza-historia" element={<AboutPage />} />
+    <Route path="/b2b" element={<B2bPage />} />
+
+    {/* EN — translated slugs under /en/* */}
+    <Route path="/en" element={<Index />} />
+    <Route path="/en/brief" element={<Brief />} />
+    <Route path="/en/research" element={<Research />} />
+    <Route path="/en/blog" element={<Blog />} />
+    <Route path="/en/blog/:slug" element={<BlogPost />} />
+    <Route path="/en/product/:slug" element={<ProductPage />} />
+    <Route path="/en/quiz" element={<QuizPage />} />
+    <Route path="/en/cart" element={<CartPage />} />
+    <Route path="/en/about" element={<AboutPage />} />
+    <Route path="/en/b2b" element={<B2bPage />} />
+
+    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+);
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        {/* CartDrawer must be inside BrowserRouter — it uses <Link> for the
-            "Zobacz cały koszyk" CTA, which requires a Router context. */}
         <CartDrawer />
         <CuriosityPopup />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/brief" element={<Brief />} />
-          <Route path="/badania" element={<Research />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/produkt/:slug" element={<ProductPage />} />
-          <Route path="/quiz" element={<QuizPage />} />
-          <Route path="/koszyk" element={<CartPage />} />
-          <Route path="/_qa/progress-bar" element={<QaProgressBar />} />
-          <Route path="/o-shroomie" element={<AboutPage />} />
-          <Route path="/nasza-historia" element={<AboutPage />} />
-          <Route path="/b2b" element={<B2bPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppRoutes />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
