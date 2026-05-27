@@ -591,7 +591,7 @@
       "headlineLine2": "równowagi.",
       "imageAlt": "Założycielki Shroom — Aga i Kamila w barze z butelkami Shroom Power i Relax",
       "storyParagraph1": "Miałyśmy dość napojów i rytuałów, po których czujesz się gorzej niż przed nimi. Shroom powstał z potrzeby zrobienia czegoś sensownego - dla ludzi, którzy nie chcą już wybierać między przyjemnością a samopoczuciem. Mniej syfu. Więcej jakości. Zero udawania.",
-      "quote": "Nie wszystko co działa, musi kosztować Cię następny dzień ",
+      "quote": "Nie wszystko co działa, musi kosztować Cię następny dzień",
       "storyParagraph2": "Zamiast oczywistych rozwiązań, zaczęłyśmy odkrywać adaptogeny, grzyby witalne i rośliny od lat wykorzystywane w tradycjach Wschodu - w tym soplówkę jeżowatą, żeń-szeń, l-teaninę.",
       "foundersCaption": "Aga & Kamila — założycielki Shroom"
     },
@@ -656,25 +656,25 @@
       ]
     },
     "timeline": {
-      "kicker": "Nasza droga",
+      "kicker": "NASZA DROGA",
       "headlineLine1": "Od kuchni",
       "headlineLine2": "do półek.",
       "milestones": [
         {
           "title": "Start",
-          "body": "Shroom powstaje z "
+          "body": "Shroom powstaje z potrzeby znalezenia lepszej alternatywy dla codziennych napojów i rytuałów oraz fascynacji grzybami. (myślimy też o jedzeniu)"
         },
         {
-          "title": "Program akceleracyjny",
-          "body": "Shroom dołącza do programu startupowego, w którym dopracowuje recepturę, branding i strategię. Pierwsze testy konsumenckie."
+          "title": "Pierwsze testy i prototypy",
+          "body": "Decydujemy się robić picie! Powstają pierwsze prototypy i testujemy receptury, dopracowując smak, skład i kierunek marki."
         },
         {
           "title": "Pierwsza sprzedaż",
-          "body": "Shroom Power i Shroom Relax trafiają do sklepów online. Pierwsze tysiące butelek, pierwsze recenzje, pierwsi stali klienci."
+          "body": "Pierwsze produkty Shroom Power i Shroom Relax trafiają do klientów. Zaczynamy zbiercać realny feedback. "
         },
         {
-          "title": "Nowe produkty",
-          "body": "Rozszerzamy portfolio: Diva Social Elixir i BrainBliss kapsułki. Shroom staje się pełnym ekosystemem funkcjonalnego well-being."
+          "title": "Wchodzimy w nowy rytuał",
+          "body": "Rozszerzamy portfolio o Diva Social Elixir - wyrazistą, towarzyską alternatywę dla alkoholu."
         }
       ]
     },
