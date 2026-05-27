@@ -62,7 +62,7 @@
       "imageAlt": "Friends enjoying Shroom drinks together",
       "ingredientChip": "Lion's Mane",
       "testimonialQuote": "Diva took the place of my glass of wine. I go out, I have a great time, and I wake up feeling great.",
-      "testimonialAuthor": "— Ewa K.",
+      "testimonialAuthor": " - Ewa K.",
       "headlinePart1": "The drink",
       "headlineAccent": "that gets",
       "headlinePart2": "it.",
@@ -155,7 +155,7 @@
       "diva": {
         "name": "Diva",
         "headline": "Aperitivo without the hangover.",
-        "description": "Non-alcoholic aperitivo with 13 botanicals. For every night out, dinner and after — when you want to remember the morning.",
+        "description": "Non-alcoholic aperitivo with 13 botanicals. For every night out, dinner and after - when you want to remember the morning.",
         "botanicalsBadge": "13 botanicals",
         "madeInBadge": "Made in PL",
         "price": "26 €",
@@ -180,7 +180,7 @@
     },
     "creatorReels": {
       "sectionTitle": "Real days. Real people.",
-      "sectionSubtitle": "How our customers actually drink Shroom — captured on camera, not on a moodboard.",
+      "sectionSubtitle": "How our customers actually drink Shroom - captured on camera, not on a moodboard.",
       "showReel": "Play reel",
       "reels": [
         {
@@ -210,7 +210,7 @@
         {
           "creator": "Kasia M.",
           "handle": "@kasia.movement",
-          "caption": "Post-workout — Relax and a book.",
+          "caption": "Post-workout - Relax and a book.",
           "product": "Shroom Relax"
         },
         {
@@ -263,28 +263,34 @@
       ]
     },
     "reviews": {
-      "sectionTitle": "What our people say",
+      "eyebrow": "Reviews",
+      "sectionTitle": "What our customers say",
+      "ratingValue": "4.9",
       "ratingNote": "(200+ reviews)",
       "items": [
         {
           "name": "Olek R.",
           "role": "Entrepreneur",
-          "text": "Power is my daily ritual. Focus and a steady drive — without the jittery edge of coffee."
+          "text": "Power is my daily ritual. Focus and energy without the coffee jitters.",
+          "product": "Power"
         },
         {
           "name": "Ewa K.",
           "role": "UX Designer",
-          "text": "Relax helps me wind down after an intense day. I sleep like a baby."
+          "text": "Relax helps me switch off after an intense day. I sleep like a baby.",
+          "product": "Relax"
         },
         {
           "name": "Priyanka B.",
           "role": "Software Developer",
-          "text": "Diva is my go-to for social events. All the fun, none of the hangover."
+          "text": "Diva is my go-to for social events. All the fun, none of the hangover.",
+          "product": "Diva"
         },
         {
           "name": "Michał T.",
-          "role": "Strategist",
-          "text": "Outstanding drinks. Clean composition, no aftertaste, real ritual."
+          "role": "Photographer",
+          "text": "Outstanding drinks! They really improve concentration, zero side effects.",
+          "product": "Power"
         }
       ]
     },
@@ -314,7 +320,7 @@
           "sweet": "sweet"
         },
         "footerItalic": "660 mg of lion's mane in every bottle.",
-        "footerBody": "A functional mushroom from centuries of Asian tradition. The Shroom Power label reads like an ingredient list — not a string of E numbers."
+        "footerBody": "A functional mushroom from centuries of Asian tradition. The Shroom Power label reads like an ingredient list - not a string of E numbers."
       },
       "relax": {
         "productLabel": "Shroom Relax",
@@ -341,7 +347,7 @@
         "productLabel": "Diva Social Elixir",
         "headlineLine1": "Aperitivo without the hangover.",
         "headlineLine2": "All the celebration, zero alcohol.",
-        "intro": "Diva is an alcohol-free aperitivo with 13 botanicals, Siberian ginseng and edible glitter. The same ritual, the same look in the glass — without the alcohol, without the next-day price.",
+        "intro": "Diva is an alcohol-free aperitivo with 13 botanicals, Siberian ginseng and edible glitter. The same ritual, the same look in the glass - without the alcohol, without the next-day price.",
         "competitors": {
           "shroom": ":shroom Diva",
           "wine": "Glass of wine",
@@ -362,7 +368,7 @@
           "hangover": "Next-day hangover"
         },
         "footerItalic": "13 botanicals and Siberian ginseng in every bottle.",
-        "footerBody": "Same experience, same ritual — no alcohol, no hangover. Drink it neat as an aperitivo or use it as a mocktail base."
+        "footerBody": "Same experience, same ritual - no alcohol, no hangover. Drink it neat as an aperitivo or use it as a mocktail base."
       },
       "selectProductPrompt": "Choose a product to compare"
     },
@@ -396,40 +402,61 @@
       ]
     },
     "subscriptions": {
-      "sectionTitle": "Your monthly rhythm.",
-      "sectionSubtitle": "A subscription = ~15% off + free shipping. Cancel any time.",
-      "rhythmLabel": "rhythm.",
-      "currency": "€",
+      "eyebrow": "Subscriptions",
+      "titlePart1": "Choose your",
+      "titleAccent": "rhythm.",
+      "subtitle": "Flexible plans. No commitment, cancel any time.",
+      "currency": "zł",
+      "mobileHint": "← swipe →",
+      "footer": "No commitment . Cancel any time . Secure payment",
+      "mostPopular": "Most popular",
       "items": [
         {
           "key": "starter",
+          "badge": "Starter",
           "name": "Starter Ritual",
-          "tagline": "Try it. Seriously.",
-          "details": "Power or Relax",
-          "badge": "Perfect as a gift"
+          "headline": "Try it. Seriously.",
+          "price": "149",
+          "bottles": "12 bottles",
+          "period": "Power or Relax",
+          "highlights": [
+            "2 weeks to experiment",
+            "1 bottle a day",
+            "Perfect as a gift"
+          ],
+          "cta": "Start"
         },
         {
           "key": "goodTrip",
+          "badge": "Bestseller",
           "name": "Good Trip",
-          "tagline": "Rhythm of day and evening.",
-          "details": "12 Power + 12 Relax",
-          "badge": "Full day rhythm"
+          "headline": "Rhythm of day and evening.",
+          "price": "269",
+          "bottles": "24 bottles",
+          "period": "12 Power + 12 Relax",
+          "highlights": [
+            "Full day rhythm",
+            "Morning: morning ritual",
+            "Evening: evening ritual"
+          ],
+          "cta": "Choose"
         },
         {
           "key": "feelYourBest",
+          "badge": "Pro",
           "name": "Feel Your Best",
-          "tagline": "Daily well-being ritual.",
-          "details": "24 Power + 24 Relax",
-          "badge": "Best price per bottle"
+          "headline": "Daily well-being ritual.",
+          "price": "499",
+          "bottles": "48 bottles",
+          "period": "24 Power + 24 Relax",
+          "highlights": [
+            "A month of daily ritual",
+            "2 bottles a day",
+            "Best price per bottle"
+          ],
+          "cta": "Go Heroic"
         }
-      ],
-      "phases": {
-        "morning": "Morning: morning ritual",
-        "evening": "Evening: evening ritual",
-        "monthDaily": "A month of daily ritual"
-      },
-      "ctaPrimary": "Start subscription",
-      "ctaSecondary": "Go Heroic"
+      ]
     },
     "quizCta": {
       "items": [
@@ -440,7 +467,7 @@
       "ctaLabel": "Take the 30-second quiz"
     },
     "newsletter": {
-      "headline": "—10% off your first order",
+      "headline": " - 10% off your first order",
       "subheadline": "Sign up for the newsletter. No spam, just rituals.",
       "placeholder": "Your email address",
       "ctaLabel": "Sign me up",
@@ -461,7 +488,7 @@
         "oracChartLabel": "ORAC score (µmol TE / 100 g)",
         "acaiLabel": "Acai (imported)",
         "aroniaLabel": "Aronia (PL, in our drinks)",
-        "oracDisclaimer": "ORAC is a lab-based antioxidant capacity score. It describes the composition of the fruit — not a health promise for the product.",
+        "oracDisclaimer": "ORAC is a lab-based antioxidant capacity score. It describes the composition of the fruit - not a health promise for the product.",
         "transportAmazon": "Amazon (~8,000 km)",
         "transportLocal": "Poland, locally",
         "tasteProfileLabel": "Taste profile",
@@ -495,7 +522,7 @@
         "annualPlant": "Annual plant (typical crop)",
         "ginsengPremium": "Panax ginseng (premium grade)",
         "tradition": "Korean tradition",
-        "rootDescription": "Korean ginseng root matures in the ground for 4 to 6 years. This is botanical and agricultural information — not a promise of product effects.",
+        "rootDescription": "Korean ginseng root matures in the ground for 4 to 6 years. This is botanical and agricultural information - not a promise of product effects.",
         "typicalCropLabel": "Typical crop",
         "panaxGinseng": "Panax ginseng (Korea)",
         "maturityLabel": "Maturity time",
@@ -524,7 +551,7 @@
   },
   "about": {
     "meta": {
-      "title": "About Shroom — our story, team and mission | Shroom",
+      "title": "About Shroom - our story, team and mission | Shroom",
       "description": "Get to know Shroom: a Polish functional drinks brand built on lion's mane and adaptogens. Our story, team, ingredients and commitments to the planet.",
       "ogDescription": "Polish functional drinks brand with lion's mane. Meet the team and the mission.",
       "keywords": "shroom, about us, our story, lion's mane, hericium, functional drinks poland, adaptogens, wellness drinks, shroom team"
@@ -544,7 +571,7 @@
       "pillars": [
         {
           "title": "Mindful drinking",
-          "body": "You drink because you want to — not because you have to. Every bottle of Shroom is a conscious choice: no alcohol, no compromise on taste, no hangover the next day. We make drinks for people who want to slow down without quitting the party."
+          "body": "You drink because you want to - not because you have to. Every bottle of Shroom is a conscious choice: no alcohol, no compromise on taste, no hangover the next day. We make drinks for people who want to slow down without quitting the party."
         },
         {
           "title": "Wellness-first",
@@ -561,8 +588,8 @@
       "headlineLine1": "A search for",
       "headlineLine2": "balance.",
       "imageAlt": "Shroom founders Aga and Kamila with bottles of Shroom Power and Relax",
-      "founderQuote": "We wanted something that lifts the mood and lets people be together — without alcohol, without sugar overload, and without the artificial high.",
-      "founderAttribution": "— Aga & Kamila, founders"
+      "founderQuote": "We wanted something that lifts the mood and lets people be together - without alcohol, without sugar overload, and without the artificial high.",
+      "founderAttribution": " - Aga & Kamila, founders"
     },
     "planet": {
       "kicker": "Our planet",
@@ -584,7 +611,7 @@
         },
         {
           "title": "Recyclable packaging",
-          "body": "Glass, paper, labels — all recyclable. We're moving away from plastic wherever we can."
+          "body": "Glass, paper, labels - all recyclable. We're moving away from plastic wherever we can."
         },
         {
           "title": "No harmful additives",
@@ -600,7 +627,7 @@
       "kicker": "The team",
       "headlineLine1": "The people",
       "headlineLine2": "behind the brand.",
-      "linkedInLabel": "LinkedIn —",
+      "linkedInLabel": "LinkedIn - ",
       "members": [
         {
           "name": "Aga Lepka",
@@ -615,7 +642,7 @@
         {
           "name": "Tomasz Lepka",
           "role": "CFO",
-          "bio": "Kraków, Barcelona, Boston, Lisbon — the places that shaped him. VC by day, financial compass of Shroom after hours. Surfing and slow mornings in the Tatras."
+          "bio": "Kraków, Barcelona, Boston, Lisbon - the places that shaped him. VC by day, financial compass of Shroom after hours. Surfing and slow mornings in the Tatras."
         },
         {
           "name": "Antek Golik",
@@ -631,7 +658,7 @@
       "milestones": [
         {
           "title": "The company is founded",
-          "body": "Shroom grows out of a personal need of its founders — finding balance between work, social life and well-being. The first recipes are made in a home kitchen."
+          "body": "Shroom grows out of a personal need of its founders - finding balance between work, social life and well-being. The first recipes are made in a home kitchen."
         },
         {
           "title": "Accelerator programme",
@@ -705,11 +732,11 @@
   },
   "b2b": {
     "meta": {
-      "title": "B2B — Become a Shroom partner | Distribution, HoReCa, Events",
+      "title": "B2B - Become a Shroom partner | Distribution, HoReCa, Events",
       "description": "B2B partnerships with Shroom: distribution, sales to venues, events, alcohol-free bars and a media pack. Active in 7 European countries.",
       "keywords": "shroom b2b, functional drinks distribution, horeca, shroom partner, adaptogens wholesale, office drinks, event drinks",
-      "ogTitle": "B2B — Become a Shroom partner",
-      "ogDescription": "Distribution, HoReCa, events and a media pack — everything you need to work with Shroom.",
+      "ogTitle": "B2B - Become a Shroom partner",
+      "ogDescription": "Distribution, HoReCa, events and a media pack - everything you need to work with Shroom.",
       "salesEmail": "sales@shroom4you.com"
     },
     "hero": {
@@ -778,7 +805,7 @@
         },
         {
           "title": "Event / pop-up",
-          "body": "Shroom at your event — special event pricing.",
+          "body": "Shroom at your event - special event pricing.",
           "subject": "Enquiry: Event"
         },
         {
@@ -806,23 +833,23 @@
         {
           "day": "Day 1",
           "title": "Send an enquiry",
-          "body": "Email sales@ with a short note about your venue — type, location, estimated monthly volume. No commitment.",
+          "body": "Email sales@ with a short note about your venue - type, location, estimated monthly volume. No commitment.",
           "ctaLabel": "Send enquiry",
-          "subject": "HoReCa enquiry — new venue"
+          "subject": "HoReCa enquiry - new venue"
         },
         {
           "day": "Day 2–3",
           "title": "Quote and tasting",
           "body": "We come back with wholesale HoReCa pricing, payment terms and a date for a free tasting at your venue.",
           "ctaLabel": "Book a tasting",
-          "subject": "Book a tasting — HoReCa"
+          "subject": "Book a tasting - HoReCa"
         },
         {
           "day": "Day 5–7",
           "title": "First delivery",
           "body": "You place an order, we pack and ship within 48 hours. Minimum starter order: 1 carton (24 bottles). Payment on terms.",
           "ctaLabel": "Place starter order",
-          "subject": "Starter order — HoReCa"
+          "subject": "Starter order - HoReCa"
         },
         {
           "day": "Ongoing",
@@ -834,12 +861,12 @@
       ]
     },
     "socialProof": {
-      "partnerLabel": "— Shroom partner"
+      "partnerLabel": " - Shroom partner"
     }
   },
   "product": {
     "common": {
-      "metaSuffix": "— Shroom",
+      "metaSuffix": " - Shroom",
       "reviewsCount": "(200+ reviews)",
       "frequentlyBoughtTogether": "Frequently bought together",
       "shippingDeadline": {
@@ -885,11 +912,11 @@
       "tagline": "Your daily ritual",
       "description": "A functional drink with lion's mane and Korean ginseng. Caffeine-free, no added sugar.",
       "imageAlts": {
-        "bottle": "Shroom Power — 330 ml bottle",
-        "award": "Shroom Power — Best Functional Drink, World Alcohol-Free Awards 2025",
+        "bottle": "Shroom Power - 330 ml bottle",
+        "award": "Shroom Power - Best Functional Drink, World Alcohol-Free Awards 2025",
         "served": "Shroom Power served in a glass with ice and lemon",
         "lifestyle": "Shroom Power on a wooden desk during a creative session",
-        "label": "Shroom Power — nutritional values and ingredients"
+        "label": "Shroom Power - nutritional values and ingredients"
       },
       "tasteProfile": "Citrusy-herbal",
       "format": "330 ml · sparkling",
@@ -940,7 +967,7 @@
       },
       "section": {
         "headline": "Your morning ritual",
-        "subheadline": "A functional drink — caffeine-free and with no added sugar."
+        "subheadline": "A functional drink - caffeine-free and with no added sugar."
       },
       "comparedTo": [
         "Coffee",
@@ -967,11 +994,11 @@
       "faq": [
         {
           "question": "What does Shroom Power taste like?",
-          "answer": "Lightly herbal, refreshing, with a citrus note. Gentle carbonation — drinks like a lemonade."
+          "answer": "Lightly herbal, refreshing, with a citrus note. Gentle carbonation - drinks like a lemonade."
         },
         {
           "question": "Can I drink it every day?",
-          "answer": "Yes — Shroom Power is designed for daily consumption. Recommended serving: 1 bottle a day."
+          "answer": "Yes - Shroom Power is designed for daily consumption. Recommended serving: 1 bottle a day."
         },
         {
           "question": "Does it contain caffeine?",
@@ -990,13 +1017,13 @@
     "relax": {
       "name": "Shroom Relax",
       "tagline": "Your afternoon and evening ritual",
-      "description": "A functional drink with L-theanine and hops. The unwind ritual after an intense day — without alcohol.",
+      "description": "A functional drink with L-theanine and hops. The unwind ritual after an intense day - without alcohol.",
       "imageAlts": {
-        "bottle": "Shroom Relax — 330 ml bottle",
-        "award": "Shroom Relax — Best Functional Drink, World Alcohol-Free Awards 2025",
+        "bottle": "Shroom Relax - 330 ml bottle",
+        "award": "Shroom Relax - Best Functional Drink, World Alcohol-Free Awards 2025",
         "served": "Shroom Relax served in a glass with a lemon twist",
         "lifestyle": "Shroom Relax on a table in a summer garden",
-        "label": "Shroom Relax — nutritional values and ingredients"
+        "label": "Shroom Relax - nutritional values and ingredients"
       },
       "tasteProfile": "Honey and lavender",
       "timeOfDayValue": "Afternoon and evening",
@@ -1032,7 +1059,7 @@
         },
         "endOfWork": {
           "title": "End of work",
-          "body": "The transition ritual — out of work mode and into the evening."
+          "body": "The transition ritual - out of work mode and into the evening."
         },
         "eveningRitual": {
           "title": "Evening ritual",
@@ -1075,7 +1102,7 @@
       "faq": [
         {
           "question": "What does Shroom Relax taste like?",
-          "answer": "Soft, herbal, with hints of honey and lavender. Lightly sparkling — perfect for the evening."
+          "answer": "Soft, herbal, with hints of honey and lavender. Lightly sparkling - perfect for the evening."
         },
         {
           "question": "Does it cause drowsiness?",
@@ -1096,10 +1123,10 @@
       "tagline": "Aperitivo without the hangover",
       "description": "An alcohol-free aperitivo with 13 botanicals and edible glitter. Celebrate without compromise.",
       "imageAlts": {
-        "bottle": "Diva Social Elixir — 500 ml bottle",
+        "bottle": "Diva Social Elixir - 500 ml bottle",
         "served": "Diva served in a glass with ice and orange",
-        "glitter": "Diva — edible glitter detail",
-        "label": "Diva Social Elixir — ingredients and serving"
+        "glitter": "Diva - edible glitter detail",
+        "label": "Diva Social Elixir - ingredients and serving"
       },
       "tasteProfile": "Botanical, bitter",
       "format": "500 ml · 0% ABV",
@@ -1153,11 +1180,11 @@
         "steps": [
           {
             "headline": "Pick your favourite glass",
-            "body": "A wine glass, a coupe, or a tumbler — Diva works in all of them."
+            "body": "A wine glass, a coupe, or a tumbler - Diva works in all of them."
           },
           {
             "headline": "Serve with ice and orange",
-            "body": "Ice, a slice of orange or a rosemary sprig — done."
+            "body": "Ice, a slice of orange or a rosemary sprig - done."
           },
           {
             "headline": "Have fun, without the limits",
@@ -1205,11 +1232,11 @@
       "faq": [
         {
           "question": "What does Diva taste like?",
-          "answer": "A complex, botanical flavour with citrus and floral notes. Lightly bitter — perfect as a mocktail base or on its own."
+          "answer": "A complex, botanical flavour with citrus and floral notes. Lightly bitter - perfect as a mocktail base or on its own."
         },
         {
           "question": "Is the glitter safe?",
-          "answer": "Yes — the edible glitter is certified food-safe in the EU. It's completely safe to consume."
+          "answer": "Yes - the edible glitter is certified food-safe in the EU. It's completely safe to consume."
         },
         {
           "question": "How do I serve Diva?",
@@ -1217,7 +1244,7 @@
         },
         {
           "question": "Is it really alcohol-free?",
-          "answer": "Yes — Diva contains 0% alcohol. It's a full aperitivo experience without the effects of alcohol."
+          "answer": "Yes - Diva contains 0% alcohol. It's a full aperitivo experience without the effects of alcohol."
         }
       ]
     }
@@ -1236,7 +1263,7 @@
     "discountStub": "Code validation requires backend (stub).",
     "checkoutCta": "Go to checkout",
     "checkoutRedirecting": "Redirecting to checkout…",
-    "checkoutStub": "Backend stub — checkout flow needs API integration",
+    "checkoutStub": "Backend stub - checkout flow needs API integration",
     "remove": "Remove",
     "removeItem": "Remove item",
     "decrease": "Decrease quantity",
@@ -1249,7 +1276,7 @@
   },
   "quiz": {
     "meta": {
-      "title": "Quiz — find your Shroom",
+      "title": "Quiz - find your Shroom",
       "description": "Answer five quick questions and find out which Shroom fits your day."
     },
     "headline": "Find your :shroom",
@@ -1258,9 +1285,9 @@
       {
         "question": "How does your typical day start?",
         "answers": [
-          "With coffee and a hundred tasks — grind mode ON",
-          "Slowly — I need a moment to wake up",
-          "Depends on the vibe — I like to be spontaneous"
+          "With coffee and a hundred tasks - grind mode ON",
+          "Slowly - I need a moment to wake up",
+          "Depends on the vibe - I like to be spontaneous"
         ]
       },
       {
@@ -1284,14 +1311,14 @@
         "answers": [
           "Working, lots to do",
           "Slowing down, an evening for myself",
-          "Going out — meeting, dinner"
+          "Going out - meeting, dinner"
         ]
       },
       {
         "question": "What's your relationship with caffeine?",
         "answers": [
-          "Love it — but I'm looking for something healthier",
-          "Avoid it — it winds me up too much",
+          "Love it - but I'm looking for something healthier",
+          "Avoid it - it winds me up too much",
           "Sometimes yes, sometimes no"
         ]
       }
@@ -1333,16 +1360,16 @@
   },
   "brief": {
     "meta": {
-      "title": "Shroom Brief — for creators"
+      "title": "Shroom Brief - for creators"
     },
     "kicker": "Creator brief",
     "headlineLine1": "One goal.",
     "headlineLine2": "Your everyday day.",
-    "subheadline": "What we're looking for, what we don't want, and how to work with us — without unnecessary briefings.",
+    "subheadline": "What we're looking for, what we don't want, and how to work with us - without unnecessary briefings.",
     "ctaCollab": "Apply to collaborate",
     "intro": {
       "headline": "Tradition. Nature. Quality.",
-      "body": "Three values, one product. Shroom is built around ingredients with centuries of tradition behind them — and the quality of execution that brings them into the present."
+      "body": "Three values, one product. Shroom is built around ingredients with centuries of tradition behind them - and the quality of execution that brings them into the present."
     },
     "products": {
       "power": {
@@ -1373,7 +1400,7 @@
         "title": "Key discovery",
         "location": "USSR 1960–1980",
         "quote": "Adaptogens increase the non-specific resistance of the body to stress.",
-        "attribution": "— Dr Nikolai Lazarev, 1947"
+        "attribution": " - Dr Nikolai Lazarev, 1947"
       }
     },
     "quiz": {
@@ -1382,9 +1409,9 @@
         {
           "question": "How does your typical day start?",
           "answers": [
-            "With coffee and a fast pace — lots to do",
-            "Slowly — I need a moment to wake up",
-            "Depends on my mood — I like spontaneity"
+            "With coffee and a fast pace - lots to do",
+            "Slowly - I need a moment to wake up",
+            "Depends on my mood - I like spontaneity"
           ]
         },
         {
@@ -1414,9 +1441,9 @@
         {
           "question": "What's your relationship with caffeine?",
           "answers": [
-            "Love it — but I'm looking for something healthier",
-            "Avoid it — too much of an edge",
-            "Sometimes yes, sometimes no — depends"
+            "Love it - but I'm looking for something healthier",
+            "Avoid it - too much of an edge",
+            "Sometimes yes, sometimes no - depends"
           ]
         }
       ],
@@ -1432,7 +1459,7 @@
         },
         "relax": {
           "title": "For the calm ones",
-          "description": "You prefer a slower pace. Shroom Relax is built around lion's mane and L-theanine — ingredients known from the traditional tea house.",
+          "description": "You prefer a slower pace. Shroom Relax is built around lion's mane and L-theanine - ingredients known from the traditional tea house.",
           "ingredients": [
             "Lion's mane",
             "L-theanine",
@@ -1441,7 +1468,7 @@
         },
         "diva": {
           "title": "For the social ones",
-          "description": "You value real relationships and good vibes. Diva is a unique blend of damiana and Siberian ginseng — ingredients known in Latin American tradition.",
+          "description": "You value real relationships and good vibes. Diva is a unique blend of damiana and Siberian ginseng - ingredients known in Latin American tradition.",
           "ingredients": [
             "Damiana",
             "Siberian ginseng",
@@ -1452,7 +1479,7 @@
     },
     "principles": {
       "headline": "Main principles",
-      "subheadline": "How to talk about Shroom — what works for us and what doesn't.",
+      "subheadline": "How to talk about Shroom - what works for us and what doesn't.",
       "items": [
         {
           "title": "Part of everyday life",
@@ -1467,7 +1494,7 @@
         {
           "title": "Ingredients with tradition",
           "summary": "We're building a brand around ingredients known for thousands of years.",
-          "body": "Adaptogens and functional mushrooms — ingredients used in Traditional Chinese Medicine and Ayurveda."
+          "body": "Adaptogens and functional mushrooms - ingredients used in Traditional Chinese Medicine and Ayurveda."
         },
         {
           "title": "Authenticity above all",
@@ -1516,23 +1543,23 @@
         "body": "A combination of traditional knowledge and modern research methods."
       },
       "lazarevQuote": "Adaptogens increase the non-specific resistance of the body to stress.",
-      "lazarevAttribution": "— Dr Nikolai Lazarev, 1947"
+      "lazarevAttribution": " - Dr Nikolai Lazarev, 1947"
     },
     "context": {
       "rootOfLife": "Root of life",
       "yogaMeditation": "Yoga & Meditation",
-      "ashwagandha": "Ashwagandha — an ingredient from Ayurvedic tradition",
+      "ashwagandha": "Ashwagandha - an ingredient from Ayurvedic tradition",
       "esports": "E-sport",
-      "functionalMushrooms": "Functional mushrooms — natural ingredients",
-      "ginseng": "Ginseng — a root used for centuries in traditional medicine",
-      "lionsMane": "Lion's mane — a mushroom known in Asian cuisine"
+      "functionalMushrooms": "Functional mushrooms - natural ingredients",
+      "ginseng": "Ginseng - a root used for centuries in traditional medicine",
+      "lionsMane": "Lion's mane - a mushroom known in Asian cuisine"
     },
     "ingredientCards": [
       {
         "name": "Lion's Mane",
         "latin": "Hericium erinaceus",
         "tradition": "Asian tradition",
-        "body": "A mushroom known as \"lion's mane\" — prized in Chinese cuisine and traditional medicine for thousands of years."
+        "body": "A mushroom known as \"lion's mane\" - prized in Chinese cuisine and traditional medicine for thousands of years."
       },
       {
         "name": "Korean ginseng",
@@ -1569,7 +1596,7 @@
       "noSugar": "No sugar",
       "noSugarBody": "Naturally sweetened with apple juice and inulin",
       "withPrebiotic": "With prebiotic",
-      "withPrebioticBody": "Contains inulin — natural fibre from chicory",
+      "withPrebioticBody": "Contains inulin - natural fibre from chicory",
       "adaptogens": "Adaptogens and mushrooms",
       "adaptogensBody": "Functional ingredients with botanical tradition"
     },
@@ -1591,7 +1618,7 @@
     "subheadline": "An overview of scientific research on lion's mane (Hericium erinaceus) and the EFSA-approved health claims for zinc and vitamin C.",
     "lionsManeSection": {
       "title": "Lion's mane in research",
-      "subheadline": "Modern research keeps exploring lion's mane in the context of cognitive function. This is what scientists are looking at — not what the product does."
+      "subheadline": "Modern research keeps exploring lion's mane in the context of cognitive function. This is what scientists are looking at - not what the product does."
     },
     "studyTypeLabels": {
       "clinicalTrial": "Clinical trial",
@@ -1733,7 +1760,7 @@
       "imageCaptions": {
         "beachRelax": "A moment of rest on the beach"
       },
-      "closingAttribution": "— Estera Mrówka",
+      "closingAttribution": " - Estera Mrówka",
       "shroomTeamLabel": "Shroom Team"
     },
     "common": {
@@ -1777,7 +1804,7 @@
         "tagline": "We built BrainBliss for people on the move. Before a flight, on the road, during big projects. 60 capsules, 500 mg of lion's mane extract per capsule. Zinc contributes to normal cognitive function (EFSA).",
         "freeFromAdditives": "No additives",
         "vegan": "Vegan",
-        "imageAlt": "BrainBliss Lion's Mane — dietary supplement"
+        "imageAlt": "BrainBliss Lion's Mane - dietary supplement"
       }
     },
     "matcha": {
@@ -1790,34 +1817,58 @@
     }
   },
   "benefits": {
-    "headline": "What's inside",
+    "headlinePart1": "Why",
+    "headlineAccent": "Shroom",
+    "headlinePart2": "?",
+    "subheadline": "Natural plant ingredients plus zinc and vitamin C in every bottle.",
     "items": [
       {
-        "title": "Lion's Mane",
-        "body": "500 mg of lion's mane extract. A functional mushroom from Asian tradition.",
-        "mgLabel": "500 mg",
-        "subLabel": "extract",
-        "context": "Functional mushroom",
-        "tradition": "Asian tradition"
-      },
-      {
         "title": "Zinc",
-        "body": "Zinc contributes to normal cognitive function (EFSA).",
-        "context": "Source of zinc"
+        "description": "Contributes to normal cognitive function (EFSA)."
       },
       {
-        "title": "Caffeine-free",
-        "body": "Natural botanical ingredients."
+        "title": "Caffeine free",
+        "description": "Natural botanical ingredients."
       },
       {
         "title": "Vitamin C",
-        "body": "Vitamin C contributes to the reduction of tiredness and fatigue (EFSA)."
+        "description": "Contributes to the reduction of tiredness and fatigue (EFSA)."
       },
       {
         "title": "No added sugar",
-        "body": "Natural sweetness from apple juice."
+        "description": "Naturally sweet from apple juice."
       }
-    ]
+    ],
+    "stats": [
+      {
+        "value": "500mg",
+        "label": "extract"
+      },
+      {
+        "value": "30:1",
+        "label": "concentration"
+      },
+      {
+        "value": "50%",
+        "label": "polysaccharides"
+      },
+      {
+        "value": "🍄",
+        "label": "fruiting body"
+      }
+    ],
+    "lionsMane": {
+      "title": "Lion's mane",
+      "body": "Lion's mane (Hericium erinaceus) is a mushroom used in traditional Asian medicine for hundreds of years.",
+      "bodyStrong": "Lion's Mane",
+      "tags": [
+        "Functional mushroom",
+        "Asian tradition",
+        "Natural"
+      ]
+    },
+    "disclaimer": "* Approved EFSA health claims for zinc and vitamin C.",
+    "disclaimerLink": "See details"
   },
   "howItWorks": {
     "headline": "How it works",
@@ -1849,32 +1900,47 @@
     ]
   },
   "introSection": {
-    "headline": "When to drink Shroom",
-    "subheadline": "Four moments. Four rituals. One brand.",
-    "moments": [
+    "eyebrow": "What is Shroom?",
+    "headlinePart1": "Stop feeling",
+    "headlinePart2": "like shit.",
+    "body": "Functional drinks with lion's mane. No added sugar, no bullshit. A conscious choice for yourself.",
+    "pillars": [
       {
-        "label": "Morning",
-        "headline": "Morning ritual instead of morning coffee."
+        "title": "Morning",
+        "description": "A morning ritual instead of morning coffee."
       },
       {
-        "label": "Daytime",
-        "headline": "Daily ritual in the middle of the day."
+        "title": "Work",
+        "description": "A daily ritual in the middle of the day."
       },
       {
-        "label": "Evening",
-        "headline": "Evening ritual without alcohol."
+        "title": "Evening",
+        "description": "An evening ritual without alcohol."
       },
       {
-        "label": "Social",
-        "headline": "Meetings, dinners, aperitivo — without alcohol."
+        "title": "Social",
+        "description": "Meetings, dinners, aperitivo without alcohol."
       }
     ],
-    "facts": {
-      "lionsMane": "500 mg Lion's Mane",
-      "noSugar": "0 g added sugar",
-      "natural": "Natural ingredients",
-      "madeIn": "Made in Poland"
-    }
+    "ctaLabel": "Find your Shroom",
+    "stats": [
+      {
+        "value": "500mg",
+        "label": "Lion's Mane"
+      },
+      {
+        "value": "0g",
+        "label": "Added sugar"
+      },
+      {
+        "value": "100%",
+        "label": "Natural ingredients"
+      },
+      {
+        "value": "🇵🇱",
+        "label": "Made in Poland"
+      }
+    ]
   },
   "mocktailRecipes": {
     "headline": "Mocktail recipes",

@@ -1,65 +1,54 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Brain, Battery, Moon, Heart } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const pillars = [
-  {
-    icon: Brain,
-    title: "Rano",
-    description: "Poranny rytuał zamiast porannej kawy.",
-    color: "bg-shroom-sage/40",
-    ringColor: "hsl(84 33% 80%)",
-  },
-  {
-    icon: Battery,
-    title: "Praca",
-    description: "Codzienny rytuał w środku dnia.",
-    color: "bg-shroom-peach/40",
-    ringColor: "hsl(18 95% 86%)",
-  },
-  {
-    icon: Moon,
-    title: "Wieczór",
-    description: "Wieczorny rytuał bez alkoholu.",
-    color: "bg-shroom-lavender/30",
-    ringColor: "hsl(247 28% 64%)",
-  },
-  {
-    icon: Heart,
-    title: "Social",
-    description: "Spotkania, kolacje, aperitivo bez alkoholu.",
-    color: "bg-shroom-gold/30",
-    ringColor: "hsl(40 100% 71%)",
-  },
+const pillarMeta = [
+  { icon: Brain,   color: "bg-shroom-sage/40",     ringColor: "hsl(84 33% 80%)" },
+  { icon: Battery, color: "bg-shroom-peach/40",    ringColor: "hsl(18 95% 86%)" },
+  { icon: Moon,    color: "bg-shroom-lavender/30", ringColor: "hsl(247 28% 64%)" },
+  { icon: Heart,   color: "bg-shroom-gold/30",     ringColor: "hsl(40 100% 71%)" },
 ];
 
+interface PillarCopy {
+  title: string;
+  description: string;
+}
+
+interface StatCopy {
+  value: string;
+  label: string;
+}
+
 const IntroSection = () => {
+  const { t } = useTranslation();
+  const pillarsCopy = t("introSection.pillars", { returnObjects: true }) as PillarCopy[];
+  const stats = t("introSection.stats", { returnObjects: true }) as StatCopy[];
+  const pillars = pillarMeta.map((m, i) => ({ ...m, ...pillarsCopy[i] }));
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Auto-rotate on mobile
   useEffect(() => {
     if (!isAutoPlaying) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % pillars.length);
     }, 3000);
     return () => clearInterval(timer);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, pillars.length]);
 
   const handleSelect = (index: number) => {
     setActiveIndex(index);
     setIsAutoPlaying(false);
-    // Resume auto-play after 8s of inactivity
     setTimeout(() => setIsAutoPlaying(true), 8000);
   };
 
   const activePillar = pillars[activeIndex];
-  const radius = 110; // circle radius for icon placement
+  const radius = 110;
 
   return (
     <section className="py-28 md:py-36 bg-background" id="o-nas">
       <div className="container mx-auto px-6 lg:px-12">
-        {/* Main Message */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,18 +57,18 @@ const IntroSection = () => {
           className="max-w-4xl mx-auto mb-16 md:mb-32"
         >
           <p className="font-body text-sm font-medium text-accent uppercase tracking-[0.2em] mb-6">
-            Czym jest Shroom?
+            {t("introSection.eyebrow")}
           </p>
           <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-8">
-            Stop feeling{" "}
-            <span className="text-muted-foreground/40">like shit.</span>
+            {t("introSection.headlinePart1")}{" "}
+            <span className="text-muted-foreground/40">{t("introSection.headlinePart2")}</span>
           </h2>
           <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-            Napoje funkcjonalne z soplówką jeżowatą. Bez dodanego cukru, bez ściemy. Świadomy wybór dla siebie.
+            {t("introSection.body")}
           </p>
         </motion.div>
 
-        {/* Mobile: Orbital selector */}
+        {/* Mobile orbital */}
         <div className="sm:hidden">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -88,32 +77,21 @@ const IntroSection = () => {
             viewport={{ once: true }}
             className="flex flex-col items-center"
           >
-            {/* Circle with icons */}
             <div className="relative w-[280px] h-[280px] mb-8">
-              {/* Outer ring */}
               <div className="absolute inset-0 rounded-full border-2 border-border" />
-
-              {/* Active arc indicator */}
               <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 280 280">
                 <motion.circle
-                  cx="140"
-                  cy="140"
-                  r="138"
-                  fill="none"
+                  cx="140" cy="140" r="138" fill="none"
                   stroke={activePillar.ringColor}
                   strokeWidth="3"
                   strokeDasharray={`${(2 * Math.PI * 138) / 4} ${(2 * Math.PI * 138) * 3 / 4}`}
                   strokeDashoffset={-(2 * Math.PI * 138) * activeIndex / 4}
                   strokeLinecap="round"
                   initial={false}
-                  animate={{
-                    strokeDashoffset: -(2 * Math.PI * 138) * activeIndex / 4,
-                  }}
+                  animate={{ strokeDashoffset: -(2 * Math.PI * 138) * activeIndex / 4 }}
                   transition={{ duration: 0.5, ease: "easeInOut" }}
                 />
               </svg>
-
-              {/* Center content */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -133,57 +111,39 @@ const IntroSection = () => {
                   </motion.div>
                 </AnimatePresence>
               </div>
-
-              {/* Orbital icons */}
               {pillars.map((pillar, index) => {
-                const angle = (index * 90 - 90) * (Math.PI / 180); // Start from top
+                const angle = (index * 90 - 90) * (Math.PI / 180);
                 const x = 140 + radius * Math.cos(angle);
                 const y = 140 + radius * Math.sin(angle);
                 const isActive = index === activeIndex;
                 const Icon = pillar.icon;
-
                 return (
                   <motion.button
                     key={pillar.title}
                     onClick={() => handleSelect(index)}
                     className="absolute"
-                    style={{
-                      left: x - 24,
-                      top: y - 24,
-                    }}
-                    animate={{
-                      scale: isActive ? 1.2 : 1,
-                    }}
+                    style={{ left: x - 24, top: y - 24 }}
+                    animate={{ scale: isActive ? 1.2 : 1 }}
                     transition={{ duration: 0.3 }}
                   >
                     <div
                       className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-                        isActive
-                          ? `${pillar.color} shadow-md`
-                          : "bg-card border border-border"
+                        isActive ? `${pillar.color} shadow-md` : "bg-card border border-border"
                       }`}
                     >
-                      <Icon
-                        className={`w-5 h-5 transition-colors duration-300 ${
-                          isActive ? "text-foreground" : "text-muted-foreground"
-                        }`}
-                      />
+                      <Icon className={`w-5 h-5 transition-colors duration-300 ${isActive ? "text-foreground" : "text-muted-foreground"}`} />
                     </div>
                   </motion.button>
                 );
               })}
             </div>
-
-            {/* Progress dots */}
             <div className="flex gap-2">
               {pillars.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => handleSelect(i)}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === activeIndex
-                      ? "w-8 bg-foreground"
-                      : "w-1.5 bg-border"
+                    i === activeIndex ? "w-8 bg-foreground" : "w-1.5 bg-border"
                   }`}
                 />
               ))}
@@ -191,7 +151,7 @@ const IntroSection = () => {
           </motion.div>
         </div>
 
-        {/* Desktop: Grid cards (unchanged) */}
+        {/* Desktop grid */}
         <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-5">
           {pillars.map((pillar, index) => (
             <motion.div
@@ -215,7 +175,6 @@ const IntroSection = () => {
           ))}
         </div>
 
-        {/* Quiz CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -227,11 +186,10 @@ const IntroSection = () => {
             href="/quiz"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background font-bold text-base hover:bg-foreground/90 transition-colors"
           >
-            🍄 Znajdź swojego Shrooma
+            {t("introSection.ctaLabel")}
           </a>
         </motion.div>
 
-        {/* Stats */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -240,12 +198,7 @@ const IntroSection = () => {
           className="mt-24 md:mt-32"
         >
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16">
-            {[
-              { value: "500mg", label: "Lion's Mane" },
-              { value: "0g", label: "Dodanego cukru" },
-              { value: "100%", label: "Naturalne składniki" },
-              { value: "🇵🇱", label: "Made in Poland" },
-            ].map((stat, i) => (
+            {stats.map((stat, i) => (
               <div key={i} className="text-center lg:text-left">
                 <p className="font-display text-3xl md:text-4xl font-bold text-foreground mb-1">
                   {stat.value}

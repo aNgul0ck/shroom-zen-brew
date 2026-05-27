@@ -263,28 +263,34 @@
       ]
     },
     "reviews": {
-      "sectionTitle": "What our people say",
-      "ratingNote": "(200+ reviews)",
+      "eyebrow": "Opinie",
+      "sectionTitle": "Co mówią nasi klienci",
+      "ratingValue": "4.9",
+      "ratingNote": "(200+ opinii)",
       "items": [
         {
           "name": "Olek R.",
-          "role": "Entrepreneur",
-          "text": "Power is my daily ritual. Focus and a steady drive — without the jittery edge of coffee."
+          "role": "Przedsiębiorca",
+          "text": "Power to mój codzienny rytuał. Skupienie i energia bez nerwowości kawy.",
+          "product": "Power"
         },
         {
           "name": "Ewa K.",
-          "role": "UX Designer",
-          "text": "Relax helps me wind down after an intense day. I sleep like a baby."
+          "role": "Projektantka UX",
+          "text": "Relax pomaga mi wyłączyć się po intensywnym dniu. Śpię jak dziecko.",
+          "product": "Relax"
         },
         {
           "name": "Priyanka B.",
           "role": "Software Developer",
-          "text": "Diva is my go-to for social events. All the fun, none of the hangover."
+          "text": "Diva is my go-to for social events. All the fun, none of the hangover.",
+          "product": "Diva"
         },
         {
           "name": "Michał T.",
-          "role": "Strategist",
-          "text": "Outstanding drinks. Clean composition, no aftertaste, real ritual."
+          "role": "Fotograf",
+          "text": "Outstanding drinks! They really improve concentration, zero side effects.",
+          "product": "Power"
         }
       ]
     },
@@ -396,40 +402,61 @@
       ]
     },
     "subscriptions": {
-      "sectionTitle": "Your monthly rhythm.",
-      "sectionSubtitle": "A subscription = ~15% off + free shipping. Cancel any time.",
-      "rhythmLabel": "rhythm.",
-      "currency": "€",
+      "eyebrow": "Subskrypcje",
+      "titlePart1": "Wybierz swój",
+      "titleAccent": "rytm.",
+      "subtitle": "Elastyczne plany. Zero zobowiązań, anuluj kiedy chcesz.",
+      "currency": "zł",
+      "mobileHint": "← przesuń →",
+      "footer": "Bez zobowiązań . Anuluj w dowolnym momencie . Bezpieczna płatność",
+      "mostPopular": "Najczęściej wybierany",
       "items": [
         {
           "key": "starter",
+          "badge": "Starter",
           "name": "Starter Ritual",
-          "tagline": "Try it. Seriously.",
-          "details": "Power or Relax",
-          "badge": "Perfect as a gift"
+          "headline": "Spróbuj. Serio.",
+          "price": "149",
+          "bottles": "12 butelek",
+          "period": "Power lub Relax",
+          "highlights": [
+            "2 tygodnie eksperymentu",
+            "1 butelka dziennie",
+            "Idealny na prezent"
+          ],
+          "cta": "Zacznij"
         },
         {
           "key": "goodTrip",
+          "badge": "Bestseller",
           "name": "Good Trip",
-          "tagline": "Rhythm of day and evening.",
-          "details": "12 Power + 12 Relax",
-          "badge": "Full day rhythm"
+          "headline": "Rytm dnia i wieczoru.",
+          "price": "269",
+          "bottles": "24 butelki",
+          "period": "12 Power + 12 Relax",
+          "highlights": [
+            "Pełny rytm dnia",
+            "Rano: poranny rytuał",
+            "Wieczór: wieczorny rytuał"
+          ],
+          "cta": "Wybierz"
         },
         {
           "key": "feelYourBest",
+          "badge": "Pro",
           "name": "Feel Your Best",
-          "tagline": "Daily well-being ritual.",
-          "details": "24 Power + 24 Relax",
-          "badge": "Best price per bottle"
+          "headline": "Codzienny rytuał well-being.",
+          "price": "499",
+          "bottles": "48 butelek",
+          "period": "24 Power + 24 Relax",
+          "highlights": [
+            "Miesiąc codziennego rytuału",
+            "2 butelki dziennie",
+            "Najlepsza cena za butelkę"
+          ],
+          "cta": "Go Heroic"
         }
-      ],
-      "phases": {
-        "morning": "Morning: morning ritual",
-        "evening": "Evening: evening ritual",
-        "monthDaily": "A month of daily ritual"
-      },
-      "ctaPrimary": "Start subscription",
-      "ctaSecondary": "Go Heroic"
+      ]
     },
     "quizCta": {
       "items": [
@@ -1790,34 +1817,58 @@
     }
   },
   "benefits": {
-    "headline": "What's inside",
+    "headlinePart1": "Dlaczego",
+    "headlineAccent": "Shroom",
+    "headlinePart2": "?",
+    "subheadline": "Naturalne składniki roślinne + cynk i witamina C w każdej butelce.",
     "items": [
       {
-        "title": "Lion's Mane",
-        "body": "500 mg of lion's mane extract. A functional mushroom from Asian tradition.",
-        "mgLabel": "500 mg",
-        "subLabel": "extract",
-        "context": "Functional mushroom",
-        "tradition": "Asian tradition"
+        "title": "Cynk",
+        "description": "Przyczynia się do prawidłowej funkcji poznawczej (EFSA)"
       },
       {
-        "title": "Zinc",
-        "body": "Zinc contributes to normal cognitive function (EFSA).",
-        "context": "Source of zinc"
+        "title": "Bez kofeiny",
+        "description": "Naturalne składniki botaniczne"
       },
       {
-        "title": "Caffeine-free",
-        "body": "Natural botanical ingredients."
+        "title": "Witamina C",
+        "description": "Przyczynia się do zmniejszenia uczucia zmęczenia i znużenia (EFSA)"
       },
       {
-        "title": "Vitamin C",
-        "body": "Vitamin C contributes to the reduction of tiredness and fatigue (EFSA)."
-      },
-      {
-        "title": "No added sugar",
-        "body": "Natural sweetness from apple juice."
+        "title": "Bez dodanego cukru",
+        "description": "Naturalna słodycz z soku jabłkowego"
       }
-    ]
+    ],
+    "stats": [
+      {
+        "value": "500mg",
+        "label": "ekstraktu"
+      },
+      {
+        "value": "30:1",
+        "label": "koncentracja"
+      },
+      {
+        "value": "50%",
+        "label": "polisacharydów"
+      },
+      {
+        "value": "🍄",
+        "label": "owocnik"
+      }
+    ],
+    "lionsMane": {
+      "title": "Soplówka jeżowata",
+      "body": "to grzyb stosowany w tradycyjnej medycynie azjatyckiej od setek lat.",
+      "bodyStrong": "Lion's Mane",
+      "tags": [
+        "Grzyb funkcjonalny",
+        "Tradycja azjatycka",
+        "Naturalny"
+      ]
+    },
+    "disclaimer": "* Zatwierdzone oświadczenia zdrowotne EFSA dla cynku i witaminy C.",
+    "disclaimerLink": "Zobacz szczegóły"
   },
   "howItWorks": {
     "headline": "How it works",
@@ -1849,32 +1900,47 @@
     ]
   },
   "introSection": {
-    "headline": "When to drink Shroom",
-    "subheadline": "Four moments. Four rituals. One brand.",
-    "moments": [
+    "eyebrow": "Czym jest Shroom?",
+    "headlinePart1": "Stop feeling",
+    "headlinePart2": "like shit.",
+    "body": "Napoje funkcjonalne z soplówką jeżowatą. Bez dodanego cukru, bez ściemy. Świadomy wybór dla siebie.",
+    "pillars": [
       {
-        "label": "Morning",
-        "headline": "Morning ritual instead of morning coffee."
+        "title": "Rano",
+        "description": "Poranny rytuał zamiast porannej kawy."
       },
       {
-        "label": "Daytime",
-        "headline": "Daily ritual in the middle of the day."
+        "title": "Praca",
+        "description": "Codzienny rytuał w środku dnia."
       },
       {
-        "label": "Evening",
-        "headline": "Evening ritual without alcohol."
+        "title": "Wieczór",
+        "description": "Wieczorny rytuał bez alkoholu."
       },
       {
-        "label": "Social",
-        "headline": "Meetings, dinners, aperitivo — without alcohol."
+        "title": "Social",
+        "description": "Spotkania, kolacje, aperitivo bez alkoholu."
       }
     ],
-    "facts": {
-      "lionsMane": "500 mg Lion's Mane",
-      "noSugar": "0 g added sugar",
-      "natural": "Natural ingredients",
-      "madeIn": "Made in Poland"
-    }
+    "ctaLabel": "🍄 Znajdź swojego Shrooma",
+    "stats": [
+      {
+        "value": "500mg",
+        "label": "Lion's Mane"
+      },
+      {
+        "value": "0g",
+        "label": "Dodanego cukru"
+      },
+      {
+        "value": "100%",
+        "label": "Naturalne składniki"
+      },
+      {
+        "value": "🇵🇱",
+        "label": "Made in Poland"
+      }
+    ]
   },
   "mocktailRecipes": {
     "headline": "Mocktail recipes",
