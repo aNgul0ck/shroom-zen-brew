@@ -1,4 +1,5 @@
 import { timelineMilestones } from "@/data/about";
+import { useTranslation } from "react-i18next";
 
 const AboutTimeline = () => {
   return (
