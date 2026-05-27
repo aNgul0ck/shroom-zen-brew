@@ -141,18 +141,6 @@ export const planetCommitments = [
     body:
       "Szkło, papier, etykiety — wszystko nadaje się do recyklingu. Odchodzimy od plastiku tam, gdzie tylko się da.",
   },
-  {
-    n: "05",
-    title: "Bez szkodliwych dodatków",
-    body:
-      "Zero sztucznych barwników, słodzików, konserwantów. Krótka lista składników, którą bez problemu przeczytasz na etykiecie.",
-  },
-  {
-    n: "06",
-    title: "Świadome pozyskiwanie",
-    body:
-      "Współpracujemy z małymi plantatorami i etycznymi dostawcami. Znamy historię każdego składnika w naszej butelce.",
-  },
 ];
 
 export const teamMembers = [
