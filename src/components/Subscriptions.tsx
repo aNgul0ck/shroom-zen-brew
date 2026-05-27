@@ -1,65 +1,53 @@
 import { Check, ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-const subscriptions = [
-  {
-    badge: "Starter",
-    name: "Starter Ritual",
-    headline: "Spróbuj. Serio.",
-    price: "149",
-    bottles: "12 butelek",
-    period: "Power lub Relax",
-    highlights: ["2 tygodnie eksperymentu", "1 butelka dziennie", "Idealny na prezent"],
-    cta: "Zacznij",
-    badgeBg: "bg-shroom-gold",
-  },
-  {
-    badge: "Bestseller",
-    name: "Good Trip",
-    headline: "Rytm dnia i wieczoru.",
-    price: "269",
-    bottles: "24 butelki",
-    period: "12 Power + 12 Relax",
-    highlights: ["Pełny rytm dnia", "Rano: poranny rytuał", "Wieczór: wieczorny rytuał"],
-    cta: "Wybierz",
-    badgeBg: "bg-shroom-green",
-    featured: true,
-  },
-  {
-    badge: "Pro",
-    name: "Feel Your Best",
-    headline: "Codzienny rytuał well-being.",
-    price: "499",
-    bottles: "48 butelek",
-    period: "24 Power + 24 Relax",
-    highlights: ["Miesiąc codziennego rytuału", "2 butelki dziennie", "Najlepsza cena za butelkę"],
-    cta: "Go Heroic",
-    badgeBg: "bg-shroom-sky",
-  },
+const itemMeta = [
+  { badgeBg: "bg-shroom-gold",  featured: false },
+  { badgeBg: "bg-shroom-green", featured: true  },
+  { badgeBg: "bg-shroom-sky",   featured: false },
 ];
 
+interface SubItem {
+  key: string;
+  badge: string;
+  name: string;
+  headline: string;
+  price: string;
+  bottles: string;
+  period: string;
+  highlights: string[];
+  cta: string;
+}
+
 const Subscriptions = () => {
+  const { t } = useTranslation();
+  const items = t("homepage.subscriptions.items", { returnObjects: true }) as SubItem[];
+  const subs = items.map((it, i) => ({ ...it, ...itemMeta[i] }));
+  const currency = t("homepage.subscriptions.currency");
+  const mostPopular = t("homepage.subscriptions.mostPopular");
+
   return (
     <section className="bg-background" id="subskrypcje">
       <div className="container mx-auto px-6 lg:px-12 py-12 md:py-16">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>
             <p className="font-body text-xs font-medium text-accent uppercase tracking-[0.2em] mb-3">
-              Subskrypcje
+              {t("homepage.subscriptions.eyebrow")}
             </p>
             <h2 className="ed-heading text-foreground leading-tight">
-              Wybierz swój <span className="text-foreground/30">rytm.</span>
+              {t("homepage.subscriptions.titlePart1")} <span className="text-foreground/30">{t("homepage.subscriptions.titleAccent")}</span>
             </h2>
           </div>
           <p className="font-body text-sm text-foreground/50 max-w-xs">
-            Elastyczne plany. Zero zobowiązań, anuluj kiedy chcesz.
+            {t("homepage.subscriptions.subtitle")}
           </p>
         </div>
 
-        {/* Mobile: horizontal snap-scroller */}
+        {/* Mobile snap scroller */}
         <div className="md:hidden -mx-6 px-6 flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 scrollbar-hide" style={{ scrollbarWidth: "none" }}>
-          {subscriptions.map((sub) => (
+          {subs.map((sub) => (
             <div
-              key={sub.name}
+              key={sub.key}
               className={`snap-start shrink-0 w-[82%] group bg-background p-5 flex flex-col ${
                 sub.featured ? "border-2 border-foreground" : "border border-foreground/8"
               }`}
@@ -70,14 +58,12 @@ const Subscriptions = () => {
                 </span>
                 {sub.featured && (
                   <span className="bg-foreground text-background px-2 py-0.5 font-body text-[10px] font-medium">
-                    Najczęściej wybierany
+                    {mostPopular}
                   </span>
                 )}
               </div>
 
-              <h3 className="font-display text-xl font-bold text-foreground mb-1">
-                {sub.name}
-              </h3>
+              <h3 className="font-display text-xl font-bold text-foreground mb-1">{sub.name}</h3>
               <p className="font-body text-xs text-foreground/50 mb-4">{sub.headline}</p>
 
               <ul className="space-y-2 mb-5">
@@ -91,7 +77,7 @@ const Subscriptions = () => {
 
               <div className="mt-auto">
                 <p className="font-display text-2xl font-bold text-foreground mb-0.5">
-                  {sub.price} <span className="text-sm font-normal text-foreground/40">zł</span>
+                  {sub.price} <span className="text-sm font-normal text-foreground/40">{currency}</span>
                 </p>
                 <p className="font-body text-[11px] text-foreground/40 mb-3">
                   {sub.bottles} . {sub.period}
@@ -105,14 +91,14 @@ const Subscriptions = () => {
           ))}
         </div>
         <p className="md:hidden font-body text-[10px] uppercase tracking-[0.2em] text-foreground/40 mt-2 mb-2">
-          ← przesuń →
+          {t("homepage.subscriptions.mobileHint")}
         </p>
 
-        {/* Tablet+: grid */}
+        {/* Desktop grid */}
         <div className="hidden md:grid md:grid-cols-3 gap-[3px]">
-          {subscriptions.map((sub) => (
+          {subs.map((sub) => (
             <div
-              key={sub.name}
+              key={sub.key}
               className={`group bg-background p-6 md:p-8 lg:p-10 flex flex-col hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-all duration-300 ${
                 sub.featured ? "border-2 border-foreground" : "border border-foreground/8 hover:border-foreground/20"
               }`}
@@ -123,7 +109,7 @@ const Subscriptions = () => {
                 </span>
                 {sub.featured && (
                   <span className="bg-foreground text-background px-2.5 py-1 font-body text-[11px] font-medium">
-                    Najczęściej wybierany
+                    {mostPopular}
                   </span>
                 )}
               </div>
@@ -144,7 +130,7 @@ const Subscriptions = () => {
 
               <div className="mt-auto">
                 <p className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-0.5">
-                  {sub.price} <span className="text-base font-normal text-foreground/40">zł</span>
+                  {sub.price} <span className="text-base font-normal text-foreground/40">{currency}</span>
                 </p>
                 <p className="font-body text-xs text-foreground/40 mb-4">
                   {sub.bottles} . {sub.period}
@@ -158,9 +144,8 @@ const Subscriptions = () => {
           ))}
         </div>
 
-
         <p className="text-center mt-8 font-body text-[11px] text-foreground/40">
-          Bez zobowiązań . Anuluj w dowolnym momencie . Bezpieczna płatność
+          {t("homepage.subscriptions.footer")}
         </p>
       </div>
     </section>
