@@ -587,11 +587,13 @@
     },
     "origin": {
       "kicker": "Where it started",
-      "headlineLine1": "A search for",
+      "headlineLine1": "From a personal search for",
       "headlineLine2": "balance.",
-      "imageAlt": "Shroom founders Aga and Kamila with bottles of Shroom Power and Relax",
-      "founderQuote": "We wanted something that lifts the mood and lets people be together - without alcohol, without sugar overload, and without the artificial high.",
-      "founderAttribution": " - Aga & Kamila, founders"
+      "imageAlt": "Shroom founders — Aga and Kamila at a bar with bottles of Shroom Power and Relax",
+      "storyParagraph1": "We were fed up with drinks and rituals that leave you feeling worse than before. Shroom was born from the need to do something meaningful - for people who no longer want to choose between pleasure and well-being. Less crap. More quality. Zero pretending.",
+      "quote": "Not everything that works has to cost you the next day ",
+      "storyParagraph2": "Instead of obvious solutions, we began exploring adaptogens, vital mushrooms, and plants used for years in Eastern traditions - including lion's mane, ginseng, and l-theanine.",
+      "foundersCaption": "Aga & Kamila — Shroom founders"
     },
     "planet": {
       "kicker": "Our planet",
