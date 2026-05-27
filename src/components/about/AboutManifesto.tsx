@@ -1,6 +1,12 @@
 import { manifestoPillars } from "@/data/about";
+import { useTranslation } from "react-i18next";
 
 const AboutManifesto = () => {
+  const { t } = useTranslation();
+  // Using pillars from translation file if they exist, otherwise fallback to data file
+  const pillarsFromTranslation = t("about.manifesto.pillars", { returnObjects: true });
+  const pillars = Array.isArray(pillarsFromTranslation) ? pillarsFromTranslation : manifestoPillars;
+
   return (
     <section className="bg-background overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 py-20 md:py-28">
@@ -8,12 +14,11 @@ const AboutManifesto = () => {
         <div className="grid grid-cols-12 gap-6 mb-16 md:mb-24">
           <div className="col-span-12 md:col-span-8">
             <p className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.25em] mb-4">
-              Manifest
+              {t("about.manifesto.kicker")}
             </p>
             <h2 className="ed-heading text-foreground">
-              Napoje powinny dodawać Ci{" "}
-              <span className="text-foreground/40">lekkości i energii</span> —
-              nie spowalniać czy otępiać.
+              {t("about.manifesto.headlineLine1")}{" "}
+              <span className="text-foreground/40">{t("about.manifesto.headlineLine2")}</span>
             </h2>
           </div>
           <div className="hidden md:flex col-span-4 items-end justify-end">
@@ -25,7 +30,7 @@ const AboutManifesto = () => {
 
         {/* Staggered pillars — each at different offset */}
         <div className="space-y-12 md:space-y-0">
-          {manifestoPillars.map((p, i) => (
+          {pillars.map((p, i) => (
             <article
               key={p.title}
               className={`grid grid-cols-12 gap-4 md:gap-8 items-start ${
