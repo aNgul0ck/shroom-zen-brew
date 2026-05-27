@@ -9,8 +9,8 @@
     "naturalIngredients": "100% naturalne składniki",
     "cta": {
       "buy": "Kup",
-      "buyPower": "Kup Power",
-      "buyRelax": "Kup Relax",
+      "buyPower": "WYBIERZ POWER",
+      "buyRelax": "WYBIERZ RELAX",
       "buyDiva": "Kup Divę",
       "buyBrainBliss": "Kup BrainBliss",
       "buyGlass": "Kup Glass",
@@ -19,7 +19,7 @@
       "back": "Wstecz",
       "submit": "Wyślij",
       "showMore": "Pokaż więcej",
-      "learnMore": "Dowiedz się więcej",
+      "learnMore": "Zobacz co w środku",
       "openCart": "Otwórz koszyk",
       "remove": "Usuń",
       "decrease": "Zmniejsz ilość",
@@ -57,8 +57,8 @@
       "awardBadge": "Nagrodzony napój funkcjonalny",
       "headline": "The drink that gets it.",
       "subheadline": "Napoje funkcjonalne na każdą okazję. Bez dodatku cukru, zero alkoholu. The choice of feeling good",
-      "ctaPrimary": "Kup Shrooma",
-      "ctaSecondary": "Dowiedz się więcej",
+      "ctaPrimary": "Odkryj Shrooma",
+      "ctaSecondary": "Zobacz co w środku",
       "imageAlt": "Przyjaciele cieszą się napojami Shroom",
       "ingredientChip": "Lion's Mane",
       "testimonialQuote": "\"Diva zastąpiła mi kieliszek wina. Wychodzę, bawię się i rano czuję się super.\"",
@@ -100,14 +100,14 @@
         "ingredients": [
           "Lion's Mane",
           "Panax ginseng",
-          "Vit. C"
+          "|\nCynk"
         ],
         "price": "79 zł",
         "tagline": "Twój dzienny rytuał.",
         "benefits": [
           "Lion's Mane",
           "Żeń-szeń",
-          "Wit. C"
+          "Cynk"
         ]
       },
       "relax": {
