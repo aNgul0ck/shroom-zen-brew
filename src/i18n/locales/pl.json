@@ -1,48 +1,52 @@
 {
   "common": {
-    "currency": "€",
-    "currencySuffix": "",
-    "shippingFreeFrom": "Free shipping over 45 €",
-    "noSugarAdded": "No added sugar",
-    "noCaffeine": "Caffeine-free",
+    "currency": "zł",
+    "currencySuffix": " zł",
+    "shippingFreeFrom": "Darmowa dostawa od 200 zł",
+    "noSugarAdded": "Bez dodanego cukru",
+    "noCaffeine": "Bez kofeiny",
     "madeInPoland": "Made in Poland",
-    "naturalIngredients": "100% natural ingredients",
+    "naturalIngredients": "100% naturalne składniki",
     "cta": {
-      "buy": "Buy",
-      "buyPower": "Buy Power",
-      "buyRelax": "Buy Relax",
-      "buyDiva": "Buy Diva",
-      "buyBrainBliss": "Buy BrainBliss",
-      "buyGlass": "Buy Glass",
-      "addToCart": "Add to cart",
-      "next": "Next",
-      "back": "Back",
-      "submit": "Submit",
-      "showMore": "Show more",
-      "learnMore": "Learn more",
-      "openCart": "Open cart",
-      "remove": "Remove",
-      "decrease": "Decrease quantity",
-      "increase": "Increase quantity"
+      "buy": "Kup",
+      "buyPower": "Kup Power",
+      "buyRelax": "Kup Relax",
+      "buyDiva": "Kup Divę",
+      "buyBrainBliss": "Kup BrainBliss",
+      "buyGlass": "Kup Glass",
+      "addToCart": "Dodaj do koszyka",
+      "next": "Dalej",
+      "back": "Wstecz",
+      "submit": "Wyślij",
+      "showMore": "Pokaż więcej",
+      "learnMore": "Dowiedz się więcej",
+      "openCart": "Otwórz koszyk",
+      "remove": "Usuń",
+      "decrease": "Zmniejsz ilość",
+      "increase": "Zwiększ ilość",
+      "see": "Zobacz"
     },
     "header": {
-      "about": "About Shroom",
+      "about": "O shroomie",
       "shop": "Shop",
       "b2b": "B2B",
       "blog": "Blog",
-      "research": "Research"
+      "research": "Badania",
+      "quiz": "Quiz",
+      "contact": "Kontakt"
     },
     "footer": {
       "brand": ":shroom",
-      "thankYou": "Thank you!",
-      "privacyPolicy": "Privacy Policy",
+      "thankYou": "Dziękujemy!",
+      "privacyPolicy": "Polityka prywatności",
       "email": "hii@shroom4you.com",
       "instagram": "IG: @shroom.drink",
       "facebook": "FB: fb.com/shroom4you",
-      "website": "shroom4you.com"
+      "website": "shroom4you.com",
+      "regulations": "Regulamin",
+      "rights": "Wszelkie prawa zastrzeżone."
     }
   },
-
   "homepage": {
     "meta": {
       "title": "Shroom · Functional drinks with lion's mane",
@@ -50,22 +54,30 @@
       "keywords": "shroom, lion's mane, hericium, functional drink, well-being, diva, social elixir, brainbliss, zinc, vitamin c, non-alcoholic, adaptogens"
     },
     "hero": {
-      "awardBadge": "Award-winning functional drink",
+      "awardBadge": "Nagrodzony napój funkcjonalny",
       "headline": "The drink that gets it.",
-      "subheadline": "Functional drinks with lion's mane and adaptogens. No alcohol, no added sugar, no fluff.",
-      "ctaPrimary": "Find your drink",
-      "ctaSecondary": "When to drink?",
-      "imageAlt": "Friends enjoying Shroom drinks together",
+      "subheadline": "Funkcjonalne napoje z soplówką jeżowatą. Twój rytuał dobrego samopoczucia, bez kompromisów.",
+      "ctaPrimary": "Kup Shrooma",
+      "ctaSecondary": "Dowiedz się więcej",
+      "imageAlt": "Przyjaciele cieszą się napojami Shroom",
       "ingredientChip": "Lion's Mane",
-      "testimonialQuote": "Diva took the place of my glass of wine. I go out, I have a great time, and I wake up feeling great.",
-      "testimonialAuthor": "— Ewa K."
+      "testimonialQuote": "\"Diva zastąpiła mi kieliszek wina. Wychodzę, bawię się i rano czuję się super.\"",
+      "testimonialAuthor": "Ewa K., Projektantka UX",
+      "headlinePart1": "Poczuj się",
+      "headlineAccent": "świetnie",
+      "headlinePart2": "bez alkoholu",
+      "pills": {
+        "noSugar": "0g cukru",
+        "natural": "100% naturalne",
+        "lionsMane": "Lion's Mane"
+      }
     },
     "trustBar": {
       "award": "🏆 World Alcohol-Free Awards 2025",
       "awardCategory": "🥇 Best Functional Drink",
-      "freeShipping": "🚚 Free shipping over 45 €",
-      "noSugar": "✓ No sugar",
-      "noCaffeine": "✓ Caffeine-free",
+      "freeShipping": "🚚 Darmowa dostawa od 200 zł",
+      "noSugar": "✓ Bez cukru",
+      "noCaffeine": "✓ Bez kofeiny",
       "madeIn": "✓ Made in Poland"
     },
     "marquee": {
@@ -78,62 +90,135 @@
       ]
     },
     "functionalDrinks": {
-      "sectionTitle": "Pick your ritual.",
-      "sectionSubtitle": "Four products. One brand. Built around the moment you reach for them.",
+      "sectionTitle": "Rytm dnia",
+      "sectionSubtitle": "Power na dzień, Relax na wieczór. Plus reszta linii na każdą okazję.",
       "power": {
         "name": "Shroom Power",
         "headline": "Your daily ritual.",
-        "description": "Functional drink for the whole day. With lion's mane and Panax ginseng.",
-        "timeOfDay": "Morning · day",
-        "ingredients": ["Lion's Mane", "Panax ginseng", "Vit. C"],
-        "price": "18 €"
+        "description": "Funkcjonalny napój na cały dzień. Z soplówką jeżowatą i żeń-szeniem.",
+        "timeOfDay": "Dzień",
+        "ingredients": [
+          "Lion's Mane",
+          "Panax ginseng",
+          "Vit. C"
+        ],
+        "price": "79 zł",
+        "tagline": "Twój dzienny rytuał.",
+        "benefits": [
+          "Lion's Mane",
+          "Żeń-szeń",
+          "Wit. C"
+        ]
       },
       "relax": {
         "name": "Shroom Relax",
         "headline": "Your afternoon and evening ritual.",
-        "description": "Functional drink for the afternoon and evening. With L-theanine and hops. Alcohol-free.",
-        "timeOfDay": "Afternoon · evening",
-        "ingredients": ["Lion's Mane", "L-Theanine", "Hops"],
-        "price": "18 €"
+        "description": "Funkcjonalny napój na popołudnie i wieczór. Z L-teaniną i chmielem. Bez alkoholu.",
+        "timeOfDay": "Popołudnie / wieczór",
+        "ingredients": [
+          "Lion's Mane",
+          "L-Theanine",
+          "Hops"
+        ],
+        "price": "79 zł",
+        "tagline": "Twój popołudniowy i wieczorny rytuał.",
+        "benefits": [
+          "Lion's Mane",
+          "L-Teanina",
+          "Chmiel"
+        ]
       },
       "brainbliss": {
         "name": "BrainBliss",
         "headline": "Lion's Mane in a capsule.",
-        "description": "Lion's mane in capsules. 500 mg, 30 servings.",
-        "price": "20 €"
+        "description": "Soplówka jeżowata w kapsułkach. 500 mg, 30 porcji.",
+        "price": "89 zł",
+        "tagline": "Lion's Mane w kapsułce.",
+        "tag": "Codziennie"
       },
       "matcha": {
-        "name": "Shroom × BROS Matcha Latte",
+        "name": "Shroom x BROS Matcha Latte",
         "headline": "Matcha + Lion's Mane.",
-        "description": "Creamy, plant-based latte with ceremonial-grade matcha and lion's mane.",
-        "price": "23 €"
+        "description": "Kremowe, roślinne latte z matchą ceremonialnej jakości i soplówką jeżowatą.",
+        "price": "99 zł",
+        "tagline": "Matcha + Lion's Mane.",
+        "tag": "Poranek"
       },
       "glass": {
         "name": "Shroom Glass",
         "headline": "The mushroom glass.",
-        "description": "Handcrafted mushroom-shaped glass. 260 ml. Limited edition.",
-        "price": "14 €"
+        "description": "Ręcznie wykonana szklanka w kształcie grzybka. 260 ml. Limitowana seria.",
+        "price": "59 zł",
+        "tagline": "Szklanka grzybek.",
+        "tag": "Akcesoria"
       },
       "diva": {
-        "name": "Diva Social Elixir",
+        "name": "Diva",
         "headline": "Aperitivo without the hangover.",
-        "description": "Alcohol-free aperitivo with 13 botanicals and edible glitter. Celebrate without compromise.",
+        "description": "Bezalkoholowy aperitivo z 13 botanikami. Na każde wyjście, kolację i after, w którym chcesz pamiętać poranek.",
         "botanicalsBadge": "13 botanicals",
         "madeInBadge": "Made in PL",
-        "price": "26 €"
-      }
+        "price": "26 €",
+        "badge": "Brand w brandzie",
+        "italic": "Social Elixir",
+        "tags": [
+          "13 botaników",
+          "0% alkoholu",
+          "500 ml",
+          "Made in PL"
+        ],
+        "cta": "Kup Divę za 99 zł",
+        "ctaSecondary": "Poznaj recepturę"
+      },
+      "eyebrow": "Shroom Drinks",
+      "sectionTitleAccent": "i nocy.",
+      "duoStrip": "Dzień + Wieczór = pełny rytm",
+      "duoCta": "Kup duet za 158 zł",
+      "secondaryEyebrow": "Reszta linii",
+      "secondaryTitle": "Codzienność, poranek i akcesoria.",
+      "scrollHint": "← przesuń →"
     },
     "creatorReels": {
       "sectionTitle": "Real days. Real people.",
       "sectionSubtitle": "How our customers actually drink Shroom — captured on camera, not on a moodboard.",
       "showReel": "Play reel",
       "reels": [
-        { "creator": "Ewa K.", "handle": "@ewa.designs", "caption": "Evening ritual instead of a glass of wine.", "product": "Shroom Relax" },
-        { "creator": "Tomek S.", "handle": "@tomek.codes", "caption": "POV: morning coffee without the coffee.", "product": "Shroom Power" },
-        { "creator": "Zuzia T.", "handle": "@zuzia.pr", "caption": "Aperitivo without the hangover. Glitter is glitter.", "product": "Diva Social Elixir" },
-        { "creator": "Maja W.", "handle": "@majawellness", "caption": "My daily ritual before studying.", "product": "Shroom Power" },
-        { "creator": "Kasia M.", "handle": "@kasia.movement", "caption": "Post-workout — Relax and a book.", "product": "Shroom Relax" },
-        { "creator": "Ania L.", "handle": "@ania.afterhours", "caption": "Diva at dinner with the girls.", "product": "Diva Social Elixir" }
+        {
+          "creator": "Ewa K.",
+          "handle": "@ewa.designs",
+          "caption": "Evening ritual instead of a glass of wine.",
+          "product": "Shroom Relax"
+        },
+        {
+          "creator": "Tomek S.",
+          "handle": "@tomek.codes",
+          "caption": "POV: morning coffee without the coffee.",
+          "product": "Shroom Power"
+        },
+        {
+          "creator": "Zuzia T.",
+          "handle": "@zuzia.pr",
+          "caption": "Aperitivo without the hangover. Glitter is glitter.",
+          "product": "Diva Social Elixir"
+        },
+        {
+          "creator": "Maja W.",
+          "handle": "@majawellness",
+          "caption": "My daily ritual before studying.",
+          "product": "Shroom Power"
+        },
+        {
+          "creator": "Kasia M.",
+          "handle": "@kasia.movement",
+          "caption": "Post-workout — Relax and a book.",
+          "product": "Shroom Relax"
+        },
+        {
+          "creator": "Ania L.",
+          "handle": "@ania.afterhours",
+          "caption": "Diva at dinner with the girls.",
+          "product": "Diva Social Elixir"
+        }
       ]
     },
     "dayCycleClock": {
@@ -181,10 +266,26 @@
       "sectionTitle": "What our people say",
       "ratingNote": "(200+ reviews)",
       "items": [
-        { "name": "Olek R.", "role": "Entrepreneur", "text": "Power is my daily ritual. Focus and a steady drive — without the jittery edge of coffee." },
-        { "name": "Ewa K.", "role": "UX Designer", "text": "Relax helps me wind down after an intense day. I sleep like a baby." },
-        { "name": "Priyanka B.", "role": "Software Developer", "text": "Diva is my go-to for social events. All the fun, none of the hangover." },
-        { "name": "Michał T.", "role": "Strategist", "text": "Outstanding drinks. Clean composition, no aftertaste, real ritual." }
+        {
+          "name": "Olek R.",
+          "role": "Entrepreneur",
+          "text": "Power is my daily ritual. Focus and a steady drive — without the jittery edge of coffee."
+        },
+        {
+          "name": "Ewa K.",
+          "role": "UX Designer",
+          "text": "Relax helps me wind down after an intense day. I sleep like a baby."
+        },
+        {
+          "name": "Priyanka B.",
+          "role": "Software Developer",
+          "text": "Diva is my go-to for social events. All the fun, none of the hangover."
+        },
+        {
+          "name": "Michał T.",
+          "role": "Strategist",
+          "text": "Outstanding drinks. Clean composition, no aftertaste, real ritual."
+        }
       ]
     },
     "comparison": {
@@ -421,7 +522,6 @@
       }
     }
   },
-
   "about": {
     "meta": {
       "title": "About Shroom — our story, team and mission | Shroom",
@@ -555,12 +655,20 @@
         {
           "name": "Shroom Power",
           "profile": "Exotic fruit, ginger",
-          "axes": ["Sweet", "Sour", "Herbal"]
+          "axes": [
+            "Sweet",
+            "Sour",
+            "Herbal"
+          ]
         },
         {
           "name": "Shroom Relax",
           "profile": "Aronia, hops, bergamot",
-          "axes": ["Sweet", "Sour", "Herbal"]
+          "axes": [
+            "Sweet",
+            "Sour",
+            "Herbal"
+          ]
         }
       ]
     },
@@ -595,7 +703,6 @@
       ]
     }
   },
-
   "b2b": {
     "meta": {
       "title": "B2B — Become a Shroom partner | Distribution, HoReCa, Events",
@@ -730,7 +837,6 @@
       "partnerLabel": "— Shroom partner"
     }
   },
-
   "product": {
     "common": {
       "metaSuffix": "— Shroom",
@@ -836,11 +942,27 @@
         "headline": "Your morning ritual",
         "subheadline": "A functional drink — caffeine-free and with no added sugar."
       },
-      "comparedTo": ["Coffee", "Yerba mate", "Energy drink"],
+      "comparedTo": [
+        "Coffee",
+        "Yerba mate",
+        "Energy drink"
+      ],
       "reviews": [
-        { "name": "Olek R.", "role": "Entrepreneur", "text": "Power is my daily ritual. I drink it instead of my morning coffee." },
-        { "name": "Maja W.", "role": "Med student", "text": "Refreshing taste, zero sugar. My ritual before studying." },
-        { "name": "Tomek S.", "role": "Developer", "text": "Love that there's no caffeine. I drink it in the afternoon without worrying about sleep." }
+        {
+          "name": "Olek R.",
+          "role": "Entrepreneur",
+          "text": "Power is my daily ritual. I drink it instead of my morning coffee."
+        },
+        {
+          "name": "Maja W.",
+          "role": "Med student",
+          "text": "Refreshing taste, zero sugar. My ritual before studying."
+        },
+        {
+          "name": "Tomek S.",
+          "role": "Developer",
+          "text": "Love that there's no caffeine. I drink it in the afternoon without worrying about sleep."
+        }
       ],
       "faq": [
         {
@@ -928,11 +1050,27 @@
         "headline": "Your daily ritual",
         "subheadline": "An afternoon pause instead of another coffee. An evening ritual instead of a glass of wine. No alcohol, no hangover."
       },
-      "comparedTo": ["Alcohol-free beer", "Herbal tea", "CBD drinks"],
+      "comparedTo": [
+        "Alcohol-free beer",
+        "Herbal tea",
+        "CBD drinks"
+      ],
       "reviews": [
-        { "name": "Ewa K.", "role": "UX Designer", "text": "Relax helps me wind down after an intense day. I sleep like a baby." },
-        { "name": "Kasia M.", "role": "Yoga teacher", "text": "I drink it in the evening instead of wine. Zero alcohol, full relaxation." },
-        { "name": "Paweł D.", "role": "Designer", "text": "Good taste, helps me settle. I buy it in a set with Power." }
+        {
+          "name": "Ewa K.",
+          "role": "UX Designer",
+          "text": "Relax helps me wind down after an intense day. I sleep like a baby."
+        },
+        {
+          "name": "Kasia M.",
+          "role": "Yoga teacher",
+          "text": "I drink it in the evening instead of wine. Zero alcohol, full relaxation."
+        },
+        {
+          "name": "Paweł D.",
+          "role": "Designer",
+          "text": "Good taste, helps me settle. I buy it in a set with Power."
+        }
       ],
       "faq": [
         {
@@ -1042,11 +1180,27 @@
         "headline": "Celebration without the hangover",
         "subheadline": "An aperitivo that looks and tastes like a drink. Without the alcohol."
       },
-      "comparedTo": ["Non-alcoholic wine", "Three Spirit", "Kin Euphorics"],
+      "comparedTo": [
+        "Non-alcoholic wine",
+        "Three Spirit",
+        "Kin Euphorics"
+      ],
       "reviews": [
-        { "name": "Priyanka B.", "role": "Software Developer", "text": "Diva is my go-to for social events. All the fun, none of the hangover." },
-        { "name": "Zuzia T.", "role": "PR Manager", "text": "The glitter makes a real impression. Perfect for cocktails at a party." },
-        { "name": "Ania L.", "role": "Editor", "text": "Finally an alcohol-free drink that looks and tastes luxurious." }
+        {
+          "name": "Priyanka B.",
+          "role": "Software Developer",
+          "text": "Diva is my go-to for social events. All the fun, none of the hangover."
+        },
+        {
+          "name": "Zuzia T.",
+          "role": "PR Manager",
+          "text": "The glitter makes a real impression. Perfect for cocktails at a party."
+        },
+        {
+          "name": "Ania L.",
+          "role": "Editor",
+          "text": "Finally an alcohol-free drink that looks and tastes luxurious."
+        }
       ],
       "faq": [
         {
@@ -1068,7 +1222,6 @@
       ]
     }
   },
-
   "cart": {
     "title": "Your cart",
     "summaryTitle": "Order summary",
@@ -1094,7 +1247,6 @@
       "ctaLabel": "Browse products"
     }
   },
-
   "quiz": {
     "meta": {
       "title": "Quiz — find your Shroom",
@@ -1149,25 +1301,36 @@
         "product": "Shroom Power",
         "title": "For the active ones",
         "description": "Your daily ritual. Lion's mane, Korean ginseng, vitamin C, zinc.",
-        "ingredients": ["Lion's Mane", "Ginseng", "Vit. C"]
+        "ingredients": [
+          "Lion's Mane",
+          "Ginseng",
+          "Vit. C"
+        ]
       },
       "relax": {
         "product": "Shroom Relax",
         "title": "For the calm ones",
         "description": "Your afternoon and evening ritual. L-theanine, hops, lion's mane. Alcohol-free.",
-        "ingredients": ["Lion's Mane", "L-theanine", "Hops"]
+        "ingredients": [
+          "Lion's Mane",
+          "L-theanine",
+          "Hops"
+        ]
       },
       "diva": {
         "product": "Diva Social Elixir",
         "title": "For the social ones",
         "description": "An alcohol-free aperitivo. 13 botanicals and Korean ginseng.",
-        "ingredients": ["13 botanicals", "Ginseng", "Zinc"]
+        "ingredients": [
+          "13 botanicals",
+          "Ginseng",
+          "Zinc"
+        ]
       }
     },
     "ctaResult": "Add to cart",
     "ctaRestart": "Take the quiz again"
   },
-
   "brief": {
     "meta": {
       "title": "Shroom Brief — for creators"
@@ -1199,7 +1362,13 @@
     "adaptogens": {
       "kicker": "Adaptogens",
       "headline": "Your adaptogen is",
-      "items": ["Lion's Mane / Hericium", "Reishi / Lingzhi", "Cordyceps", "Ginseng", "Damiana"],
+      "items": [
+        "Lion's Mane / Hericium",
+        "Reishi / Lingzhi",
+        "Cordyceps",
+        "Ginseng",
+        "Damiana"
+      ],
       "historicalContext": {
         "title": "Key discovery",
         "location": "USSR 1960–1980",
@@ -1255,17 +1424,29 @@
         "power": {
           "title": "For the active ones",
           "description": "Your lifestyle calls for a drink that fits an intense day. Shroom Power is built around lion's mane, ginseng, zinc and vitamin C.",
-          "ingredients": ["Lion's mane", "Ginseng", "Vitamin C"]
+          "ingredients": [
+            "Lion's mane",
+            "Ginseng",
+            "Vitamin C"
+          ]
         },
         "relax": {
           "title": "For the calm ones",
           "description": "You prefer a slower pace. Shroom Relax is built around lion's mane and L-theanine — ingredients known from the traditional tea house.",
-          "ingredients": ["Lion's mane", "L-theanine", "Hops"]
+          "ingredients": [
+            "Lion's mane",
+            "L-theanine",
+            "Hops"
+          ]
         },
         "diva": {
           "title": "For the social ones",
           "description": "You value real relationships and good vibes. Diva is a unique blend of damiana and Siberian ginseng — ingredients known in Latin American tradition.",
-          "ingredients": ["Damiana", "Siberian ginseng", "13 botanicals"]
+          "ingredients": [
+            "Damiana",
+            "Siberian ginseng",
+            "13 botanicals"
+          ]
         }
       }
     },
@@ -1399,7 +1580,6 @@
       "body": "Shroom as part of the day. Just like that. The morning routine, a break at work, a moment for yourself, a walk, a breath in the middle of the day. Light, natural, no pressure."
     }
   },
-
   "research": {
     "meta": {
       "title": "Scientific research | Lion's mane | Shroom",
@@ -1510,7 +1690,6 @@
       }
     }
   },
-
   "blog": {
     "meta": {
       "title": "Blog · Shroom",
@@ -1527,7 +1706,6 @@
     },
     "readMore": "Read more"
   },
-
   "blogPost": {
     "estera": {
       "slug": "estera-mrowka-o-balansie",
@@ -1564,7 +1742,6 @@
       "readTime": "min read"
     }
   },
-
   "notFound": {
     "headline": "Oops! Page not found",
     "subheadline": "The page you were looking for took the evening off.",
@@ -1572,7 +1749,6 @@
     "ctaShop": "Browse products",
     "errorPrefix": "404 Error: User attempted to access non-existent route:"
   },
-
   "accessories": {
     "glass": {
       "name": "Shroom Glass",
@@ -1613,7 +1789,6 @@
       "price": "23 €"
     }
   },
-
   "benefits": {
     "headline": "What's inside",
     "items": [
@@ -1644,7 +1819,6 @@
       }
     ]
   },
-
   "howItWorks": {
     "headline": "How it works",
     "subheadline": "Four steps, one ritual.",
@@ -1674,7 +1848,6 @@
       }
     ]
   },
-
   "introSection": {
     "headline": "When to drink Shroom",
     "subheadline": "Four moments. Four rituals. One brand.",
@@ -1703,34 +1876,59 @@
       "madeIn": "Made in Poland"
     }
   },
-
   "mocktailRecipes": {
     "headline": "Mocktail recipes",
     "subheadline": "Three drinks to put Diva on your dinner table.",
     "items": [
       {
         "name": "La Dolce Diva",
-        "ingredients": ["Diva Social Elixir", "Alcohol-free prosecco", "Orange"]
+        "ingredients": [
+          "Diva Social Elixir",
+          "Alcohol-free prosecco",
+          "Orange"
+        ]
       },
       {
         "name": "Diva Mercy",
-        "ingredients": ["Diva Social Elixir", "Rose syrup", "Tonic"]
+        "ingredients": [
+          "Diva Social Elixir",
+          "Rose syrup",
+          "Tonic"
+        ]
       },
       {
         "name": "Shroom Sunrise",
-        "ingredients": ["Shroom Power", "Orange juice", "Ice"]
+        "ingredients": [
+          "Shroom Power",
+          "Orange juice",
+          "Ice"
+        ]
       }
     ]
   },
-
   "recentPurchases": {
     "labelPrefix": "Just bought:",
     "items": [
-      { "name": "Anna from Warsaw", "product": "Shroom Power" },
-      { "name": "Marcin from Kraków", "product": "Shroom Relax" },
-      { "name": "Zuzia from Gdańsk", "product": "Diva Social Elixir" },
-      { "name": "Kuba from Wrocław", "product": "Starter Pack" },
-      { "name": "Ewa from Poznań", "product": "Shroom Power" }
+      {
+        "name": "Anna from Warsaw",
+        "product": "Shroom Power"
+      },
+      {
+        "name": "Marcin from Kraków",
+        "product": "Shroom Relax"
+      },
+      {
+        "name": "Zuzia from Gdańsk",
+        "product": "Diva Social Elixir"
+      },
+      {
+        "name": "Kuba from Wrocław",
+        "product": "Starter Pack"
+      },
+      {
+        "name": "Ewa from Poznań",
+        "product": "Shroom Power"
+      }
     ]
   }
 }
