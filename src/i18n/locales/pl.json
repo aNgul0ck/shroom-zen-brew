@@ -155,25 +155,25 @@
       "diva": {
         "name": "Diva",
         "headline": "Aperitivo without the hangover.",
-        "description": "Bezalkoholowy aperitivo z 13 botanikami. Na każde wyjście, kolację i after, w którym chcesz pamiętać poranek.",
+        "description": "Błyszcz razem z bezalkoholowym aperitivo. Na wyjścia, kolacje i noce po twojemu.",
         "botanicalsBadge": "13 botanicals",
         "madeInBadge": "Made in PL",
         "price": "26 €",
         "badge": "Brand w brandzie",
         "italic": "Social Elixir",
         "tags": [
-          "13 botaników",
+          "13 składników botanicznych",
           "0% alkoholu",
           "500 ml",
           "Made in PL"
         ],
-        "cta": "Kup Divę za 99 zł",
-        "ctaSecondary": "Poznaj recepturę"
+        "cta": "DAJ SIĘ SKUSIĆ",
+        "ctaSecondary": "POZNAJ MNIE BLIŻEJ →"
       },
       "eyebrow": "Shroom Drinks",
       "sectionTitleAccent": "i nocy.",
       "duoStrip": "Dzień + Wieczór = pełny rytm",
-      "duoCta": "Kup duet za 158 zł",
+      "duoCta": "Weź duet za 158 zł",
       "secondaryEyebrow": "Reszta linii",
       "secondaryTitle": "Codzienność, poranek i akcesoria.",
       "scrollHint": "← przesuń →"
