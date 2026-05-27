@@ -49,12 +49,10 @@ const AboutOrigin = () => {
         {/* Closing paragraph — narrow column, right-aligned on desktop */}
         <div className="mt-16 md:mt-20 grid grid-cols-12 gap-6">
           <div className="col-span-12 md:col-span-6 md:col-start-7">
-            <p className="font-body text-base md:text-lg text-foreground/70 leading-relaxed">
-              Chciałyśmy czegoś, co podnosi nastrój i pozwala ludziom być razem
-              — bez alkoholu, bez nadmiaru cukru i bez sztucznego „haju".
-              Odpowiedź znalazłyśmy w adaptogenach. Tak powstał Shroom: marka
-              napojów funkcjonalnych z soplówką jeżowatą, żeń-szeniem i
-              botanicznymi ekstraktami.
+            <p className="font-body text-base md:text-lg text-foreground/70 leading-relaxed font-mono">
+              Zamiast oczywistych rozwiązań, zaczęłyśmy odkrywać adaptogeny,
+              grzyby witalne i rośliny od lat wykorzystywane w tradycjach
+              Wschodu - w tym soplówkę jeżowatą, żeń-szeń, l-teaninę.
             </p>
           </div>
         </div>
