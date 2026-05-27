@@ -1,6 +1,17 @@
 import { planetCommitments } from "@/data/about";
+import { useTranslation } from "react-i18next";
 
 const AboutPlanet = () => {
+  const { t } = useTranslation();
+  
+  const pillarsFromTranslation = t("about.planet.pillars", { returnObjects: true });
+  const pillars = Array.isArray(pillarsFromTranslation)
+    ? pillarsFromTranslation.map((p, i) => ({ 
+        ...p, 
+        n: planetCommitments[i]?.n 
+      }))
+    : planetCommitments;
+
   return (
     <section className="bg-shroom-sage">
       <div className="container mx-auto px-6 lg:px-12 py-20 md:py-28">
@@ -8,25 +19,23 @@ const AboutPlanet = () => {
         <div className="grid grid-cols-12 gap-6 mb-16 md:mb-24">
           <div className="col-span-12 md:col-span-7">
             <p className="font-body text-xs font-medium text-foreground/60 uppercase tracking-[0.25em] mb-4">
-              Nasza planeta
+              {t("about.planet.kicker")}
             </p>
             <h2 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-[1.05]">
-              Wellness nie kończy się na{" "}
-              <span className="italic text-foreground/40">ciele i umyśle.</span>
+              {t("about.planet.headlineLine1")}{" "}
+              <span className="italic text-foreground/40">{t("about.planet.headlineLine2")}</span>
             </h2>
           </div>
           <div className="col-span-12 md:col-span-4 md:col-start-9 md:pt-4">
             <p className="font-body text-base text-foreground/70 leading-relaxed border-l-2 border-foreground pl-5">
-              Obejmuje też Ziemię. Każdy składnik i każda butelka to świadomy
-              krok ku bardziej zrównoważonej przyszłości. Nie jesteśmy idealni —
-              ale jesteśmy zaangażowani.
+              {t("about.planet.body")}
             </p>
           </div>
         </div>
 
         {/* Commitments — staggered offset list, no boxes */}
         <div className="max-w-5xl mx-auto space-y-10 md:space-y-12">
-          {planetCommitments.map((c, i) => (
+          {pillars.map((c, i) => (
             <article
               key={c.n}
               className={`grid grid-cols-12 gap-4 md:gap-6 items-start pb-10 md:pb-12 border-b border-foreground/20 last:border-0 ${

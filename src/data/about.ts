@@ -119,9 +119,9 @@ export const aboutIngredients = [
 export const planetCommitments = [
   {
     n: "01",
-    title: "Niski ślad węglowy",
+    title: "Lokalnie i odpowiedzialnie",
     body:
-      "Produkujemy lokalnie w Polsce, minimalizując transport. Pracujemy z dostawcami, którzy mierzą i raportują swój ślad węglowy.",
+      "Produkujemy lokalnie w Polsce, minimalizując transport. Pracujemy z dostawcami.",
   },
   {
     n: "02",
