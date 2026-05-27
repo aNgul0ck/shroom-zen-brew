@@ -33,7 +33,6 @@ i18n
       caches: ["localStorage"],
       lookupLocalStorage: "shroom_lang",
     },
-    returnObjects: true,
   });
 
 export default i18n;
