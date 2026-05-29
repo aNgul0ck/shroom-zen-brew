@@ -26,8 +26,7 @@ const B2bHero = () => {
         </h1>
 
         <p className="font-body text-lg md:text-2xl text-foreground/70 leading-snug max-w-2xl mb-12">
-          Adaptogeny w designerskiej butelce. Już w 7 krajach Europy —
-          od Reykjavíku po Budapeszt.
+          Adaptogeny w designerskiej oprawie. Już w 7 krajach Europy.
         </p>
 
         <div className="flex flex-wrap items-center gap-6">
