@@ -1,69 +1,62 @@
-# Plan: Pełna integracja angielskiej wersji (PL/EN)
+Stworzymy dokument briefu w formacie .docx, który opisuje filozofię projektowania strony Shroom jako zestaw uniwersalnych wzorców do zastosowania w nowym, czysto informacyjnym projekcie (fundacja). Dokument będzie skierowany do zespołu/projektanta, z akcentem na UX/CRO, ale uwzględni też design system, architekturę informacji i strategię contentową.
 
-## Cel
-Wprowadzić wielojęzyczność opartą o `react-i18next` z polskim jako domyślnym językiem i angielskim jako alternatywą. Routing `/en/*` dla wersji angielskiej, przełącznik w headerze, pełna refaktoryzacja tekstów.
+## Zakres dokumentu
 
-## Zakres techniczny
+Sekcje briefu:
 
-### 1. Infrastruktura (Etap A — fundament)
-- Instalacja: `react-i18next`, `i18next`, `i18next-browser-languagedetector`
-- Utworzyć katalog `src/i18n/`:
-  - `src/i18n/index.ts` — konfiguracja i18next z dwoma językami
-  - `src/i18n/locales/pl.json` — wyekstraktowane teksty PL (na bazie obecnego copy)
-  - `src/i18n/locales/en.json` — załadowane z pliku użytkownika (1736 linii)
-- Import inicjalizacji w `src/main.tsx`
+1. **Wprowadzenie i kontekst**
+   - Cel dokumentu: przeniesienie sposobu rozumowania, nie literalnego layoutu.
+   - Krótki opis Shroom jako case study (e-commerce funkcjonalnych napojów, editorial design, wielojęzyczność, mobile-first CRO).
 
-### 2. Routing językowy
-- `BrowserRouter` w `App.tsx` zmodyfikowany: dodać prefix `/en` dla wszystkich tras
-- Wrapper component `LanguageRoute` który:
-  - Wykrywa prefix `/en` z `useLocation`
-  - Wywołuje `i18n.changeLanguage('en' | 'pl')`
-- Wszystkie istniejące trasy (`/`, `/produkt/:slug`, `/o-shroomie`, `/b2b`, `/blog`, `/blog/:slug`, `/badania`, `/brief`, `/quiz`, `/cart`) dostają lustrzane angielskie odpowiedniki pod `/en/*`
-- Helper `useLocalizedPath(path)` zwracający ścieżkę z prefixem zgodnie z bieżącym językiem — wszystkie `<Link to=...>` przechodzą przez niego
-- Aktualizacja meta tagów: `<html lang>`, `hreflang` alternates w `<Helmet>` każdej strony
+2. **Warstwa 1: Strategia narracyjna i hierarchia przekazu**
+   - Zasada: storytelling > długie bloki tekstu.
+   - Hierarchia: dream outcome (hero) → oferta (produkty) → walidacja (opinie/badania) → szczegóły (skład, FAQ) → konwersja (CTA/subskrypcja).
+   - Voice & tone: bezpośredni, edgier, ale zgodny z compliance (dla fundacji: zastąpić odpowiednim tonem).
+   - Wielowarstwowość: jedna sekcja = jeden argument, a każdy argument ma warstwę wizualną, tekstową i emocjonalną.
 
-### 3. Przełącznik PL/EN
-- Nowy komponent `src/components/LanguageSwitcher.tsx`:
-  - Przyciski "PL" / "EN" w stylu editorial (sharp edges, no rounded)
-  - Klik zmienia ścieżkę: `/produkt/x` ↔ `/en/product/x` (lub trzymamy te same slugi — patrz Decyzje poniżej)
-  - Wstawiony w `Header.tsx` desktop nav i w menu mobilnym
-- Persist wybór w `localStorage` (przez language-detector)
+3. **Warstwa 2: Struktura strony i UX/CRO (główny akcent)**
+   - Homepage jako lejek: hero z social proof/award, sekcja oferty, walidacja, edukacja, konwersja powtarzana.
+   - Mobile-first: zamiast jeden pod drugim — siatki 2-kolumnowe, karuzele snap-scroll, wizualne wyróżniki.
+   - PDP (Product Detail Page): reordered sections per Thorium framework — Benefits → Cross-sell → Reviews → Ingredients → Routine → FAQ → Upsells.
+   - Sticky CTA, TrustBar, Recent Purchases jako wzorce budowania trustu i redukcji tarcia.
+   - Zasada: każda sekcja musi mieć jedno, mierzalne zadanie użytkownika.
 
-### 4. Refaktoryzacja komponentów (Etap B — najdłuższy)
-Każdy komponent z hardkodowanym polskim tekstem zostaje przepisany na `const { t } = useTranslation()` + `t('namespace.key')`.
+4. **Warstwa 3: Design system jako język znaczników**
+   - Editorial design: flat saturated colors, sharp edges (no rounded corners), thick black dividers.
+   - Typografia: 3 rodziny (Afronaut dla h1/h2, Archivo/Switzer dla nadpisów, Inter dla body).
+   - Brak scroll-reveal animations: stała widoczność ze względu na stabilność i accessibility.
+   - Design tokens: kolory brandowe, spacing, border-t jako accent — zastosowanie uniwersalne w fundacji: zdefiniować własne tokeny, ale zachować zasadę spójnego systemu znaczników.
 
-Plan kolejnościowy (z monitorowaniem builda po każdej fazie):
-- **Faza 1 — globalne**: `Header`, `Footer`, `TrustBar`, `StickyCTA`, `Newsletter`, `MarqueeBanner`, `CuriosityPopup`, `ShippingProgressBar`, `CartDrawer`
-- **Faza 2 — homepage**: `Hero`, `IntroSection`, `FunctionalDrinks`, `DivaSection`, `BrainBlissSection`, `Benefits`, `IngredientsCarousel`, `HowItWorks`, `DrinkingOccasions`, `DayCycleClock`, `MocktailRecipes`, `ComparisonSection`, `Reviews`, `CreatorReels`, `Subscriptions`, `QuizCTA`, `RecentPurchases`
-- **Faza 3 — strony**: `Index`, `AboutPage` + 8 sekcji w `components/about/*`, `B2bPage` + 7 sekcji `components/b2b/*`, `Blog`, `BlogPost`, `Brief`, `Cart`, `NotFound`, `ProductPage`, `QaProgressBar`, `QuizPage`, `Research`
-- **Faza 4 — sekcje produktowe**: 14 komponentów w `components/product/*`
-- **Faza 5 — dane**: `src/data/about.ts`, `src/data/b2b.ts`, `src/data/products.ts`, `src/data/accessories.ts` — przeniesione do JSON-ów tłumaczeń lub przekształcone w funkcje przyjmujące `t`
+5. **Warstwa 4: Architektura informacji i techniczna elastyczność**
+   - Data-driven components: treść w JSON/data files, UI oddzielone od copy.
+   - i18n: URL-based language detection (`/en/*`), bidirectional slug map, localStorage persistence.
+   - Backend-ready stubs: Zustand cart, TODO(backend) comments, frontend-first approach umożliwiający późniejszą wymianę API bez zmiany UI.
+   - Dla fundacji: rekomendacja data-driven content + jasne slugi URL, nawet bez wielojęzyczności.
 
-### 5. SEO i meta
-- `<Helmet>` każdej strony: title, description, keywords, og:* tłumaczone przez `t()`
-- `<link rel="alternate" hreflang="pl" href="..." />` i `hreflang="en"` na każdej stronie
-- `<html lang={i18n.language}>` ustawiane w `useEffect` w `App.tsx`
-- Aktualizacja `index.html` z fallback meta + JSON-LD pozostaje (lokalizacja na poziomie strony)
-- Aktualizacja `public/sitemap.xml`: dodać `/en/*` warianty
+6. **Case study: konkretne decyzje projektowe**
+   - Hero: left-aligned dream outcome, lifestyle background, gradient overlay, award badge + testimonial.
+   - FunctionalDrinks: hero cards (Power/Relax) obok siebie na mobile, secondary products jako snap-scroller.
+   - About page: timeline jako storytelling, manifesto jako wartości, planet jako sustainability.
+   - CreatorReels: infinite center-focused carousel, lekka sekcja wizualna, autoplay video.
+   - Cart: Zustand store, bundle line items, persistent state, shipping progress bar.
+   - i18n routes: mirror routes + `useLocalizedPath` + `slugMap`.
 
-## Decyzje wymagające potwierdzenia
+7. **Wytyczne transferowe dla projektu informacyjnego/fundacji**
+   - Zdefiniuj 1-2 główne przekazy strony głównej.
+   - Każda sekcja ma mieć jedno zadanie (np. zrozum problem → zobacz rozwiązanie → zobacz dowód → weź działanie).
+   - Użyj 3-5 design tokens (kolory, typografia, spacing) i trzymaj się ich konsekwentnie.
+   - Mobile-first: na małym ekranie nie wszystko musi być pionowym stosem — użyj siatek i karuzeli.
+   - Content jako data: trzymaj teksty w strukturalnych plikach, nie w komponentach.
+   - Accessibility: unikaj animacji zależnych od scrolla; upewnij się, że CTA są zawsze widoczne.
 
-1. **Slugi w URL**: Czy ścieżki angielskie tłumaczyć (`/en/product/shroom-power`, `/en/about`, `/en/research`) czy zachować polskie (`/en/produkt/shroom-power`, `/en/o-shroomie`)? Tłumaczenie = lepsze SEO ENG, ale dwa razy więcej routingu.
-   - **Propozycja**: tłumaczyć (lepsze SEO).
+## Techniczne wykonanie
 
-2. **Język domyślny dla nowego użytkownika**: zawsze PL, czy auto-detect z przeglądarki (`navigator.language`)?
-   - **Propozycja**: auto-detect, fallback PL.
+- Użyję `docx` (Node.js) do wygenerowania pliku `.docx`.
+- Dokument zostanie zapisany w `/mnt/documents/` jako `shroom-design-philosophy-brief.docx`.
+- Po wygenerowaniu: walidacja XML, konwersja do PDF przez LibreOffice, wygenerowanie podglądowych JPEGów (`pdftoppm`) i wizualna weryfikacja każdej strony pod kątem błędów layoutu.
+- Finalnie w odpowiedzi przedstawię `<presentation-artifact>` z linkiem do pobrania.
 
-3. **Waluta**: JSON ma `€`. Aktualnie strona pokazuje PLN (`zł`). Czy w wersji EN wyświetlać € (wymaga konwersji cen — np. inne ceny w `products.ts` per locale) czy zostawić zł?
-   - **Propozycja**: dodać `formatPrice(price, locale)` z mapowaniem walutowym (PLN dla PL, EUR dla EN, ze stałym kursem zdefiniowanym w configu — do potwierdzenia kurs).
+## Wykluczone
 
-## Strategia wdrożenia
-Z uwagi na rozmiar (≈70 komponentów do refaktoru, 1700+ kluczy), proponuję podzielić na **2 osobne loopy**:
-- **Ten loop**: Etap A (infrastruktura, routing, switcher, Faza 1 — globalne + Faza 2 część kluczowa: Hero, FunctionalDrinks, IntroSection). Strona będzie w pełni przełączalna w sekcjach kluczowych dla pierwszego wrażenia.
-- **Kolejny loop**: pozostałe fazy (2-5), SEO, sitemap.
-
-## Pytania do Ciebie
-1. Tłumaczone slugi w `/en/*`? (rekomendacja: tak)
-2. Auto-detect języka czy zawsze PL na start? (rekomendacja: auto-detect)
-3. EUR czy PLN w wersji EN? Jeśli EUR — jaki kurs konwersji? (np. 4.30)
-4. Czy OK, że dziś dowieziemy infrastrukturę + przełącznik + ~15 komponentów, a resztę w kolejnym kroku?
+- Nie będziemy modyfikować kodu strony Shroom.
+- Nie będziemy tworzyć nowych komponentów ani funkcjonalności dla fundacji — dokument ma charakter wyłącznie koncepcyjny/briefowy.
